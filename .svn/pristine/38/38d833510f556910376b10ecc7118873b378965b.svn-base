@@ -1,0 +1,149 @@
+﻿@model MangroveSpace.AspCMSAlbum
+
+@{
+    /**/
+
+    ViewBag.Title = "Create Album";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<script src="~/assets/front_assets/js/dropzone.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/albums/" class="btn btn-success">Manage albums</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "albums", null, FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AID, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.AID, new { htmlAttributes = new { @class = "form-control", Value = Model.AID, @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.AID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AlbumTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.AlbumTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.AlbumTitle)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AlbumDescription, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.AlbumDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.AlbumDescription)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CDate, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12 JoinDate", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div id="filterDate2">
+
+                                        <!-- Datepicker as text field -->
+                                        <div class="input-group date cus_date_3" data-provide="datepicker" data-date-format="mm.dd.yyyy">
+                                            @Html.TextBoxFor(model => model.CDate, "{0:dd/MM/yyyy}", htmlAttributes: new { @class = "form-control CDate", data_date_format = "mm.dd.yyyy", placeholder = "mm/dd/yy" })
+                                            @Html.ValidationMessageFor(m => m.CDate)
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Album Cover</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="image-view mangrove_space">
+                                        <div class="image-view-show">
+                                            <img src="~/assets/back_assets/img/not-found.png" class="blah" />
+                                        </div>
+                                        <div class="image-action">
+                                            <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/albums/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("div#upload-widget").dropzone({ url: "/Albums/UploadPhotos" });
+
+    </script>
+
+    
+}

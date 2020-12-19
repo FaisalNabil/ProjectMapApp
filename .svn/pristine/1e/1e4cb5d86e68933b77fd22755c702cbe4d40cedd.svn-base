@@ -1,0 +1,434 @@
+﻿@model MangroveSpace.ViewModel.ProductInfoesViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index", "ProductInfoes")" class="btn btn-success">Manage ProductInfoes</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Create", "ProductInfoes", null, FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    if (TempData["msgs"] != null)
+                    {
+                        <div style="text-align:center;font-size:16px;color:red;">
+                            <span>@TempData["msgs"]</span>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.BarCode, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.BarCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.BarCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Product, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Product, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Product, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.ProductID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.ProductID, new { htmlAttributes = new { @class = "form-control", Value = Model.AspCMSProductInfo.ProductID, @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.ProductID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Brand, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Brand, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Brand, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.BrandInfo, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.BrandInfo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.BrandInfo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.CategoryID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="AspCMSProductInfo.CategoryID" id="categoryID" class="js-example-basic-single form-control">
+                                        @if (Model.AspCMSProductCategorys != null)
+                                        {
+                                            <option>Select CategoryName</option>
+                                            foreach (var item in Model.AspCMSProductCategorys)
+                                            {
+                                                <option value="@item.CategoryID">@item.CategoryName</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Color, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Color, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Color, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Unit, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Unit, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Unit, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.WebSellRate, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.WebSellRate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.WebSellRate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.WebBuyRate, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.WebBuyRate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.WebBuyRate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.WebSellPreRate, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.WebSellPreRate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.WebSellPreRate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Status, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.DropDownListFor(model=>model.AspCMSProductInfo.Status, new SelectList(new List<SelectListItem>{
+
+                                            new SelectListItem { Text="Active", Value="true"},
+                                            new SelectListItem { Text="Inactive", Value="false"},
+
+                                        },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSProductInfo.Status" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.FeaturedStatus, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.DropDownListFor(model=>model.AspCMSProductInfo.FeaturedStatus, new SelectList(new List<SelectListItem>{
+
+                                            new SelectListItem { Text="Yes", Value="true"},
+                                            new SelectListItem { Text="No", Value="false"},
+
+                                        },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSSlider.SliderStatus" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.InVal, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.InVal, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.InVal, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.SubSectorID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.SubSectorID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.SubSectorID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Vat, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Vat, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Vat, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.CreateDate, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <div id="filterDate2">
+
+                                        <!-- Datepicker as text field -->
+                                        <div class="input-group date cus_date_3" data-provide="datepicker" data-date-format="mm.dd.yyyy">
+                                            @Html.EditorFor(model => model.AspCMSProductInfo.CreateDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control StudentBirthDay", data_date_format = "mm.dd.yyyy", placeholder = "mm/dd/yy" } })
+
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.AspCMSProductInfo.CreateDate)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.SNID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.SNID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.SNID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Warranty, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.DropDownListFor(model=>model.AspCMSProductInfo.Warranty,new SelectList(new List<SelectListItem>{
+                                        new SelectListItem { Text="Yes", Value="true"},
+                                        new SelectListItem { Text="No", Value="false"},
+
+                                    },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspInfoStudent.Warranty" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.UIDENTITY, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.UIDENTITY, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.UIDENTITY, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Description1, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Description1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Description1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Description2, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Description2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Description2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSProductInfo.Description3, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSProductInfo.Description3, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AspCMSProductInfo.Description3, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile2" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile3" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile4" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile5" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image-view">
+                                <div class="image-view-show">
+                                    <img src="~/assets/back_assets/img/Category.png" class="blah" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile6" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/ProductInfoes/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

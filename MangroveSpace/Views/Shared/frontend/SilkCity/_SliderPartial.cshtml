@@ -1,0 +1,33 @@
+﻿
+<section class="briffs-slider-area">
+    <div class="briffs-slide owl-carousel">
+        @{
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select * from [dbo].[AspCMSSlider] where [SliderStatus]=1 order by [SliderOrder] ASC").ToList();
+            foreach (dynamic item in Information)
+            {
+                i = i + 1;
+
+                <div class="briffs-main-slide slide-item-@i ">
+                    <div class="briffs-main-caption">
+                        <div class="briffs-caption-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="slider-text">
+                                            @Html.Raw(item.SliderDesc)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</section>
+

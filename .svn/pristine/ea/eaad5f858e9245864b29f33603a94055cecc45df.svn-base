@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<div class="maincontent-home inner_page" data-sticky-sidebar-container>
+    <div class="container-fluid">
+        <div class="col-md-3 pad_right">
+            <div class="container-medium">
+                <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                    <ul>
+                        <li><a href="#">Electrical Motor</a></li>
+                        <li>
+                            <a href="#">Generator</a>
+                            <ul>
+                                <li><a href="#">Desel Generator</a></li>
+                                <li><a href="#">ametes etur</a></li>
+                                <li><a href="#">usmod tempor</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Pemanent magnets</a>
+                            <ul>
+                                <li><a href="#">Desel Generator</a></li>
+                                <li><a href="#">ametes etur</a></li>
+                                <li><a href="#">usmod tempor</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Solar Panel</a>
+                            <ul>
+                                <li><a href="#">Desel Generator</a></li>
+                                <li><a href="#">ametes etur</a></li>
+                                <li><a href="#">usmod tempor</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pad_both">
+            <div class="container-large">
+                <div class="single-blog-item">
+                    <a href="#">
+                        <h3>@ViewBag.Title</h3>
+                    </a>
+                    <h4 class="post-datae">Posted: @ViewBag.PostedDate</h4>
+                    <div class="blog-pera">
+                        @Html.Raw(Server.HtmlDecode(ViewBag.PageDetails))
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="welcome-right verticalCarousel">
+    <h3>upcoming event</h3>
+    <div class="event-control">
+        <a href="#" class="vc_goDown">
+            <i class="fa fa-fw fa-angle-down"></i>
+        </a>
+        <a href="#" class="vc_goUp">
+            <i class="fa fa-fw fa-angle-up"></i>
+        </a>
+    </div>
+    <div class=" verticalCarouselGroup vc_list">
+
+        @{
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select [ID],[EventID],[EventName],[EventDate],[AttachFile],[Time1],[Time2],[EntryDate] from [dbo].[AspCMSEvent] where [EventStatus]=1 order by [EventDate] DESC").ToList();
+            foreach (dynamic item in Information)
+            {
+
+                <div class="single-event">
+                    <div class="event-date">
+                        <h3>@string.Format("{0:dd}", @item.EventDate) <span>@string.Format("{0:MMM}", @item.EventDate)</span></h3>
+                    </div>
+                    <div class="event-text">
+                        <a href="/Event/EventDetails/@item.ID"><h4>@item.EventName</h4></a>
+                        <ul class="event-held list-inline">
+                            <li class="text-555"><i class="fa fa-clock-o"></i> @item.Time1 – @item.Time2</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            }
+
+        }
+
+
+
+    </div>
+</div>
+
+

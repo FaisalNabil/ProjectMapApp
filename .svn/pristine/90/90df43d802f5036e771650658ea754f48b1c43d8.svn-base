@@ -1,0 +1,165 @@
+/*------------------------------------------------------------------------------------
+    
+JS INDEX
+=============
+
+01 - Main Slider
+
+
+-------------------------------------------------------------------------------------*/
+
+
+(function ($) {
+    "use strict";
+
+    jQuery(document).ready(function ($) {
+
+
+
+        /* 
+        =================================================================
+        01 - Main Slider
+        =================================================================	
+        */
+        $(".big-slide").owlCarousel({
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+            items: 1,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            loop: true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            mouseDrag: false,
+            touchDrag: false
+        });
+
+        $(".big-slide").on("translate.owl.carousel", function () {
+            $(".big-main-slide h2, .big-main-slide p").removeClass("animated fadeInUp").css("opacity", "0");
+            $(".big-main-slide .theme-btn").removeClass("animated fadeInDown").css("opacity", "0");
+        });
+        $(".big-slide").on("translated.owl.carousel", function () {
+            $(".big-main-slide h2, .big-main-slide p").addClass("animated fadeInUp").css("opacity", "1");
+            $(".big-main-slide .theme-btn").addClass("animated fadeInDown").css("opacity", "1");
+        });
+
+        $(".big-slide").on("translate.owl.carousel", function () {
+            $(".big-main-slide h4").removeClass("animated slideInDown").css("opacity", "0");
+        });
+        $(".big-slide").on("translated.owl.carousel", function () {
+            $(".big-main-slide h4").addClass("animated slideInDown").css("opacity", "1");
+        });
+
+
+
+
+        /* 
+        =================================================================
+        04 - Accordian Icon
+        =================================================================	
+        */
+        $('.accordion').on('shown.bs.collapse', function (e) {
+            $(e.target).parent().addClass('active_acc');
+            $(e.target).prev().find('.switch').removeClass('fa-chevron-down');
+            $(e.target).prev().find('.switch').addClass('fa-chevron-up');
+        });
+        $('.accordion').on('hidden.bs.collapse', function (e) {
+            $(e.target).parent().removeClass('active_acc');
+            $(e.target).prev().find('.switch').addClass('fa-chevron-down');
+            $(e.target).prev().find('.switch').removeClass('fa-chevron-up');
+        });
+
+
+
+        $(".project-slider").owlCarousel({
+            autoplay: true,
+            loop: true,
+            margin: 20,
+            touchDrag: true,
+            mouseDrag: true,
+            nav: true,
+            dots: false,
+            autoplayTimeout: 6000,
+            autoplaySpeed: 1200,
+            autoplayHoverPause: true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            responsive: {
+                0: {
+                    items: 2
+                },
+                480: {
+                    items: 2
+                },
+                600: {
+                    items: 4
+                },
+                1000: {
+                    items: 5
+                },
+                1200: {
+                    items: 5
+                }
+            }
+        });
+
+        $('.popup-youtube').magnificPopup({
+            disableOn: 700,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: false,
+
+            fixedContentPos: false
+        });
+
+
+        $(function () {
+            $('.marquee').marquee({
+                allowCss3Support: true,
+                css3easing: 'linear',
+                easing: 'linear',
+                delayBeforeStart: 1000,
+                direction: 'left',
+                duplicated: false,
+                duration: 30000,
+                gap: 20,
+                pauseOnCycle: false,
+                startVisible: true,
+                pauseOnHover: true
+
+            });
+        });
+
+
+        $("ul#navigation_menu").slicknav({
+            prependTo: ".big-responsive-menu"
+        });
+
+
+        /* 
+        =================================================================
+        07 - Btn To Top JS
+        =================================================================	
+        */
+        if ($("body").length) {
+            var btnUp = $('<div/>', {
+                'class': 'btntoTop'
+            });
+            btnUp.appendTo('body');
+            $(document).on('click', '.btntoTop', function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 700);
+            });
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() > 200) $('.btntoTop').addClass('active');
+                else $('.btntoTop').removeClass('active');
+            });
+        }
+
+
+
+    });
+
+
+}(jQuery));

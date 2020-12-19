@@ -1,0 +1,174 @@
+﻿@model AspCMSAlbumDetail
+
+@{
+    /**/
+
+    ViewBag.Title = "Create Album Details";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pages/" class="btn btn-success">Manage Page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "AlbumDetails", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<div class="form-group">
+                        <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px"></label>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="image-view mangrove_space">
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ADID, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.ADID, new { htmlAttributes = new { @class = "form-control", Value = Model.ADID, @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.ADID)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AlbumDetailsTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.AlbumDetailsTitle, new { htmlAttributes = new { @class = "form-control", } })
+                                    @Html.ValidationMessageFor(m => m.AlbumDetailsTitle)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12" style="margin-bottom:10px">Album List</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <select id="classID" name="AID" class=" js-example-basic-single  form-control">
+                                        <option>Select an Album</option>
+                                        @if (ViewBag.AlbumList != null)
+                                        {
+
+                                            foreach (var item in ViewBag.AlbumList)
+                                            {
+                                                <option value="@item.AID">@item.AlbumTitle</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12" style="margin-bottom:10px">Album Status</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select class="js-example-basic-single form-control" name="Status" data-placeholder="Select an item">
+                                        <option>Select Status</option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                          
+                            <div class="image-view mangrove_space col-md-12 col-sm-12 col-xs-12">
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/albums/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+
+
+
+    <script>
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+
+}

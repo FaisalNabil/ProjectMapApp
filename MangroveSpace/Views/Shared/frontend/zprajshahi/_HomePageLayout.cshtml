@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+    <style>
+        @Html.GetSliderImageItem()
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+    <div class="container">
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml")
+
+
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NewsPartial.cshtml")
+
+
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+
+
+
+
+        <div class="main-containt">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="containt-left">
+                            @Html.GetGadgetItem("chairman")
+                            @Html.GetGadgetItem("ceogadget")
+
+
+                            @RenderBody()
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NoticePartial.cshtml")
+
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div class="sidebar-menu">
+                            <h4>Menu</h4>
+
+                            @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_MenuSide.cshtml")
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="breaker"></div>
+        </div>
+        <div class="link-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="link-area-heading">
+                            <h3>গুরুত্বপূর্ণ লিংক</h3>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        @Html.GetGadgetItem("quicklinks1")
+
+                    </div>
+                    <div class="col-md-3">
+                        @Html.GetGadgetItem("quicklinks2")
+
+                    </div>
+                    <div class="col-md-3">
+                        @Html.GetGadgetItem("quicklinks3")
+
+                    </div>
+                    <div class="col-md-3">
+                        @Html.GetGadgetItem("quicklinks4")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+        
+
+    </div>
+
+
+
+
+   
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

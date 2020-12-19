@@ -1,0 +1,71 @@
+﻿@model MangroveSpace.AspCMSAlbumDetail
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<h2>Album Details</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="print-page-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="print-image">
+                        @if (Model.AlbumDetailImagePath != null)
+                        {
+                            <img src="@Model.AlbumDetailImagePath" class="blah" style="height:180px;width:170px;"/>
+                        }
+                        else
+                        {
+                            <img src="~/assets/admin/img/img.jpg" class="blah" />
+                        }
+                    </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="table-responsive print-table">
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>@Html.DisplayNameFor(model => model.AlbumDetailsTitle)</strong>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AlbumDetailsTitle)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong> @Html.DisplayNameFor(model => model.AlbumDetailsDescription)</strong>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AlbumDetailsDescription)
+                                        </td>
+                                    </tr>
+                                    @*<tr>
+                                <td>
+                                    <strong>@Html.DisplayNameFor(model => model.Status)</strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Status)
+                                </td>
+                            </tr>*@
+
+                                </tbody>
+                            </table>
+                            @*<div class="print-action text-center">
+                        <a href="javascript:window.print()" class=" btn btn-success">Print</a>
+                    </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+

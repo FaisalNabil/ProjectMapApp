@@ -1,0 +1,45 @@
+﻿@using MapProject.Models
+@model MapProject.Models.ImportExcel
+
+@{
+    ViewBag.Title = "Import Data";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="col-md-4">
+                    @using (Html.BeginForm("Import", "ExcelImport", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.EnumDropDownListFor(m=>m.FileForType, "Select File For", new { @class = "form-control form-group col-md-4" })
+                        @*@Html.DropDownList("FileForType",
+                                        new SelectList(Enum.GetValues(typeof(FileFor))),
+                                        "Select File For",
+                                        new { @class = "form-control form-group col-md-4" })*@
+
+                        @Html.TextBoxFor(m => m.file, new { type = "file", @class = "form-control form-group col-md-4" })
+                        <button class="btn btn-info" id="submitButton" type="submit">Submit</button>
+                        @Html.ValidationMessageFor(model => model.file, "", new { @class = "text-danger" })
+                    }
+                </div><br />
+                <div class="red">@ViewBag.Result</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+
+
+@Html.Raw(Server.HtmlDecode(GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = 'Home'")))

@@ -1,0 +1,22 @@
+﻿@using Microsoft.Ajax.Utilities
+
+<div class="header-notice-left">
+    <p>Latest news ::</p>
+    <ul class="marquee">
+        @{
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select top 10 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeDate] DESC").ToList();
+            foreach (dynamic item in Information)
+            {
+
+                <li>
+                    <img src="/assets/front_assets/RMSC/img/favicon.png">
+                    <p><a href="/Notice/NoticeDetails/@item.NoticeID"><span>@item.NoticeName</span></a></p>
+                </li>
+
+            }
+        }
+    </ul>
+</div>

@@ -1,0 +1,63 @@
+﻿using MapProject.Models;
+using MapProject.Service;
+using Microsoft.AspNet.Identity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MapProject.Controllers
+{
+    public class ExcelImportController : Controller
+    {
+        // GET: ExcelImport
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Import(ImportExcel importExcel)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                string path = Server.MapPath("~/Content/Upload/" + importExcel.file.FileName);
+                importExcel.file.SaveAs(path);
+
+                string excelConnectionString = @"Provider='Microsoft.ACE.OLEDB.12.0';Data Source='" + path + "';Extended Properties='Excel 12.0 Xml;IMEX=1'";
+                OleDbConnection excelConnection = new OleDbConnection(excelConnectionString);
+
+                string tableName = "Data$";
+
+                DataTable dt;
+                using (OleDbDataAdapter da = new OleDbDataAdapter(
+                    "Select * from [" + tableName + "]", excelConnection))
+                {
+                    dt = new DataTable(tableName);
+                    da.Fill(dt);
+                }
+
+                ImportHelper helper = new ImportHelper();
+                string i = string.Empty;
+
+                if(importExcel.FileForType == FileFor.General)
+                {
+                    i = helper.GeneralDataImport(dt, User.Identity.GetUserName().ToString());
+                }
+                else if(importExcel.FileForType == FileFor.Motor)
+                {
+                    i = helper.TechnicalDataImport(dt, User.Identity.GetUserName().ToString());
+                }
+                excelConnection.Close();
+
+                ViewBag.Result = i;
+
+                }
+            return RedirectToAction("Index");
+        }
+    }
+}

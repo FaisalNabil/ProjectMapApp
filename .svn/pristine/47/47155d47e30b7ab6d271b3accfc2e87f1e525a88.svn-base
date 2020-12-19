@@ -1,0 +1,40 @@
+﻿<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.GetGadgetItem("Footer1st")
+                
+            </div>
+            <div class="col-md-4">
+                @Html.GetGadgetItem("Footer2nd")
+                
+            </div>
+            <div class="col-md-4">
+                <div class="single-footer">
+                    <h3>Newsletter</h3>
+                    <div class="footer-subscribe">
+                        <form>
+                            <input type="email" placeholder="Enter your email" />
+                            <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                        </form>
+                        <p>Subscribe to our Newsletter right now to be updated. We promice not to spam!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyright-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright-box">
+                    <p>&copy; 2019 Powered By <a href="#">RampsBD</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

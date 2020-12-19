@@ -1,0 +1,60 @@
+﻿@using System.Data
+@using System.Text.RegularExpressions;
+@using System.Text
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<div class="maincontent-home" data-sticky-sidebar-container>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="container-large">
+                    @{
+                        System.Data.DataTable AllPowerPlants = Global.ReadData("select p.[ID], p.[PageTitle], p.[PageID], p.[EntryDate], p.[EntryBy], p.[PageBody], m.[Short Description], c.[Basic Description] from [dbo].[AspCMSPage] p left join [dbo].[PowerPlant_Main] m on p.[PageID] = m.[DetailsPageAddress] left join [dbo].[PowerPlant_Child] c on p.[PageID] = c.[DetailsPageAddress] where p.[TAG] is not null");
+                   
+                        if (AllPowerPlants.Rows.Count > 0)
+                        {
+                            foreach (DataRow row in AllPowerPlants.Rows)
+                            {
+                                <div class="single-blog-item">
+                                    <a href="/Pages/Page?pid=@row["PageID"]">
+                                        <h3>@row["PageTitle"]</h3>
+                                    </a>
+                                    <h4 class="post-datae">Posted: @row["EntryDate"]</h4>
+                                    <div class="blog-pera">
+                                        @{
+                                            if (!string.IsNullOrEmpty(row["Short Description"].ToString()))
+                                            {
+                                                <p>@row["Short Description"].ToString()</p>
+                                            }
+                                            if (!string.IsNullOrEmpty(row["Basic Description"].ToString()))
+                                            {
+                                                <p>@row["Basic Description"].ToString()</p>
+                                            }
+                                            //string writeup = Server.HtmlDecode(row["PageBody"].ToString());
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+
+                </div>
+            </div>
+            @*sidebar here*@
+            <div class="col-md-4">
+                <div class="container-medium">
+                    <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                        <ul>
+                            @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_RightMenu.cshtml", new ViewDataDictionary<DataTable>())
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @*sidebar here*@
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿<div class="singel-sidebar-down">
+    <h3>NOTICE BOARD</h3>
+
+    <marquee class="marquee" behavior="scroll" gap="0" truespeed="" direction="up" scrollamount="2" scrolldelay="50" onmouseover="this.stop();" onmouseout="this.start();">
+        @{
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select top 5 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeOrderID] ASC").ToList();
+            foreach (dynamic item in Information)
+            {
+
+                <a href="Notice/NoticeDetails/@item.NoticeID" >@item.NoticeName <span>@item.NoticeDate.ToString("MMMM/dd/yyyy")</span></a>
+                
+            }
+        }
+
+    </marquee>
+
+
+</div>
+
+
+
+
+
+

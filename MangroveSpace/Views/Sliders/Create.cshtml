@@ -1,0 +1,159 @@
+﻿@model MangroveSpace.AspCMSSlider
+
+@{
+    ViewBag.Title = "Create Slider";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/sliders/" class="btn btn-success">Manage Sliders</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Create", "sliders", null, FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SliderDesc, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.TextAreaFor(model => model.SliderDesc)
+                                    @Html.ValidationMessageFor(m => m.SliderDesc)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SliderID, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.SliderID, new { htmlAttributes = new { @class = "form-control", Value = Model.SliderID, @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.SliderID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SliderTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.SliderTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.SliderTitle)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SliderStatus, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model=>model.SliderStatus,new SelectList(new List<SelectListItem>{
+                                            new SelectListItem { Text="Select Status", Value=string.Empty},
+                                            new SelectListItem { Text="Active", Value="true"},
+                                            new SelectListItem { Text="Inactive", Value="false"},
+
+                                        },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSSlider.SliderStatus" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px"></label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="image-view mangrove_space">
+                                        <div class="image-view-show">
+                                            <img src="~/assets/back_assets/img/not-found.png" class="blah" />
+                                        </div>
+                                        <div class="image-action">
+                                            <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/Sliders/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+            $('#SliderDesc').summernote({
+                height: 250,
+                dialogsInBody: true,
+                prettifyHtml: true,
+                codemirror: {
+                    "mode": "text/html",
+                    "htmlMode": true,
+                    "lineNumbers": true,
+                    "theme": "monokai",
+                    "width": "100px",
+                    "textWrapping": true
+                },
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["paragraph", ["style"]],
+                    ["fontsize", ["fontname", "fontsize", "color"]],
+                    ["style", ["bold", "italic", "underline", "strikethrough", "clear"]],
+                    ["paragraph", ["ol", "ul", "paragraph"]],
+                    ["insert", ["table", "link", "picture", "video", "hr"]],
+                    ["misc", ["codeview"]]
+                ],
+                placeholder: "Slider Description"
+            });
+        });
+
+    </script>
+
+    <script>
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}
+

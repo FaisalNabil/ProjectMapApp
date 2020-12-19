@@ -1,0 +1,16 @@
+﻿@model IEnumerable<dynamic>
+
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <h3>@item.NewsName</h3>
+        <p><strong>News Date:</strong> @item.NewsDate</p>
+        <p>@Html.Raw(item.NewsDescription)</p>
+        <a href="@item.AttachFile" target="_blank" class="theme-btn">Download</a>
+    }
+}
+
+

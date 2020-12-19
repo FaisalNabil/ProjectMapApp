@@ -1,0 +1,75 @@
+﻿using MapProject.Service;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MangroveSpace.Controllers
+{
+
+    public class HomeController : Controller
+    {
+        MapDataPreparation mapService = new MapDataPreparation();
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult PowerPlantDetails(int id)
+        {
+            PowerPlant_General PowerPlant_General = mapService.GetPowerPlant(id);
+            string PageData = mapService.GetPowerPlantPageContent(id);
+            string TableData = mapService.GetTableData(id);
+            PageData = PageData.Replace("[Table]", TableData);
+            ViewBag.PageDetails = PageData;
+            ViewBag.Title = PowerPlant_General.PowerPlant_Name;
+            ViewBag.PostedDate = PowerPlant_General.EntryDate;
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public ActionResult MapView()
+        {
+            return View();
+        }
+
+        // GET: Locations
+        [HttpGet]
+        public ActionResult Map()
+        {
+            var data = mapService.PrepareAllData();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public List<string> GetCategories()
+        {
+            var data = mapService.GetCategories();
+            return data;
+        }
+
+        public ActionResult ComparePowerPlant()
+        {
+            return View();
+        }
+
+        public String GetComparePowerPlantData(string PowerPlant1, string PowerPlant2, string PowerPlant3, string PowerPlant4)
+        {
+            string tableString = mapService.GetCompareData(PowerPlant1, PowerPlant2, PowerPlant3, PowerPlant4);
+            return tableString;
+        }
+
+        public JsonResult GetPowerPlantsFilter(string name)
+        {
+            var list = mapService.GetPowerPlantListFilter(name);
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+
+    }
+}

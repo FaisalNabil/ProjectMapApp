@@ -1,0 +1,118 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Album Details";
+                Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/albumdetails/create" class="btn btn-success">Create Album Details</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="albumdetail table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Album ID</th>
+                                <th>Album Name</th>
+                                <th>Album Details ID</th>
+                                <th>Status</th>
+
+
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+
+                                foreach (dynamic item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.AID</td>
+                                        <td>@item.AlbumTitle</td>
+                                        <td>@item.ADID</td>
+                                        <td>
+                                            @{
+
+                                                if (item.Status == true)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Inactive</p>
+
+
+                                                }
+
+                                            }
+
+                                        </td>
+
+                                        <td class="col-md-2" align="right">
+                                            <div class="btn-toolbar">
+                                                <div class="btn-group pull-right" style="margin:10px 0">
+                                                    @{
+                                                        if (@item.Status == true)
+                                                        {
+                                                            <a href='@Url.Action("StatusInactive", "AlbumDetails", new { id = item.ID })' class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Inactive"><i class="fa fa-arrow-up"></i></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href='@Url.Action("StatusActive", "AlbumDetails", new { id = item.ID })' class="btn btn-icon-toggle btn-warning btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Active"><i class="fa fa-arrow-down"></i></a>
+
+
+                                                        }
+
+
+                                                    }
+                                                    <a class="btn btn-icon-toggle  btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-albumdetails-id=@item.ID><i class="fa fa-trash-o"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts
+        {
+
+    <script>
+        var table = $(".albumdetail").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+    </script>
+
+}

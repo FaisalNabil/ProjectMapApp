@@ -1,0 +1,84 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    /**/
+
+    ViewBag.Title = "Page Template Details";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pagetemplates/create" class="btn btn-success">Add Page Template</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="pagetemplates table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Page Template ID</th>
+                                <th>Page Template Name</th>
+                                <th>Page Template Language</th>
+                                <th>Page Template English</th>
+                               
+
+
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+
+                                foreach (dynamic item in Model)
+                                {
+                            <tr>
+                                <td style="padding:10px">@item.TemplateID</td>
+                                <td style="padding:10px">@item.TemplateName</td>
+                                <td style="padding:10px">@item.TemplateLanguage</td>
+                                <td style="padding:10px">@item.TemplatePath</td>
+                                <td style="padding:10px">
+                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "pagetemplates", new {id = @item.ID})"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Details" href="@Url.Action("Details", "pagetemplates", new { id = @item.ID })"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-pagetemplates-id=@item.ID><i class="fa fa-trash-o"></i></a>
+                                </td>
+
+                            </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts
+        {
+
+    <script>
+        var table = $(".pagetemplates").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+    </script>
+
+}

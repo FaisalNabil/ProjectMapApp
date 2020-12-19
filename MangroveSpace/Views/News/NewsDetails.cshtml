@@ -1,0 +1,11 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+
+    Layout = Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_InnerPageLayout.cshtml";
+    ViewBag.Title = "News";
+}
+
+@{
+    Html.RenderPartial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NewsSinglePartial.cshtml");
+}

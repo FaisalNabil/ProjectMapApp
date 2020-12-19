@@ -1,0 +1,168 @@
+﻿@model AspSysMenu
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index", "Menu")" class="btn btn-success">Manage Menu</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Edit", "SysMenu", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.ID)
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuDisplayName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuDisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuDisplayName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuTitle)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuLink, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuLink, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuLink)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Parent Menu")
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select name="MenuParentID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+
+                                        <option>Select a Menu</option>
+                                        @if (ViewBag.ParentMenu != null && Model.MenuParentID != null)
+                                        {
+                                            foreach (var item in ViewBag.ParentMenu)
+                                            {
+                                                if (item.MenuID == Model.MenuParentID)
+                                                {
+                                                    <option value="@item.MenuID" selected>@item.MenuDisplayName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.MenuID">@item.MenuDisplayName</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Role")
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select name="MenuRoleID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+
+                                        <option>Select a Role</option>
+                                        @if (ViewBag.Role != null && Model.RoleID != null)
+                                        {
+                                            foreach (var item in ViewBag.Role)
+                                            {
+                                                if (item.Id == Model.RoleID)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuIcon, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.MenuIcon, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuIcon)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuLanguage, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model => model.MenuLanguage, new SelectList(new List<SelectListItem>{
+                                          new SelectListItem { Text="Select Language", Value=string.Empty},
+                                          new SelectListItem { Text="English", Value="EN"},
+                                          new SelectListItem { Text="Bangla", Value="BN"}
+                                      }, "Value", "Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSAlbum.Status" })
+                                    @Html.ValidationMessageFor(m => m.MenuLanguage)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.HiddenFor(m => m.ID)
+                    @Html.HiddenFor(m => m.MenuID)
+                    @Html.HiddenFor(m => m.MenuParentID)
+                    @Html.HiddenFor(m => m.MenuType)
+                    @Html.HiddenFor(m => m.MenuLinkOption)
+                    @Html.HiddenFor(m => m.MenuOrder)
+                    @Html.HiddenFor(m => m.MenuStatus)
+                    @Html.HiddenFor(m => m.MenuSerial)
+                    @Html.HiddenFor(m => m.MenuPrivilege)
+                    @Html.HiddenFor(m => m.MenuPrivilegeOption)
+                    @Html.HiddenFor(m => m.MenuContent)
+                    @Html.HiddenFor(m => m.MenuSlug)
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href='@Url.Action("Index", "SysMenu")' class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

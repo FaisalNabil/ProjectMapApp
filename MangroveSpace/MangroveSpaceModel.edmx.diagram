@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c2634a0f61847c58a193e5db3fbc3b6" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSAlbum" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSAlbumDetail" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSAllCategory" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSAnalytic" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSCategory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSEvent" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSGadget" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSInvoiceDetail" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSInvoiceTransition" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSMail" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSMemberShip" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSMenu" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSNew" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSNotice" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSPage" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSPageTemplate" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSProductCategory" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSProductInfo" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSSlider" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSTableContent" Width="1.5" PointX="16.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspCMSTableTemplate" Width="1.5" PointX="16.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspExamReGenReport" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspSysMenu" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspSysPrivilege" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.AspSysPrivilegeTemplate" Width="1.5" PointX="18.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_BasicType" Width="1.5" PointX="18.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Category" Width="1.5" PointX="3.75" PointY="36.5" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Child" Width="1.5" PointX="12.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_ChildFuelType" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_ChildItem" Width="1.5" PointX="18.75" PointY="17.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Company" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_CoreType" Width="1.5" PointX="14.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Country" Width="1.5" PointX="0.75" PointY="36.375" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_FuelType" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_General" Width="1.5" PointX="6" PointY="27.875" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_MagnetType" Width="1.5" PointX="20.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Main" Width="1.5" PointX="20.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_SubCategory" Width="1.5" PointX="8.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_TableControl" Width="1.5" PointX="16.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Technical" Width="1.5" PointX="3" PointY="39.375" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Freq" Width="1.5" PointX="18.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ProjectB_coreModel.PowerPlant_Level" Width="1.5" PointX="20.75" PointY="20.75" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_General_PowerPlant_Category" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_General_PowerPlant_Country" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_Technical_PowerPlant_Country" />
+        <AssociationConnector Association="ProjectB_coreModel.AspNetUserRoles" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_Main_PowerPlant_Category" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_Main_PowerPlant_SubCategory" />
+        <AssociationConnector Association="ProjectB_coreModel.FK_PowerPlant_Main_PowerPlant_Country" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

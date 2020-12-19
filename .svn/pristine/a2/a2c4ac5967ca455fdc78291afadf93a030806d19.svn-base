@@ -1,0 +1,33 @@
+﻿@model IEnumerable<dynamic>
+
+<h3>All News</h3>
+@if (Model != null)
+{
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>News Name</th>
+                <th>News Date</th>
+                <th>News Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NewsName</td>
+                    @try
+                    {
+                        <td>@item.NewsDate.ToString("dd/MM/yyyy")</td>
+                    }
+                    catch
+                    {
+
+                    }
+                    <td><a href="@Url.Action("NewsDetails", "News", new { id = @item.ID })">Read more</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

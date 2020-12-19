@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using MangroveSpace;
+using MapProject;
+using Microsoft.AspNet.Identity;
+
+namespace MapProject.Controllers
+{
+    public class LocationController : Controller
+    {
+        private MangroveSpaceEntities db = new MangroveSpaceEntities();
+
+        // GET: Location
+        public ActionResult Index()
+        {
+            var powerPlant_General = db.PowerPlant_General.Include(l => l.PowerPlant_Category);
+            return View(powerPlant_General.ToList());
+        }
+
+        public ActionResult UpdateDetailsPage(int id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                PowerPlant_General powerPlant_General = db.PowerPlant_General.Find(id);
+                if (powerPlant_General == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    return View(powerPlant_General);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateDetailsPage(PowerPlant_General powerPlant_General)
+        {
+            db.Entry(powerPlant_General).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UpdateDetailsPageCode(int id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                PowerPlant_General powerPlant_General = db.PowerPlant_General.Find(id);
+                if (powerPlant_General == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    return View(powerPlant_General);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

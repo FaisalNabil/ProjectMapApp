@@ -1,0 +1,247 @@
+﻿ServerName = whost.amader.site\sql2012
+UserName = Mangrove_mapapp_user
+Password = h7O1BO&zE9x1
+Databse = Mangrove_mapapp_db
+ActiveString = Mapapp
+AppName=Mapapp
+CopyRight= Mapapp
+AreaName=
+FrontTheme=MapApp
+BackTheme= admin
+
+ServerName = whost.amader.site\sql2012
+UserName = lifebd_db
+Password = 2cDNXx38B5i7
+Databse = lifebd_db
+ActiveString = Life
+AppName=Life
+CopyRight= Life
+AreaName=
+FrontTheme=LIFE
+BackTheme= admin
+
+ServerName = whost.amader.site\sql2012
+UserName = ProjectB_core
+Password = Pr8jsUty67Wq
+Databse = ProjectB_core
+ActiveString = Name OF School
+AppName=Name OF School
+CopyRight= CName OF School
+AreaName=
+FrontTheme=
+BackTheme= admin
+
+ServerName = whost.amader.site\sql2012
+UserName = lifebd_db
+Password = 2cDNXx38B5i7
+Databse = lifebd_db
+ActiveString = Life
+AppName=Life
+CopyRight= Life
+AreaName=
+FrontTheme=LIFE
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = REBMSC_db
+Password = vEs12jEL6isW
+Databse = REBMSC_db
+ActiveString = Rajshahi Education Board Govt. Model School & College
+AppName=Rajshahi Education Board Govt. Model School & College
+CopyRight= Rajshahi Education Board Govt. Model School & College
+AreaName=
+FrontTheme=REBMSC
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = IBA_final_db
+Password = hqFV8rvwPLKF
+Databse = IBA_final_db
+ActiveString = Institute Of Business Administration
+AppName=Institute Of Business Administration
+CopyRight= Institute Of Business Administration
+AreaName= 
+FrontTheme= IBA
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = zsorajshahi_db
+Password = drvreDgjdXmi
+Databse = zsorajshahi_db
+ActiveString = Zonal Settlement Office,Rajshahi
+AppName=Zonal Settlement Office,Rajshahi
+CopyRight= Zonal Settlement Office,Rajshahi
+AreaName=
+FrontTheme= ZSORAJ
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = SilkCitySolution_db
+Password = pttbmY89C^$s
+Databse = SilkCitySolution_db
+ActiveString = SilkCity Solution
+AppName=SilkCity Solution
+CopyRight= SilkCity Solution
+AreaName=
+FrontTheme= SilkCity
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = RMSC_db
+Password = LqT0v9sGj6UB
+Databse = RMSC_db
+ActiveString = Rajshahi Model School & College
+AppName=Rajshahi Model School & College
+CopyRight= Rajshahi Model School & College
+AreaName=
+FrontTheme=RMSC
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = SilkCitySolution_db
+Password = pttbmY89C^$s
+Databse = SilkCitySolution_db
+ActiveString = SilkCity Solution
+AppName=SilkCity Solution
+CopyRight= SilkCity Solution
+AreaName=
+FrontTheme= SilkCity
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = fmautoricemill_db
+Password = aIYJgSgzgGyA
+Databse = fmautoricemill_db
+ActiveString = F.M Auto Rice Mill
+AppName=F.M Auto Rice Mill
+CopyRight= F.M Auto Rice Mill
+AreaName=
+FrontTheme= Fmautoricemill
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = SilkCitySolution_db
+Password = pttbmY89C^$s
+Databse = SilkCitySolution_db
+ActiveString = SilkCity Solution
+AppName=SilkCity Solution
+CopyRight= SilkCity Solution
+AreaName=
+FrontTheme= SilkCity
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = harimohanschool_db
+Password = vqaIAA6Quno3
+Databse = harimohanschool_db
+ActiveString = Harimohon Govt. High School
+AppName=Harimohon Govt. High School
+CopyRight= Harimohon Govt. High School
+AreaName=
+FrontTheme= HGHS
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = taxeszonerajshahi_db
+Password = ZZnGKZqpkwnu
+Databse = taxeszonerajshahi_db
+ActiveString = Taxzone Rajshahi
+AppName=Taxzone Rajshahi
+CopyRight= Taxzone Rajshahi
+AreaName=
+FrontTheme=TAXZONE
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = zsorajshahi_db
+Password = drvreDgjdXmi
+Databse = zsorajshahi_db
+ActiveString = Zonal Settlement Office,Rajshahi
+AppName=Zonal Settlement Office,Rajshahi
+CopyRight= Zonal Settlement Office,Rajshahi
+AreaName=
+FrontTheme= ZSORAJ
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = harimohanschool_db
+Password = vqaIAA6Quno3
+Databse = harimohanschool_db
+ActiveString = Harimohon Govt. High School
+AppName=Harimohon Govt. High School
+CopyRight= Harimohon Govt. High School
+AreaName=
+FrontTheme= HGHS
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = youthrajshahi_db
+Password = 12690DVPwe$a
+Databse = youthrajshahi_db
+ActiveString = Zilla Parishad
+AppName=Youth Rajshahi
+CopyRight= Youth Rajshahi
+AreaName=
+FrontTheme=youthrajshahi
+BackTheme= admin
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = zprajshahi_dbase
+Password = 1zJGB-m74$T#
+Databse = zprajshahi_dbase
+ActiveString = Zilla Parishad
+AppName=Zilla Parishad
+CopyRight= Zilla Parishad
+AreaName=
+FrontTheme=zprajshahi
+BackTheme= admin
+
+
+ServerName = whost.amader.site\sql2012
+UserName = REBMSC_db
+Password = vEs12jEL6isW
+Databse = REBMSC_db
+ActiveString = Rajshahi Education Board Govt. Model School & College
+AppName=Rajshahi Education Board Govt. Model School & College
+CopyRight= Rajshahi Education Board Govt. Model School & College
+AreaName=
+FrontTheme=REBMSC
+BackTheme= admin
+
+
+
+
+ServerName = whost.amader.site\sql2012
+UserName = RMSC_db
+Password = LqT0v9sGj6UB
+Databse = RMSC_db
+ActiveString = Rajshahi Model School & College
+AppName=Rajshahi Model School & College
+CopyRight= Rajshahi Model School & College
+AreaName=
+FrontTheme=RMSC
+BackTheme= admin
+
+
+

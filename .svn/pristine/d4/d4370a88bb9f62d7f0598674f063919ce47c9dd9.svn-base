@@ -1,0 +1,81 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+    
+    
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+
+    .wrapper{
+        width:100%
+    }
+    header.header-area{
+        text-align:center
+    }
+    .govt-logo{
+        display:block;
+        margin:10px 0
+    }
+    .header-right{
+        text-align:center
+    }
+    .header-top ul{
+        text-align:center
+    }
+    .header-info p{
+        text-align:center
+    }
+    .header-search{
+        text-align:center
+    }
+        .header-search form{
+            margin:0 auto;
+            width:100%
+        }
+    .header-action{
+        text-align:center
+    }
+    .logo {
+        width: auto
+    }
+    .briffs-responsive-menu{
+        display:block
+    }
+    #briffs_navigation{
+        display:none
+    }
+    .wrapper-footer{
+        width:100%;
+        padding:20px 15px
+    }
+    .col-md-5.text-right{
+        display:none
+    }
+    
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .header-search form input{
+        width:90%
+    }
+    
+    
+}
+

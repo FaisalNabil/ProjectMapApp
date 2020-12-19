@@ -1,0 +1,119 @@
+﻿@model PowerPlant_Category
+
+@{
+    ViewBag.Title = "Edit Category";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/category/" class="btn btn-success">Manage Category</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.ID)
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Category Name</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Category_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Category_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="image-view">Icon</label>
+                            <div class="image-view col-md-3">
+                                <div class="image-view-show">
+                                    <img src="@(Model.Icon == null? "/Content/icon/default.jpg": Model.Icon)" alt="/Content/icon/default.jpg" class="blah" width="25" height="25" />
+                                </div>
+                                <div class="image-action">
+                                    <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(function () {
+            $('#PageBody').summernote({
+                height: 250,
+                dialogsInBody: true,
+                prettifyHtml: true,
+                codemirror: {
+                    "mode": "text/html",
+                    "htmlMode": true,
+                    "lineNumbers": true,
+                    "theme": "monokai",
+                    "width": "100px",
+                    "textWrapping": true
+                },
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["paragraph", ["style"]],
+                    ["fontsize", ["fontname", "fontsize", "color"]],
+                    ["style", ["bold", "italic", "underline", "strikethrough", "clear"]],
+                    ["paragraph", ["ol", "ul", "paragraph"]],
+                    ["insert", ["table", "link", "picture", "video", "hr"]],
+                    ["misc", ["codeview"]]
+                ],
+                placeholder: "Page Content"
+            });
+        });
+
+    </script>
+}

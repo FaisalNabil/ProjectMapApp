@@ -1,0 +1,32 @@
+﻿
+<h3>latest notice</h3>
+
+<ul>
+    @{
+        string ImgPath;
+        int i = 0;
+        MangroveSpaceEntities db = new MangroveSpaceEntities();
+        List<dynamic> Information = Global.Sql(db, "select top 10 [ID],[NoticeID],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeOrderID]").ToList();
+        foreach (dynamic item in Information)
+        {
+            i = i + 1;
+            ImgPath = "/assets/front_assets/IBA/img/notice.png";
+            <li>
+                <div class="notice-left">
+                    <a href="#">
+                        <img src="@ImgPath" />
+                    </a>
+                </div>
+                <div class="notice-right">
+                    <h3><a href="/Notice/NoticeDetails/@item.ID">@item.NoticeName</a></h3>
+                    <a href="/Notice/NoticeDetails/@item.ID">read more</a>
+                </div>
+            </li>
+        }
+    }
+</ul>
+
+<a href="@Url.Action("AllNotice","Notice")" class="theme-btn">More Notice</a>
+
+
+

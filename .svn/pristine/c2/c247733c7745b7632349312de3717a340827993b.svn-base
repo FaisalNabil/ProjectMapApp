@@ -1,0 +1,25 @@
+﻿
+
+<div class="slider-area">
+    <div class="slide owl-carousel">
+        @{
+            /**/
+
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select * from [dbo].[AspCMSSlider] where [SliderStatus]=1 order by [SliderOrder] ASC").ToList();
+            foreach (dynamic item in Information)
+            {
+                <div class="single-slider">
+                    <img src="@item.SliderImagePath" />
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,102 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+@using MangroveSpace.Models;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Text;
+@using System.Web;
+@using System.Web.UI.WebControls;
+
+
+
+
+@functions{
+    public static string GetMenuString()
+    {
+        var menuItems = MangroveSpace.MenuHelper.GetAllMenuItems("Right Menu"); //HttpContext.Current.Session["SelectMenu"].ToString()
+
+        var builder = new StringBuilder();
+        builder.Append("<ol class='dd-list'>");
+        builder.Append(GetMenuLiString(menuItems, null));
+        builder.Append("</ol>");
+        return builder.ToString();
+    }
+    private static string GetMenuLiString(IList<SysMenu> menuList, string parentId)
+    {
+        var children = MangroveSpace.MenuHelper.GetChildrenMenu(menuList, parentId);
+
+        if (children.Count <= 0)
+        {
+            return "";
+        }
+
+        var builder = new StringBuilder();
+
+        foreach (var item in children)
+        {
+            var childStr = GetMenuLiString(menuList, Convert.ToString(item.ID));
+            if (!string.IsNullOrWhiteSpace(childStr))
+            {
+                string IconClass = item.MenuIcon;
+                string Content = item.MenuDisplayName;
+
+
+                string parent =
+                    @"<li class='dd-item' data-id='{$ID}'>
+                        <a class='selectedmenu dd-handle' data-menu='{$ID}'>{$Content}</a>
+                            <ol class='dd-list'>
+                                {$childStr}
+                            </ol>
+                    </li>";
+
+                parent = parent.Replace("{$ID}", Convert.ToString(item.ID));
+                parent = parent.Replace("{$Content}", item.MenuDisplayName);
+
+
+                parent = parent.Replace("{$childStr}", childStr);
+
+                builder.Append(parent);
+            }
+            else
+            {
+                string chld =
+                @"<li class='dd-item' data-id='{$ID}'>
+                <a class='selectedmenu dd-handle' data-menu='{$ID}'>{$Content}</a>
+                </li>";
+
+
+                chld = chld.Replace("{$ID}", Convert.ToString(item.ID));
+                //chld = chld.Replace("{$OID}", Convert.ToString(item.ID));
+                chld = chld.Replace("{$Content}", item.MenuDisplayName);
+
+                builder.Append(chld);
+            }
+        }
+
+        return builder.ToString();
+    }
+}
+
+
+@{
+    string str = GetMenuString();
+    Html.Raw(str);
+
+    <div class="dd" id="nestable3">
+        @Html.Raw(str)
+    </div>
+
+    //Ajax.ActionLink("Click Here to Load the Partial View", "SysMenu", "Menu", new { id = 2 }, new AjaxOptions { UpdateTargetId = "toUpdate" })
+
+}
+
+<script type="text/javascript">
+    function selectedmenu(target) {
+        var selectedmenu = target.dataset['menu'];
+
+        $('#toUpdate').load("/Menu/SysMenu/" + selectedmenu, function () { });
+        //alert(selectedCourseName);
+    }
+</script>
+

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<dynamic>
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <h3>@item.NoticeName</h3>
+        <p><strong>Notice Date:</strong> @item.NoticeDate</p>
+        <p>@item.NoticeDescription</p>
+
+        <a href="@item.AttachFile" class="theme-btn">Download</a>
+
+    }
+}

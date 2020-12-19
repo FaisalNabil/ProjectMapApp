@@ -1,0 +1,168 @@
+﻿@model MangroveSpace.AspCMSMenu
+@{
+    ViewBag.Title = "Create Menu";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/albums/" class="btn btn-success">Manage albums</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "Menu", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuDisplayName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuDisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuDisplayName)
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuTitle)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuLink, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select name="MenuLink" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+                                        @if (ViewBag.pageList != null)
+                                        {
+                                            <option>Select a Page</option>
+                                            foreach (var item in ViewBag.pageList)
+                                            {
+                                                <option value="@item.PageID">@item.PageTitle</option>
+                                            }
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.MenuLink)
+                                </div>
+                            </div>
+
+
+
+                            @*                             <div class="form-group"> *@
+                            @*                                 @Html.LabelFor(model => model.MenuType, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" }) *@
+                            @*                                 <div class="col-md-12 col-sm-12 col-xs-12"> *@
+                            @*                                     @#1#Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })#1# *@
+                            @*                                     @Html.DropDownListFor(model=>model.MenuType, new SelectList(new List<SelectListItem>{ *@
+                            @*                                         new SelectListItem { Text="Select Menu Type", Value=string.Empty}, *@
+                            @*                                         new SelectListItem { Text="Top Menu", Value="Top Menu"}, *@
+                            @*                                         new SelectListItem { Text="Main Menu", Value="Main Menu"}, *@
+                            @*                                         new SelectListItem { Text="Left Menu", Value="Left Menu"}, *@
+                            @*                                         new SelectListItem { Text="Right Menu", Value="Right Menu"}, *@
+                            @*                                         new SelectListItem { Text="Footer Menu", Value="Footer Menu"} *@
+                            @*                                     },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSAlbum.Status" }) *@
+                            @*                                     @Html.ValidationMessageFor(m => m.MenuType) *@
+                            @*                                 </div> *@
+                            @*                             </div> *@
+                            @*                             <div class="form-group"> *@
+                            @*                                 @Html.LabelFor(model => model.MenuLanguage, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" }) *@
+                            @*                                 <div class="col-md-12 col-sm-12 col-xs-12"> *@
+                            @*                                     @#1#Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })#1# *@
+                            @*                                     @Html.DropDownListFor(model=>model.MenuLanguage, new SelectList(new List<SelectListItem>{ *@
+                            @*                                           new SelectListItem { Text="Select Language", Value=string.Empty}, *@
+                            @*                                           new SelectListItem { Text="English", Value="EN"}, *@
+                            @*                                           new SelectListItem { Text="Bangla", Value="BN"} *@
+                            @*                                       },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSAlbum.Status" }) *@
+                            @*                                     @Html.ValidationMessageFor(m => m.MenuLanguage) *@
+                            @*                                 </div> *@
+                            @*                             </div> *@
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/albums/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+            $('#AlbumDescription').summernote({
+                height: 250,
+                dialogsInBody: true,
+                prettifyHtml: true,
+                codemirror: {
+                    "mode": "text/html",
+                    "htmlMode": true,
+                    "lineNumbers": true,
+                    "theme": "monokai",
+                    "width": "100px",
+                    "textWrapping": true
+                },
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["paragraph", ["style"]],
+                    ["fontsize", ["fontname", "fontsize", "color"]],
+                    ["style", ["bold", "italic", "underline", "strikethrough", "clear"]],
+                    ["paragraph", ["ol", "ul", "paragraph"]],
+                    ["insert", ["table", "link", "picture", "video", "hr"]],
+                    ["misc", ["codeview"]]
+                ],
+                placeholder: "Slider Description"
+            });
+        });
+
+    </script>
+}
+

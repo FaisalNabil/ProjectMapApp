@@ -1,0 +1,147 @@
+﻿using System.Web;
+using System.Web.Optimization;
+
+namespace MangroveSpace
+{
+    public class BundleConfig
+    {
+        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/assets/back_assets/css").IncludeDirectory(
+                "~/assets/back_assets/css", "*.css", true));
+
+            bundles.Add(new ScriptBundle("~/assets/back_assets/js").IncludeDirectory(
+                "~/assets/back_assets/js", "*.js", true));
+
+            /* Front Assets */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/DEFAULT/css").IncludeDirectory(
+            //    "~/assets/front_assets/DEFAULT/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/DEFAULT/js").IncludeDirectory(
+            //    "~/assets/front_assets/DEFAULT/js", "*.js", true));
+
+
+            /* Alloy Editor */
+
+            bundles.Add(new StyleBundle("~/assets/front_assets/libs/alloy-editor/assets").Include(
+            "~/assets/front_assets/libs/alloy-editor/assets/alloy-editor-ocean-min.css"));
+
+            bundles.Add(new ScriptBundle("~/assets/front_assets/libs/alloy-editor").Include(
+                        "~/assets/front_assets/libs/alloy-editor/alloy-editor-all-min.js"));
+
+
+
+            /* IBA */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/IBA/css").IncludeDirectory(
+            //    "~/assets/front_assets/IBA/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/IBA/js").IncludeDirectory(
+            //    "~/assets/front_assets/IBA/js", "*.js", true));
+
+
+            /* RMSC */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/RMSC/css").IncludeDirectory(
+            //    "~/assets/front_assets/RMSC/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/RMSC/js").IncludeDirectory(
+            //    "~/assets/front_assets/RMSC/js", "*.js", true));
+
+
+            /* REBMSC */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/REBMSC/css").IncludeDirectory(
+            //    "~/assets/front_assets/REBMSC/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/REBMSC/js").IncludeDirectory(
+            //    "~/assets/front_assets/REBMSC/js", "*.js", true));
+
+
+            /* ZPRAJSHAHI */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/zprajshahi/css").IncludeDirectory(
+            //    "~/assets/front_assets/zprajshahi/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/zprajshahi/js").IncludeDirectory(
+            //    "~/assets/front_assets/zprajshahi/js", "*.js", true));
+
+
+
+            /* YOUTHRAJSHAHI */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/youthrajshahi/css").IncludeDirectory(
+            //    "~/assets/front_assets/youthrajshahi/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/youthrajshahi/js").IncludeDirectory(
+            //    "~/assets/front_assets/youthrajshahi/js", "*.js", true));
+
+
+            /* HGHS */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/HGHS/css").IncludeDirectory(
+            //    "~/assets/front_assets/HGHS/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/HGHS/js").IncludeDirectory(
+            //    "~/assets/front_assets/HGHS/js", "*.js", true));
+
+
+            /* ZSORAJ */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/ZSORAJ/css").IncludeDirectory(
+            //    "~/assets/front_assets/ZSORAJ/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/ZSORAJ/js").IncludeDirectory(
+            //    "~/assets/front_assets/ZSORAJ/js", "*.js", true));
+
+
+            /* TAXZONE */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/TAXZONE/css").IncludeDirectory(
+            //    "~/assets/front_assets/TAXZONE/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/TAXZONE/js").IncludeDirectory(
+            //    "~/assets/front_assets/TAXZONE/js", "*.js", true));
+
+
+            /* TAXAPPEAL */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/TAXAPPEAL/css").IncludeDirectory(
+            //    "~/assets/front_assets/TAXAPPEAL/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/TAXAPPEAL/js").IncludeDirectory(
+            //    "~/assets/front_assets/TAXAPPEAL/js", "*.js", true));
+
+
+            /* SilkCity */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/SilkCity/css").IncludeDirectory(
+            //    "~/assets/front_assets/SilkCity/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/SilkCity/js").IncludeDirectory(
+            //    "~/assets/front_assets/SilkCity/js", "*.js", true));
+
+            /* Fmautoricemill */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/Fmautoricemill/css").IncludeDirectory(
+            //    "~/assets/front_assets/Fmautoricemill/css", "*.css", true));
+            //bundles.Add(new StyleBundle("~/assets/front_assets/Fmautoricemill/flaticon").IncludeDirectory(
+            //    "~/assets/front_assets/Fmautoricemill/flaticon", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/Fmautoricemill/js").IncludeDirectory(
+            //    "~/assets/front_assets/Fmautoricemill/js", "*.js", true));
+
+
+            /* SilkCity */
+            //bundles.Add(new StyleBundle("~/assets/front_assets/eschool/css").IncludeDirectory(
+            //    "~/assets/front_assets/eschool/css", "*.css", true));
+
+            //bundles.Add(new ScriptBundle("~/assets/front_assets/eschool/js").IncludeDirectory(
+            //    "~/assets/front_assets/eschool/js", "*.js", true));
+
+
+
+            /* LIFE */
+            bundles.Add(new StyleBundle("~/assets/front_assets/MapApp/css").IncludeDirectory(
+                "~/assets/front_assets/MapApp/css", "*.css", true));
+
+            bundles.Add(new ScriptBundle("~/assets/front_assets/MapApp/js").IncludeDirectory(
+                "~/assets/front_assets/MapApp/js", "*.js", true));
+
+
+
+
+            BundleTable.EnableOptimizations = false;
+        }
+    }
+}

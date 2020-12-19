@@ -1,0 +1,25 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "Event Details";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_EventDetailsLayout.cshtml";
+}
+
+
+            <div class="col-md-8">
+                <div class="about-left single-page-content" >
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <h3>@item.EventName</h3>
+                            <div class="single-event-date" style="margin-bottom:10px">
+                                <p style="display:inline-block;margin-right:10px"><i class="fa fa-calendar" style="color:#ff7c0c;margin-right:4px"></i> @item.EventDate.ToString("dd/MM/yyyy")</p>
+                                <p style="display:inline-block"><i class="fa fa-clock-o" style="color:#ff7c0c;margin-right:4px"></i> @item.Time1 – @item.Time2</p>
+                            </div>
+                            <p>@Html.Raw(item.EventDescription)</p>
+                            <a href="@item.AttachFile" style="margin-top:30px" class="theme-btn">Download</a>
+                        }
+                    }
+                </div>
+            </div>
+

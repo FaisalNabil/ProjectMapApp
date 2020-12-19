@@ -1,0 +1,112 @@
+﻿@model IEnumerable<dynamic>
+
+
+@{
+    ViewBag.Title = "All Albums";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>@ViewBag.Title</h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="/albums/create" class="btn btn-success">Add Album</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <div class="table-responsive">
+                                    <table class="album table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Album ID</th>
+                                                <th>Album Title</th>
+                                                <th>Album Date</th>
+                                                <th>Album Status</th>
+                                                <th class="text-right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+
+                                                foreach (dynamic item in Model)
+                                                {
+                                            <tr>
+                                                <td>@item.AID</td>
+                                                <td>@item.AlbumTitle</td>
+                                                @try
+                                                {
+                                                    <td>@item.CDate.ToString("dd/MM/yyyy")</td>
+                                                }
+                                                catch (Exception e)
+                                                {
+                                                    
+                                                }
+                                                <td>
+                                                    @{
+
+                                                        if (item.Status == true)
+                                                        {
+                                                            <p>Active</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>Inactive</p>
+                                                        }
+
+                                                    }
+                                                </td>
+                                                <td class="col-md-2" align="right">
+                                                    <div class="btn-toolbar">
+                                                        <div class="btn-group pull-right" style="margin:10px 0">
+                                                            @{
+                                                                if (item.Status == true)
+                                                                {
+                                                                    <a href='@Url.Action("StatusInactive", "Albums", new { id = item.ID })' class="btn btn-success btn-xs" data-original-title="Inactive"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href='@Url.Action("StatusActive", "Albums", new { id = item.ID })' class="btn btn-danger btn-xs" data-original-title="Active"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+
+                                                                }
+
+
+                                                            }
+                                                            <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "albums", new {id = @item.ID})"><i class="fa fa-pencil"></i></a>
+                                                            <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-album-id=@item.ID><i class="fa fa-trash-o"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+@section scripts
+{
+    <script>
+        var table = $(".album").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+    </script>
+}

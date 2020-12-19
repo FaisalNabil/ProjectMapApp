@@ -1,0 +1,52 @@
+﻿@using Microsoft.Ajax.Utilities
+
+<section class="wakfi-blog-area section_t_100 section_b_70" data-scroll-index="6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="site-heading  wow fadeInUp">
+                    <h2>wakfi news</h2>
+                    <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                string ImgPath;
+                int i = 0;
+                MangroveSpaceEntities db = new MangroveSpaceEntities();
+                List<dynamic> Information = Global.Sql(db, "select top 3 [ID],[NewsID],[AttachFile],[NewsName],[NewsDate],[NewsOrderID],[EntryBy],[EntryDate] from [dbo].[AspCMSNews] where [NewsCategory]='1' and [NewsStatus]=1 order by [NewsDate] DESC").ToList();
+                foreach (var item in Information)
+                {
+                    ImgPath = item.AttachFile;
+
+                    <div class="col-md-12 col-lg-4  wow fadeInLeft">
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <a href="#">
+                                    <img src="@item.AttachFile" alt="blog">
+                                </a>
+                            </div>
+                            <div class="blog-text">
+                                <div class="blog-meta">
+                                    <p><i class="fa fa-user"></i> By Admin</p>
+                                    <p><i class="fa fa-clock-o"></i> @item.NewsDate</p>
+                                </div>
+                                <h3><a href="#">@item.NewsName</a></h3>
+                                <p></p>
+                            </div>
+                            <div class="blog-btn">
+                                <a href="#"> <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+
+            }
+
+        </div>
+    </div>
+</section>
+
+

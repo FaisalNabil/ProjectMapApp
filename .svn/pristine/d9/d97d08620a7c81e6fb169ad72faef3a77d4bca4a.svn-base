@@ -1,0 +1,36 @@
+﻿@using Microsoft.Ajax.Utilities
+
+
+<div class="header-notice">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-notice-left">
+                    <ul class="marquee">
+                        @{
+                            string ImgPath;
+                            int i = 0;
+                            MangroveSpaceEntities db = new MangroveSpaceEntities();
+                            List<dynamic> Information = Global.Sql(db, "select top 4 [ID],[NewsID],[NewsName],[NewsDate],[AttachFile],[NewsOrderID],[EntryDate] from [dbo].[AspCMSNews] where  [NewsStatus]=1 order by [NewsOrderID] asc").ToList();
+                            foreach (var item in Information)
+                            {
+                                ImgPath = item.AttachFile;
+
+
+                                <li>
+                                    <p>@item.NewsName</p>
+                                </li>
+                            }
+
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

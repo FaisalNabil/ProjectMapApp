@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js" integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA==" crossorigin=""></script>
+<link rel="stylesheet" href="~/Content/MAP/css/screen.css" />
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+<script src="~/Content/MAP/Marker/leaflet.awesome-markers.js"></script>
+<link href="~/Content/MAP/Marker/leaflet.awesome-markers.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/MAP/css/MarkerCluster.css" />
+<link rel="stylesheet" href="~/Content/MAP/css/MarkerCluster.Default.css" />
+<script src="~/Content/MAP/js/leaflet.markercluster-src.js"></script>
+
+<script src="~/Content/MAP/Fullscreen/Leaflet.fullscreen.min.js"></script>
+<link href="~/Content/MAP/Fullscreen/leaflet.fullscreen.css" rel="stylesheet" />
+
+<link href="~/Content/MAP/EasyButton/easy-button.css" rel="stylesheet" />
+<script src="~/Content/MAP/EasyButton/easy-button.js"></script>
+
+<link href="~/Content/MAP/Filter/leaflet-tag-filter-button.css" rel="stylesheet" />
+<script src="~/Content/MAP/Filter/leaflet-tag-filter-button.js"></script>
+<style>
+
+    #map {
+        height: 73vh;
+        width: 100%;
+        float: none;
+    }
+
+    #map-wrapper {
+        width: 100%;
+        position: relative;
+        margin-top: 8vh;
+    }
+
+    .legend {
+        position: absolute;
+        /*bottom: 20px;
+        right: 10px;*/
+        line-height: 18px;
+        color: #555;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        padding: 10px;
+        width: 300px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        line-height: 18px;
+        color: #555;
+        float: left !important;
+    }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+    .awesome-marker i {
+        font-size: 18px;
+        margin-top: 8px;
+    }
+</style>
+<br />
+<div class="col-md-1">
+
+</div>
+<div id="map-wrapper" class="col-md-10">
+    <div id="map"><br /></div>
+    <div id="iframeloading" style="display: block;position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;z-index: 20000;">
+
+        <img src="~/Content/icon/loading_blue_lg.gif" alt="loading" style="top: 50%; position: relative; left: 50%;">
+    </div>
+</div>
+<div class="col-md-1">
+
+</div>
+
+@section Scripts {
+    <script>
+        var x = document.getElementById("iframeloading");
+        x.style.display = "none";
+
+        x.style.display = "block";
+        $.ajax({
+            type: "GET",
+            url: '/Home/Map',
+            contentType: "application/json; charset=utf-8",
+
+            dataType: "json",
+            success: function (data) {
+
+                x.style.display = "none";
+                var addressPoints = data;
+
+
+                var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Implemented By &copy Tousif'
+                }),
+                    latlng = L.latLng(23.6850, 90.3563);
+
+                var map = L.map('map', { center: latlng, zoom: 7, layers: [tiles] });
+
+                map.addControl(new L.Control.Fullscreen());
+
+
+                //L.control.tagFilterButton({
+                //     data: function(callback) {
+                //      $.get('/Home/GetCategories', function(data)) {
+                //       callback(data);
+                //      }
+                //     },
+                //     onSelectionComplete: function(tags) {
+                //      console.log('selected tags are', tags);
+                //     }
+                //}).addTo( map );
+
+                //map.on('contextmenu', function (ev) {
+                //    var latlng = map.mouseEventToLatLng(ev.originalEvent);
+                //    L.popup()
+                //        .setLatLng(latlng)
+                //        .setContent(
+                //            "<strong>Add This Location?</strong></br>" +
+                //            "Latitude: " + latlng.lat.toFixed(6) + "</br>" +
+                //            "Longitude: " + latlng.lng.toFixed(6) + "</br></br>" +
+                //            "<a style='margin-left:70%;' type='button' href='/Location/CreateWithLatLong?latitude=" + latlng.lat.toFixed(6) + "&longitude=" + latlng.lng.toFixed(6) + "' >Yes</a>")
+                //        .addTo(map)
+                //        .openOn(map);
+                //    console.log(latlng.lat + ', ' + latlng.lng);
+                //});
+
+                var markers = L.markerClusterGroup();
+
+                function addMarker(lat, long, icon, details, categoryName) {
+                    var markerIcon = L.icon({
+                        iconUrl: icon,
+                        iconSize: [20, 15]
+                    });
+
+                    var marker = L.marker(new L.LatLng(lat, long), { icon: markerIcon });
+                    marker.bindPopup(details);
+                    markers.addLayer(marker);
+                }
+
+                for (var i = 0; i < addressPoints.length; i++) {
+                    var a = addressPoints[i];
+                    var Latitude = a['Latitude'];
+                    var Logitude = a['Logitude'];
+                    var icon = a['Icon'];
+                    var details = a['Details'];
+                    var categoryName = a['CategoryName'];
+
+                    addMarker(Latitude, Logitude, icon, details, categoryName);
+                }
+
+                map.addLayer(markers);
+            }
+
+        });
+    </script>
+}
+
+
+
+

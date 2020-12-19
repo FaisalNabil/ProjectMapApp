@@ -1,0 +1,35 @@
+﻿<footer class="briffs-footer-area">
+    <div class="footer-area-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("Footer-about")
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("Footer-services")
+                    
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("Footer-Post")
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright-left">
+                        <p> All Rights Reserved by <span>SilkCity Solution</span>.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    @Html.GetGadgetItem("Copyright-Social")
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

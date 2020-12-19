@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+    <style>
+        @Html.GetSliderImageItem()
+    </style>
+</head>
+<body>
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+    <!--nav-area  Start-->
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml")
+    <!--nav-area  End-->
+    <!--Contant-area  Start-->
+    <section class="contant-area">
+        <div class="container">
+            <div class="row">
+                <!--Left-side-bar-->
+                <div class="col-md-12">
+                    <div class="bg-containt">
+                        <div class="row">
+                            <div class="col-md-9 pad-right">
+                                <div class="all-contant">
+                                    <div class="top-contant">
+                                        @RenderBody()
+                                    </div>
+                                    <!--notise-Area-->
+                                    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NoticePartial.cshtml")
+                                    <!--servise-box-->
+                                    <div class="servise-box">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("ovijog-protikar")
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("kormo-sompadona")
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("poripotro")
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("nitimala")
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("form")
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                @Html.GetGadgetItem("info-rights")
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--opnion-area-->
+                                    <div class="opnion-area">
+                                        <div class="heading">
+                                            <a href="http://www.acland-pabarajshahi.gov.bd/acland/index.php/client/PublicOpinion">আপনার মূল্যবান মতামত দিন</a>
+                                        </div>
+                                        <div class="bottom">
+                                            <form>
+                                                <div class="box-from">
+
+                                                    <p>মতামত প্রদানকারীর নাম</p>
+                                                    <input type="text" class="form-control" name="name" />
+                                                </div>
+                                                <div class="box-from">
+                                                    <p>মতামত প্রদানকারীর মোবাইল নম্বর</p>
+                                                    <input type="text"  class="form-control" name="name" />
+                                                </div>
+                                                <div class="box-from">
+                                                    <p>মতামত প্রদানকারীর ইমেইল</p>
+                                                    <input type="email"  class="form-control" name="email" />
+                                                </div>
+                                                <div class="box-from">
+                                                    <p>আপনার মতামত</p>
+                                                    <textarea name="message"  class="form-control"></textarea>
+                                                </div>
+                                                <div class="box-from">
+                                                    <p>Single Line Text</p>
+                                                    <input type="text"  class="form-control" name="email" />
+                                                </div>
+                                                <div class="box-from">
+                                                    <button type="submit" class="btn btn-success">Submit</button>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--right-side-bar-->
+                            <div class="col-md-3 no-pad-left">
+                                @Html.GetGadgetItem("SideBar")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Contant-area  End-->
+    <!--Footer-area  Start-->
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+    <!--Footer-area  End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

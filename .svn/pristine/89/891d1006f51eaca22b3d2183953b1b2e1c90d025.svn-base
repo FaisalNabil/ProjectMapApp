@@ -1,0 +1,70 @@
+
+
+(function ($) {
+	"use strict";
+    
+    jQuery(document).ready(function($){
+        
+        
+        
+         /* 
+        =================================================================
+        02 - Comment Slider
+        =================================================================	
+        */
+        
+        $(".main-slider").owlCarousel({
+            
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            items: 1,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            loop: true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            mouseDrag: true,
+            touchDrag: true
+        });
+
+        
+        /* 
+        =================================================================
+        03 - Marquee Slider
+        =================================================================	
+        */
+        
+        $(function(){
+          $('.marquee').marquee({
+         allowCss3Support: true,
+         css3easing: 'linear',
+         easing: 'linear',
+          delayBeforeStart: 1000,
+          direction: 'left',
+          duplicated: false,
+          duration: 30000,
+          gap: 20,
+          pauseOnCycle: false,
+          startVisible: true,
+            pauseOnHover: true
+
+          });
+        });
+        
+        
+        /* 
+        =================================================================
+        08 - Responsive Menu
+        =================================================================	
+        */
+        $("ul#bleezy_navigation").slicknav({
+            prependTo: ".bleezy-responsive-menu"
+        });
+        
+    
+        
+        
+    });
+    
+    
+}(jQuery));	

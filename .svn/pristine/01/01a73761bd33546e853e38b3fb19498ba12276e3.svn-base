@@ -1,0 +1,2039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectB_coreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspCMSAlbum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AID" Type="varchar" MaxLength="50" />
+          <Property Name="CDate" Type="datetime" />
+          <Property Name="AlbumTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="AlbumDescription" Type="ntext" />
+          <Property Name="AlbumDefault" Type="varchar" MaxLength="50" />
+          <Property Name="AlbumOrder" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AlbumImage" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="AspCMSAlbumDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADID" Type="varchar" MaxLength="50" />
+          <Property Name="AID" Type="varchar" MaxLength="50" />
+          <Property Name="AlbumDetailsTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="AlbumDetailsDescription" Type="ntext" />
+          <Property Name="AlbumDetailsOrder" Type="int" />
+          <Property Name="AlbumDetailImagePath" Type="nchar" MaxLength="150" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="AspCMSCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategorySubName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryContentType" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryStatus" Type="bit" />
+          <Property Name="CategoryLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="AspCMSEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EventDescription" Type="ntext" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="EventCategory" Type="nvarchar" MaxLength="150" />
+          <Property Name="AttachFile" Type="nvarchar" MaxLength="800" />
+          <Property Name="EventOrderID" Type="int" />
+          <Property Name="EventStatus" Type="bit" />
+          <Property Name="Time1" Type="varchar" MaxLength="15" />
+          <Property Name="Time2" Type="varchar" MaxLength="15" />
+          <Property Name="EventPrivilege" Type="int" />
+          <Property Name="EventPrivilegeOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aproved" Type="bit" />
+          <Property Name="AprovedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="EventLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSGadget">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GadgetID" Type="int" />
+          <Property Name="GadgetName" Type="nvarchar" MaxLength="300" />
+          <Property Name="GadgetHTML" Type="ntext" />
+          <Property Name="GadgetLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContainID" Type="nvarchar" MaxLength="300" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Setting" Type="nvarchar" MaxLength="500" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSInvoiceDetails">
+          <Key>
+            <PropertyRef Name="UIDENTITY" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="80" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="SellRate" Type="money" />
+          <Property Name="BuyRate" Type="money" />
+          <Property Name="Quantity" Type="money" />
+          <Property Name="CTotal" Type="money" />
+          <Property Name="CDiscount" Type="money" />
+          <Property Name="CNetTotal" Type="money" />
+          <Property Name="DTotal" Type="money" />
+          <Property Name="DDiscount" Type="money" />
+          <Property Name="DNetTotal" Type="money" />
+          <Property Name="QTYFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="QtyS" Type="money" />
+          <Property Name="QtyF" Type="money" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="80" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderType" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ReplaceInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Damage" Type="int" />
+          <Property Name="DamageDesc" Type="nvarchar" MaxLength="150" />
+          <Property Name="Rate" Type="money" />
+          <Property Name="RRoom" Type="int" />
+          <Property Name="TransType" Type="nvarchar" MaxLength="50" />
+          <Property Name="VatPerc" Type="float" />
+          <Property Name="VatAmount" Type="money" />
+          <Property Name="Perc" Type="float" />
+          <Property Name="CostOfGoodSold" Type="money" />
+          <Property Name="NewBalance" Type="money" />
+          <Property Name="OldBalance" Type="money" />
+          <Property Name="TransID" Type="int" />
+          <Property Name="Box" Type="int" />
+          <Property Name="Feet" Type="float" />
+          <Property Name="Fbox" Type="int" />
+          <Property Name="FeetRate" Type="money" />
+          <Property Name="MonthNumber" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="MonthFraction" Type="int" />
+          <Property Name="WarrantyDate" Type="datetime" />
+          <Property Name="WarrantyInfo" Type="int" />
+          <Property Name="SameClient" Type="bit" />
+          <Property Name="TRoom" Type="int" />
+          <Property Name="SubSectorID" Type="int" />
+          <Property Name="PCID" Type="varchar" MaxLength="50" />
+          <Property Name="UIDENTITY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Name2" Type="nvarchar" MaxLength="250" />
+          <Property Name="Name3" Type="nvarchar" MaxLength="250" />
+          <Property Name="Name4" Type="nvarchar" MaxLength="250" />
+          <Property Name="DamageQTY" Type="money" />
+          <Property Name="DamageRate" Type="money" />
+          <Property Name="DamageAmount" Type="money" />
+          <Property Name="Received" Type="money" />
+          <Property Name="ReturnAmount" Type="money" />
+          <Property Name="QtyBox" Type="money" />
+          <Property Name="QtyLite" Type="money" />
+          <Property Name="Expenses" Type="money" />
+          <Property Name="Unit" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSInvoiceTransition">
+          <Key>
+            <PropertyRef Name="UIDENTITY" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="150" />
+          <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="80" />
+          <Property Name="IDate" Type="datetime" />
+          <Property Name="CSN" Type="varchar" MaxLength="50" />
+          <Property Name="Recipient" Type="nvarchar" MaxLength="150" />
+          <Property Name="Recipient_Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="CTotal" Type="money" />
+          <Property Name="DTotal" Type="money" />
+          <Property Name="COther" Type="money" />
+          <Property Name="DOther" Type="money" />
+          <Property Name="CDiscount" Type="money" />
+          <Property Name="DDiscount" Type="money" />
+          <Property Name="CNetTotal" Type="money" />
+          <Property Name="DNetTotal" Type="money" />
+          <Property Name="OldBalance" Type="money" />
+          <Property Name="NewBalance" Type="money" />
+          <Property Name="InterestRate" Type="money" />
+          <Property Name="InterestAmount" Type="money" />
+          <Property Name="Debit_Credit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ForInvoice" Type="nvarchar" MaxLength="80" />
+          <Property Name="Cash" Type="money" />
+          <Property Name="SectorID" Type="int" />
+          <Property Name="OPID" Type="nvarchar" MaxLength="128" />
+          <Property Name="SubSectorID" Type="int" />
+          <Property Name="MisID" Type="varchar" MaxLength="50" />
+          <Property Name="TransType" Type="nvarchar" MaxLength="50" />
+          <Property Name="COCLeft" Type="int" />
+          <Property Name="COCRight" Type="int" />
+          <Property Name="Vat" Type="money" />
+          <Property Name="Adjustment" Type="money" />
+          <Property Name="SNumber" Type="int" />
+          <Property Name="BehaveType" Type="int" />
+          <Property Name="TransTypeID" Type="int" />
+          <Property Name="Token" Type="nvarchar" MaxLength="150" />
+          <Property Name="CalcDate" Type="datetime" />
+          <Property Name="WarningDate" Type="datetime" />
+          <Property Name="OntheInvNo" Type="nvarchar" MaxLength="80" />
+          <Property Name="BondTheory" Type="varchar" MaxLength="150" />
+          <Property Name="Approved" Type="int" />
+          <Property Name="Approved_by" Type="int" />
+          <Property Name="Approved_Time" Type="datetime" />
+          <Property Name="MonthNumber" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="MonthFraction" Type="int" />
+          <Property Name="ConversionRate" Type="money" />
+          <Property Name="ConversionTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConversioFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="RPID" Type="int" />
+          <Property Name="TypeOfTrans" Type="int" />
+          <Property Name="RPID1" Type="int" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="InvIDExtra" Type="int" />
+          <Property Name="CSN1" Type="varchar" MaxLength="60" />
+          <Property Name="CSN2" Type="varchar" MaxLength="60" />
+          <Property Name="CSN3" Type="varchar" MaxLength="60" />
+          <Property Name="PCID" Type="varchar" MaxLength="50" />
+          <Property Name="UIDENTITY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Mob" Type="nvarchar" MaxLength="400" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="400" />
+          <Property Name="LabID" Type="nvarchar" MaxLength="400" />
+          <Property Name="Due" Type="money" />
+          <Property Name="TName" Type="nvarchar" MaxLength="400" />
+          <Property Name="TAddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="RefDr" Type="nvarchar" MaxLength="160" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSMail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailID" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserPass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="MailLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="varchar" MaxLength="50" />
+          <Property Name="MenuParentID" Type="varchar" MaxLength="50" />
+          <Property Name="MenuType" Type="nvarchar" MaxLength="150" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="300" />
+          <Property Name="MenuDisplayName" Type="nvarchar" MaxLength="300" />
+          <Property Name="MenuLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="MenuLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="MenuLinkOption" Type="nvarchar" MaxLength="150" />
+          <Property Name="MenuOrder" Type="int" />
+          <Property Name="MenuStatus" Type="bit" />
+          <Property Name="MenuSerial" Type="int" />
+          <Property Name="MenuPrivilege" Type="int" />
+          <Property Name="MenuPrivilegeOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuContent" Type="nvarchar(max)" />
+          <Property Name="MenuSlug" Type="nvarchar" MaxLength="255" />
+          <Property Name="MenuTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSNews">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsID" Type="int" />
+          <Property Name="NewsName" Type="nvarchar" MaxLength="150" />
+          <Property Name="NewsDescription" Type="ntext" />
+          <Property Name="NewsDate" Type="datetime" />
+          <Property Name="NewsCategory" Type="nvarchar" MaxLength="150" />
+          <Property Name="AttachFile" Type="nvarchar" MaxLength="800" />
+          <Property Name="NewsOrderID" Type="int" />
+          <Property Name="NewsStatus" Type="bit" />
+          <Property Name="Time1" Type="varchar" MaxLength="15" />
+          <Property Name="Time2" Type="varchar" MaxLength="15" />
+          <Property Name="NewsPrivilege" Type="int" />
+          <Property Name="NewsPrivilegeOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aproved" Type="bit" />
+          <Property Name="AprovedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="NewsLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSNotice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeID" Type="int" />
+          <Property Name="NoticeName" Type="nvarchar" MaxLength="150" />
+          <Property Name="NoticeDescription" Type="ntext" />
+          <Property Name="NoticeDate" Type="datetime" />
+          <Property Name="NoticeCategory" Type="nvarchar" MaxLength="150" />
+          <Property Name="AttachFile" Type="nvarchar" MaxLength="800" />
+          <Property Name="NoticeOrderID" Type="int" />
+          <Property Name="NoticeStatus" Type="bit" />
+          <Property Name="Time1" Type="varchar" MaxLength="15" />
+          <Property Name="Time2" Type="varchar" MaxLength="15" />
+          <Property Name="NoticePrivilege" Type="int" />
+          <Property Name="NoticePrivilegeOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aproved" Type="bit" />
+          <Property Name="AprovedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="NoticeLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSPage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageID" Type="nvarchar" MaxLength="300" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="PageBody" Type="ntext" />
+          <Property Name="PageTamplateID" Type="nvarchar" MaxLength="150" />
+          <Property Name="PageType" Type="nvarchar" MaxLength="150" />
+          <Property Name="PageLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="Aproved" Type="bit" />
+          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="TAG" Type="nvarchar" MaxLength="300" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSPageTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateID" Type="nvarchar" MaxLength="150" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="300" />
+          <Property Name="TemplatePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="TemplateLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="AccessID" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AspCMSProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="150" />
+          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryLogic" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryIcon" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="OrderBY" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSProductInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="120" />
+          <Property Name="Product" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProductSlag" Type="nvarchar" MaxLength="250" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="150" />
+          <Property Name="BrandInfo" Type="nvarchar" MaxLength="180" />
+          <Property Name="CategoryID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSellRate" Type="money" />
+          <Property Name="WebBuyRate" Type="money" />
+          <Property Name="WebSellPreRate" Type="money" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="FeaturedStatus" Type="bit" />
+          <Property Name="InVal" Type="float" />
+          <Property Name="SubSectorID" Type="int" />
+          <Property Name="Vat" Type="float" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="SNID" Type="int" />
+          <Property Name="Warranty" Type="bit" />
+          <Property Name="UIDENTITY" Type="uniqueidentifier" />
+          <Property Name="img1" Type="nvarchar" MaxLength="300" />
+          <Property Name="img2" Type="nvarchar" MaxLength="300" />
+          <Property Name="img3" Type="nvarchar" MaxLength="300" />
+          <Property Name="img4" Type="nvarchar" MaxLength="300" />
+          <Property Name="img5" Type="nvarchar" MaxLength="300" />
+          <Property Name="FeatureImgPath" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description1" Type="nvarchar(max)" />
+          <Property Name="Description2" Type="nvarchar(max)" />
+          <Property Name="Description3" Type="nvarchar(max)" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SliderType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SliderOrder" Type="int" />
+          <Property Name="SliderImagePath" Type="nvarchar" MaxLength="300" />
+          <Property Name="SliderStatus" Type="bit" />
+          <Property Name="SliderTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="SliderDesc" Type="ntext" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="SliderFileBase" Type="nvarchar" MaxLength="300" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSTableContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="varchar" MaxLength="50" />
+          <Property Name="TableDate" Type="datetime" />
+          <Property Name="TableTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="TableShortDesc" Type="nvarchar" MaxLength="300" />
+          <Property Name="TableDesc" Type="ntext" />
+          <Property Name="TableFile" Type="nvarchar" MaxLength="300" />
+          <Property Name="TableFileAttach" Type="nvarchar" MaxLength="150" />
+          <Property Name="TableThumb" Type="nvarchar" MaxLength="150" />
+          <Property Name="TableOrder" Type="int" />
+          <Property Name="TableJSONContent" Type="ntext" />
+          <Property Name="TableContentStatus" Type="bit" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspCMSTableTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="varchar" MaxLength="50" />
+          <Property Name="TableTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="TableType" Type="nvarchar" MaxLength="300" />
+          <Property Name="TableLanguage" Type="varchar" MaxLength="10" />
+          <Property Name="TableJSONFormat" Type="ntext" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspSysMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="varchar" MaxLength="50" />
+          <Property Name="MenuParentID" Type="varchar" MaxLength="50" />
+          <Property Name="MenuType" Type="nvarchar" MaxLength="150" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="300" />
+          <Property Name="MenuDisplayName" Type="nvarchar" MaxLength="300" />
+          <Property Name="MenuLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="MenuLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="MenuLinkOption" Type="nvarchar" MaxLength="150" />
+          <Property Name="MenuOrder" Type="int" />
+          <Property Name="MenuStatus" Type="bit" />
+          <Property Name="MenuSerial" Type="int" />
+          <Property Name="MenuPrivilege" Type="int" />
+          <Property Name="MenuPrivilegeOption" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuContent" Type="nvarchar(max)" />
+          <Property Name="MenuSlug" Type="nvarchar" MaxLength="255" />
+          <Property Name="MenuTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+          <Property Name="AccessID" Type="int" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="AspSysPrivilege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrivilegeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccessID" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="AspSysPrivilegeTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrivilegeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrivilegeRole" Type="nvarchar" MaxLength="150" />
+          <Property Name="AccessID" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="EntryBy" Type="varchar" MaxLength="60" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectB_coreModelStoreContainer">
+          <EntitySet Name="AspCMSAlbum" EntityType="Self.AspCMSAlbum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSAlbumDetails" EntityType="Self.AspCMSAlbumDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSCategory" EntityType="Self.AspCMSCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSEvent" EntityType="Self.AspCMSEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSGadget" EntityType="Self.AspCMSGadget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSInvoiceDetails" EntityType="Self.AspCMSInvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSInvoiceTransition" EntityType="Self.AspCMSInvoiceTransition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSMail" EntityType="Self.AspCMSMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSMenu" EntityType="Self.AspCMSMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSNews" EntityType="Self.AspCMSNews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSNotice" EntityType="Self.AspCMSNotice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSPage" EntityType="Self.AspCMSPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSPageTemplate" EntityType="Self.AspCMSPageTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSProductCategory" EntityType="Self.AspCMSProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSProductInfo" EntityType="Self.AspCMSProductInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSSlider" EntityType="Self.AspCMSSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSTableContent" EntityType="Self.AspCMSTableContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspCMSTableTemplate" EntityType="Self.AspCMSTableTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspSysMenu" EntityType="Self.AspSysMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspSysPrivilege" EntityType="Self.AspSysPrivilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspSysPrivilegeTemplate" EntityType="Self.AspSysPrivilegeTemplate" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectB_coreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MangroveSpaceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="AspCMSAlbums" EntityType="ProjectB_coreModel.AspCMSAlbum" />
+          <EntitySet Name="AspCMSAlbumDetails" EntityType="ProjectB_coreModel.AspCMSAlbumDetail" />
+          <EntitySet Name="AspCMSCategories" EntityType="ProjectB_coreModel.AspCMSCategory" />
+          <EntitySet Name="AspCMSInvoiceDetails" EntityType="ProjectB_coreModel.AspCMSInvoiceDetail" />
+          <EntitySet Name="AspCMSInvoiceTransitions" EntityType="ProjectB_coreModel.AspCMSInvoiceTransition" />
+          <EntitySet Name="AspCMSMails" EntityType="ProjectB_coreModel.AspCMSMail" />
+          <EntitySet Name="AspCMSMenus" EntityType="ProjectB_coreModel.AspCMSMenu" />
+          <EntitySet Name="AspCMSPages" EntityType="ProjectB_coreModel.AspCMSPage" />
+          <EntitySet Name="AspCMSPageTemplates" EntityType="ProjectB_coreModel.AspCMSPageTemplate" />
+          <EntitySet Name="AspCMSSliders" EntityType="ProjectB_coreModel.AspCMSSlider" />
+          <EntitySet Name="AspCMSTableContents" EntityType="ProjectB_coreModel.AspCMSTableContent" />
+          <EntitySet Name="AspCMSTableTemplates" EntityType="ProjectB_coreModel.AspCMSTableTemplate" />
+          <EntitySet Name="AspCMSNotices" EntityType="ProjectB_coreModel.AspCMSNotice" />
+          <EntitySet Name="AspCMSGadgets" EntityType="ProjectB_coreModel.AspCMSGadget" />
+          <EntitySet Name="AspCMSEvents" EntityType="ProjectB_coreModel.AspCMSEvent" />
+          <EntitySet Name="AspCMSNews" EntityType="ProjectB_coreModel.AspCMSNew" />
+          <EntitySet Name="AspSysPrivilegeTemplates" EntityType="ProjectB_coreModel.AspSysPrivilegeTemplate" />
+          <EntitySet Name="AspCMSProductCategories" EntityType="ProjectB_coreModel.AspCMSProductCategory" />
+          <EntitySet Name="AspSysPrivileges" EntityType="ProjectB_coreModel.AspSysPrivilege" />
+          <EntitySet Name="AspCMSProductInfoes" EntityType="ProjectB_coreModel.AspCMSProductInfo" />
+          <EntitySet Name="AspSysMenus" EntityType="ProjectB_coreModel.AspSysMenu" />
+        </EntityContainer>
+        <EntityType Name="AspCMSAlbum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CDate" Type="DateTime" Precision="3" />
+          <Property Name="AlbumTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AlbumDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AlbumDefault" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumOrder" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumImage" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspCMSAlbumDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumDetailsTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AlbumDetailsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AlbumDetailsOrder" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumDetailImagePath" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspCMSCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategorySubName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryContentType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryStatus" Type="Boolean" />
+          <Property Name="CategoryLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspCMSInvoiceDetail">
+          <Key>
+            <PropertyRef Name="UIDENTITY" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SellRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuyRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Quantity" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CNetTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DNetTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QTYFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QtyS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QtyF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ReplaceInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Damage" Type="Int32" />
+          <Property Name="DamageDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RRoom" Type="Int32" />
+          <Property Name="TransType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VatPerc" Type="Double" />
+          <Property Name="VatAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Perc" Type="Double" />
+          <Property Name="CostOfGoodSold" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NewBalance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OldBalance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TransID" Type="Int32" />
+          <Property Name="Box" Type="Int32" />
+          <Property Name="Feet" Type="Double" />
+          <Property Name="Fbox" Type="Int32" />
+          <Property Name="FeetRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MonthNumber" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="MonthFraction" Type="Int32" />
+          <Property Name="WarrantyDate" Type="DateTime" Precision="3" />
+          <Property Name="WarrantyInfo" Type="Int32" />
+          <Property Name="SameClient" Type="Boolean" />
+          <Property Name="TRoom" Type="Int32" />
+          <Property Name="SubSectorID" Type="Int32" />
+          <Property Name="PCID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UIDENTITY" Type="Guid" Nullable="false" />
+          <Property Name="Name1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DamageQTY" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DamageRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DamageAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Received" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReturnAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QtyBox" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QtyLite" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Expenses" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSInvoiceTransition">
+          <Key>
+            <PropertyRef Name="UIDENTITY" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNumber" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="IDate" Type="DateTime" Precision="3" />
+          <Property Name="CSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Recipient" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Recipient_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="COther" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DOther" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CNetTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DNetTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OldBalance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NewBalance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InterestRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InterestAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Debit_Credit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ForInvoice" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Cash" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SectorID" Type="Int32" />
+          <Property Name="OPID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SubSectorID" Type="Int32" />
+          <Property Name="MisID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COCLeft" Type="Int32" />
+          <Property Name="COCRight" Type="Int32" />
+          <Property Name="Vat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Adjustment" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SNumber" Type="Int32" />
+          <Property Name="BehaveType" Type="Int32" />
+          <Property Name="TransTypeID" Type="Int32" />
+          <Property Name="Token" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CalcDate" Type="DateTime" Precision="3" />
+          <Property Name="WarningDate" Type="DateTime" Precision="3" />
+          <Property Name="OntheInvNo" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="BondTheory" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Approved" Type="Int32" />
+          <Property Name="Approved_by" Type="Int32" />
+          <Property Name="Approved_Time" Type="DateTime" Precision="3" />
+          <Property Name="MonthNumber" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="MonthFraction" Type="Int32" />
+          <Property Name="ConversionRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ConversionTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConversioFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RPID" Type="Int32" />
+          <Property Name="TypeOfTrans" Type="Int32" />
+          <Property Name="RPID1" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="InvIDExtra" Type="Int32" />
+          <Property Name="CSN1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CSN2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CSN3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PCID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UIDENTITY" Type="Guid" Nullable="false" />
+          <Property Name="Mob" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="LabID" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Due" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="TAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="RefDr" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSMail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MailLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MenuName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MenuDisplayName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLinkOption" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MenuOrder" Type="Int32" />
+          <Property Name="MenuStatus" Type="Boolean" />
+          <Property Name="MenuSerial" Type="Int32" />
+          <Property Name="MenuPrivilege" Type="Int32" />
+          <Property Name="MenuPrivilegeOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuIcon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MenuSlug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MenuTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSPage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageID" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PageTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageTamplateID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PageType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PageLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Aproved" Type="Boolean" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="TAG" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSPageTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TemplatePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspCMSSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SliderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SliderOrder" Type="Int32" />
+          <Property Name="SliderImagePath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SliderStatus" Type="Boolean" />
+          <Property Name="SliderTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SliderDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SliderFileBase" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSTableContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TableDate" Type="DateTime" Precision="3" />
+          <Property Name="TableTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TableShortDesc" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TableDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TableFile" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TableFileAttach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TableThumb" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TableOrder" Type="Int32" />
+          <Property Name="TableJSONContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TableContentStatus" Type="Boolean" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSTableTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TableTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TableType" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TableLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TableJSONFormat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSNotice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeID" Type="Int32" />
+          <Property Name="NoticeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
+          <Property Name="NoticeCategory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AttachFile" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeOrderID" Type="Int32" />
+          <Property Name="NoticeStatus" Type="Boolean" />
+          <Property Name="Time1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Time2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NoticePrivilege" Type="Int32" />
+          <Property Name="NoticePrivilegeOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aproved" Type="Boolean" />
+          <Property Name="AprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSGadget">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GadgetID" Type="Int32" />
+          <Property Name="GadgetName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GadgetHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GadgetLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContainID" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Setting" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="EventName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="EventCategory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AttachFile" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="EventOrderID" Type="Int32" />
+          <Property Name="EventStatus" Type="Boolean" />
+          <Property Name="Time1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Time2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EventPrivilege" Type="Int32" />
+          <Property Name="EventPrivilegeOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aproved" Type="Boolean" />
+          <Property Name="AprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EventLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspCMSNew">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsID" Type="Int32" />
+          <Property Name="NewsName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDate" Type="DateTime" Precision="3" />
+          <Property Name="NewsCategory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AttachFile" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="NewsOrderID" Type="Int32" />
+          <Property Name="NewsStatus" Type="Boolean" />
+          <Property Name="Time1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Time2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NewsPrivilege" Type="Int32" />
+          <Property Name="NewsPrivilegeOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aproved" Type="Boolean" />
+          <Property Name="AprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NewsLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspSysPrivilegeTemplate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrivilegeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrivilegeRole" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspCMSProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryLogic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="OrderBY" Type="Int32" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspSysPrivilege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PrivilegeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspCMSProductInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSlag" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BrandInfo" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSellRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WebBuyRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WebSellPreRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="FeaturedStatus" Type="Boolean" />
+          <Property Name="InVal" Type="Double" />
+          <Property Name="SubSectorID" Type="Int32" />
+          <Property Name="Vat" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="SNID" Type="Int32" />
+          <Property Name="Warranty" Type="Boolean" />
+          <Property Name="UIDENTITY" Type="Guid" />
+          <Property Name="img1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img3" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img4" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img5" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FeatureImgPath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspSysMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MenuName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MenuDisplayName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLinkOption" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MenuOrder" Type="Int32" />
+          <Property Name="MenuStatus" Type="Boolean" />
+          <Property Name="MenuSerial" Type="Int32" />
+          <Property Name="MenuPrivilege" Type="Int32" />
+          <Property Name="MenuPrivilegeOption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuIcon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MenuSlug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MenuTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="Int32" />
+          <Property Name="RoleID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectB_coreModelStoreContainer" CdmEntityContainer="MangroveSpaceEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ProjectB_coreModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="AspCMSAlbums">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSAlbum">
+              <MappingFragment StoreEntitySet="AspCMSAlbum">
+                <ScalarProperty Name="AlbumImage" ColumnName="AlbumImage" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AlbumOrder" ColumnName="AlbumOrder" />
+                <ScalarProperty Name="AlbumDefault" ColumnName="AlbumDefault" />
+                <ScalarProperty Name="AlbumDescription" ColumnName="AlbumDescription" />
+                <ScalarProperty Name="AlbumTitle" ColumnName="AlbumTitle" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSAlbumDetails">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSAlbumDetail">
+              <MappingFragment StoreEntitySet="AspCMSAlbumDetails">
+                <ScalarProperty Name="AlbumDetailImagePath" ColumnName="AlbumDetailImagePath" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AlbumDetailsOrder" ColumnName="AlbumDetailsOrder" />
+                <ScalarProperty Name="AlbumDetailsDescription" ColumnName="AlbumDetailsDescription" />
+                <ScalarProperty Name="AlbumDetailsTitle" ColumnName="AlbumDetailsTitle" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="ADID" ColumnName="ADID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSCategories">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSCategory">
+              <MappingFragment StoreEntitySet="AspCMSCategory">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="CategoryLogic" ColumnName="CategoryLogic" />
+                <ScalarProperty Name="CategoryStatus" ColumnName="CategoryStatus" />
+                <ScalarProperty Name="CategoryContentType" ColumnName="CategoryContentType" />
+                <ScalarProperty Name="CategorySubName" ColumnName="CategorySubName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSInvoiceDetails">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSInvoiceDetail">
+              <MappingFragment StoreEntitySet="AspCMSInvoiceDetails">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+                <ScalarProperty Name="QtyLite" ColumnName="QtyLite" />
+                <ScalarProperty Name="QtyBox" ColumnName="QtyBox" />
+                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="DamageAmount" ColumnName="DamageAmount" />
+                <ScalarProperty Name="DamageRate" ColumnName="DamageRate" />
+                <ScalarProperty Name="DamageQTY" ColumnName="DamageQTY" />
+                <ScalarProperty Name="Name4" ColumnName="Name4" />
+                <ScalarProperty Name="Name3" ColumnName="Name3" />
+                <ScalarProperty Name="Name2" ColumnName="Name2" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="UIDENTITY" ColumnName="UIDENTITY" />
+                <ScalarProperty Name="PCID" ColumnName="PCID" />
+                <ScalarProperty Name="SubSectorID" ColumnName="SubSectorID" />
+                <ScalarProperty Name="TRoom" ColumnName="TRoom" />
+                <ScalarProperty Name="SameClient" ColumnName="SameClient" />
+                <ScalarProperty Name="WarrantyInfo" ColumnName="WarrantyInfo" />
+                <ScalarProperty Name="WarrantyDate" ColumnName="WarrantyDate" />
+                <ScalarProperty Name="MonthFraction" ColumnName="MonthFraction" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="MonthNumber" ColumnName="MonthNumber" />
+                <ScalarProperty Name="FeetRate" ColumnName="FeetRate" />
+                <ScalarProperty Name="Fbox" ColumnName="Fbox" />
+                <ScalarProperty Name="Feet" ColumnName="Feet" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="TransID" ColumnName="TransID" />
+                <ScalarProperty Name="OldBalance" ColumnName="OldBalance" />
+                <ScalarProperty Name="NewBalance" ColumnName="NewBalance" />
+                <ScalarProperty Name="CostOfGoodSold" ColumnName="CostOfGoodSold" />
+                <ScalarProperty Name="Perc" ColumnName="Perc" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="VatPerc" ColumnName="VatPerc" />
+                <ScalarProperty Name="TransType" ColumnName="TransType" />
+                <ScalarProperty Name="RRoom" ColumnName="RRoom" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="DamageDesc" ColumnName="DamageDesc" />
+                <ScalarProperty Name="Damage" ColumnName="Damage" />
+                <ScalarProperty Name="ReplaceInfo" ColumnName="ReplaceInfo" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="QtyF" ColumnName="QtyF" />
+                <ScalarProperty Name="QtyS" ColumnName="QtyS" />
+                <ScalarProperty Name="QTYFrom" ColumnName="QTYFrom" />
+                <ScalarProperty Name="DNetTotal" ColumnName="DNetTotal" />
+                <ScalarProperty Name="DDiscount" ColumnName="DDiscount" />
+                <ScalarProperty Name="DTotal" ColumnName="DTotal" />
+                <ScalarProperty Name="CNetTotal" ColumnName="CNetTotal" />
+                <ScalarProperty Name="CDiscount" ColumnName="CDiscount" />
+                <ScalarProperty Name="CTotal" ColumnName="CTotal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
+                <ScalarProperty Name="SellRate" ColumnName="SellRate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSInvoiceTransitions">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSInvoiceTransition">
+              <MappingFragment StoreEntitySet="AspCMSInvoiceTransition">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="RefDr" ColumnName="RefDr" />
+                <ScalarProperty Name="TAddress" ColumnName="TAddress" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="Due" ColumnName="Due" />
+                <ScalarProperty Name="LabID" ColumnName="LabID" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Mob" ColumnName="Mob" />
+                <ScalarProperty Name="UIDENTITY" ColumnName="UIDENTITY" />
+                <ScalarProperty Name="PCID" ColumnName="PCID" />
+                <ScalarProperty Name="CSN3" ColumnName="CSN3" />
+                <ScalarProperty Name="CSN2" ColumnName="CSN2" />
+                <ScalarProperty Name="CSN1" ColumnName="CSN1" />
+                <ScalarProperty Name="InvIDExtra" ColumnName="InvIDExtra" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="RPID1" ColumnName="RPID1" />
+                <ScalarProperty Name="TypeOfTrans" ColumnName="TypeOfTrans" />
+                <ScalarProperty Name="RPID" ColumnName="RPID" />
+                <ScalarProperty Name="ConversioFrom" ColumnName="ConversioFrom" />
+                <ScalarProperty Name="ConversionTo" ColumnName="ConversionTo" />
+                <ScalarProperty Name="ConversionRate" ColumnName="ConversionRate" />
+                <ScalarProperty Name="MonthFraction" ColumnName="MonthFraction" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="MonthNumber" ColumnName="MonthNumber" />
+                <ScalarProperty Name="Approved_Time" ColumnName="Approved_Time" />
+                <ScalarProperty Name="Approved_by" ColumnName="Approved_by" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="BondTheory" ColumnName="BondTheory" />
+                <ScalarProperty Name="OntheInvNo" ColumnName="OntheInvNo" />
+                <ScalarProperty Name="WarningDate" ColumnName="WarningDate" />
+                <ScalarProperty Name="CalcDate" ColumnName="CalcDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="TransTypeID" ColumnName="TransTypeID" />
+                <ScalarProperty Name="BehaveType" ColumnName="BehaveType" />
+                <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+                <ScalarProperty Name="Adjustment" ColumnName="Adjustment" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="COCRight" ColumnName="COCRight" />
+                <ScalarProperty Name="COCLeft" ColumnName="COCLeft" />
+                <ScalarProperty Name="TransType" ColumnName="TransType" />
+                <ScalarProperty Name="MisID" ColumnName="MisID" />
+                <ScalarProperty Name="SubSectorID" ColumnName="SubSectorID" />
+                <ScalarProperty Name="OPID" ColumnName="OPID" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="ForInvoice" ColumnName="ForInvoice" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Debit_Credit" ColumnName="Debit_Credit" />
+                <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="NewBalance" ColumnName="NewBalance" />
+                <ScalarProperty Name="OldBalance" ColumnName="OldBalance" />
+                <ScalarProperty Name="DNetTotal" ColumnName="DNetTotal" />
+                <ScalarProperty Name="CNetTotal" ColumnName="CNetTotal" />
+                <ScalarProperty Name="DDiscount" ColumnName="DDiscount" />
+                <ScalarProperty Name="CDiscount" ColumnName="CDiscount" />
+                <ScalarProperty Name="DOther" ColumnName="DOther" />
+                <ScalarProperty Name="COther" ColumnName="COther" />
+                <ScalarProperty Name="DTotal" ColumnName="DTotal" />
+                <ScalarProperty Name="CTotal" ColumnName="CTotal" />
+                <ScalarProperty Name="Recipient_Address" ColumnName="Recipient_Address" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="CSN" ColumnName="CSN" />
+                <ScalarProperty Name="IDate" ColumnName="IDate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSMails">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSMail">
+              <MappingFragment StoreEntitySet="AspCMSMail">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="MailLogic" ColumnName="MailLogic" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MailID" ColumnName="MailID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSMenus">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSMenu">
+              <MappingFragment StoreEntitySet="AspCMSMenu">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="MenuSlug" ColumnName="MenuSlug" />
+                <ScalarProperty Name="MenuContent" ColumnName="MenuContent" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="MenuPrivilegeOption" ColumnName="MenuPrivilegeOption" />
+                <ScalarProperty Name="MenuPrivilege" ColumnName="MenuPrivilege" />
+                <ScalarProperty Name="MenuSerial" ColumnName="MenuSerial" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="MenuLinkOption" ColumnName="MenuLinkOption" />
+                <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+                <ScalarProperty Name="MenuLanguage" ColumnName="MenuLanguage" />
+                <ScalarProperty Name="MenuDisplayName" ColumnName="MenuDisplayName" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="MenuParentID" ColumnName="MenuParentID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSPages">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSPage">
+              <MappingFragment StoreEntitySet="AspCMSPage">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="Aproved" ColumnName="Aproved" />
+                <ScalarProperty Name="PageLanguage" ColumnName="PageLanguage" />
+                <ScalarProperty Name="PageType" ColumnName="PageType" />
+                <ScalarProperty Name="PageTamplateID" ColumnName="PageTamplateID" />
+                <ScalarProperty Name="PageBody" ColumnName="PageBody" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSPageTemplates">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSPageTemplate">
+              <MappingFragment StoreEntitySet="AspCMSPageTemplate">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="TemplateLanguage" ColumnName="TemplateLanguage" />
+                <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSSliders">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSSlider">
+              <MappingFragment StoreEntitySet="AspCMSSlider">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="SliderFileBase" ColumnName="SliderFileBase" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="SliderDesc" ColumnName="SliderDesc" />
+                <ScalarProperty Name="SliderTitle" ColumnName="SliderTitle" />
+                <ScalarProperty Name="SliderStatus" ColumnName="SliderStatus" />
+                <ScalarProperty Name="SliderImagePath" ColumnName="SliderImagePath" />
+                <ScalarProperty Name="SliderOrder" ColumnName="SliderOrder" />
+                <ScalarProperty Name="SliderType" ColumnName="SliderType" />
+                <ScalarProperty Name="SliderID" ColumnName="SliderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSTableContents">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSTableContent">
+              <MappingFragment StoreEntitySet="AspCMSTableContent">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TableContentStatus" ColumnName="TableContentStatus" />
+                <ScalarProperty Name="TableJSONContent" ColumnName="TableJSONContent" />
+                <ScalarProperty Name="TableOrder" ColumnName="TableOrder" />
+                <ScalarProperty Name="TableThumb" ColumnName="TableThumb" />
+                <ScalarProperty Name="TableFileAttach" ColumnName="TableFileAttach" />
+                <ScalarProperty Name="TableFile" ColumnName="TableFile" />
+                <ScalarProperty Name="TableDesc" ColumnName="TableDesc" />
+                <ScalarProperty Name="TableShortDesc" ColumnName="TableShortDesc" />
+                <ScalarProperty Name="TableTitle" ColumnName="TableTitle" />
+                <ScalarProperty Name="TableDate" ColumnName="TableDate" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSTableTemplates">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSTableTemplate">
+              <MappingFragment StoreEntitySet="AspCMSTableTemplate">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TableJSONFormat" ColumnName="TableJSONFormat" />
+                <ScalarProperty Name="TableLanguage" ColumnName="TableLanguage" />
+                <ScalarProperty Name="TableType" ColumnName="TableType" />
+                <ScalarProperty Name="TableTitle" ColumnName="TableTitle" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSNotices">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSNotice">
+              <MappingFragment StoreEntitySet="AspCMSNotice">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="NoticeLogic" ColumnName="NoticeLogic" />
+                <ScalarProperty Name="AprovedBy" ColumnName="AprovedBy" />
+                <ScalarProperty Name="Aproved" ColumnName="Aproved" />
+                <ScalarProperty Name="NoticePrivilegeOption" ColumnName="NoticePrivilegeOption" />
+                <ScalarProperty Name="NoticePrivilege" ColumnName="NoticePrivilege" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
+                <ScalarProperty Name="NoticeOrderID" ColumnName="NoticeOrderID" />
+                <ScalarProperty Name="AttachFile" ColumnName="AttachFile" />
+                <ScalarProperty Name="NoticeCategory" ColumnName="NoticeCategory" />
+                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+                <ScalarProperty Name="NoticeDescription" ColumnName="NoticeDescription" />
+                <ScalarProperty Name="NoticeName" ColumnName="NoticeName" />
+                <ScalarProperty Name="NoticeID" ColumnName="NoticeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSGadgets">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSGadget">
+              <MappingFragment StoreEntitySet="AspCMSGadget">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ContainID" ColumnName="ContainID" />
+                <ScalarProperty Name="GadgetLanguage" ColumnName="GadgetLanguage" />
+                <ScalarProperty Name="GadgetHTML" ColumnName="GadgetHTML" />
+                <ScalarProperty Name="GadgetName" ColumnName="GadgetName" />
+                <ScalarProperty Name="GadgetID" ColumnName="GadgetID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSEvents">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSEvent">
+              <MappingFragment StoreEntitySet="AspCMSEvent">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EventLogic" ColumnName="EventLogic" />
+                <ScalarProperty Name="AprovedBy" ColumnName="AprovedBy" />
+                <ScalarProperty Name="Aproved" ColumnName="Aproved" />
+                <ScalarProperty Name="EventPrivilegeOption" ColumnName="EventPrivilegeOption" />
+                <ScalarProperty Name="EventPrivilege" ColumnName="EventPrivilege" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="EventStatus" ColumnName="EventStatus" />
+                <ScalarProperty Name="EventOrderID" ColumnName="EventOrderID" />
+                <ScalarProperty Name="AttachFile" ColumnName="AttachFile" />
+                <ScalarProperty Name="EventCategory" ColumnName="EventCategory" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSNews">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSNew">
+              <MappingFragment StoreEntitySet="AspCMSNews">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="NewsLogic" ColumnName="NewsLogic" />
+                <ScalarProperty Name="AprovedBy" ColumnName="AprovedBy" />
+                <ScalarProperty Name="Aproved" ColumnName="Aproved" />
+                <ScalarProperty Name="NewsPrivilegeOption" ColumnName="NewsPrivilegeOption" />
+                <ScalarProperty Name="NewsPrivilege" ColumnName="NewsPrivilege" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="NewsStatus" ColumnName="NewsStatus" />
+                <ScalarProperty Name="NewsOrderID" ColumnName="NewsOrderID" />
+                <ScalarProperty Name="AttachFile" ColumnName="AttachFile" />
+                <ScalarProperty Name="NewsCategory" ColumnName="NewsCategory" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
+                <ScalarProperty Name="NewsName" ColumnName="NewsName" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspSysPrivilegeTemplates">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspSysPrivilegeTemplate">
+              <MappingFragment StoreEntitySet="AspSysPrivilegeTemplate">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="PrivilegeRole" ColumnName="PrivilegeRole" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSProductCategories">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSProductCategory">
+              <MappingFragment StoreEntitySet="AspCMSProductCategory">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="OrderBY" ColumnName="OrderBY" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryIcon" ColumnName="CategoryIcon" />
+                <ScalarProperty Name="CategoryLogic" ColumnName="CategoryLogic" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspSysPrivileges">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspSysPrivilege">
+              <MappingFragment StoreEntitySet="AspSysPrivilege">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspCMSProductInfoes">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspCMSProductInfo">
+              <MappingFragment StoreEntitySet="AspCMSProductInfo">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="FeatureImgPath" ColumnName="FeatureImgPath" />
+                <ScalarProperty Name="img5" ColumnName="img5" />
+                <ScalarProperty Name="img4" ColumnName="img4" />
+                <ScalarProperty Name="img3" ColumnName="img3" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img1" ColumnName="img1" />
+                <ScalarProperty Name="UIDENTITY" ColumnName="UIDENTITY" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="SNID" ColumnName="SNID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="SubSectorID" ColumnName="SubSectorID" />
+                <ScalarProperty Name="InVal" ColumnName="InVal" />
+                <ScalarProperty Name="FeaturedStatus" ColumnName="FeaturedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WebSellPreRate" ColumnName="WebSellPreRate" />
+                <ScalarProperty Name="WebBuyRate" ColumnName="WebBuyRate" />
+                <ScalarProperty Name="WebSellRate" ColumnName="WebSellRate" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandInfo" ColumnName="BrandInfo" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ProductSlag" ColumnName="ProductSlag" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspSysMenus">
+            <EntityTypeMapping TypeName="ProjectB_coreModel.AspSysMenu">
+              <MappingFragment StoreEntitySet="AspSysMenu">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="MenuSlug" ColumnName="MenuSlug" />
+                <ScalarProperty Name="MenuContent" ColumnName="MenuContent" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="MenuPrivilegeOption" ColumnName="MenuPrivilegeOption" />
+                <ScalarProperty Name="MenuPrivilege" ColumnName="MenuPrivilege" />
+                <ScalarProperty Name="MenuSerial" ColumnName="MenuSerial" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="MenuLinkOption" ColumnName="MenuLinkOption" />
+                <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+                <ScalarProperty Name="MenuLanguage" ColumnName="MenuLanguage" />
+                <ScalarProperty Name="MenuDisplayName" ColumnName="MenuDisplayName" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="MenuParentID" ColumnName="MenuParentID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,138 @@
+﻿@model MangroveSpace.AspCMSAlbumDetail
+
+@{
+    ViewBag.Title = "Edit Album Details";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>@ViewBag.Title</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="/albumdetails/" class="btn btn-success">Manage Album Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Album Details </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+
+                    @using (Html.BeginForm("Edit", "Albumdetails", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="info-group no_top_margin">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ADID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        @Html.TextBoxFor(model => model.ADID, new { @class = "form-control", Value = Model.ADID, @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.ADID)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AlbumDetailsTitle, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        @Html.EditorFor(model => model.AlbumDetailsTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.AlbumDetailsTitle)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AlbumDetailsOrder, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        @Html.EditorFor(model => model.AlbumDetailsOrder, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.AlbumDetailsOrder)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+
+
+                        @*<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        @Html.DropDownListFor(model=>model.Status, new SelectList(new List<SelectListItem>{
+                            new SelectListItem { Text="", Value=string.Empty},
+                            new SelectListItem { Text="Publish", Value="Publish"},
+                            new SelectListItem { Text="Unpublish", Value="unpublish"},
+
+                        },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSAlbumDetails.Status" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+                        *@
+                    </div>
+
+
+                        <div class="ln_solid"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                        <a href="/albumdetails/" class="btn btn-primary" type="button">Cancel</a>
+                                        <a href="/albumdetails/create" class="btn btn-primary" type="reset">Reset</a>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /page content -->

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<dynamic>
+
+
+@if (Model != null)
+{
+    
+    foreach (var item in Model)
+    {
+        <h4>@item.NoticeName</h4>
+        <div class="singel-containt-middlee">
+            <br />
+            <p>@Html.Raw(item.NoticeDescription)</p>
+        </div>
+        <a style="margin-top:10px" href="@item.AttachFile" target="_blank" class="btn btn-success">Download</a>
+
+    }
+}

@@ -1,0 +1,727 @@
+﻿    function onRowBound(e) {
+        $(".k-grid-edit").find("span").addClass("k-i-pencil");
+
+        var bridgeTyepId = document.getElementById("bridgeTyepId").innerHTML;
+        if (bridgeTyepId == 101)//BOX CULVERT
+        {
+            //this.hideColumn("Abtmaterial");
+            this.hideColumn("PierCapMaterial");
+            this.hideColumn("PierCapThickness");
+            this.hideColumn("PierCapNumber");
+            
+
+            this.hideColumn("PierMaterial");
+            this.hideColumn("PierXSectionLength");
+            this.hideColumn("PierXSectionWidth");
+            this.hideColumn("PierXSectionGEO");
+            this.hideColumn("PierNumber");
+
+            this.hideColumn("PileCapMaterial");
+
+            this.hideColumn("PileMaterial");
+            this.hideColumn("PileType");
+            this.hideColumn("PileDepth");
+            this.hideColumn("PileDiameter");
+            this.hideColumn("PileNumber");
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+
+
+            //Deck Columns
+            this.hideColumn("DeckSlabMaterial"); 
+            this.hideColumn("DeckSlabThickness");
+            this.hideColumn("DeckSlabWidth");
+
+            this.hideColumn("RailingMaterial");
+            this.hideColumn("RailingHeight");
+            this.hideColumn("RailingLength");
+
+            this.hideColumn("SideWalkPresent");
+            this.hideColumn("SideWalkMaterial");
+
+            //Approach Columns
+            this.hideColumn("ApprParapetMaterial"); 
+            this.hideColumn("ApprParapetHeight");
+            this.hideColumn("ApprParapetLength");
+
+            this.hideColumn("ApprWearsurfPresent");
+            this.hideColumn("ApprWearsurfMaterial");
+            this.hideColumn("ApprWearsurfThickness");
+             
+            //Channel and Navigation columns
+            this.hideColumn("ChannelStatus");
+
+            this.hideColumn("PierProMaterial");
+
+            this.hideColumn("NavVerticalHeight");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+
+
+
+            //Safety Features
+
+           
+
+        }
+       else if (bridgeTyepId == 102)//PIPE CULVERT
+        {
+            this.hideColumn("Abtmaterial");
+            this.hideColumn("AbtHeight");
+            this.hideColumn("AbtWidth");
+            this.hideColumn("AbtThickness");
+            this.hideColumn("AbtFoundationType");
+
+            this.hideColumn("PierCapMaterial");
+            this.hideColumn("PierCapThickness");
+            this.hideColumn("PierCapNumber");
+
+            this.hideColumn("PierMaterial");
+            this.hideColumn("PierXSectionLength");
+            this.hideColumn("PierXSectionWidth");
+            this.hideColumn("PierXSectionGEO");
+            this.hideColumn("PierNumber");
+
+            this.hideColumn("PileCapMaterial");
+
+            this.hideColumn("PileMaterial");
+            this.hideColumn("PileType");
+            this.hideColumn("PileDepth");
+            this.hideColumn("PileDiameter");
+            this.hideColumn("PileNumber");
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+            this.hideColumn("MiddleWallPresent");
+            this.hideColumn("MiddleWallMateril");
+            this.hideColumn("MiddleWallThickness");
+            this.hideColumn("MiddleWallNumber");
+           
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+
+           ////Sub Structure
+           // this.hideColumn("Aboutment");
+           // this.hideColumn("Pier Cap");
+           // this.hideColumn("Pier");
+           // this.hideColumn("Pile Cap");
+           // this.hideColumn("Pile");
+           // this.hideColumn("Arch Ring");
+           // this.hideColumn("Bottom Slab");
+           // this.hideColumn("Middle Wall");
+           // this.hideColumn("Keystone");
+
+           //Approach
+            this.hideColumn("GuardRailPresent");
+            this.hideColumn("GuardRailMaterial");
+            this.hideColumn("GuardRailHeight");
+            this.hideColumn("GuardRailLength");
+
+            this.hideColumn("AppSlabType");
+            this.hideColumn("AppSlabMaterial");
+            this.hideColumn("AppSlabThickness");
+            this.hideColumn("AppSlabSlope");
+
+            this.hideColumn("ApprParapetMaterial");
+            this.hideColumn("ApprParapetHeight");
+            this.hideColumn("ApprParapetLength");
+            
+
+
+            this.hideColumn("ApprWearsurfPresent");
+            this.hideColumn("ApprWearsurfMaterial");
+            this.hideColumn("ApprWearsurfThickness");
+            
+
+        }
+       else if (bridgeTyepId == 103)//GIRDER BRIDGE
+        {
+            
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+            this.hideColumn("MiddleWallPresent");
+            this.hideColumn("MiddleWallMateril");
+            this.hideColumn("MiddleWallThickness");
+            this.hideColumn("MiddleWallNumber");
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+
+           ////SubStructure
+           // this.hideColumn("Bottom Slab");
+           // this.hideColumn("Middle Wall");
+           // this.hideColumn("Head Wall");
+           // this.hideColumn("Pipe");
+           // this.hideColumn("Keystone");
+           // this.hideColumn("Arch Ring");
+
+           //Bearing Assembly
+
+           //Super Structure
+            this.hideColumn("StringerMaterial");
+            this.hideColumn("StringerWidth");
+            this.hideColumn("StringerDepth");
+            this.hideColumn("StringerNumber");
+
+            this.hideColumn("BracingPresent");
+            this.hideColumn("BracingMaterial");
+
+            this.hideColumn("ConnectionMaterial");
+            this.hideColumn("ConnectionType");
+
+            this.hideColumn("TransomMaterial");
+            this.hideColumn("TransomWidth");
+            this.hideColumn("TransomDepth");
+            this.hideColumn("TransomNumber");
+
+
+            this.hideColumn("PanelPresent");
+            this.hideColumn("PanelMaterial");
+            this.hideColumn("PanelHeight");
+            this.hideColumn("PanelLength");
+
+            this.hideColumn("LongBeamMaterial");
+            this.hideColumn("LongBeamDepth");
+            this.hideColumn("LongBeamNumber");
+
+            this.hideColumn("TransBeamMaterial");
+            this.hideColumn("TransBeamWidth");
+            this.hideColumn("TransBeamrDepth");
+            this.hideColumn("TransBeamNumber");
+
+            this.hideColumn("ChordsMaterial");
+            this.hideColumn("ChordsBCLength");
+            this.hideColumn("ChordsTCLength");
+
+             this.hideColumn("VPMaterial");
+            this.hideColumn("VPLength");
+            this.hideColumn("VPDiagonalLength");
+
+            this.hideColumn("StrutMaterial");
+            this.hideColumn("StrutLength");
+
+            
+            
+            
+
+           //Deck
+            this.hideColumn("ParapetMaterial");
+            this.hideColumn("ParapetHeight");
+            this.hideColumn("ParapetLength");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+
+
+           //Channel and Navigation
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+        }
+       else if (bridgeTyepId == 104)//ARC MASONRY
+        {
+            this.hideColumn("PierCapMaterial");
+            this.hideColumn("PierCapThickness");
+            this.hideColumn("PierCapNumber");
+
+            this.hideColumn("PierMaterial");
+            this.hideColumn("PierXSectionLength");
+            this.hideColumn("PierXSectionWidth");
+            this.hideColumn("PierXSectionGEO");
+            this.hideColumn("PierNumber");
+
+            this.hideColumn("PileCapMaterial");
+
+            this.hideColumn("PileMaterial");
+            this.hideColumn("PileType");
+            this.hideColumn("PileDepth");
+            this.hideColumn("PileDiameter");
+            this.hideColumn("PileNumber");
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+           ////Sub Structure
+           // this.hideColumn("Pier Cap");
+           // this.hideColumn("Pier");
+           // this.hideColumn("Pile Cap");
+           // this.hideColumn("Pile");
+           // this.hideColumn("Bottom Slab");
+           // this.hideColumn("Head Wall");
+           // this.hideColumn("Pipe");
+
+           //Deck
+            this.hideColumn("DeckSlabMaterial");
+            this.hideColumn("DeckSlabThickness");
+            this.hideColumn("DeckSlabWidth");
+
+            this.hideColumn("RailingMaterial");
+            this.hideColumn("RailingHeight");
+            this.hideColumn("RailingLength");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+
+           //Approach
+            this.hideColumn("ApprParapetMaterial");
+            this.hideColumn("ApprParapetHeight");
+            this.hideColumn("ApprParapetLength");
+            
+            this.hideColumn("ApprWearsurfPresent");
+            this.hideColumn("ApprWearsurfMaterial");
+            this.hideColumn("ApprWearsurfThickness");
+           //Channel And Navigation
+            this.hideColumn("PierProMaterial");
+
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+        }
+       else if (bridgeTyepId == 105)//WOODEN BRIDGE
+        {
+           
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+
+           ////Sub-Structure
+           // this.hideColumn("Pier Cap");
+           // this.hideColumn("Pier");
+           // this.hideColumn("Pile Cap");
+           // this.hideColumn("Pile");
+           // this.hideColumn("Bottom Slab");
+           // this.hideColumn("Pipe");
+           // this.hideColumn("Keystone");
+           // this.hideColumn("Arch Ring");
+           //Super Structure
+            this.hideColumn("StringerMaterial");
+            this.hideColumn("StringerWidth");
+            this.hideColumn("StringerDepth");
+            this.hideColumn("StringerNumber");
+
+            this.hideColumn("BracingPresent");
+            this.hideColumn("BracingMaterial");
+
+            this.hideColumn("TransomMaterial");
+            this.hideColumn("TransomWidth");
+            this.hideColumn("TransomDepth");
+            this.hideColumn("TransomNumber");
+
+            this.hideColumn("PanelPresent");
+            this.hideColumn("PanelMaterial");
+            this.hideColumn("PanelHeight");
+            this.hideColumn("PanelLength");
+
+            this.hideColumn("FloorBeamMaterial");
+            this.hideColumn("FloorBeamWidth");
+            this.hideColumn("FloorBeamDepth");
+            this.hideColumn("FloorBeamNumber");
+
+
+            this.hideColumn("GirderMaterial");
+            this.hideColumn("GirderWidt");
+            this.hideColumn("GirderDepth");
+            this.hideColumn("GirderNumber");
+            this.hideColumn("GirderType");
+
+            this.hideColumn("ChordsMaterial");
+            this.hideColumn("ChordsBCLength");
+            this.hideColumn("ChordsTCLength");
+
+            this.hideColumn("StrutMaterial");
+            this.hideColumn("StrutLength");
+
+           //Deck
+            this.hideColumn("ParapetMaterial");
+            this.hideColumn("ParapetHeight");
+            this.hideColumn("ParapetLength");
+
+            this.hideColumn("MedianPresent");
+            this.hideColumn("MedianMaterial");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+            
+            this.hideColumn("SideWalkPresent");
+            this.hideColumn("SideWalkMaterial");
+
+           //Approach
+            this.hideColumn("ApprParapetMaterial");
+            this.hideColumn("ApprParapetHeight");
+            this.hideColumn("ApprParapetLength");
+
+            this.hideColumn("ApprWearsurfPresent)");
+            this.hideColumn("ApprWearsurfMaterial");
+            this.hideColumn("ApprWearsurfThickness");
+
+           //Channel & Navigations
+            this.hideColumn("ChannelStatus");
+
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+
+        }
+       else if (bridgeTyepId == 106)//BAILEY BRIDGE
+        {
+            this.hideColumn("PierCapMaterial");
+            this.hideColumn("PierCapThickness");
+            this.hideColumn("PierCapNumber");
+
+            this.hideColumn("PierMaterial");
+            this.hideColumn("PierXSectionLength");
+            this.hideColumn("PierXSectionWidth");
+            this.hideColumn("PierXSectionGEO");
+            this.hideColumn("PierNumber");
+
+            this.hideColumn("PileCapMaterial");
+
+            this.hideColumn("PileMaterial");
+            this.hideColumn("PileType");
+            this.hideColumn("PileDepth");
+            this.hideColumn("PileDiameter");
+            this.hideColumn("PileNumber");
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+            this.hideColumn("MiddleWallPresent");
+            this.hideColumn("MiddleWallMateril");
+            this.hideColumn("MiddleWallThickness");
+            this.hideColumn("MiddleWallNumber");
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+           //Super Structure
+            this.hideColumn("FloorBeamMaterial");
+            this.hideColumn("FloorBeamWidth");
+            this.hideColumn("FloorBeamDepth");
+            this.hideColumn("FloorBeamNumber");
+
+            this.hideColumn("GirderMaterial");
+            this.hideColumn("GirderWidt");
+            this.hideColumn("GirderDepth");
+            this.hideColumn("GirderNumber");
+            this.hideColumn("GirderType");
+
+            this.hideColumn("DiaphragmPresent");
+            this.hideColumn("DiaphragmMaterial");
+
+            this.hideColumn("LongBeamMaterial");
+            this.hideColumn("LongBeamDepth");
+            this.hideColumn("LongBeamNumber");
+
+            this.hideColumn("TransBeamMaterial");
+            this.hideColumn("TransBeamWidth");
+            this.hideColumn("TransBeamrDepth");
+            this.hideColumn("TransBeamNumber");
+
+            this.hideColumn("VPMaterial");
+            this.hideColumn("VPLength");
+            this.hideColumn("VPDiagonalLength");
+
+            this.hideColumn("ChordsMaterial");
+            this.hideColumn("ChordsBCLength");
+            this.hideColumn("ChordsTCLength");
+
+            this.hideColumn("StrutMaterial");
+            this.hideColumn("StrutLength");
+
+           //Deck
+            this.hideColumn("ParapetMaterial");
+            this.hideColumn("ParapetHeight");
+            this.hideColumn("ParapetLength");
+
+            this.hideColumn("MedianPresent");
+            this.hideColumn("MedianMaterial");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+
+            this.hideColumn("SideWalkPresent");
+            this.hideColumn("SideWalkMaterial");
+           
+           //Channel and Navigation
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+
+
+        }
+       else if (bridgeTyepId == 107)//TRUSS
+        {
+          
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+            this.hideColumn("MiddleWallPresent");
+            this.hideColumn("MiddleWallMateril");
+            this.hideColumn("MiddleWallThickness");
+            this.hideColumn("MiddleWallNumber");
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+
+           //Super Structure
+            this.hideColumn("TransomMaterial");
+            this.hideColumn("TransomWidth");
+            this.hideColumn("TransomDepth");
+            this.hideColumn("TransomNumber");
+
+            this.hideColumn("PanelPresent");
+            this.hideColumn("PanelMaterial");
+            this.hideColumn("PanelHeight");
+            this.hideColumn("PanelLength");
+
+            this.hideColumn("GirderMaterial");
+            this.hideColumn("GirderWidt");
+            this.hideColumn("GirderDepth");
+            this.hideColumn("GirderNumber");
+            this.hideColumn("GirderType");
+
+            this.hideColumn("DiaphragmPresent");
+            this.hideColumn("DiaphragmMaterial");
+
+            this.hideColumn("LongBeamMaterial");
+            this.hideColumn("LongBeamDepth");
+            this.hideColumn("LongBeamNumber");
+
+            this.hideColumn("TransBeamMaterial");
+            this.hideColumn("TransBeamWidth");
+            this.hideColumn("TransBeamrDept");
+            this.hideColumn("TransBeamNumber");
+            
+           //Deck
+            this.hideColumn("ParapetMaterial");
+            this.hideColumn("ParapetHeight");
+            this.hideColumn("ParapetLength");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+
+           //Channel and Navigation
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+
+        }
+       else if (bridgeTyepId == 108)//FLYOVER
+        {
+
+            this.hideColumn("BottomSlabThickness");
+            this.hideColumn("BottomSlabMaterial");
+
+            this.hideColumn("MiddleWallPresent");
+            this.hideColumn("MiddleWallMateril");
+            this.hideColumn("MiddleWallThickness");
+            this.hideColumn("MiddleWallNumber");
+
+            this.hideColumn("HeadWallHeight");
+            this.hideColumn("HeadWallWidth");
+            this.hideColumn("HeadWallMaterial");
+
+            this.hideColumn("PipeNumber");
+            this.hideColumn("PipeDiameter");
+            this.hideColumn("PipeMaterial");
+
+            this.hideColumn("KeyStoneMaterial");
+            this.hideColumn("KeyStoneThickness");
+
+            this.hideColumn("ArchringMaterial");
+           //Super Structure
+            this.hideColumn("TransomMaterial");
+            this.hideColumn("TransomWidth");
+            this.hideColumn("TransomDepth");
+            this.hideColumn("TransomNumber");
+
+            this.hideColumn("PanelPresent");
+            this.hideColumn("PanelMaterial");
+            this.hideColumn("PanelHeight");
+            this.hideColumn("PanelLength");
+
+            this.hideColumn("LongBeamMaterial");
+            this.hideColumn("LongBeamDepth");
+            this.hideColumn("LongBeamNumber");
+
+            this.hideColumn("TransBeamMaterial");
+            this.hideColumn("TransBeamWidth");
+            this.hideColumn("TransBeamrDept");
+            this.hideColumn("TransBeamNumber");
+
+            this.hideColumn("VPMaterial");
+            this.hideColumn("VPLength");
+            this.hideColumn("VPDiagonalLength");
+
+            this.hideColumn("ChordsMaterial");
+            this.hideColumn("ChordsBCLength");
+            this.hideColumn("ChordsTCLength");
+
+            this.hideColumn("StrutMaterial");
+            this.hideColumn("StrutLength");
+
+           //Deck
+            this.hideColumn("ParapetMaterial");
+            this.hideColumn("ParapetHeight");
+            this.hideColumn("ParapetLength");
+
+            this.hideColumn("TopSlabMaterial");
+            this.hideColumn("TopSlabThickness");
+           //Navigation and Channel
+            this.hideColumn("ChannelStatus");
+
+            this.hideColumn("PierProMaterial");
+
+            this.hideColumn("AbtmntProMaterial");
+
+            this.hideColumn("AprnPresent");
+            this.hideColumn("ApronMaterial");
+            this.hideColumn("AprnWallDepth");
+            this.hideColumn("ApronLength");
+
+            this.hideColumn("CulvertHeight");
+            this.hideColumn("CulvertWidth");
+            this.hideColumn("CulvertNumber");
+
+
+        }
+        else
+        {
+
+            //alert(bridgeTyepId);
+       }
+
+       
+    }
+    function middlewall_change(e) {
+        var widget = e.sender;
+        var value = widget.value();
+
+        var len = $("#SubStructure").find("tbody tr").length;
+
+        if (value == "1") {
+            for (var i = 0; i <= len ; i++) {
+                var model = $("#SubStructure").data("kendoGrid").dataSource.at(i);
+                if (model) {//field names
+                    model.hideColumn("MiddleWallMateril");
+                    model.hideColumn("MiddleWallThickness");
+                    model.hideColumn("MiddleWallNumber");
+                }
+
+            }
+
+            //this.hideColumn("MiddleWallMateril");
+            //this.hideColumn("MiddleWallThickness");
+            //this.hideColumn("MiddleWallNumber");
+        }
+        else {
+            for (var i = 0; i <= len ; i++) {
+                var model = $("#SubStructure").data("kendoGrid").dataSource.at(i);
+                if (model) {//field names
+
+                    model.showColumn("MiddleWallMateril");
+                    model.showColumn("MiddleWallThickness");
+                    model.showColumn("MiddleWallNumber");
+
+                    //model.fields["MiddleWallMateril"].show();
+                    //model.fields["MiddleWallThickness"].show();// = false;
+                    //model.fields["MiddleWallNumber"].show();// = false;
+                }
+            }
+        }
+    }

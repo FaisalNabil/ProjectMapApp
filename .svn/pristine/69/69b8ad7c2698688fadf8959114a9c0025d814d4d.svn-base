@@ -1,0 +1,511 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using MangroveSpace.Models;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+
+namespace MangroveSpace.Controllers
+{
+    [Authorize(Roles = "Admin,SuperAdmin")]
+    public class MenuController : Controller
+    {
+
+        private MangroveSpaceEntities db = new MangroveSpaceEntities();
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+        }
+
+        // GET: Menu
+        public ActionResult Index()
+        {
+            try
+            {
+            List<dynamic> Information = Global.Sql(db, "select * from [dbo].[AspCMSMenu]").ToList();
+            return View(Information);
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+
+        [Authorize]
+        public ActionResult Create()
+        {
+            try
+            {
+
+            //var pageList = Global.Sql(db, "select [ID],[Model] from [dbo].[PowerPlant_Technical]");
+            var pageList = Global.Sql(db, "select [ID],[PageTitle] from [dbo].[AspCMSPage] where [PageBody] is not null");
+            ViewBag.pageList = pageList;
+
+            var parentMenu = Global.Sql(db, "select [MenuID],[MenuName] from [dbo].[AspCMSMenu] where [MenuType] in ('Right Menu', 'Top Menu')");
+            ViewBag.parentMenu = parentMenu;
+            return View();
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+
+        }
+
+
+        //Menu Design
+        public ActionResult MenuDesign()
+        {
+            try
+            {
+
+              return View();
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(AspCMSMenu menu)
+        {
+            try
+            {
+            string NewMenuSlug;
+            string MenuSlug;
+            string MenuID = Global.exec("SELECT cast(isnull(MAX([MenuID])+1,1) as varchar(10)) as [MenuID] FROM [dbo].[AspCMSMenu]");
+            int MenuOrder = Global.exec("SELECT isnull(MAX([MenuOrder])+1,1) as [MenuOrder] FROM [dbo].[AspCMSMenu]", 1);
+            
+            if (ModelState.IsValid)
+            {
+                NewMenuSlug = menu.MenuTitle.Trim();
+                NewMenuSlug = NewMenuSlug.Replace(" ", "-");
+                MenuSlug = Global.exec("select [MenuSlug] from [dbo].[AspCMSMenu] where [MenuSlug]='" + NewMenuSlug + "'");
+                if (NewMenuSlug == MenuSlug)
+                {
+                    TempData["msgSlag"] = "Menu Title Already Exists!";
+                    return View(menu);
+                }
+                menu.MenuSerial = 0;
+                menu.MenuParentID = null;
+                menu.MenuStatus = true;
+                menu.MenuID = MenuID;
+                menu.MenuOrder = MenuOrder;
+                menu.MenuSlug = NewMenuSlug;
+                menu.MenuLink = "/Home/MotorDetails?id=" + menu.MenuLink;
+                menu.EntryBy = User.Identity.GetUserName();
+                menu.MenuLanguage = "EN";
+                //menu.MenuType = "Top Menu";
+                menu.EntryDate = DateTime.Now;
+                db.AspCMSMenus.Add(menu);
+                db.SaveChanges();
+                TempData["msg"] = "Data Successfuly Saved";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(menu);
+            }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspCMSMenu MenuInfo = db.AspCMSMenus.Find(id);
+            if (MenuInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(MenuInfo);
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+        }
+
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(AspCMSMenu menu)
+        {
+            try
+            {
+            string NewMenuSlug;
+            string MenuSlug;
+
+            
+            if (ModelState.IsValid)
+            {
+                NewMenuSlug = menu.MenuTitle.Trim();
+                NewMenuSlug = NewMenuSlug.Replace(" ", "-");
+                MenuSlug = Global.exec("select [MenuSlug] from [dbo].[AspCMSMenu] where [MenuSlug]='" + NewMenuSlug + "' and [ID]!=" + menu.ID + "");
+                if (NewMenuSlug == MenuSlug)
+                {
+                    TempData["msgSlag"] = "Menu Title Already Exists!";
+                    return View(menu);
+                }
+                menu.MenuSerial = 0;
+                menu.MenuParentID = null;
+                menu.MenuSlug = NewMenuSlug;
+                menu.ModifyBy = User.Identity.GetUserId();
+                menu.ModifyDate = DateTime.Now;
+                db.Entry(menu).State = EntityState.Modified;
+                db.Entry(menu).Property(e => e.MenuParentID).IsModified = false;
+                db.Entry(menu).Property(e => e.EntryBy).IsModified = false;
+                db.Entry(menu).Property(e => e.EntryDate).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuID).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuStatus).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuOrder).IsModified = false;
+                db.SaveChanges();
+                TempData["msg"] = "Data Successfuly Updated";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(menu);
+            }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+        }
+
+
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+
+            try
+            {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspCMSMenu Menu = db.AspCMSMenus.Find(id);
+            if (Menu == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+
+                db.AspCMSMenus.Remove(Menu);
+                db.SaveChanges();
+                TempData["msgs"] = "Data Successfuly Deleted";
+                return RedirectToAction("Index");
+            }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+
+        }
+
+
+        //GET: Menu/StatusInactive/id
+        [Authorize]
+        [HttpGet]
+        public ActionResult StatusInactive(int id)
+        {
+            try
+            {
+            AspCMSMenu Menu = db.AspCMSMenus.Find(id);
+            if (Menu == null)
+            {
+                return HttpNotFound();
+            }
+
+            db.Database.ExecuteSqlCommand("UPDATE [dbo].[AspCMSMenu] SET [MenuStatus] = '" + 0 + "', ModifyDate = '" + DateTime.Now + "', ModifyBy = '" + User.Identity.GetUserId() + "' where ID = '" + id + "' ");
+            TempData["msg"] = "Successfuly Inactivated";
+            return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+
+        //GET: Menu/StatusActive/id
+        [Authorize]
+        [HttpGet]
+        public ActionResult StatusActive(int id)
+        {
+            try
+            {
+            AspCMSMenu Menu = db.AspCMSMenus.Find(id);
+            if (Menu == null)
+            {
+                return HttpNotFound();
+            }
+
+            db.Database.ExecuteSqlCommand("UPDATE [dbo].[AspCMSMenu] SET [MenuStatus] = '" + 1 + "', ModifyDate = '" + DateTime.Now + "', ModifyBy = '" + User.Identity.GetUserId() + "' where ID = '" + id + "' ");
+            TempData["msg"] = "Successfuly Inactivated";
+            return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+        // GET: Menu
+        [Authorize]
+        public ActionResult Ordering()
+        {
+            try
+            {
+            this.Session["SelectMenu"] = "Top Menu";
+            //var ordering = db.Database.SqlQuery<AspCMSMenu>("select * from [dbo].[AspCMSMenu] where [MenuType] = '" + this.Session["SelectMenu"] + "'").ToList();
+            return View();
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Ordering(string MenuType)
+        {
+            try
+            {
+            this.Session["SelectMenu"] = MenuType;
+            //var ordering = db.Database.SqlQuery<AspCMSMenu>("select * from [dbo].[AspCMSMenu] where [MenuType] = '" + this.Session["SelectMenu"] + "'").ToList();
+            return View();
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+        // GET: ProductInformation/Create
+        [Authorize]
+        [HttpPost]
+        public ActionResult OrderingSave(string ioutput)
+        {
+            try
+            {
+            string MenuString;
+            MenuString = ioutput;
+
+
+            int ID = 0;
+            int ID1 = 0;
+            int count = 0;
+
+            List<Item> answer = JsonConvert.DeserializeObject<List<Item>>(MenuString);
+
+            foreach (Item item in answer)
+            {
+                count++;
+                ID = item.Id;
+
+                db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuOrder] = " + Convert.ToString(count) + " where [ID] = '" + Convert.ToString(ID) + "'");
+                db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuParentID] = null where [ID] = '" + Convert.ToString(ID) + "'");
+
+
+                if (item.Children != null)
+                {
+                    foreach (Item child in item.Children)
+                    {
+                        count++;
+                        db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuOrder] = " + Convert.ToString(count) + " where [ID] = '" + Convert.ToString(child.Id) + "'");
+                        db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuParentID]= " + Convert.ToString(ID) + " where [ID] = '" + Convert.ToString(child.Id) + "'");
+
+                        ID1 = child.Id;
+
+                        if (child.Children != null)
+                        {
+                            foreach (Item child1 in child.Children)
+                            {
+                                count++;
+                                db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuOrder] = " + Convert.ToString(count) + " where [ID] = '" + Convert.ToString(child1.Id) + "'");
+                                db.Database.ExecuteSqlCommand("update [dbo].[AspCMSMenu] Set [MenuParentID]= " + Convert.ToString(ID1) + " where [ID] = '" + Convert.ToString(child1.Id) + "'");
+                            }
+                        }
+                    }
+                }
+            }
+
+            return RedirectToAction("MenuDesign");
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult SysMenu(int id)
+        {
+            try
+            {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspCMSMenu MenuInfo = db.AspCMSMenus.Find(id);
+            if (MenuInfo == null)
+            {
+                return HttpNotFound();
+            }
+            //return View(MenuInfo);
+            return PartialView(MenuInfo);
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+
+
+        }
+
+        //GET: Menu/Create
+        [Authorize]
+        [HttpPost]
+        public ActionResult SysMenu(AspCMSMenu menu)
+        {
+            try
+            {
+
+            string NewMenuSlug;
+            string MenuSlug;
+
+            NewMenuSlug = menu.MenuTitle.Trim();
+            NewMenuSlug = NewMenuSlug.Replace(" ", "-");
+            MenuSlug = Global.exec("select [MenuSlug] from [dbo].[AspCMSMenu] where [MenuSlug]='" + NewMenuSlug + "' and [ID]!=" + menu.ID + "");
+            if (ModelState.IsValid)
+            {
+
+                if (NewMenuSlug == MenuSlug)
+                {
+                    TempData["msgSlag"] = "Menu Title Already Exists!";
+                    return View(menu);
+                }
+                menu.MenuSerial = 0;
+                menu.MenuParentID = "0";
+                menu.MenuSlug = NewMenuSlug;
+                menu.ModifyBy = User.Identity.GetUserId();
+                menu.ModifyDate = DateTime.Now;
+                db.Entry(menu).State = EntityState.Modified;
+                db.Entry(menu).Property(e => e.MenuParentID).IsModified = false;
+                db.Entry(menu).Property(e => e.EntryBy).IsModified = false;
+                db.Entry(menu).Property(e => e.EntryDate).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuID).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuStatus).IsModified = false;
+                db.Entry(menu).Property(e => e.MenuOrder).IsModified = false;
+                db.SaveChanges();
+                TempData["msg"] = "Data Successfuly Updated";
+                return RedirectToAction("Ordering");
+            }
+            else
+            {
+                return View(menu);
+            }
+
+            }
+            catch (Exception ex)
+            {
+                string actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                string controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                db.Database.ExecuteSqlCommand("INSERT INTO [dbo].[AspSysError](UserName,EntryBy,ModifyBy,ActionName,ControllerName,ErrorTime,EntryDate,ModifyDate,ErrorMessage)VALUES('" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + User.Identity.GetUserName().ToString() + "','" + actionName + "','" + controllerName + "', '" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "','" + DateTime.Now.ToString() + "', '" + ex.ToString().Replace("'", "") + "')");
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
+
+        }
+    }
+}

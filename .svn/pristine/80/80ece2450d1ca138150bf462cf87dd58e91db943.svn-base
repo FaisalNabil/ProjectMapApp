@@ -1,0 +1,7 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+@Html.Partial("~/Views/Home/_MapView.cshtml")
+

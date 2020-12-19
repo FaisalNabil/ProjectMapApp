@@ -1,0 +1,75 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+
+    .header-left {
+        text-align: center;
+    }
+    .header-area h3 a {
+        font-size: 25px;
+        font-weight: 700;
+        color: #000;
+        margin-top: 15px;
+        display: block;
+    }
+    .header-right{
+        text-align: center
+    }
+    .header-right img{
+        margin: 0
+    }
+    .main-menu{
+        min-height: 50px
+    }
+    #briffs_navigation{
+        display: none
+    }
+    .briffs-responsive-menu{
+        display: block
+    }
+    .single-menu ul li{
+        display: block
+    }
+    .single-menu ul li a{
+        display: block;
+        color: #333
+    }
+    .single-menu ul li a:hover{
+        background: #fbba42 
+    }
+    .header-area img{
+        margin: 0
+    }
+    .single-slider{
+        height: 230px
+    }
+    .footer-right ul li{
+        margin: 15px 7px
+    }
+    .footer-right{
+        text-align: left
+    }
+    .copyright-area-right{
+        text-align: center;
+        margin-top: 5px
+    }
+    .copyright-area-left{
+        text-align: center
+    }
+    
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}

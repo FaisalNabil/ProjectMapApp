@@ -1,0 +1,124 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+
+
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .briffs-responsive-menu{
+        display: block
+    }
+    .header-menu ul{
+        display: none
+    }
+    .slicknav_btn{
+        float: right
+    }
+    .top-social{
+        display: none
+    }
+    .no-pad-right{
+        padding-right: 15px
+    }
+    .no-pad-left{
+        padding-left: 15px
+    }
+    
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+
+    .briffs-responsive-menu{
+        display: block
+    }
+    .header-menu ul{
+        display: none
+    }
+    .header-area{
+        min-height: 216px
+    }
+    .slider-img{
+        height: 270px
+    }
+    .singel-promo{
+        width: 100%;
+        display: block;
+        float: none;
+        border-right: 0px;
+        margin: 10px 0
+    }
+    .no-pad-right{
+        padding-right: 15px
+    }
+    .no-pad-left{
+        padding-left: 15px
+    }
+    .singel-glance{
+        border: 0px
+    }
+    .singel-attendance{
+        border: 0px
+    }
+    .singel-sidebar-down{
+        margin-top: 30px
+    }
+    .page-containt-box img{
+        width: 100%;
+        margin-bottom: 30px
+    }
+    
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+        .briffs-responsive-menu{
+        display: block
+    }
+    .header-menu ul{
+        display: none
+    }
+    .header-area{
+        min-height: 216px
+    }
+    .slider-img{
+        height: 270px
+    }
+    .singel-promo{
+        width: 100%;
+        display: block;
+        float: none;
+        border-right: 0px;
+        margin: 10px 0
+    }
+    .no-pad-right{
+        padding-right: 15px
+    }
+    .no-pad-left{
+        padding-left: 15px
+    }
+    .singel-glance{
+        border: 0px
+    }
+    .singel-attendance{
+        border: 0px
+    }
+    .singel-sidebar-down{
+        margin-top: 30px
+    }
+    .page-containt-box img{
+        width: 100%;
+        margin-bottom: 30px
+    }
+    
+}

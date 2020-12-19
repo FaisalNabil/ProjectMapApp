@@ -1,0 +1,15 @@
+﻿@{
+    string ImgPath;
+    int i = 0;
+    MangroveSpaceEntities db = new MangroveSpaceEntities();
+    List<dynamic> Information = Global.Sql(db, "select * from [dbo].[AspCMSSlider] where [SliderStatus]=1 order by [SliderOrder] ASC").ToList();
+    foreach (dynamic item in Information)
+    {
+        i = i + 1;
+        <div class="big-main-slide slide-item-@i">
+
+            @Html.Raw(item.SliderDesc)
+        </div>
+
+    }
+}

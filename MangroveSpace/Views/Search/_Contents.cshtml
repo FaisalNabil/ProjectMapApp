@@ -1,0 +1,53 @@
+﻿@using System.Data
+@model System.Data.DataTable
+
+    <div class="container-large">
+        <div class="search_heading">
+            @if (ViewBag.SearchContent != null)
+            {
+                <h4>Showing Results for " @ViewBag.SearchContent "</h4>
+            }
+            @if (ViewBag.Count != null)
+            {
+                <h4>(@ViewBag.Count) Results Found</h4>
+            }
+        </div>
+        @{
+            System.Data.DataTable AllPowerPlants = new DataTable();
+            if (ViewBag.Count > 1)
+            {
+                AllPowerPlants = Global.ReadData("select p.[ID], p.[PageTitle], p.[PageID], p.[EntryDate], p.[EntryBy], p.[PageBody], m.[Short Description], c.[Basic Description] from [dbo].[AspCMSPage] p left join [dbo].[PowerPlant_Main] m on p.[PageID] = m.[DetailsPageAddress] left join [dbo].[PowerPlant_Child] c on p.[PageID] = c.[DetailsPageAddress] where p.[PageID] in ('" + ViewBag.PageIds + "') and (p.[PageTitle] like '%" + ViewBag.SearchContent + "%' COLLATE SQL_Latin1_General_CP1_CI_AS or p.[PageBody] like '%" + ViewBag.SearchContent + "%' COLLATE SQL_Latin1_General_CP1_CI_AS)");
+            }
+            else
+            {
+                AllPowerPlants = Global.ReadData("select p.[ID], p.[PageTitle], p.[PageID], p.[EntryDate], p.[EntryBy], p.[PageBody], m.[Short Description], c.[Basic Description] from [dbo].[AspCMSPage] p left join [dbo].[PowerPlant_Main] m on p.[PageID] = m.[DetailsPageAddress] left join [dbo].[PowerPlant_Child] c on p.[PageID] = c.[DetailsPageAddress] where p.[PageTitle] like '%" + ViewBag.SearchContent + "%' COLLATE SQL_Latin1_General_CP1_CI_AS or p.[PageBody] like '%" + ViewBag.SearchContent + "%' COLLATE SQL_Latin1_General_CP1_CI_AS");
+            }
+            if (AllPowerPlants != null)
+            {
+                foreach (DataRow row in AllPowerPlants.Rows)
+                {
+                    <div class="single-blog-item">
+                        <a href="/Pages/Page?pid=@row["PageID"]">
+                            <h3>@row["PageTitle"]</h3>
+                        </a>
+                        <h4 class="post-datae">Posted: @row["EntryDate"]</h4>
+                        <div class="blog-pera">
+                            @{
+                                if (!string.IsNullOrEmpty(row["Short Description"].ToString()))
+                                {
+                                    <p>@row["Short Description"].ToString()</p>
+                                }
+                                if (!string.IsNullOrEmpty(row["Basic Description"].ToString()))
+                                {
+                                    <p>@row["Basic Description"].ToString()</p>
+                                }
+                                //string writeup = Server.HtmlDecode(row["PageBody"].ToString());
+
+                            }
+                        </div>
+                    </div>
+                }
+            }
+
+        }
+    </div>

@@ -1,0 +1,42 @@
+﻿@using Microsoft.Ajax.Utilities
+
+@{
+    string ImgPath;
+    int i = 0;
+    MangroveSpaceEntities db = new MangroveSpaceEntities();
+    List<dynamic> Information = Global.Sql(db, "select top 4 [ID],[NewsID],[NewsName],[NewsDate],[AttachFile],[NewsOrderID],[EntryDate] from [dbo].[AspCMSNews] where  [NewsStatus]=1 order by [EntryDate]").ToList();
+    foreach (var item in Information)
+    {
+        ImgPath = item.AttachFile;
+
+        <a href="/News/NewsDetails/@item.ID">
+            @if (ImgPath.IsNullOrWhiteSpace())
+            {
+                <img src="/assets/front_assets/IBA/img/gallery-7.jpg" alt="campus news" />
+            }
+            else
+            {
+                <img src="ImgPath" alt="campus news" />
+            }
+        </a>
+
+        <h4>
+            <a href="/News/NewsDetails/@item.ID">@item.NewsName</a>
+        </h4>
+        try
+        {
+            if (@item.NewsDate != null)
+            {
+                <h5>@item.NewsDate.ToString("dd/MM/yyyy")</h5>
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        <a href="/News/NewsDetails/@item.ID">Details</a>
+    }
+
+}
+<a href="@Url.Action("AllNews","News")" class="theme-btn">More news</a>

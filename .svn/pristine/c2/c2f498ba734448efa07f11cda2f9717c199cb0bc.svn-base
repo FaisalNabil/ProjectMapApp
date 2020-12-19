@@ -1,0 +1,123 @@
+﻿@model IEnumerable<dynamic>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>@ViewBag.Title</h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="/sliders/create" class="btn btn-success">Add Slider</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <div class="table-responsive">
+                                    <table class="datatable10 table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Slider ID</th>
+                                                <th>Slider Title</th>
+                                                <th>Slider Order</th>
+                                                <th>Slider Date Modified</th>
+                                                <th>Status</th>
+                                                <th class="text-right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+
+                                                foreach (dynamic item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.SliderID</td>
+                                                        <td>@item.SliderTitle</td>
+                                                        <td>@item.SliderOrder</td>
+                                                        <td>@item.ModifyDate</td>
+                                                        <td>
+                                                            @{
+                                                            try
+                                                             {
+                                                                 if (item.SliderStatus == true)
+                                                                 {
+                                                                     <p>Active</p>
+                                                                 }
+                                                                 else
+                                                                 {
+                                                                     <p>Inactive</p>
+                                                                 }
+                                                             }
+                                                             catch(Exception e)
+                                                             {
+
+                                                             }
+
+
+
+                                                            }
+                                                        </td>
+                                                        <td class="col-md-2" align="right">
+                                                            <div class="btn-toolbar">
+                                                                <div class="btn-group pull-right" style="margin:10px 0">
+                                                                    @{
+                                                                        if (item.SliderStatus == true)
+                                                                        {
+                                                                            <a href='@Url.Action("StatusInactive", "Sliders", new { id = item.ID })' class="btn btn-success btn-xs" data-original-title="Inactive"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <a href='@Url.Action("StatusActive", "Sliders", new { id = item.ID })' class="btn btn-danger btn-xs" data-original-title="Active"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+
+                                                                        }
+
+
+                                                                    }
+                                                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "sliders", new {id = @item.ID})"><i class="fa fa-pencil"></i></a>
+                                                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("CodeViewSlideEdit", "sliders", new {id = @item.ID})"><i class="fa fa-code"></i></a>
+
+                                                                    <a href='@Url.Action("Increment", "sliders", new {id = @item.ID})' class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Increment"><i class="fa fa-arrow-up"></i></a>
+                                                                    <a href='@Url.Action("Decrement", "sliders", new {id = @item.ID})' class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Decrement"><i class="fa fa-arrow-down"></i></a>
+                                                                    <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-slider-id=@item.ID><i class="fa fa-trash-o"></i></a>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+@section scripts
+{
+    <script>
+        var table = $(".datatable10").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100,
+            "ordering": false,
+        });
+    </script>
+}

@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="Themescare">
+    <!-- Title -->
+    <title>Home</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <!--Font Awesome css-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--Magnific css-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--Owl-Carousel css-->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <!--Animate css-->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!--Slicknav css-->
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!--Site Main Style css-->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+
+
+    <section class="promo-section bd-bottom">
+        @RenderBody()
+
+    </section>
+
+
+    <section class="welcome-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="welcome-left">
+                        <h3>Welcome to <span>Life</span></h3>
+                        <div class="welcome-box">
+                            <div class="row">
+                                @Html.GetGadgetItem("Welcome-to-life")
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_EventPartial.cshtml")
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="xs-feature-box-fulid">
+        <div class="container-fulid">
+            <div class="row xs-feature-box-wraper">
+                <div class="col-md-12 col-lg-4 xs-feature-box">
+                    @Html.GetGadgetItem("feature-involved")
+
+                </div>
+                <div class="col-md-12 col-lg-4 xs-feature-box highlight">
+                    @Html.GetGadgetItem("feature-sponsor")
+
+                </div><!-- .xs-feature-box .highlight END -->
+                <div class="col-md-12 col-lg-4 xs-feature-box">
+                    @Html.GetGadgetItem("feature-social")
+
+                </div><!-- .xs-feature-box END -->
+            </div><!-- .row end -->
+        </div><!-- .container end -->
+    </section>
+
+    <section class="life-gallery-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h3>Our Gallery</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="lightgallery">
+                @Html.GetAlbumShortList()
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonial Area Start -->
+    <section class="maasraz-testimonial-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h3>What Client Say</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="testimonial-slide owl-carousel">
+                        @Html.GetGadgetItem("testimonial")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Area End -->
+
+
+    <section class="maasraz-blog-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h3>Latest Blog</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.GetGadgetItem("blog")
+
+            </div>
+        </div>
+    </section>
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

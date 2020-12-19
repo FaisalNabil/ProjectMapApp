@@ -1,0 +1,22 @@
+﻿<div class="single-sidebar">
+    <div class="containt-heading">
+        <h4>নোটিশ বোর্ড</h4>
+    </div>
+    <ul>
+        @{
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select top 5 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeOrderID] ASC").ToList();
+            foreach (dynamic item in Information)
+            {
+                <li><a href="/Notice/NoticeDetails/@item.NoticeID"><span></span>@item.NoticeName</a></li>
+                
+            }
+        }
+    </ul>
+</div>
+
+
+
+

@@ -1,0 +1,159 @@
+﻿@model AspCMSPage
+@{
+    ViewBag.Title = "Add Page";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pages/" class="btn btn-success">Manage Page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "Pages", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PageBody, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.TextAreaFor(model => model.PageBody)
+                                    @Html.ValidationMessageFor(m => m.PageBody)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PageTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.PageTitle, new { htmlAttributes = new { @class = "form-control", } })
+                                    @Html.ValidationMessageFor(m => m.PageTitle)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Page Category</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    <select class="js-example-basic-single form-control" name="CategoryID" data-placeholder="Select an item">
+                                        <option value="">&nbsp;</option>
+                                        @{ foreach (var item in ViewBag.CategoryList)
+                                            {
+                                                <option value="@item.id">@item.value</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Page Template</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    <select class="js-example-basic-single form-control" name="PageTamplateID" data-placeholder="Select an item">
+                                        <option value="">&nbsp;</option>
+                                        @{ foreach (var item in ViewBag.TemplateList)
+                                            {
+                                                <option value="@item.id">@item.value</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Language</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    <select class="js-example-basic-single form-control" name="PageLanguage" data-placeholder="Select an item">
+                                        <option value="EN">English</option>
+                                        <option value="BN">Bangla</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Tags</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <textarea name="TAG" id="textarea2" class="form-control" rows="3" placeholder=""></textarea>
+                                    @Html.ValidationMessageFor(model => model.TAG, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/pages/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+            $('#PageBody').summernote({
+                height: 250,
+                dialogsInBody: true,
+                prettifyHtml: true,
+                codemirror: {
+                    "mode": "text/html",
+                    "htmlMode": true,
+                    "lineNumbers": true,
+                    "theme": "monokai",
+                    "width": "100px",
+                    "textWrapping": true
+                },
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["paragraph", ["style"]],
+                    ["fontsize", ["fontname", "fontsize", "color"]],
+                    ["style", ["bold", "italic", "underline", "strikethrough", "clear"]],
+                    ["paragraph", ["ol", "ul", "paragraph"]],
+                    ["insert", ["table", "link", "picture", "video", "hr"]],
+                    ["misc", ["codeview"]]
+                ],
+                placeholder: "Page Content"
+            });
+        });
+
+    </script>
+}

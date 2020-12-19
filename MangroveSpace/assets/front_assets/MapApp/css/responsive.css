@@ -1,0 +1,134 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+   
+    
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+
+    
+    
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+    
+    .header-right-menu{
+        display: none
+    }
+    .jobguru-responsive-menu{
+        display: block
+    }
+    .header-menu{
+        display: none
+    }
+    .site-logo{
+        width: 60%
+    }
+    .banner-search h2{
+        display: none
+    }
+    .banner-search h4{
+        display: none
+    }
+    .banner-form-box{
+        background: transparent;
+        display: block
+    }
+    .banner-form-input{
+        display: block;
+        border-radius: 5px;
+        padding: 5px;
+        background: #fff none repeat scroll 0 0;
+        margin-top: 8px
+    }
+    .banner-form-input input{
+        padding: 3px 5px
+    }
+    .banner-form-input:last-child{
+        display: block;
+        margin-top: 8px;
+        background: #25ad60 none repeat scroll 0 0
+    }
+    .banner-form-input button{
+        position: relative
+    }
+    .banner-form-input button:hover{
+        background: #25ad60 none repeat scroll 0 0
+    }
+    .banner-form-input .select2{
+        padding: 0
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow{
+        top: 8px
+    }
+    .site-heading{
+        width: 100%
+    }
+    .site-heading h2{
+        font-size: 25px;
+        line-height: 35px
+    }
+    .jobguru-categories-area .row .col-lg-3{
+        padding-left: 15px;
+        padding-right: 15px
+    }
+    .jobguru-inner-hire-area::after, .hire_circle{
+        display: none
+    }
+    .jobguru-inner-hire-area::before, .inner-hire-left{
+        width: 100%
+    }
+    .inner-hire-left h3{
+        font-size: 32px
+    }
+    .job-tab .job-tab-switch{
+        border: 0px solid #ddd;
+        padding: 0
+    }
+    .job-tab-switch li{
+        margin-top: 10px
+    }
+    .top-company-list{
+        display: block;
+        text-align: center
+    }
+    .top-company-list .company-list-logo{
+        margin: 0 auto 15px !important;
+        max-width: 110px !important;
+    }
+    .top-company-list .company-list-details > h3{
+        line-height: 30px
+    }
+    .company-list-details p{
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px
+    }
+    .category-holder-text h3{
+        font-size: 14px
+    }
+    .single-category-holder{
+        margin-top: 30px
+    }
+    .how-works-box{
+        width: 100%;
+    }
+    
+}
+

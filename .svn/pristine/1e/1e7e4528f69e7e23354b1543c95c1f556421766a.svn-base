@@ -1,0 +1,347 @@
+﻿using MangroveSpace;
+using MapProject.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+
+namespace MapProject.Service
+{
+    public class ImportHelper
+    {
+        public string GeneralDataImport(DataTable dt, string user)
+        {
+            int i = 0;
+            try
+            {
+                using (MangroveSpaceEntities entity = new MangroveSpaceEntities())
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        PowerPlant_General ppGen = new PowerPlant_General();
+                        if (entity.PowerPlant_General.Count() == 0)
+                        {
+                            ppGen.ID = 1;
+                        }
+                        else
+                        {
+                            ppGen.ID = entity.PowerPlant_General.Max(s => s.ID) + 1;
+                        }
+                        ppGen.PowerPlant_Name = row.IsNull("Name") ? null : row["Name"].ToString();
+                        ppGen.CountryID = row.IsNull("Country") ? (int?)null : Global.exec("select [ID] from [dbo].[PowerPlant_Country] where [Country_Name] ='" + row["Country"] + "'", 0);
+                        ppGen.CategoryID = row.IsNull("BasicCategory") ? (int?)null : Global.exec("select [ID] from [dbo].[PowerPlant_Category] where [Category_Name] ='" + row["BasicCategory"] + "'", 0);//(int?)(PowerplantType)Enum.Parse(typeof(PowerplantType), row["BasicCategory"].ToString(), true);
+                        ppGen.Address = row.IsNull("Location") ? null : row["Location"].ToString();
+                        //ppGen.DetailsPageAddress = row.IsNull("BasicCategory"];
+                        ppGen.Latitude = row.IsNull("Latitude") ? (decimal?)null : Convert.ToDecimal(row["Latitude"]);
+                        ppGen.Longitude = row.IsNull("Longitude") ? (decimal?)null : Convert.ToDecimal(row["Longitude"]);
+                        ppGen.BasicTypeID = row.IsNull("BasicTypes") ? (int?)null : Global.exec("select [ID] from [dbo].[PowerPlant_BasicType] where [BasicTypeName] ='" + row["BasicTypes"] + "'", 0);//(int?)(BasicType)Enum.Parse(typeof(BasicType), row["BasicTypes"].ToString().Replace(" ", "_"), true);
+                        ppGen.SubCategoryID = row.IsNull("SubCategory") ? (int?)null : Global.exec("select [ID] from [dbo].[PowerPlant_SubCategory] where [SubCategory_Name] ='" + row["SubCategory"] + "'", 0);//(int?)(SubCategory)Enum.Parse(typeof(SubCategory), row["SubCategory"].ToString(), true);
+                        ppGen.Renewable = row.IsNull("IsRenewableenergy") ? (bool?)null : YesNoClass.YesNo(row["IsRenewableenergy"].ToString());
+                        ppGen.State = row.IsNull("StateOrProvince") ? null : row["StateOrProvince"].ToString();
+                        ppGen.SiteArea = row.IsNull("SiteArea") ? (decimal?)null : Convert.ToDecimal(row["SiteArea"]);
+                        ppGen.OpeningYear = row.IsNull("CommissionedOrOpeningYear") ? (short?)null : Convert.ToInt16(row["CommissionedOrOpeningYear"]);
+                        ppGen.Operator = row.IsNull("Operators") ? null : row["Operators"].ToString();
+                        ppGen.KeyFeature = row.IsNull("KeyFeatures") ? null : row["KeyFeatures"].ToString();
+                        ppGen.Pros = row.IsNull("Pros") ? null : row["Pros"].ToString();
+                        ppGen.Cons = row.IsNull("Cons") ? null : row["Cons"].ToString();
+                        ppGen.ImpoundedBy = row.IsNull("ImpoundedBy") ? null : row["ImpoundedBy"].ToString();
+                        ppGen.OwnerTypeID = row.IsNull("OwnerType") ? (int?)null : (int?)(OwnerType)Enum.Parse(typeof(OwnerType), row["OwnerType"].ToString().Replace(" ", "_"), true);
+                        ppGen.Owner = row.IsNull("Owners") ? null : row["Owners"].ToString();
+                        ppGen.Importance = row.IsNull("Importance") ? null : row["Importance"].ToString();
+                        ppGen.History = row.IsNull("History") ? null : row["History"].ToString();
+                        ppGen.Caution = row.IsNull("Caution") ? null : row["Caution"].ToString();
+                        ppGen.OverallEfficiency = row.IsNull("OverallEfficiency") ? (decimal?)null : Convert.ToDecimal(row["OverallEfficiency"]);
+                        ppGen.Efficiency = row.IsNull("Efficiency") ? (decimal?)null : Convert.ToDecimal(row["Efficiency"]);
+                        ppGen.CapacityFactor = row.IsNull("CapacityFactor") ? (decimal?)null : Convert.ToDecimal(row["CapacityFactor"]);
+                        ppGen.PowerFactor = row.IsNull("PowerFactor") ? (decimal?)null : Convert.ToDecimal(row["PowerFactor"]);
+                        ppGen.PowerGenerationCapacity = row.IsNull("PowerGenerationCapacity") ? (decimal?)null : Convert.ToDecimal(row["PowerGenerationCapacity"]);
+                        ppGen.VoltageRating = row.IsNull("VoltageRating") ? (decimal?)null : Convert.ToDecimal(row["VoltageRating"]);
+                        ppGen.Frequency = row.IsNull("Frequency") ? (int?)null : Convert.ToInt32(row["Frequency"]);
+                        ppGen.PowerRating = row.IsNull("PowerRating") ? (decimal?)null : Convert.ToDecimal(row["PowerRating"]);
+                        ppGen.AnnualEnergyGen = row.IsNull("AnnualEnergyGeneration") ? (decimal?)null : Convert.ToDecimal(row["AnnualEnergyGeneration"]);
+                        ppGen.InputEnergyID = row.IsNull("InputEnergy") ? (int?)null : (int?)(FuelType)Enum.Parse(typeof(FuelType), row["InputEnergy"].ToString().Replace(" ", "_"), true);
+                        ppGen.TransportID = row.IsNull("Transportation") ? (int?)null : (int?)(Transportation)Enum.Parse(typeof(Transportation), row["Transportation"].ToString().Replace(" ", "_"), true);
+                        ppGen.InputNatureID = row.IsNull("NatureOfInputEnergy") ? (int?)null : (int?)(InpurEnergy)Enum.Parse(typeof(InpurEnergy), row["NatureOfInputEnergy"].ToString().Replace(" ", "_"), true);
+                        ppGen.BasicComponent = row.IsNull("BasicComponent") ? null : row["BasicComponent"].ToString();
+                        ppGen.OtherComponent = row.IsNull("OtherComponents") ? null : row["OtherComponents"].ToString();
+                        ppGen.Biproduct = row.IsNull("Biproduct") ? null : row["Biproduct"].ToString();
+                        ppGen.OtherWaste = row.IsNull("OtherWastes") ? null : row["OtherWastes"].ToString();
+                        ppGen.PrimarySourceID = row.IsNull("PrimarySource") ? (int?)null : (int?)(PrimarySource)Enum.Parse(typeof(PrimarySource), row["PrimarySource"].ToString().Replace(" ", "_"), true);
+                        ppGen.SecondarySourceID = row.IsNull("SecondarySource") ? (int?)null : (int?)(SecondarySource)Enum.Parse(typeof(SecondarySource), row["SecondarySource"].ToString().Replace(" ", "_"), true);
+                        ppGen.NoOfUnit = row.IsNull("NumberOfUnits") ? (int?)null : Convert.ToInt32(row["NumberOfUnits"]);
+                        ppGen.AboutUnit = row.IsNull("AboutTheUnits") ? null : row["AboutTheUnits"].ToString();
+                        ppGen.NatGridConnected = row.IsNull("PowerSuppliedToNationalGrid") ? (bool?)null : YesNoClass.YesNo(row["PowerSuppliedToNationalGrid"].ToString());
+                        ppGen.SupplyID = row.IsNull("SuppliedTo") ? (int?)null : (int?)(SuppliedTo)Enum.Parse(typeof(SuppliedTo), row["SuppliedTo"].ToString().Replace(" ", "_"), true);
+                        ppGen.Operational = row.IsNull("Operational") ? (bool?)null : YesNoClass.YesNo(row["Operational"].ToString());
+                        ppGen.Protection = row.IsNull("Protection") ? null : row["Protection"].ToString();
+                        ppGen.Control = row.IsNull("Control") ? null : row["Control"].ToString();
+                        ppGen.GridVoltage = row.IsNull("GridVoltage") ? (decimal?)null : Convert.ToDecimal(row["GridVoltage"]);
+                        ppGen.GridDetails = row.IsNull("AboutGridConnection") ? null : row["AboutGridConnection"].ToString();
+                        ppGen.GridTieInverter = row.IsNull("BelongGrid") ? (bool?)null : YesNoClass.YesNo(row["BelongGrid"].ToString());
+                        ppGen.InverterDetails = row.IsNull("AboutInverter") ? null : row["AboutInverter"].ToString();
+                        ppGen.PowerTransBelong = row.IsNull("BelongPowerTransformer") ? (bool?)null : YesNoClass.YesNo(row["BelongPowerTransformer"].ToString());
+                        ppGen.TransDetails = row.IsNull("AboutTransformer") ? null : row["AboutTransformer"].ToString();
+                        ppGen.SteamBoilBelong = row.IsNull("BelongSteamBoiler") ? (bool?)null : YesNoClass.YesNo(row["BelongSteamBoiler"].ToString());
+                        ppGen.BoilDetails = row.IsNull("AboutSteamBoiler") ? null : row["AboutSteamBoiler"].ToString();
+                        ppGen.TurbineBelong = row.IsNull("BelongWindTurbine") ? (bool?)null : YesNoClass.YesNo(row["BelongWindTurbine"].ToString());
+                        ppGen.TurbineDetails = row.IsNull("AboutWindTurbine") ? null : row["AboutWindTurbine"].ToString();
+                        ppGen.InstalledBy_1 = row.IsNull("InstalledBy_1") ? null : row["InstalledBy_1"].ToString();
+                        ppGen.InstalledBy_2 = row.IsNull("InstalledBy_2") ? null : row["InstalledBy_2"].ToString();
+                        ppGen.InstalledBy_3 = row.IsNull("InstalledBy_3") ? null : row["InstalledBy_3"].ToString();
+                        ppGen.Supplier_1 = row.IsNull("Supplier_1") ? null : row["Supplier_1"].ToString();
+                        ppGen.Supplier_2 = row.IsNull("Supplier_2") ? null : row["Supplier_2"].ToString();
+                        ppGen.Supplier_3 = row.IsNull("Supplier_3") ? null : row["Supplier_3"].ToString();
+                        ppGen.ConstCost = row.IsNull("ConstructionCost") ? (decimal?)null : Convert.ToDecimal(row["ConstructionCost"]);
+                        ppGen.GenCostUnit = row.IsNull("PerUnitGenerationCost") ? (decimal?)null : Convert.ToDecimal(row["PerUnitGenerationCost"]);
+                        ppGen.SellCostUnit = row.IsNull("PerUnitSellingPrice") ? (decimal?)null : Convert.ToDecimal(row["PerUnitSellingPrice"]);
+                        ppGen.Buyer = row.IsNull("Buyer") ? null : row["Buyer"].ToString();
+                        ppGen.OtherPurpose = row.IsNull("OtherPurposes") ? null : row["OtherPurposes"].ToString();
+                        ppGen.DistFrmHuman = row.IsNull("DistanceFromHumanResidence") ? (int?)null : (int?)(Distance)Enum.Parse(typeof(Distance), row["DistanceFromHumanResidence"].ToString().Replace(" ", "_"), true);
+                        ppGen.NearRail = row.IsNull("NearbyRailStation") ? null : row["NearbyRailStation"].ToString();
+                        ppGen.NearBus = row.IsNull("NearbyBusStand") ? null : row["NearbyBusStand"].ToString();
+                        ppGen.NearMarket = row.IsNull("NearbyMarket") ? null : row["NearbyMarket"].ToString();
+                        ppGen.NearResidance = row.IsNull("NearbyResidance") ? null : row["NearbyResidance"].ToString();
+                        ppGen.NearHotel = row.IsNull("NearbyHotel") ? null : row["NearbyHotel"].ToString();
+                        ppGen.NearOther = row.IsNull("OtherFacilitiesNearby") ? null : row["OtherFacilitiesNearby"].ToString();
+                        ppGen.ComNetwork = row.IsNull("CommunicationNetwork") ? null : row["CommunicationNetwork"].ToString();
+                        ppGen.NearSite = row.IsNull("NearbySite") ? null : row["NearbySite"].ToString();
+                        ppGen.Climate = row.IsNull("Climate") ? (int?)null : (int?)(Climate)Enum.Parse(typeof(Climate), row["Climate"].ToString().Replace(" ", "_"), true);
+                        ppGen.Terrain = row.IsNull("Terrin") ? (int?)null : (int?)(Terrain)Enum.Parse(typeof(Terrain), row["Terrin"].ToString().Replace(" ", "_"), true);
+                        ppGen.AvgTemp = row.IsNull("AverageTemperature") ? (int?)null : (int?)(Avg)Enum.Parse(typeof(Avg), row["AverageTemperature"].ToString().Replace(" ", "_"), true);
+                        ppGen.AvgHumid = row.IsNull("AverageHumidity") ? (int?)null : (int?)(Avg)Enum.Parse(typeof(Avg), row["AverageHumidity"].ToString().Replace(" ", "_"), true);
+                        ppGen.Reference = row.IsNull("References") ? null : row["References"].ToString();
+                        ppGen.Size = row.IsNull("Size") ? (int?)null : (int?)(Scale)Enum.Parse(typeof(Scale), row["Size"].ToString().Replace(" ", "_"), true);
+                        ppGen.WaterTurbineBelong = row.IsNull("BelongWaterTurbine") ? (bool?)null : YesNoClass.YesNo(row["BelongWaterTurbine"].ToString());
+                        ppGen.WaterTurbineDetails = row.IsNull("AboutWaterTurbine") ? null : row["AboutWaterTurbine"].ToString();
+                        ppGen.SeasonVariation = row.IsNull("SeasonalVariations") ? (int?)null : (int?)(Avg)Enum.Parse(typeof(Avg), row["SeasonalVariations"].ToString().Replace(" ", "_"), true);
+                        ppGen.EntryBy = user;
+                        ppGen.EntryDate = DateTime.Now;
+
+                        entity.PowerPlant_General.Add(ppGen);
+
+                        ppGen.DetailsPageAddress = CreatePage(ppGen.PowerPlant_Name, user, "PP");
+                        entity.SaveChanges();
+                        i++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "Successfully Imported " + i.ToString() + " Data";
+        }
+
+        public string TechnicalDataImport(DataTable dt, string user)
+        {
+            int i = 0;
+            try
+            {
+                using (MangroveSpaceEntities entity = new MangroveSpaceEntities())
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        PowerPlant_Technical ppTech = new PowerPlant_Technical();
+                        ppTech = SetMultiProp(row, ppTech);
+                        if (entity.PowerPlant_Technical.Count() == 0)
+                        {
+                            ppTech.ID = 1;
+                        }
+                        else
+                        {
+                            ppTech.ID = entity.PowerPlant_Technical.Max(s => s.ID) + 1;
+                        }
+                        ppTech.EntryBy = user;
+                        ppTech.EntryDate = DateTime.Now;
+                        entity.PowerPlant_Technical.Add(ppTech);
+
+                        ppTech.DetailsPageAddress = CreatePage(ppTech.Model, user, "M");
+                        entity.SaveChanges();
+                        i++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "Successfully Imported " + i.ToString() + " Data";
+        }
+
+        public PowerPlant_Technical SetMultiProp(DataRow dr, PowerPlant_Technical obj)
+        {
+            PropertyInfo[] props = typeof(PowerPlant_Technical).GetProperties();
+            foreach (var prop in props)
+            {
+                if (prop == props[0])
+                {
+
+                }
+                else if (prop.Name == "CountryOfOrigin")
+                {
+                    dynamic value = dr.IsNull("CountryOfOrigin") ? (int?)null : Global.exec("select [ID] from [dbo].[PowerPlant_Country] where [Country_Name] ='" + dr["CountryOfOrigin"] + "'", 0);
+                    prop.SetValue(obj, value, null);
+                }
+                else
+                {
+                    try
+                    {
+                        dynamic value = obj.GetType().GetProperty(prop.Name.ToString()).GetValue(obj, null);
+                        Type type = prop.PropertyType;
+
+                        if (type == typeof(string))
+                        {
+                            string temp = Convert.ToString(value);
+                            if (string.IsNullOrEmpty(temp))
+                            {
+                                try
+                                {
+                                    value = Convert.ToString(dr[prop.Name]);
+                                    prop.SetValue(obj, value, null);
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+
+                                    prop.SetValue(obj, temp, null);
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+
+                        }
+                        else if (type == typeof(Int32) || type == typeof(Int32?))
+                        {
+                            int temp2 = Convert.ToInt32(value);
+                            if (temp2 == 0)
+                            {
+                                try
+                                {
+                                    value = Convert.ToInt32(dr[prop.Name]);
+                                    prop.SetValue(obj, value, null);
+                                }
+                                catch (Exception ex)
+                                {
+                                    try
+                                    {
+                                        value = Convert.ToInt32(Convert.ToDecimal(dr[prop.Name]));
+                                        prop.SetValue(obj, value, null);
+                                    }
+                                    catch (Exception e)
+                                    {
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+
+                                    prop.SetValue(obj, temp2, null);
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                        }
+
+                        else if (type == typeof(Decimal) || type == typeof(Decimal?))
+                        {
+                            decimal temp3 = Convert.ToDecimal(value);
+                            if (temp3 == 0)
+                            {
+                                try
+                                {
+                                    value = Convert.ToDecimal(dr[prop.Name]);
+                                    prop.SetValue(obj, value, null);
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+
+                                    prop.SetValue(obj, temp3, null);
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                        }
+
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+
+            }
+
+            return obj;
+        }
+
+        private string CreatePage(string pageTitle, string userId, string tag)
+        {
+            using (MangroveSpaceEntities entity = new MangroveSpaceEntities())
+            {
+                AspCMSPage aspCMSPages = new AspCMSPage();
+                if (entity.PowerPlant_General.Count() == 0)
+                {
+                    aspCMSPages.ID = 1;
+                }
+                else
+                {
+                    aspCMSPages.ID = entity.AspCMSPages.Max(s => s.ID) + 1;
+                }
+
+                int count = 0;
+                string PageID = Convert.ToString(pageTitle);
+                PageID = PageID.Replace(" ", "");
+
+            Ck:
+                int ck_name = Global.exec("select count(*) from AspCMSPage where PageID ='" + PageID + "'", 0);
+                if (ck_name != 0)
+                {
+                    count++;
+                    PageID = PageID + Convert.ToString(count);
+                    goto Ck;
+                }
+
+                aspCMSPages.PageID = pageTitle.Replace(" ", "");
+                aspCMSPages.PageTitle = pageTitle;
+                aspCMSPages.PageLanguage = "EN";
+                aspCMSPages.PageTamplateID = "2";
+                aspCMSPages.TAG = tag;
+                aspCMSPages.EntryBy = userId;
+                aspCMSPages.EntryDate = DateTime.Now;
+                aspCMSPages.Aproved = true;
+                aspCMSPages.ApprovedBy = userId;
+                entity.AspCMSPages.Add(aspCMSPages);
+                entity.SaveChanges();
+
+                return aspCMSPages.PageID;
+            }
+        }
+    }
+}

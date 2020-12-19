@@ -1,0 +1,101 @@
+﻿@using System.Data
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+    <style>
+        .btntoTop:before {
+            content: "";
+        }
+    </style>
+</head>
+<body>
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml", new ViewDataDictionary<DataTable>())
+
+    </div>
+    </div>
+    </div>
+    </div>
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+    <div class="single-page-containt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="single-page-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="page-containt-box nativeEditor">
+                                    <h3 style="margin-bottom:10px">School Events</h3>
+                                    <iframe src="https://calendar.google.com/calendar/embed?src=1fk8kh93s4sks4sg31tttt5r3c%40group.calendar.google.com&ctz=Asia/Dhaka" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+
+    <script>
+        var table = $("#example").DataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bInfo": false,
+            "searching": false
+        });
+    </script>
+</body>
+</html>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+}

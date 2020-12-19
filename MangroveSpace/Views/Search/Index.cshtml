@@ -1,0 +1,215 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml ";
+}
+
+<div class="maincontent-home inner_page" data-sticky-sidebar-container>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container-medium">
+                    <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                        <div class="filter_box">
+                            <div class="single_filter">
+                                <h4>By Country:</h4>
+                                
+                                <form>
+                                    <ul>
+                                        @{
+                                            System.Data.DataTable Countries = Global.ReadData("SELECT c.ID, c.[Country_Name]\n"
+                                                                                                    + "FROM\n"
+                                                                                                    + "(\n"
+                                                                                                    + "    SELECT DISTINCT \n"
+                                                                                                    + "           g.Country\n"
+                                                                                                    + "    FROM [dbo].[PowerPlant_Main] g\n"
+                                                                                                    + "    UNION\n"
+                                                                                                    + "    SELECT DISTINCT \n"
+                                                                                                    + "           t.Country CountryID\n"
+                                                                                                    + "    FROM [dbo].[PowerPlant_Child] t\n"
+                                                                                                    + ") cntry\n"
+                                                                                                    + "INNER JOIN [dbo].[PowerPlant_Country] c ON c.ID = cntry.Country;");
+
+
+                                            foreach (DataRow row in Countries.Rows)
+                                            {
+                                                <li class="checkbox country">
+                                                    <input class="checkbox-spin cntryChk" type="checkbox" id="@row["ID"]">
+                                                    <label for="@row["ID"]"><span></span>@row["Country_Name"]</label>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </form>
+                            </div>
+
+                            <div class="single_filter">
+                                <h4>By Company:</h4>
+                                <form>
+                                    @{
+                                        System.Data.DataTable Company = Global.ReadData("SELECT distinct [Company/Manufacturer] FROM [dbo].[PowerPlant_Child];");
+                                    }
+                                    <ul>
+                                        @foreach (DataRow row in Company.Rows)
+                                        {
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin cmpnyChk" type="checkbox" id="@row["Company/Manufacturer"]">
+                                                <label for="@row["Company/Manufacturer"]"><span></span>@row["Company/Manufacturer"]</label>
+                                            </li>
+                                        }
+                                    </ul>
+                                </form>
+                            </div>
+
+                            <div class="single_filter">
+                                <h4>By Capacity/Size:</h4>
+                                <form>
+                                    <ul>
+                                        <li class="checkbox">
+                                            <input class="checkbox-spin" type="checkbox" id="Small">
+                                            <label for="Small"><span></span>Small</label>
+                                        </li>
+                                        <li class="checkbox">
+                                            <input class="checkbox-spin" type="checkbox" id="sm">
+                                            <label for="sm"><span></span>Small- Medium</label>
+                                        </li>
+                                        <li class="checkbox">
+                                            <input class="checkbox-spin" type="checkbox" id="Medium">
+                                            <label for="Medium"><span></span>Medium</label>
+                                        </li>
+                                        <li class="checkbox">
+                                            <input class="checkbox-spin" type="checkbox" id="ml">
+                                            <label for="ml"><span></span>Medium - Large</label>
+                                        </li>
+                                        <li class="checkbox">
+                                            <input class="checkbox-spin" type="checkbox" id="Large">
+                                            <label for="Large"><span></span>Large</label>
+                                        </li>
+
+                                    </ul>
+                                </form>
+                            </div>
+                            <div class="single_filter">
+                                <h4>Sort By:</h4>
+                                <form>
+                                    <ul class="sort_by">
+                                        <li><a href="#"><i class="fa fa-sort-amount-desc"></i> Popularity / Rating</a></li>
+                                        <li><a href="#"><i class="fa fa-sort-amount-desc"></i> Most Recent</a></li>
+                                        <li><a href="#"><i class="fa fa-sort-amount-desc"></i> Price</a></li>
+                                        <li><a href="#"><i class="fa fa-sort-amount-desc"></i> Power Rating</a></li>
+                                        <li><a href="#"><i class="fa fa-sort-amount-desc"></i> Weight</a></li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="ContentsList">
+                    @Html.Partial("_Contents")
+                </div>
+
+                <div class="pagination-box-row">
+                    <p>Page 1 of 6</p>
+                    <ul class="pagination">
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>...</li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(".cntryChk").change(function () {
+            if (this.checked) {
+                console.log(this.id);
+
+                $.ajax({
+                    url: '/Search/SetCountry',
+                    type: 'GET',
+                    data: { countryId: this.id },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#ContentsList").load('@Url.Action("Contents","Search")');
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+
+
+            }
+            else {
+                $.ajax({
+                    url: '/Search/UnSetCountry',
+                    type: 'GET',
+                    data: { countryId: this.id },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#ContentsList").load('@Url.Action("Contents","Search")');
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            }
+        });
+
+        $(".cmpnyChk").change(function () {
+            if (this.checked) {
+                console.log(this.id);
+
+                $.ajax({
+                    url: '/Search/SetCompany',
+                    type: 'GET',
+                    data: { companyId: this.id },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#ContentsList").load('@Url.Action("Contents","Search")');
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+
+
+            }
+            else {
+                $.ajax({
+                    url: '/Search/UnSetCompany',
+                    type: 'GET',
+                    data: { companyId: this.id },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#ContentsList").load('@Url.Action("Contents","Search")');
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            }
+        });
+        
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Search/GetSearchString',
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $(".search").attr("placeholder", data);
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        });
+    </script>
+
+}

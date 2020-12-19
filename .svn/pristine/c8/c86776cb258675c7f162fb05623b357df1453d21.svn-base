@@ -1,0 +1,54 @@
+﻿@using System.Data
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<div class="maincontent-home" data-sticky-sidebar-container>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="container-large">
+                    @{
+                        System.Data.DataTable AllPowerPlants = Global.ReadData("select [ID], [PowerPlant_Name], [EntryDate], [EntryBy], [DetailsPageAddress] from [dbo].[PowerPlant_General]");
+                    }
+                    @foreach (DataRow row in AllPowerPlants.Rows)
+                    {
+                        <div class="single-blog-item">
+                            <a href="/Home/PowerPlantDetails?id=@row["ID"]">
+                                <h3>@row["PowerPlant_Name"]</h3>
+                            </a>
+                            <h4 class="post-datae">Posted: @row["EntryDate"]</h4>
+                            <div class="blog-pera">
+                                
+                                    @if (Regex.Replace(row["DetailsPageAddress"].ToString(), "<.*?>", String.Empty).Count() > 500)
+                                    {
+                                        @Regex.Replace(row["DetailsPageAddress"].ToString(), "<.*?>", String.Empty).Substring(0, 500).ToString()
+                                    }
+                                    else
+                                    {
+                                        @Regex.Replace(row["DetailsPageAddress"].ToString(), "<.*?>", String.Empty)
+                                    }
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            @*sidebar here*@
+            <div class="col-md-4">
+                <div class="container-medium">
+                    <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                        <ul>
+                            @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_RightMenu.cshtml", new ViewDataDictionary<DataTable>())
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @*sidebar here*@
+        </div>
+    </div>
+</div>
+
+@*@Html.Raw(Server.HtmlDecode(GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = 'Home'")))*@

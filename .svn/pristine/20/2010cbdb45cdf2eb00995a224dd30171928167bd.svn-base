@@ -1,0 +1,61 @@
+﻿@using System.Data
+@{
+    //Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/" + ViewBag.template + "";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+
+@{
+    string breadcromb = ViewBag.pageid;
+    string htmlPage = GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = '" + ViewBag.pageid + "'");
+}
+
+<div class="maincontent-home inner_page" data-sticky-sidebar-container>
+    <div class="container-fluid">
+        <div class="col-md-3 pad_right">
+            <div class="container-medium">
+                <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                    <ul>
+                        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_RightMenu.cshtml", new ViewDataDictionary<DataTable>())
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pad_both">
+            <div class="container-large">
+                <div class="single-blog-item">
+                    <a href="#">
+                        <h3>@ViewBag.Title</h3>
+                    </a>
+                    <h4 class="post-datae">Posted: @ViewBag.PostedDate</h4>
+                    <div class="blog-pera">
+                        @Html.Raw(Server.HtmlDecode(htmlPage))
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+}

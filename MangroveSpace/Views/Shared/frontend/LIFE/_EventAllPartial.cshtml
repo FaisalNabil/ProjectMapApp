@@ -1,0 +1,37 @@
+﻿@model IEnumerable<dynamic>
+
+
+
+
+<h3>All Events</h3>
+@if (Model != null)
+{
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EventName</td>
+                    @try
+                    {
+                        <td>@item.EventDate.ToString("dd/MM/yyyy")</td>
+                    }
+                    catch
+                    {
+
+                    }
+                    <td><a href="@Url.Action("AllEvents", "Event", new { id = @item.ID })">Read more</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

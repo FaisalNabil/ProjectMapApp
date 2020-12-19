@@ -1,0 +1,137 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewBag.Title = "Ordering";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+<!-- BEGIN BLANK SECTION -->
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Menu Information</li>
+        </ol>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card card-printable style-default-light">
+                    <div class="card-head">
+
+                        <div class="col-md-4">
+
+                            @using (Html.BeginForm("Ordering", "Menu", FormMethod.Post, new { role = "form", @class = "form", enctype = "multipart/form-data" }))
+                            {
+
+                                <div class="btn-group">
+                                    <select class="select2-list form-control menuselectleft" name="MenuType" data-placeholder="Select an item">
+                                        @{
+                                            if (Convert.ToString(this.Session["SelectMenu"]) == "Top Menu")
+                                            {
+                                                <option selected value="Top Menu">Top Menu</option>
+                                                <option value="Main Menu">Main Menu</option>
+                                                <option value="Left Menu">Left Menu</option>
+                                                <option value="Right Menu">Right Menu</option>
+                                                <option value="Footer Menu">Footer Menu</option>
+
+                                            }
+                                            else if (Convert.ToString(this.Session["SelectMenu"]) == "Main Menu")
+                                            {
+                                                <option value="Top Menu">Top Menu</option>
+                                                <option selected value="Main Menu">Main Menu</option>
+                                                <option value="Left Menu">Left Menu</option>
+                                                <option value="Right Menu">Right Menu</option>
+                                                <option value="Footer Menu">Footer Menu</option>
+
+                                            }
+
+                                            else if (Convert.ToString(this.Session["SelectMenu"]) == "Left Menu")
+                                            {
+                                                <option value="Top Menu">Top Menu</option>
+                                                <option value="Main Menu">Main Menu</option>
+                                                <option selected value="Left Menu">Left Menu</option>
+                                                <option value="Right Menu">Right Menu</option>
+                                                <option value="Footer Menu">Footer Menu</option>
+
+                                            }
+                                            else if (Convert.ToString(this.Session["SelectMenu"]) == "Right Menu")
+                                            {
+                                                <option value="Top Menu">Top Menu</option>
+                                                <option value="Main Menu">Main Menu</option>
+                                                <option value="Left Menu">Left Menu</option>
+                                                <option selected value="Right Menu">Right Menu</option>
+                                                <option value="Footer Menu">Footer Menu</option>
+
+                                            }
+                                            else if (Convert.ToString(this.Session["SelectMenu"]) == "Footer Menu")
+                                            {
+                                                <option value="Top Menu">Top Menu</option>
+                                                <option value="Main Menu">Main Menu</option>
+                                                <option value="Left Menu">Left Menu</option>
+                                                <option value="Right Menu">Right Menu</option>
+                                                <option selected value="Footer Menu">Footer Menu</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="Top Menu">Top Menu</option>
+                                                <option value="Main Menu">Main Menu</option>
+                                                <option value="Left Menu">Left Menu</option>
+                                                <option value="Right Menu">Right Menu</option>
+                                                <option value="Footer Menu">Footer Menu</option>
+
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-floating-action btn-primary"><i class="md md-refresh"></i></button>
+                                    @*<a class="btn btn-floating-action btn-primary" title="Create Notice Information" href="@Url.Action("Ordering", "Menu")"><i class="md md-refresh"></i></a>*@
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="tools top-adjust">
+                            <div class="btn-group">
+                                <a class="btn btn-floating-action btn-primary" title="Create Notice Information" href="@Url.Action("Index", "Menu")"><i class="md md-list"></i></a>
+                                <a class="btn btn-floating-action btn-primary" title="Create Notice Information" href="@Url.Action("Create", "Menu")"><i class="md md-add-box"></i></a>
+                                <a class="btn btn-floating-action btn-primary" href="javascript:void(0);" onclick="javascript:window.print();"><i class="md md-print"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body style-default-bright">
+                        @{
+                            if (TempData["msg"] != null)
+                            {
+                                <div style="text-align:center;font-size:16px;">
+                                    <span>@TempData["msg"]</span>
+                                </div>
+                                <br />
+                            }
+                        }
+
+                        <div class="col-lg-4">
+
+                            @using (Html.BeginForm("OrderingSave", "Menu", FormMethod.Post, new { role = "form", @class = "form", enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Partial("~/Views/Shared/backend/_PanelMenu.cshtml")
+
+                                <textarea style="display:none;" name="ioutput" id="ioutput"></textarea>
+                                <button type="submit" class="btn btn-raised ink-reaction btn-primary pull-right">Save</button>
+                            }
+                        </div>
+                        <div class="col-lg-8">
+                            <div id="toUpdate"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

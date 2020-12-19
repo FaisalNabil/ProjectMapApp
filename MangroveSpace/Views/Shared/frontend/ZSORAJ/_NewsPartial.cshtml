@@ -1,0 +1,45 @@
+﻿@using Microsoft.Ajax.Utilities
+
+
+
+<div class="responsive-upper table-responsive">
+    <div class="containt-right">
+        <h4>সাম্প্রতিক তথ্য</h4>
+    </div>
+    <table class="table table-bordered table-hover table-stripe">
+        <thead>
+            <tr>
+                <th>তারিখ</th>
+                <th>বিবরন</th>
+                <th>ডাউনলোড</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                string ImgPath;
+                int i = 0;
+                MangroveSpaceEntities db = new MangroveSpaceEntities();
+                List<dynamic> Information = Global.Sql(db, "select top 10 [ID],[NewsID],[NewsName],[NewsDate],[AttachFile],[NewsOrderID],[EntryDate] from [dbo].[AspCMSNews] where  [NewsStatus]=1 order by [NewsOrderID] asc").ToList();
+                foreach (var item in Information)
+                {
+                    ImgPath = item.AttachFile;
+
+                    <tr>
+                        <td>@item.NewsDate.ToString("MMMM/dd/yyyy")</td>
+                        <td>@item.NewsName</td>
+                        <td><a href="@ImgPath">Download</a></td>
+                    </tr>
+
+                }
+
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+

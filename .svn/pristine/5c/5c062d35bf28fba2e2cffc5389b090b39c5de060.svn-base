@@ -1,0 +1,5 @@
+﻿<li>
+    <a href="{$MenuLink}">
+        <i class="{$Icon}"></i>{$Content}
+    </a>
+</li>

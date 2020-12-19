@@ -1,0 +1,171 @@
+/************* Main Js File ************************
+    Template Name: 
+    Author: 
+    Version: 1.0
+    Copyright 2018
+*************************************************************/
+
+
+/*------------------------------------------------------------------------------------
+    
+JS INDEX
+=============
+
+01 - Banner-Slider Setup
+
+-------------------------------------------------------------------------------------*/
+
+
+(function ($) {
+    "use strict";
+
+    jQuery(document).ready(function ($) {
+
+
+
+        /* 
+		=================================================================
+		01 - Main Slider JS
+		=================================================================	
+		*/
+
+        $(".briffs-slide").owlCarousel({
+            animateOut: 'fadeOutLeft',
+            animateIn: 'fadeIn',
+            items: 2,
+            nav: true,
+            dots: false,
+            autoplayTimeout: 7000,
+            autoplaySpeed: 2000,
+            autoplay: true,
+            loop: true,
+            navText: ["<i class='fa fa-long-arrow-left'><i>", "<i class='fa fa-long-arrow-right'><i>"],
+            mouseDrag: true,
+            touchDrag: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                480: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                750: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                },
+                1200: {
+                    items: 1
+                }
+            }
+        });
+
+        $(".briffs-slide").on("translate.owl.carousel", function () {
+            $(".briffs-main-slide h2, .briffs-main-slide p").removeClass("animated fadeInUp").css("opacity", "0");
+            $(".briffs-main-slide .briffs-btn").removeClass("animated fadeInDown").css("opacity", "0");
+        });
+        $(".briffs-slide").on("translated.owl.carousel", function () {
+            $(".briffs-main-slide h2, .briffs-main-slide p").addClass("animated fadeInUp").css("opacity", "1");
+            $(".briffs-main-slide .briffs-btn").addClass("animated fadeInDown").css("opacity", "1");
+        });
+        
+        
+        
+        /* 
+		=================================================================
+		04 - Testimonial Slider JS
+		=================================================================	
+		*/
+
+
+		$(".testimonial-slider").owlCarousel({
+			autoplay: true,
+			loop: true,
+			margin: 20,
+			touchDrag: true,
+			mouseDrag: true,
+			items: 1,
+			nav: false,
+			dots: true,
+			autoplayTimeout: 6000,
+			autoplaySpeed: 1200,
+			navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+			responsive: {
+				0: {
+					items: 1
+				},
+				480: {
+					items: 1
+				},
+				600: {
+					items: 1
+				},
+				1000: {
+					items: 2
+				},
+				1200: {
+					items: 2
+				}
+			}
+		});
+
+
+
+        /* 
+        =================================================================
+        03 - Lightbox JS
+        =================================================================	
+        */
+
+
+        $('.gallery2').featherlightGallery({
+
+            gallery: {
+                next: 'next Ãƒâ€šÃ‚Â»',
+                previous: 'Ãƒâ€šÃ‚Â« previous'
+            },
+            variant: 'featherlight-gallery2'
+
+        });
+
+        $('.gallery3').featherlightGallery({
+
+            gallery: {
+                next: 'next Ãƒâ€šÃ‚Â»',
+                previous: 'Ãƒâ€šÃ‚Â« previous'
+            },
+            variant: 'featherlight-gallery3'
+
+        });
+
+
+
+        /* 
+		=================================================================
+		11 - Responsive Menu JS
+		=================================================================	
+		*/
+        $("ul#navigation").slicknav({
+            prependTo: ".jobguru-responsive-menu"
+        });
+
+
+
+    });
+
+    $(window).on('scroll', function () {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 50) {
+            $(".forsticky").addClass("sticky");
+        } else {
+            $(".forsticky").removeClass("sticky");
+            $(".forsticky").addClass("");
+        }
+    });
+
+
+}(jQuery));

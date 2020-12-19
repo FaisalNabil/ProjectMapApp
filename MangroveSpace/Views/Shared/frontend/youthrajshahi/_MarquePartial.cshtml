@@ -1,0 +1,43 @@
+﻿@*<div class="header-notice">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-notice-left">
+                    <ul class="marquee">
+                        @{
+                            MangroveSpaceEntities db = new MangroveSpaceEntities();
+                            List<dynamic> notice = Global.Sql(db, "select top 5 [ID],[NoticeName],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeOrderID]").ToList();
+                            foreach (var item in notice)
+                            {
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                    <p><a href="/Notice/NoticeDetails/@item.ID"><span>@item.NoticeName</span></a></p>
+                                </li>   
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+<div class="header-notice-left">
+    <p>Latest news ::</p>
+    <ul class="marquee">
+        @{
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> notice = Global.Sql(db, "select top 5 [ID],[NoticeName],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeOrderID]").ToList();
+            foreach (var item in notice)
+            {
+        <li>
+            <img src="~/assets/front_assets/RMSC/img/favicon.png" />
+            <p><a href="/Notice/NoticeDetails/@item.ID"><span>@item.NoticeName</span></a></p>
+        </li>
+            }
+        }
+
+    </ul>
+</div>

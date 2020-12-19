@@ -1,0 +1,11 @@
+﻿@{
+
+    Layout = Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_BlankPageLayout.cshtml";
+    ViewBag.Title = "Albums";
+}
+
+@{
+    Html.RenderPartial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_AlbumDetailsLayOut.cshtml");
+}
+
+

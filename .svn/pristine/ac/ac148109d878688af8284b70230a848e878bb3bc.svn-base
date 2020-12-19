@@ -1,0 +1,40 @@
+﻿<footer class="construct-footer-area">
+    <div class="construct-footer-top-area section_50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("footerlogo")
+                    
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("quicklinks")
+                    
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("footeraddress")
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="construct-footer-bottom-area section_15">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="copyright-left">
+                        <p>Copyrights &copy; 2019 Youth Rajshahi. All Rights Reserved. </p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="copyright-right">
+                        <p>Powered By<span> <a href="#">Mangrove CMS</a></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+

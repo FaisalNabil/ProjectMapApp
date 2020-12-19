@@ -1,0 +1,10 @@
+﻿
+
+@{
+    int id = ViewBag.AlbumID;
+}
+
+
+        <h3>Campus Gallery</h3>
+        @Html.GetAlbumList(id)
+

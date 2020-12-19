@@ -1,0 +1,20 @@
+﻿<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.GetGadgetItem("footerslogan")
+
+            </div>
+            <div class="col-md-6">
+                @Html.GetGadgetItem("footercontact")
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.GetGadgetItem("copytight")
+
+            </div>
+        </div>
+    </div>
+</div>

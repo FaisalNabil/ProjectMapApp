@@ -1,0 +1,151 @@
+﻿@using System.Data
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+    <style>
+        .btntoTop:before {
+            content: "";
+        }
+    </style>
+</head>
+<body>
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    <section class="lesun-breadcromb-area section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcromb">
+                        <h2>@ViewBag.Title</h2>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li>/</li>
+                            <li>@ViewBag.Title</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="innerpage-area section_70">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if (User.Identity.IsAuthenticated && ViewBag.Page == "Page")
+                    {
+                        <div class="content-box nativeEditor" id="editContent">
+                            @RenderBody()
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="content-box nativeEditor">
+                            @RenderBody()
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="achivement-area section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="achovement-left">
+                        <h3>We Have <span>Great Achivment</span> To Show!</h3>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="achivement-right">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement1")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement2")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement3")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="briffs-testimonial-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="sec-title">
+                            <span>Client's Review</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.GetGadgetItem("Reviews")
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+</body>
+</html>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+}

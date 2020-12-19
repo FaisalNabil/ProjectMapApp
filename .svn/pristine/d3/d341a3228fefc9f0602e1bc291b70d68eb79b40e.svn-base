@@ -1,0 +1,39 @@
+﻿
+.vticker ul{
+	padding: 0;
+    width: 100%;
+    background:#039ADE;
+    color:#fff
+}
+.vticker li{
+	list-style: none;
+	border-bottom: 1px solid #defaa3;
+	padding: 10px;
+    overflow:hidden
+}
+.et-run{
+	background: red;
+}
+.notice-left {
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+    overflow: hidden;
+}
+.notice-right > h3 {
+    font-size: 14px;
+    line-height: 23px;
+}
+.notice-right > a {
+    text-transform: capitalize;
+    color: #fff;
+    margin-top: 4px;
+    display: inline-block;
+    text-decoration: underline;
+    font-style: italic
+}
+.principle-message img {
+    width: 100%;
+    padding: 20px;
+    background: #f3f3f3;
+}

@@ -1,0 +1,56 @@
+﻿@using Microsoft.Ajax.Utilities
+
+
+<div class="single-notice-widget">
+    <div class="site-heading">
+        <h3>campus news</h3>
+    </div>
+    <div class="campus-news-box">
+        @{
+            string ImgPath;
+            int i = 0;
+            MangroveSpaceEntities db = new MangroveSpaceEntities();
+            List<dynamic> Information = Global.Sql(db, "select top 3 [ID],[NewsID],[NewsName],[NewsDate],[AttachFile],[NewsOrderID],[EntryDate] from [dbo].[AspCMSNews] where  [NewsStatus]=1 order by [NewsOrderID] asc").ToList();
+            foreach (var item in Information)
+            {
+                ImgPath = item.AttachFile;
+                <div class="single-campus-news">
+                    <div class="campus-news-left">
+                        <a href="/News/NewsDetails/@item.ID">
+                            @if (ImgPath.IsNullOrWhiteSpace())
+                            {
+                                <img src = "~/assets/back_assets/img/default.jpg" />
+                            }
+                            else
+                            {
+                                <img src=@item.AttachFile alt="campus news" />
+                            }
+                        </a>
+                    </div>
+                    <div class="campus-news-right">
+                        <h4>
+                            <a href="/News/NewsDetails/@item.ID">@item.NewsName</a>
+                        </h4>
+                        @try
+                        {
+                            if (@item.NewsDate != null)
+                            {
+                                <h5>@item.NewsDate.ToString("dd/MM/yyyy")</h5>
+                            }
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
+
+                        <a href="/News/NewsDetails/@item.ID">Details</a>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+    <a href="@Url.Action("AllNews","News")" class="theme-btn">More news</a>
+</div>
+
+

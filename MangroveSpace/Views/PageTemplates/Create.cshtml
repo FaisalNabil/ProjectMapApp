@@ -1,0 +1,111 @@
+﻿@model  AspCMSPageTemplate
+@{
+    ViewBag.Title = "Add Page Template";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pageTemplates/" class="btn btn-success">Manage Page Template</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "Pagetemplates", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TemplateID, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @*<div id="page-editor"></div>*@
+                                @Html.EditorFor(model => model.TemplateID, new { htmlAttributes = new { @class = "form-control", Value = Model.TemplateID, @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(m => m.TemplateID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.TemplateName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @*<div id="page-editor"></div>*@
+                                @Html.EditorFor(model => model.TemplateName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(m => m.TemplateName)
+                            </div>
+                        </div>
+                    </div>
+              </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TemplateLanguage, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12" })
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.DropDownListFor(model=>model.TemplateLanguage,new SelectList(new List<SelectListItem>{
+                                    //new SelectListItem { Text="Select Language", Value=string.Empty},
+                                    new SelectListItem { Text="English", Value="English"},
+                                     new SelectListItem { Text="Bangla", Value="Bangla"}
+
+                                },"Value", "Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSPageTemplates.TemplateLanguage" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TemplatePath, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.EditorFor(model => model.TemplatePath, new { htmlAttributes = new { @class = "form-control", } })
+                                @Html.ValidationMessageFor(m => m.TemplatePath)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/pagetemplates/" class="btn btn-primary" type="button">Cancel</a>            
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+   
+}

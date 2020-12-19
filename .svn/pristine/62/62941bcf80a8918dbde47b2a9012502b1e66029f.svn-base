@@ -1,0 +1,27 @@
+﻿<div class="contact-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.GetGadgetItem("footerlogo")
+
+            </div>
+            <div class="col-md-4">
+                @Html.GetGadgetItem("footeraddress")
+
+            </div>
+            <div class="col-md-4">
+                @Html.GetGadgetItem("footersocial")
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="copyright">
+    <div class="row">
+        @Html.GetGadgetItem("copyright")
+
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<div class="notise">
+    <div class="heading">
+        <h4>নোটিশ বোর্ড</h4>
+    </div>
+    <br>
+    <div class="tabile">
+        <table class="table-box">
+            <thead>
+                <tr>
+                    <th class="text-left">Date</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-right">Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    string ImgPath;
+                    int i = 0;
+                    MangroveSpaceEntities db = new MangroveSpaceEntities();
+                    List<dynamic> Information = Global.Sql(db, "select top 10 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeDate] DESC").ToList();
+                    foreach (dynamic item in Information)
+                    {
+
+                        <tr>
+                            <td class="text-left">@item.NoticeDate.ToString("MMMM/dd/yyyy")</td>
+                            <td class="text-center">
+                                <p>@item.NoticeName</p>
+                            </td>
+                            <td class="text-right"><a href="@item.AttachFile">Download</a></td>
+                        </tr>
+
+                       
+
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+

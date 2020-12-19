@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+    <style>
+        @Html.GetSliderImageItem()
+    </style>
+</head>
+<body>
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+    <!-- About Area Start -->
+    <section class="about-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="sec-title">
+                            <span>About Us</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+    <!-- About Area End -->
+
+
+
+    <!-- Achivement Area Start -->
+    <section class="achivement-area section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="achovement-left">
+                        <h3>We Have <span>Great Achivment</span> To Show!</h3>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="achivement-right">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement1")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement2")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.GetGadgetItem("Achivement3")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Achivement Area End -->
+    <!-- Service Area Start -->
+    <section class="service-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="sec-title">
+                            <span>Our Services</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            @Html.GetGadgetItem("Service")
+
+        </div>
+    </section>
+    <!-- Service Area End -->
+
+
+
+    <section class="how-works-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="sec-title">
+                            <span>how we works</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.GetGadgetItem("hWorks")
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="jobguru-video-area section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="video-container">
+                        @Html.GetGadgetItem("Hire")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="briffs-testimonial-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="sec-title">
+                            <span>Client's Review</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.GetGadgetItem("Reviews")
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

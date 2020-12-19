@@ -1,0 +1,336 @@
+﻿@model MangroveSpace.ViewModel.AlbumPakageViewModel
+
+@{
+    ViewBag.Title = "Edit Album";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/albums/" class="btn btn-success">Manage albums</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Edit", "albums", null, FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.AspCMSAlbum.ID)
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSAlbum.AID, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSAlbum.AID, new { htmlAttributes = new { @class = "form-control", Value = Model.AspCMSAlbum.AID, @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.AspCMSAlbum.AID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSAlbum.AlbumTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.AspCMSAlbum.AlbumTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.AspCMSAlbum.AlbumTitle)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSAlbum.AlbumDescription, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.AspCMSAlbum.AlbumDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.AspCMSAlbum.AlbumDescription)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSAlbum.CDate, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12 JoinDate", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div id="filterDate2">
+
+                                        <!-- Datepicker as text field -->
+                                        <div class="input-group date cus_date_3" data-provide="datepicker" data-date-format="mm.dd.yyyy">
+                                            @Html.TextBoxFor(model => model.AspCMSAlbum.CDate, "{0:dd/MM/yyyy}", htmlAttributes: new { @class = "form-control CDate", data_date_format = "mm.dd.yyyy", placeholder = "mm/dd/yy" })
+                                            @Html.ValidationMessageFor(m => m.AspCMSAlbum.CDate)
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AspCMSAlbum.Status, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model => model.AspCMSAlbum.Status, new SelectList(new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "Select status", Value = string.Empty},
+                                        new SelectListItem {Text = "Active", Value = "true"},
+                                        new SelectListItem {Text = "Inactive", Value = "false"}
+                                    }, "Value", "Text"), new {@class = " js-example-basic-single form-control ", name = "AspCMSAlbum.Status"})
+                                    @Html.ValidationMessageFor(m => m.AspCMSAlbum.Status)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Album Cover</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="image-view mangrove_space">
+                                        <div class="image-view-show">
+                                            <img src="@ViewBag.ImagePath" class="blah" />
+                                        </div>
+                                        <div class="image-action">
+                                            <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/albums/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+
+                <form action="@Url.Action("UploadPhotos", "Albums", new { AID= Model.AspCMSAlbum.AID})" method="post" enctype="multipart/form-data" class="dropzone" id="uploadWidget"></form>
+
+            </div>
+
+
+
+
+
+
+
+            @* NEW PACKAGE MODAL *@
+            @*<div class="modal fade packecg_modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                            </div>
+                            <div class="modal-body">
+                                @using (Html.BeginForm("Create", "Albumdetails", FormMethod.Post, new { id = "demo-form2", @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.aspCMSAlbumDetail.ADID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.TextBoxFor(model => model.aspCMSAlbumDetail.ADID, new { @class = "form-control", Value = Model.aspCMSAlbumDetail.ADID, @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(m => m.aspCMSAlbumDetail.ADID)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.aspCMSAlbumDetail.AID, htmlAttributes: new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.TextBoxFor(model => model.aspCMSAlbumDetail.AID, new { @class = "form-control", Value = Model.AspCMSAlbum.AID, @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(m => m.aspCMSAlbumDetail.AID)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.aspCMSAlbumDetail.AlbumDetailsTitle, new { @class = "control-label col-md-4 col-sm-4 col-xs-12" })
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.TextBoxFor(model => model.aspCMSAlbumDetail.AlbumDetailsTitle, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+
+                                            <div class="image-view mangrove_space col-md-6 col-sm-6 col-xs-12">
+                                                <div class="image-action">
+                                                    <input type="file" name="ImageFile" onchange="readURL(this)" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    @Html.HiddenFor(model => model.AspCMSAlbum.AID, new { @class = "form-control", Value = Model.AspCMSAlbum.AID, @readonly = "readonly" })
+                                    @Html.HiddenFor(model => model.aspCMSAlbumDetail.ADID, new { @class = "form-control", Value = Model.aspCMSAlbumDetail.ADID, @readonly = "readonly" })
+                                    @Html.HiddenFor(model => model.aspCMSAlbumDetail.AlbumDetailsTitle, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.aspCMSAlbumDetail.AlbumDetailsDescription, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.aspCMSAlbumDetail.Status, new { @class = "form-control" })
+
+
+                                    <hr />
+                                    <div class="form-group text-right">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+
+        Dropzone.options.uploadWidget = {
+
+        paramName: "file",
+        maxFilesize: 20,
+        maxFiles: 5,
+        resizeWidth: 0,
+        uploadMultiple: true,
+        acceptedFiles: "image/*",
+        parallelUploads: 1,
+        addRemoveLinks: true,
+        //[more configuration]
+
+        init: function () {
+            var myDropzone = this;
+
+            $.get("@Url.Action("GetImages", "Albums",new { AID= Model.AspCMSAlbum.AID})", function (data) {
+                if (data.Data != '') {
+                    $.each(data.Data, function (index, item) {
+
+                        // var mockFile = { name: "Pr6-3.jpg", size: 12345, type: 'image/jpeg' }
+
+                        //myDropzone.options.addedfile.call(Dropzone, file)
+                        //myDropzone.options.thumbnail.call(Dropzone, file,val)
+                        //myDropzone.emit('complete', file)
+                        //var mockFile = { name: "myimage.jpg", size: 12345, type: 'image/jpeg' };
+
+                        //this.options.addedfile.call(this, key);
+                        //this.options.thumbnail.call(this, key, "~/Uploads/Product/Pr6/Pr6-3.jpg");
+
+                        //// Create the mock file:
+                        var mockFile = {
+                            name: item.name,
+                            size: item.size,
+                            serverFileName: item.name
+                        };
+                        // Call the default addedfile event handler
+                        myDropzone.files.push(mockFile);
+                        myDropzone.emit("addedfile", mockFile);
+                        // And optionally show the thumbnail of the file:
+                        myDropzone.emit("thumbnail", mockFile, item.path);
+                        myDropzone.emit('complete', mockFile);
+
+
+                    })
+                }
+            })
+
+            this.on("success", function (file, serverFileName) {
+                file.serverFileName = serverFileName;
+
+            });
+            this.on("removedfile", function (file) {
+                x = confirm('Do you want to delete?');
+                if (!x)
+                {
+                    return false;
+                }
+                if (file.serverFileName == "Error in saving file") {
+                    file.previewElement.remove();
+                    window.location = "http://www.yoururl.com";
+                    return true;
+                } else {
+                    $.post("/Albums/DeleteImage/?deleteFile=" + encodeURIComponent(file.serverFileName));
+                    file.previewElement.remove();
+                    return true;
+                }
+            });
+        }
+        }
+
+
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+
+    <script>
+        var table = $(".albumdetail").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+    </script>
+
+    <script>
+        $(".dropzone").dropzone({
+            dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> Click here or drop files to upload",
+        });
+    </script>
+}

@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "ComparePowerPlant";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<div class="maincontent-home inner_page" data-sticky-sidebar-container>
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="container-large">
+                <div class="row">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" style="margin-left: 3%; margin-bottom:10px">Comparison Type</label>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <select class="js-example-basic-single form-control ComparisonTypeID" name="ComparisonTypeID" data-placeholder="Select an item">
+                            <option value="PP">Power Plants</option>
+                            <option value="M">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="compare_box row col-md-2">
+                        <input id="PP1" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                    </div>
+
+                    <div class="compare_box row col-md-2">
+                        <input id="PP2" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                    </div>
+
+                    <div class="compare_box row col-md-2">
+                        <input id="PP3" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                    </div>
+
+                    <div class="compare_box row col-md-2">
+                        <input id="PP4" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                    </div>
+
+                    <div class="compare_box row col-md-2">
+                        <button class="btn btn-info generateBtn" value="Generate">Generate</button>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+                <div id="tableArea" class="tableArea row" style="overflow: auto">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    .compare_box.row.col-md-2 {
+        margin-left: 3%;
+    }
+</style>
+@section Scripts {
+    <script>
+        var selectedVal = "PP";
+        $('.ComparisonTypeID').change(function () {
+
+            selectedVal = $(this).find(':selected').val();
+            var selectedText = $(this).find(':selected').text();
+
+            if (selectedVal == "PP") {
+                $(".filter").attr("placeholder", "Select a Power Plant");
+            }
+            else if (selectedVal == "M") {
+                $(".filter").attr("placeholder", "Select an Item");
+            }
+        });
+
+        $('.generateBtn').click(function () {
+            var pp1 = $('#PP1').val();
+            var pp2 = $('#PP2').val();
+            var pp3 = $('#PP3').val();
+            var pp4 = $('#PP4').val();
+            if (selectedVal == "PP") {
+
+            $.ajax({
+                url: "@Url.Action("GetComparePowerPlantData", "Home")",
+                method: "GET",
+                data: { PowerPlant1: pp1, PowerPlant2: pp2, PowerPlant3: pp3, PowerPlant4: pp4 },
+                success: function (data) {
+                    $('#tableArea').empty();
+                    $('#tableArea').append(data);
+                }
+             });
+            }
+            else if (selectedVal == "M") {
+
+            $.ajax({
+                url: "@Url.Action("GetCompareItemData", "Home")",
+                method: "GET",
+                data: { Item1: pp1, Item2: pp2, Item3: pp3, Item4: pp4 },
+                success: function (data) {
+                    $('#tableArea').empty();
+                    $('#tableArea').append(data);
+                    MergeCommonRows($('.compareTable'))
+                }
+             });
+            }
+        });
+
+        $(".filter").typeahead({
+            minLength: 1,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/GetTypeWiseFilter/",
+                    data: {
+                        "name": request,
+                        "type": selectedVal
+                    },
+                    type: "GET",
+                    contentType: "json",
+                    success: function (data) {
+                        items = [];
+                        map = {};
+                        $.each(data, function (i, item) {
+                            var id = item.Name;
+                            var name = item.Name;
+                            map[name] = {
+                                id: id,
+                                name: name
+                            };
+                            items.push(name);
+                        });
+                        response(items);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+        });
+
+        function MergeCommonRows(table) {
+            var firstColumnBrakes = [];
+            // iterate through the columns instead of passing each column as function parameter:
+            for(var i=1; i<=table.find('td').length; i++){
+                var previous = null, cellToExtend = null, rowspan = 1;
+                table.find("td:nth-child(" + i + ")").each(function(index, e){
+                    var jthis = $(this), content = jthis.text();
+                    // check if current row "break" exist in the array. If not, then extend rowspan:
+                    if (previous == content && content !== "" && $.inArray(index, firstColumnBrakes) === -1) {
+                        // hide the row instead of remove(), so the DOM index won't "move" inside loop.
+                        jthis.addClass('hidden');
+                        cellToExtend.attr("rowspan", (rowspan = rowspan+1));
+                    }else{
+                        // store row breaks only for the first column:
+                        if(i === 1) firstColumnBrakes.push(index);
+                        rowspan = 1;
+                        previous = content;
+                        cellToExtend = jthis;
+                    }
+                });
+            }
+            // now remove hidden td's (or leave them hidden if you wish):
+            $('td.hidden').remove();
+        }
+    </script>
+}

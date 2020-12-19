@@ -1,0 +1,116 @@
+﻿@using System.Data
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+    <style>
+        .btntoTop:before {
+            content: "";
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="container wrap">
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml", new ViewDataDictionary<DataTable>())
+
+
+        @*@Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NewsPartial.cshtml")*@
+
+
+        <div class="main-containt">
+            <div class="container">
+                <div class="row">
+                    @*<div class="col-md-3">
+                            @Html.GetGadgetItem("SideBar-gadget-img")
+                            @Html.GetGadgetItem("sidebar-navigation")
+                            @Html.GetGadgetItem("related-links")
+                            @Html.GetGadgetItem("sidebar-contact")
+
+
+                        </div>*@
+                    <div class="col-md-12">
+                        <div class="single_pad_page">
+                            @if (User.Identity.IsAuthenticated && ViewBag.Page == "Page")
+                            {
+                                <div class="content-box nativeEditor" id="editContent">
+                                    @RenderBody()
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="content-box nativeEditor">
+                                    @RenderBody()
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+</body>
+</html>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+}

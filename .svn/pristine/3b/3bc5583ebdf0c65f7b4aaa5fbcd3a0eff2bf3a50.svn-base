@@ -1,0 +1,6 @@
+﻿<li class="submenu-parent">
+    <a href="{$MenuLink}">{$Content}</a>
+    <ul class="submenu">
+        {$childStr}
+    </ul>
+</li>

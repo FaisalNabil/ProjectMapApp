@@ -1,0 +1,1446 @@
+/*
+*******************************************
+*******************************************
+
+Template Name: Wakfi
+Template URL: http://themescare.com/demos/wakfi-demo
+Description: Wakfi - App Landing HTML5 Page.
+Author: Themescare
+Author URL: https://themeforest.net/user/themescare
+Version: 1.0
+
+* This file contains the styling for the actual theme, this
+is the file you need to edit to change the look of the
+theme.
+
+This files contents are outlined below >>>>
+
+*** SEARCH EACH SECTION AS IT COMMENTS, YOU WILL GET THE RIGHT SECTION.
+
+*******************************************
+*******************************************
+
+==== CSS INDEX
+
+01 - IMPORTED CSS
+02 - DEFAULT CSS
+03 - SITE PRELOADER CSS
+04 - NAV CSS
+05 - INTRO CSS
+06 - PROMO CSS
+07 - ABOUT CSS
+08 - FEATURES CSS
+09 - CHOOSE CSS
+10 - SCREENSHOT CSS
+11 - TEAM CSS
+12 - NEWSLETTER CSS
+13 - PRICING CSS
+14 - TESTIMONIAL CSS
+15 - DOWNLOAD AREA CSS
+16 - BLOG CSS
+17 - CONTACT CSS
+18 - FOOTER CSS
+
+*/
+
+
+/*================================================
+01 - IMPORTED CSS
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800');
+
+/*================================================
+02 - DEFAULT CSS
+==================================================*/
+
+body {
+	background-color: #fff;
+	color: #6b739c;
+	font-family: "Open Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 28px;
+	overflow-wrap: break-word;
+	word-break: normal;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+img {
+	max-width: 100%;
+	height: auto
+}
+
+p {
+	line-height: 1.8;
+	margin: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+	color: inherit
+}
+
+a:focus {
+	text-decoration: none;
+	outline: medium none;
+	color: inherit
+}
+
+a:hover {
+	color: inherit;
+	text-decoration: none;
+	color: inherit
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+	outline: medium none
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+.wakfi-btn {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	display: inline-block;
+	padding: 15px 30px;
+	color: #fff;
+	text-transform: capitalize;
+	font-weight: 500;
+	border-radius: 50px;
+	font-size: 17px;
+}
+
+.wakfi-btn:hover {
+    background: -webkit-linear-gradient( 0deg, rgb(0, 236, 188) 0%, rgb(0, 122, 223) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 236, 188) 0%, rgb(0, 122, 223) 100%);
+	color: #fff
+}
+
+.wakfi-btn i {
+	margin-right: 5px
+}
+
+.site-heading {
+	width: 60%;
+	text-align: center;
+	margin: 0 auto 30px
+}
+
+.site-heading h2 {
+	font-size: 40px;
+	color: #22233b;
+	font-weight: 600;
+	text-transform: capitalize;
+	font-family: 'Dosis', sans-serif;
+	margin-bottom: 10px;
+}
+
+.section_100 {
+	padding: 100px 0;
+}
+
+.section_50 {
+	padding: 50px 0;
+}
+
+.section_15 {
+	padding: 15px 0
+}
+
+.pad-right {
+	padding-right: 0
+}
+
+.section_t_100 {
+	padding-top: 100px
+}
+
+.section_b_70 {
+	padding-bottom: 70px
+}
+
+.section_b_80 {
+	padding-bottom: 80px
+}
+
+
+/*================================================
+03 - SITE PRELOADER CSS
+==================================================*/
+
+#page-loader {
+	width: 100%;
+	height: 100%;
+	background: #fff none repeat scroll 0 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999
+}
+
+.loading-wrapper {
+	width: 250px;
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	margin-left: -125px
+}
+
+.tp-loader {
+	z-index: 10000;
+	position: relative
+}
+
+.loader-image {
+	margin-top: 25px;
+	text-align: center;
+}
+
+.tp-loader.spinner {
+	width: 30px;
+	height: 30px;
+	margin: 0 auto 10px;
+	background-image: -webkit-linear-gradient(50deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient(50deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .15);
+	-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .15);
+	-webkit-animation: tp-rotateplane 1.2s infinite ease-in-out;
+	animation: tp-rotateplane 1.2s infinite ease-in-out;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px
+}
+
+@-webkit-keyframes tp-rotateplane {
+	0% {
+		-webkit-transform: perspective(120px)
+	}
+	50% {
+		-webkit-transform: perspective(120px) rotateY(180deg)
+	}
+}
+
+@keyframes tp-rotateplane {
+	0% {
+		transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+		-webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+	}
+	50% {
+		transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+		-webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+	}
+}
+
+
+/*================================================
+04 - NAV CSS
+==================================================*/
+
+nav.navbar {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	z-index: 999;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+nav.navbar .navbar-toggler {
+	border: 0;
+}
+
+nav.navbar .nav-item {
+	font-size: 13px;
+	font-weight: 400;
+	padding-right: 13px;
+	padding-left: 13px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+nav.navbar .nav-item:first-child {
+	padding-left: 0;
+}
+
+nav.navbar .nav-item:last-child {
+	padding-right: 0;
+}
+
+nav.navbar .nav-item .nav-link {
+	color: #fff;
+	position: relative;
+	text-decoration: none;
+	padding: 0;
+	font-weight: 600;
+	font-family: 'Montserrat', sans-serif;
+}
+
+nav.navbar .nav-item .nav-link:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+	visibility: hidden;
+	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transition: all 0.3s ease-in-out 0s;
+	transition: all 0.3s ease-in-out 0s;
+}
+
+nav.navbar .nav-item .nav-link.active:before {
+	visibility: visible;
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}
+
+nav.fixed-top {
+	position: fixed;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	background-image: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav.fixed-top .logo {
+	color: #000;
+}
+
+nav.fixed-top .logo:focus,
+nav.fixed-top .logo:hover {
+	color: #000;
+}
+
+nav.fixed-top .navbar-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+nav.fixed-top .nav-item {
+	color: #000;
+}
+
+nav.fixed-top .nav-item .nav-link {
+	color: #fff !important;
+}
+
+nav.fixed-top .nav-item .nav-link:before {
+	background-color: #fff;
+}
+
+
+/*================================================
+05 - INTRO CSS
+==================================================*/
+
+.wakfi-home-area {
+	background: url(../img/intro.jpg) no-repeat fixed center center/cover;
+	position: relative;
+	z-index: 1;
+	padding: 100px 0
+}
+
+.wakfi-home-area:after {
+	background-image: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	content: "";
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	z-index: -1
+}
+
+.banner-welcome h2 {
+	color: #fff;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 50px;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: capitalize;
+	margin-bottom: 20px
+}
+
+.typed-static {
+	color: #d6d6d6
+}
+
+.ah-headline b {
+	font-weight: 500
+}
+
+.caption-inner span {
+	color: #fff;
+	font-size: 45px;
+	font-weight: 500;
+	line-height: 40px;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: capitalize;
+	margin-bottom: 20px
+}
+
+.typed-static {
+	margin-right: 10px
+}
+
+.banner-welcome p {
+	color: #fff;
+	font-size: 16px
+}
+
+.banner-right {
+	padding-top: 70px;
+}
+
+.banner-welcome {
+	padding-top: 120px
+}
+
+.store-app-btn {
+	margin-top: 30px
+}
+
+.store-app-btn a {
+	height: 50px;
+	width: 158px;
+	display: inline-block;
+	margin-right: 15px
+}
+
+.app-store-btn {
+	background: url(../img/app-store-btn.png) no-repeat scroll 0 0;
+}
+
+.play-store-btn {
+	background: url(../img/play-store-btn.png) no-repeat repeat scroll 0 0;
+}
+
+.ah-headline.clip .ah-words-wrapper:after {
+	background-color: #fff !important
+}
+
+.banner-right,
+.abt-bg,
+.choose-bg {
+	animation-name: float-bob;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	-webkit-animation-name: float-bob;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-name: float-bob;
+	-moz-animation-duration: 1.5s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-ms-animation-name: float-bob;
+	-ms-animation-duration: 1.5s;
+	-ms-animation-iteration-count: infinite;
+	-ms-animation-timing-function: linear;
+	-o-animation-name: float-bob;
+	-o-animation-duration: 1.5s;
+	-o-animation-iteration-count: infinite;
+	-o-animation-timing-function: linear;
+}
+
+
+/* Bob */
+
+@-webkit-keyframes float-bob {
+	0% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+	50% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+	100% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes float-bob {
+	0% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+	50% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+	100% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+}
+
+
+/*================================================
+06 - PROMO CSS
+==================================================*/
+
+.wakfi-promo-area {
+	background: #F3F5FB none repeat scroll 0 0
+}
+
+.single-promo {
+	padding: 50px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 15px 30px rgba(102, 113, 228, 0.13);
+	position: relative;
+	;
+	margin-bottom: 30px
+}
+
+.single-promo {
+	text-align: center
+}
+
+.promo-icon {
+	width: 60px;
+	background-image: -webkit-linear-gradient( 50deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( 50deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	height: 60px;
+	margin: 0 auto;
+	border-radius: 12px;
+	font-size: 26px;
+	color: #fff;
+	margin-bottom: 20px;
+	line-height: 60px;
+}
+
+.promo-text h3 {
+	font-size: 22px;
+	color: #22233b;
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 10px
+}
+
+
+/*================================================
+07 - ABOUT CSS
+==================================================*/
+
+.wakfi-about-area {
+	position: relative
+}
+
+.abt-bg {
+	position: absolute;
+	top: 50px;
+	left: -250px
+}
+
+.about-app-left{
+    padding-top: 100px
+}
+
+.about-app-left h3 {
+	font-size: 35px;
+	color: #22233b;
+	line-height: 55px;
+	font-weight: 600;
+	text-transform: capitalize;
+	font-family: 'Dosis', sans-serif;
+	margin-bottom: 30px;
+}
+
+.about-app-left p {
+	margin: 0 0 10px;
+	color: #6b739c;
+	font-size: 15px
+}
+
+.about-app-left a.wakfi-btn {
+	margin-top: 30px
+}
+
+
+/*================================================
+08 - FEATURES CSS
+==================================================*/
+
+.wakfi-features-area {
+	background-image: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+}
+
+.wakfi-features-area .site-heading h2,
+.wakfi-features-area .site-heading p {
+	color: #fff
+}
+
+.feature-right-side {
+	color: #fff
+}
+
+.feature-left-side {
+	text-align: right;
+	color: #fff
+}
+
+.feature-left-side p,
+.feature-right-side p {
+	color: #fff;
+	font-size: 14px
+}
+
+.feature-left-side h4,
+.feature-right-side h4 {
+	font-size: 22px;
+	color: #fff;
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 10px;
+}
+
+.icon-circle {
+	font-size: 24px;
+	width: 50px;
+	height: 50px;
+	background: #fff;
+	text-align: center;
+	border-radius: 5px;
+	line-height: 50px;
+}
+
+.icon-circle i,
+.choose-left ul li i {
+	color: #00B6CC;
+}
+
+.feature-left-side .media,
+.feature-right-side .media {
+	margin-bottom: 30px
+}
+
+.feature-left-side .media:last-child,
+.feature-right-side .media:last-child {
+	margin-bottom: 0px
+}
+
+.feature-left-side .media:first-child,
+.feature-right-side .media:first-child {
+	margin-top: 30px
+}
+
+
+/*================================================
+09 - CHOOSE CSS
+==================================================*/
+
+.wakfi-choose-area {
+	position: relative
+}
+
+.choose-bg {
+	position: absolute;
+	top: 50px;
+	right: 0
+}
+
+.video-box {
+	position: relative;
+    top: 60px
+}
+
+
+.video {
+	position: absolute;
+	top: 20px;
+	width: 72%;
+	left: 76px;
+}
+
+.video-frame-holder {
+	padding: 56.25% 0 0 0;
+	position: relative;
+}
+
+.video iframe {
+	border: medium none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.choose-left h3 {
+	font-size: 35px;
+	color: #22233b;
+	line-height: 55px;
+	font-weight: 600;
+	text-transform: capitalize;
+	font-family: 'Dosis', sans-serif;
+	margin-bottom: 10px;
+}
+
+.choose-left p {
+	color: #6b739c;
+	font-size: 15px;
+}
+
+.choose-left ul {
+	margin-top: 20px
+}
+
+.choose-left ul li {
+	margin-top: 5px
+}
+
+.choose-left ul li i {
+	margin-right: 5px;
+}
+
+.choose-btn a.wakfi-btn {
+	margin-top: 30px
+}
+
+
+/*================================================
+10 - SCREENSHOT CSS
+==================================================*/
+
+.wakfi-screenshot-area {
+	background: #F3F5FB none repeat scroll 0 0;
+	padding-bottom: 160px;
+	position: relative
+}
+
+.screenshot-bg {
+	position: absolute;
+	left: 30%;
+	top: 30%
+}
+
+.wakfi-screenshot-area .site-heading {
+	margin-bottom: 50px
+}
+
+.screenshot-single-slide {
+	z-index: 99999;
+	position: relative;
+}
+
+.screenshot-slider {
+	position: relative;
+	cursor: move
+}
+
+.screenshot-slider:after {
+	content: url(../img/mobile-frame.png);
+	left: 48.5%;
+	position: absolute;
+	top: 58%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.screenshot-single-slide img {
+	width: 225px !important;
+	padding-top: 56px;
+}
+
+.screenshot-slider .owl-nav {
+	bottom: -130px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.screenshot-slider .owl-nav .owl-prev {
+	background-image: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%) !important;
+	background-image: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%) !important;
+	border-radius: 50%;
+	height: 40px;
+	margin-right: 10px;
+	width: 40px;
+	color: #fff !important
+}
+
+.screenshot-slider .owl-nav .owl-next {
+	background-image: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%) !important;
+	background-image: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%) !important;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	color: #fff !important
+}
+
+
+/*================================================
+11 - TEAM CSS
+==================================================*/
+
+.single-team {
+	border: 1px solid #ddd;
+	overflow: hidden;
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.team-image>img {
+	width: 100%;
+}
+
+.team-info {
+	background-image: -webkit-linear-gradient( 10deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( 10deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	height: 50%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	-webkit-transform: rotateY(97deg);
+	transform: rotateY(97deg);
+	-webkit-transform-origin: left center 0;
+	transform-origin: left center 0;
+	-webkit-transition: all 0.5s ease-in-out 0s;
+	transition: all 0.5s ease-in-out 0s;
+	visibility: hidden;
+	width: 100%;
+}
+
+.team-info-two {
+	background-image: -webkit-linear-gradient( -10deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background-image: -ms-linear-gradient( -10deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	height: 50%;
+	right: 0;
+	position: absolute;
+	bottom: 0;
+	-webkit-transform: rotateY(-97deg);
+	transform: rotateY(-97deg);
+	-webkit-transform-origin: right center 0;
+	transform-origin: right center 0;
+	-webkit-transition: all 0.8s ease-in-out 0s;
+	transition: all 0.8s ease-in-out 0s;
+	visibility: hidden;
+	width: 100%;
+}
+
+.team-overlay-one {
+	left: 50%;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+
+.team-overlay-two {
+	left: 50%;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+
+.team-overlay-one>h3 {
+	color: #fff;
+	display: inline-block;
+	font-family: "Montserrat", sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+}
+
+.team-overlay-one>p {
+	color: #fff;
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+
+.single-team:hover .team-info {
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	visibility: visible;
+}
+
+.single-team:hover .team-info-two {
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	visibility: visible;
+}
+
+.team-overlay-two>ul {
+	text-align: center;
+}
+.logo img{
+    width:170px
+}
+.team-overlay-two li {
+    display: inline-block;
+}
+
+.team-overlay-two a {
+	background: #fff none repeat scroll 0 0;
+	border-radius: 5px;
+	display: block;
+	color: #27d0ee;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	width: 30px;
+}
+
+.team-overlay-two a:hover {
+	background-image: -webkit-linear-gradient(top left, rgb(0, 122, 223), rgb(0, 236, 188));
+	background-image: -ms-linear-gradient(top left, rgb(0, 122, 223), rgb(0, 236, 188));
+	color: #fff;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s
+}
+
+.team-overlay-two a:hover i {
+	color: #fff;
+}
+
+.team-overlay-two ul li i {
+	color: #00B6CC;
+}
+
+
+/*================================================
+12 - NEWSLETTER CSS
+==================================================*/
+
+.wakfi-newsletter-area {
+	background: url(../img/newsletter.jpeg) no-repeat fixed center center/cover;
+	position: relative;
+	z-index: 1;
+	text-align: center
+}
+
+.wakfi-newsletter-area:after {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -moz-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	content: "";
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	z-index: -1;
+}
+
+.newsletter-box {
+	width: 70%;
+	margin: 0 auto;
+	color: #fff
+}
+
+.newsletter-icon {
+	width: 80px;
+	height: 80px;
+	color: #fff;
+	font-size: 30px;
+	line-height: 65px;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	margin: 0 auto 30px
+}
+
+.newsletter-box h2 {
+	font-size: 40px;
+	color: #fff;
+	line-height: 55px;
+	font-weight: 500;
+	text-transform: capitalize;
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 20px;
+}
+
+.newsletter-box p {
+	color: #fff;
+	font-size: 16px
+}
+
+.newsletter-box form {
+	border: 1px solid transparent;
+	border-radius: 350px;
+	height: 50px;
+	margin: 30px auto 0;
+	position: relative;
+	width: 70%;
+}
+
+.newsletter-box form input {
+	border: 1px solid transparent;
+	border-radius: 50px;
+	color: #212121;
+	height: 100%;
+	left: 0;
+	padding: 5px 70px 5px 15px;
+	position: absolute;
+	width: 100%;
+}
+
+.newsletter-box form button {
+	background: transparent none repeat scroll 0 0;
+	border: medium none;
+	height: 100%;
+	position: absolute;
+	top: 2px;
+	right: 20px;
+	width: 10%;
+	cursor: pointer;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+	text-align: right
+}
+
+.newsletter-box form button i {
+	color: #00B6CC;;
+}
+
+
+/*================================================
+13 - PRICING CSS
+==================================================*/
+
+.wakfi-pricing-area {
+	background: #F3F5FB none repeat scroll 0 0;
+}
+
+.single-pricing {
+	text-align: center;
+	background: #fff none repeat scroll 0 0;
+	box-shadow: 0 15px 30px rgba(102, 113, 228, 0.13);
+	border-radius: 5px;
+	margin-bottom: 30px
+}
+
+.pricing-header {
+	padding: 20px;
+	background: -webkit-linear-gradient( -50deg, rgb(0, 122, 223) 20%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( -50deg, rgb(0, 122, 223) 20%, rgb(0, 236, 188) 100%);
+	border-radius: 5px 5px 0 0
+}
+
+.pricing-header h3 {
+	color: #fff;
+	text-transform: capitalize;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 23px
+}
+
+.pricing-header-tag {
+	padding: 20px
+}
+
+.pricing-header-tag h2 {
+	font-size: 35px;
+	font-family: 'Dosis', sans-serif;
+	font-weight: 700;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee
+}
+
+.pricing-header-tag h2 {
+	color: #00B6CC;
+}
+
+.pricing-header-tag h2 span.cent {
+	font-size: 48px
+}
+
+.pricing-header-tag h2 span.month {
+	font-size: 20px;
+}
+
+.pricing-body ul li {
+	font-size: 15px;
+	margin-bottom: 10px
+}
+
+.pricing-footer {
+	padding: 20px 0;
+	border-top: 1px solid #eee;
+	margin: 20px 20px 0
+}
+
+.pricing-footer>a.wakfi-btn {
+	padding: 8px 30px;
+	font-size: 16px
+}
+
+
+/*================================================
+14 - TESTIMONIAL CSS
+==================================================*/
+
+.reviews-slider {
+	margin: 0 auto;
+	width: 70%;
+}
+
+.single-testimonial {
+	text-align: center;
+	cursor: all-scroll
+}
+
+.testimonial-img {
+	height: 110px;
+	margin: 0 auto;
+	border-radius: 50%;
+	width: 110px;
+	position: relative;
+	z-index: 999;
+	background: #ddd none repeat scroll 0 0
+}
+
+.testimonial-img>img {
+	border-radius: 50%;
+	width: 100%;
+	padding: 5px
+}
+
+.testimonial-text {
+	background: #fff none repeat scroll 0 0;
+	border-radius: 5px;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: -50px;
+	padding: 70px 20px 20px;
+}
+
+.testimonial-info>h4 {
+	color: #222;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 5px;
+	text-transform: capitalize
+}
+
+.testimonial-info>h4 {
+	color: #00B6CC;
+}
+
+.testimonial-info>p {
+	font-weight: 600;
+	text-transform: capitalize
+}
+
+.testimonial-info {
+	margin-top: 25px;
+}
+
+.owl-dots {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.owl-dots .owl-dot {
+	display: inline-block;
+}
+
+.owl-dots .owl-dot span {
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+	background: #0a172c none repeat scroll 0 0;
+	border-radius: 30px;
+	display: block;
+	height: 5px;
+	margin: 5px 5px 0;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+	width: 20px;
+}
+
+.owl-dots .owl-dot.active span,
+.owl-dots .owl-dot:hover span {
+	background: #00ecbc none repeat scroll 0 0;
+}
+
+
+/*================================================
+15 - DOWNLOAD AREA CSS
+==================================================*/
+
+.wakfi-download-area {
+	background: url(../img/download_bg.jpg) no-repeat fixed center center/cover;
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+.wakfi-download-area:after {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	content: "";
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	z-index: -1;
+}
+
+.download-box {
+	width: 60%;
+	margin: 0 auto
+}
+
+.download-box h2 {
+	font-size: 40px;
+	color: #fff;
+	line-height: 55px;
+	font-weight: 500;
+	text-transform: capitalize;
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 20px;
+}
+
+.download-box p {
+	color: #fff
+}
+
+.download-area-btns {
+	margin-top: 30px
+}
+
+.download-area-btns a {
+	display: inline-block;
+	padding: 8px 30px;
+	color: #fff;
+	text-transform: capitalize;
+	border: 2px solid #fff;
+	border-radius: 30px;
+	margin: 0 5px;
+	font-size: 17px;
+	font-weight: 500
+}
+
+.download-area-btns a i {
+	font-size: 20px;
+	margin-right: 5px
+}
+
+
+/*================================================
+16 - BLOG CSS
+==================================================*/
+
+.single-blog {
+	background: #ffffff none repeat scroll 0 0;
+	box-shadow: 0 17px 40px 0 rgba(0, 0, 0, 0.1);
+	-webkit-transition: all 0.7s ease 0s;
+	transition: all 0.7s ease 0s;
+	margin-bottom: 30px
+}
+
+.blog-img img {
+	width: 100%
+}
+
+.single-blog:hover {
+	box-shadow: 0 17px 40px 0 rgba(0, 0, 0, 0.25);
+}
+
+.blog-text {
+	padding: 20px 20px 5px;
+	text-align: center;
+}
+
+.blog-meta>p {
+	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	margin-right: 10px;
+}
+
+.blog-meta>p:last-child {
+	margin-right: 0
+}
+
+.blog-text p>i {
+	color: #00B6CC;
+	margin-right: 5px;
+}
+
+.blog-text>h3 {
+	color: #162337;
+	font-family: "Montserrat", sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 26px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	text-transform: capitalize;
+}
+
+.blog-text>h3 a:hover {
+	color: #0095D7
+}
+
+.blog-btn {
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.blog-btn>a {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	border-radius: 50%;
+	color: #fff;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	text-align: center;
+	top: 15px;
+	width: 40px;
+}
+
+
+/*================================================
+17 - CONTACT CSS
+==================================================*/
+
+.wakfi-contact-area {
+	background: #F3F5FB none repeat scroll 0 0
+}
+
+.contact-form h3,
+.contact-info h3 {
+	font-size: 28px;
+	color: #111;
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 30px;
+}
+
+.contact-form form p {
+	margin-top: 10px;
+	position: relative;
+}
+
+.contact-form form p input {
+	background: #fff none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 20px;
+	padding: 5px 20px;
+	width: 100%;
+	height: 40px;
+	box-shadow: 0 0 5px 0 rgba(170, 170, 170, 0.15)
+}
+
+.contact-form form p textarea {
+	background: #fff none repeat scroll 0 0;
+	padding: 10px 20px;
+	width: 100%;
+	height: 120px;
+	border: medium none;
+	border-radius: 20px;
+	box-shadow: 0 0 5px 0 rgba(170, 170, 170, 0.15)
+}
+
+.contact-form form p button {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	display: inline-block;
+	padding: 12px 30px;
+	color: #fff;
+	text-transform: capitalize;
+	font-weight: 600;
+	border-radius: 50px;
+	font-size: 17px;
+	border: medium none;
+	cursor: pointer;
+}
+
+.contact-info ul {
+	margin-top: 20px
+}
+
+.contact-info ul li {
+	margin-bottom: 10px;
+	color: #111
+}
+
+.contact-info ul li:last-child {
+	margin-bottom: 0px
+}
+
+.contact-info ul li i {
+	background: -webkit-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	background: -ms-linear-gradient( 0deg, rgb(0, 122, 223) 0%, rgb(0, 236, 188) 100%);
+	color: #fff;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 50%;
+	margin-right: 10px
+}
+
+
+/*================================================
+18 - FOOTER CSS
+==================================================*/
+
+.wakfi-footer-area {
+	padding: 30px 20px;
+	text-align: center
+}
+
+.footer-box {
+	font-size: 15px;
+}

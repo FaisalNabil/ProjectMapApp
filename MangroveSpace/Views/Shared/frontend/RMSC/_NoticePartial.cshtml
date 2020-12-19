@@ -1,0 +1,42 @@
+﻿
+<div class="single-content-box">
+    <h3>Notice &amp; Circular</h3>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    string ImgPath;
+                    int i = 0;
+                    MangroveSpaceEntities db = new MangroveSpaceEntities();
+                    List<dynamic> Information = Global.Sql(db, "select top 5 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeDate] DESC").ToList();
+                    foreach (dynamic item in Information)
+                    {
+                        
+                        <tr>
+                            <td><a href="/Notice/NoticeDetails/@item.NoticeID">@item.NoticeName</a></td>
+                            <td>@item.NoticeDate.ToString("MM/dd/yyyy")</td>
+                            <td>
+                                <a href="@item.AttachFile" target="_blank">download</a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="more">
+        <a href="@Url.Action("AllNotice","Notice")">view more</a>
+    </div>
+</div>
+
+
+

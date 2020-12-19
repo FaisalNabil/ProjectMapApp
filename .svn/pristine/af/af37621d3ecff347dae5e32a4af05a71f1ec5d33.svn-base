@@ -1,0 +1,9 @@
+﻿    @Html.GetGadgetItem("Logo")
+
+    @Html.GetGadgetItem("QuickLinks")
+
+    @Html.GetGadgetItem("Address")
+
+    @Html.GetGadgetItem("NewsLetter")
+
+    @Html.GetGadgetItem("Copyrights")

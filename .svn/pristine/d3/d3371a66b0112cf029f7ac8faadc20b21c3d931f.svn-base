@@ -1,0 +1,62 @@
+﻿
+@using System.Data
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="side_page_action">
+        <ul>
+            <li><a href="#" onclick="myFunction()"><span>save changes</span> <i class="fa fa-check"></i></a></li>
+            <li><a href="/Home/Dashboard"><span>Dashboard</span><i class="fa fa-dashboard"></i></a></li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutFoddddrm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutFoddddrm').submit()"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                }
+            </li>
+        </ul>
+    </div>
+}
+
+
+
+<div class="header-top-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="header-top-left">
+                    @Html.GetGadgetItem("TopLeft")
+                </div>
+            </div>
+            <div class="col-md-6">
+                @Html.GetGadgetItem("TopRight")
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="header-logo-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.GetGadgetItem("SiteLogo")
+
+                <div class="jobguru-responsive-menu "></div>
+            </div>
+            <div class="col-md-9">
+
+                @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml", new ViewDataDictionary<DataTable>())
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+

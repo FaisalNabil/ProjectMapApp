@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("create", "UserRoles", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("User")
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="UserID" id="UserID" class="js-example-basic-single form-control">
+                                        @if (ViewBag.Users != null)
+                                        {
+                                            <option>Select User</option>
+                                            foreach (var item in ViewBag.Users)
+                                            {
+                                                <option value="@item.Id">@item.Email</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Role")
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="RoleID" id="RoleID" class="js-example-basic-single form-control">
+                                        @if (ViewBag.Roles != null)
+                                        {
+                                            <option>Select Role</option>
+                                            foreach (var item in ViewBag.Roles)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href='@Url.Action("Index", "UserRoles")' class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <p class="text-danger">@ViewBag.Msg</p>
+        </div>
+    </div>
+</div>
+
+

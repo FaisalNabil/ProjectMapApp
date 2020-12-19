@@ -1,0 +1,86 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewBag.Title = "Gadget Information";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>@ViewBag.Title</h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="/gadgets/create" class="btn btn-success">Create Gadgets Information</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <div class="table-responsive">
+                                    <table class="datatable9 table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Gadget ID</th>
+                                                <th>Gadget Name</th>
+
+                                                <th>Language</th>
+
+                                                <th class="text-right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+
+                                                foreach (dynamic item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.GadgetID</td>
+                                                        <td>@item.GadgetName</td>
+
+                                                        <td>@item.GadgetLanguage</td>
+
+                                                        <td class="col-md-2" align="right">
+                                                            <div class="btn-toolbar">
+                                                                <div class="btn-group pull-right" style="margin:10px 0">
+                                                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "gadgets", new { id = @item.ID })"><i class="fa fa-pencil"></i></a>
+                                                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("CodeViewGadget", "gadgets", new { id = @item.ID })"><i class="fa fa-code"></i></a>
+
+                                                                    <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-gadget-id=@item.ID><i class="fa fa-trash-o"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+@section scripts
+{
+
+    <script>
+        var table = $(".datatable9").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+    </script>
+
+}

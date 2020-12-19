@@ -1,0 +1,891 @@
+/*
+*******************************************
+*******************************************
+
+Template Name: Briffs - Construction HTML Template
+Template URL: https://themescare.com/demos/briffs-preview
+Description: 
+Author: Themescare
+Author URL: https://themeforest.net/user/themescare
+Version: 1.0
+
+* This file contains the styling for the actual theme, this
+is the file you need to edit to change the look of the
+theme.
+
+This files contents are outlined below >>>>
+
+*** SEARCH EACH SECTION AS IT COMMENTS, YOU WILL GET THE RIGHT SECTION.
+
+*******************************************
+*******************************************
+
+==== CSS INDEX
+
+01 - IMPORTED CSS
+02 - DEFAULT CSS
+03 - RESPONSIVE CSS
+04 - PAGINATION CSS
+05 - BREADCROMB CSS
+06 - BTN TOP CSS
+07 - HEADER AREA CSS
+08 - SLIDER CSS
+
+
+
+*/
+
+
+/*================================================
+01 - IMPORTED CSS
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700');
+
+/*================================================
+02 - DEFAULT CSS
+==================================================*/
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    background: #1B8FBD;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.container.wrap{
+    width:980px
+}
+
+html,
+body {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+.container.wrap {
+    box-shadow: 0px 0px 7px 0 rgba(0, 0, 0, 0.33);
+    padding: 0;
+}
+p {
+    margin: 0
+}
+
+.no-pad-left {
+    padding-left: 0
+}
+
+.no-pad-right {
+    padding-right: 0
+}
+
+.no-pad-all {
+    padding: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    color: #6b739c
+}
+
+a:focus {
+    text-decoration: none;
+    outline: medium none;
+    color: inherit
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none;
+    color: inherit;
+    text-decoration:none
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+    outline: medium none
+}
+
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.briffs-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #fff !important;
+    background: #fbba42 none repeat scroll 0 0;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1px;
+}
+
+.briffs-btn:hover {
+    background: #061333 none repeat scroll 0 0;
+    color: #fff
+}
+
+.site-heading {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 30px
+}
+
+.site-heading:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background: #fbba42 none repeat scroll 0 0;
+    top: 0;
+}
+
+.site-heading:before {
+    position: absolute;
+    content: "";
+    left: 7px;
+    height: 100%;
+    width: 10px;
+    background: #fbba42 none repeat scroll 0 0;
+    top: 0;
+}
+
+.site-heading h4 {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #fbba42;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.site-heading h3 {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 600;
+    color: #061538;
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section_100 {
+    padding: 100px 0;
+}
+
+.section_70 {
+    padding: 70px 0;
+}
+
+.section_50 {
+    padding: 50px 0;
+}
+
+.section_15 {
+    padding: 15px 0
+}
+
+.pad-right {
+    padding-right: 0
+}
+
+.section_t_100 {
+    padding-top: 100px
+}
+
+.section_b_70 {
+    padding-bottom: 70px
+}
+
+.section_70 {
+    padding: 70px 0
+}
+
+.section_b_80 {
+    padding-bottom: 80px
+}
+
+
+/*================================================
+03 - RESPONSIVE CSS
+==================================================*/
+
+.briffs-responsive-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 100%;
+    z-index: 999;
+}
+
+.slicknav_nav a {
+    font-size: 14px;
+    margin: 0;
+    text-transform: capitalize;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    color: #000
+}
+
+.slicknav_menu {
+    background: transparent;
+}
+
+.slicknav_menutxt {
+    display: none !important;
+}
+
+.slicknav_arrow {
+    float: right;
+    color: #680503
+}
+
+.slicknav_nav a:hover {
+    border-radius: 0;
+}
+
+.slicknav_nav .slicknav_row:hover {
+    border-radius: 0
+}
+
+.slicknav_nav a:hover,
+.slicknav_nav .slicknav_row:hover {
+    background-image: linear-gradient(180deg, #680503 0%, #b30300 100%);
+    color: #fff
+}
+
+.slicknav_nav a:hover .slicknav_arrow {
+    color: #fff
+}
+
+.slicknav_nav a:hover a {
+    color: #fff
+}
+
+.slicknav_nav li {
+    border-bottom: 1px solid #ddd;
+}
+
+.slicknav_nav li.hide-desktop {
+    border-bottom: 0px solid #ddd
+}
+
+.slicknav_nav li:last-child {
+    border-bottom: 0px solid #ddd
+}
+
+.slicknav_nav {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #680503;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.19)
+}
+
+.slicknav_btn {
+    background-color: transparent !important;
+    line-height: 0;
+    margin-right: 0px;
+    margin-top: -5px;
+}
+
+.slicknav_menu .slicknav_icon {
+    float: none !important;
+    margin: 0
+}
+
+.slicknav_icon-bar {
+    height: 3px !important;
+    margin: 5px 0;
+    width: 30px !important;
+}
+
+.slicknav_menu .slicknav_icon-bar {
+    background-color: #fff;
+}
+
+.briffs-header-area.stick-top.sticky .slicknav_menu .slicknav_icon-bar,
+.briffs-header-area.home-3-page .slicknav_menu .slicknav_icon-bar {
+    background-color: #fff
+}
+
+
+/*================================================
+04 - PAGINATION CSS
+==================================================*/
+
+.pagination-box-row {
+    text-align: left;
+}
+
+.pagination-box-row p {
+    display: inline-block;
+    font-size: 15px;
+    color: #444;
+    margin-right: 15px
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    float: none;
+    display: inline-block;
+}
+
+.pagination li {
+    display: inline-block;
+    margin-right: 5px
+}
+
+.pagination li:last-child {
+    margin-right: 0
+}
+
+.pagination li a {
+    display: block;
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+    line-height: 35px;
+    border-radius: 50%;
+    color: #111;
+    font-weight: 500;
+}
+
+.pagination li.active a,
+.pagination li a:hover {
+    background: #101010 none repeat scroll 0 0;
+    color: #fff
+}
+
+
+/*================================================
+05 - BREADCROMB CSS
+==================================================*/
+
+.briffs-breadcromb-area {
+    padding: 100px 0;
+    background: url(../img/breaccromb.jpg) no-repeat fixed 0 0;
+    position: relative;
+    z-index: 1
+}
+
+.briffs-breadcromb-area:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.19) none repeat scroll 0 0;
+    z-index: -1
+}
+
+.breadcromb-box {
+    text-align: center;
+}
+
+.breadcromb-box h2 {
+    font-size: 45px;
+    line-height: 40px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 30px;
+}
+
+.breadcromb-box .breadcrumb {
+    background: transparent none repeat scroll 0 0;
+    display: inline-block;
+    margin: 0;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.breadcromb-box .breadcrumb:after {
+    background: #232323 none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.breadcromb-box .breadcrumb a,
+.breadcromb-box .breadcrumb li {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.breadcromb-box .breadcrumb li {
+    padding: 0 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.breadcromb-box .breadcrumb li i {
+    margin-right: 5px;
+}
+
+.breadcromb-box .breadcrumb li.inn:after {
+    border: 2px solid #ffffff;
+    content: "";
+    height: 10px;
+    left: -7px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.breadcromb-box .breadcrumb li.active {
+    color: #fbba42;
+}
+
+
+/*================================================
+06 - BTN TOP CSS
+==================================================*/
+
+.btntoTop:before {
+    color: #fff;
+    content: "";
+    display: inline-block;
+    font: 20px "FontAwesome";
+    vertical-align: middle;
+}
+
+.btntoTop {
+    background-color: #fbba42;
+    border: 2px solid #fbba42;
+    border-radius: 5px;
+    bottom: 30px;
+    cursor: pointer;
+    height: 50px;
+    line-height: 47px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    -webkit-transition: opacity 0.4s ease 0s;
+    transition: opacity 0.4s ease 0s;
+    width: 50px;
+    z-index: 99999;
+}
+
+.btntoTop.active {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s
+}
+
+.btntoTop.active:hover {
+    background: #212121 none repeat scroll 0 0;
+    border: 2px solid #fbba42;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.btntoTop.active.btntoTop:hover:before {
+    color: #fff;
+}
+
+
+
+/*================================================
+08 - HEADER CSS
+==================================================*/
+.header-top {
+    background-image: linear-gradient(0deg, #33add6 0%, #000a33 100%)
+}
+
+.header-logo {
+    float: left;
+    width: 20%
+
+}
+
+.header-logo img {
+    width: 100%;
+    margin: 10px;
+    display: inline-block
+}
+
+.header-title {
+    float: right;
+    width: 78%;
+    margin-top: 10px;
+}
+
+.header-right a {
+    color: #fff;
+    font-size: 30px
+}
+    .header-right form{
+        display:inline-block;
+
+    }
+        .header-right form a{
+            font-size:14px
+        }
+        .header-right {
+            text-align: right
+        }
+
+.header-right ul {
+    margin: 20px 5px;
+    display:inline-block
+}
+
+.header-right ul li {
+    display: inline-block;
+    margin: 0 3px
+}
+.search-form form{
+       position: relative;
+    height: 37px;
+    background: #fff;
+    width: 55%;
+    float: right;
+    top:-7px
+}
+.search-form input {
+ position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: medium none;
+    background: transparent;
+    padding: 5px 55px 5px 10px
+}
+.search-form button {
+     position: absolute;
+    right: 0;
+    height: 100%;
+    width: 17%;
+    border: medium none;
+    background: transparent;
+    font-size: 17px;
+    color: #a0a0a0;cursor: pointer;
+    transition: all 0.4s
+}
+.search-form button:hover{
+    color: #fff;
+    background: #333
+}
+.main-menu{
+    background-image: linear-gradient(180deg, #680503 0%, #b30300 100%);
+    min-height: 42px
+}
+.single-menu{
+    text-align: center;
+}
+.single-menu ul li{
+    display: inline-block;
+    position: relative
+}
+.single-menu ul li a{
+    color: #fff;
+    padding: 8px 20px;
+    display: block;
+    font-weight: 600
+}
+.single-menu ul li ul{
+position: absolute;
+    top: 100%;
+    background-image: linear-gradient(180deg, #680503 0%, #b30300 100%);
+    width: 180px;
+    z-index: 99;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0
+}
+.single-menu ul li:hover ul{
+    visibility: visible;
+    opacity: 1
+}
+.single-menu ul li ul li{
+    display: block;
+}
+.single-menu ul li a:hover{
+    background: #0777A3;
+    color: #fff
+}
+.slider-heading{
+    background: #b30300;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    overflow-x: hidden
+}
+.slider-heading p{
+    font-weight: 600
+}
+.main-containt{
+    background: #fff
+}
+.single-heading h4{
+    background: #B30300;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+    margin-top: 10px
+}
+.single-heading ul li{
+    border-bottom: 1px solid #525252;
+    
+}
+.single-heading ul li a{
+    color: #656565;
+    font-size: 14px;
+    display: block;
+    padding-left: 20px
+        
+}
+.single-heading ul li a:hover{
+    background: #33ADD6;
+    color: #fff
+}
+.contact-area{
+    margin-top: 15px;
+    text-align: center
+}
+.contact-heading h5{
+    font-size: 15px;
+    font-weight: 600
+}
+.contact-heading h6{
+    font-size: 14px;
+    margin-top: 7px
+}
+.contact-text ul li{
+    margin: 8px 0
+}
+.containt-text p{
+    margin: 10px 0
+}
+.containt-info h5{
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 15px
+}
+.containt-info ul li span{
+    font-size: 20px;
+    font-weight: 800;
+    margin-right: 10px
+}
+.containt-info p{
+    font-size: 14px
+}
+.notice-heading h4{
+    color: #3AA6D2;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 20px
+}
+.notice-area table thead tr th{
+    font-weight: 700
+}
+.notice-area table tbody tr td a{
+    color: #33ADD6
+}
+.notice-area table tbody tr td a:hover{
+    color: #d31a1a;
+    text-decoration: underline
+}
+.opinion-area{
+    padding-bottom: 15px
+}
+.opinion-heading h4{
+    font-size: 24px;
+    text-align: center;
+    color: #B7100D;
+    font-weight: 600;
+    margin-bottom: 25px
+}
+.opinion-area form label{
+    display: block;
+    font-weight: 600;
+    color: #525252
+}
+.opinion-area form input{
+    width: 90%;
+    padding: 7px 14px;
+    
+    border: 1px solid #ddd
+        
+}
+.opinion-area form p{
+    margin-bottom: 20px
+}
+.single_pad_page{
+    padding:20px
+}
+.opinion-area form textarea {
+    width: 90%;
+    padding: 7px 14px;
+    height: 120px;
+    border: 1px solid #ddd
+}
+.footer-area{
+    background: #000A33
+}
+.footer-area p{
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600
+}
+.footer-area a{
+    color: #33ADD6
+}
+.footer-area a:hover{
+    color: #d81f1f;
+    text-decoration: underline
+}
+.footer-right{
+    text-align: right
+}
+.owl-nav button.owl-prev{
+        position: absolute;
+    top: 45%;
+    left: 20px;
+    color: #fff !important;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px !important;
+    background: rgba(72, 72, 72, 0.94) !important;
+    font-size: 30px !important;
+    border-radius: 50%;
+}
+.owl-nav button.owl-next{
+        position: absolute;
+    top: 45%;
+    right: 20px;
+    color: #fff !important;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px !important;
+    background: rgba(72, 72, 72, 0.94) !important;
+    font-size: 30px !important;
+    border-radius: 50%;
+}
+.single-slider{
+    height: 390px
+}
+.single-slider img{
+    height: 100%
+}
+
+.header-notice-left ul li img{
+        float: left;
+    width: 15px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.header-notice-left ul li{
+    display: inline-block;
+    margin: 0 3px
+}
+.header-notice-left ul li p{
+    display: inline-block;
+    color:#fff
+}
+    .header-notice-left ul li p a{
+        color:#fff
+    }
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 7px
+    }
+
+.single-gallery {
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.gallery-overlay {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    padding: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.92);
+    transition: all 0.4s ease 0s;
+    visibility: hidden;
+    opacity: 0;
+}
+.single-gallery:hover .gallery-overlay {
+    bottom: 0;
+    visibility: visible;
+    opacity: 1;
+}
+.single-gallery {
+    height: 200px;
+}
+.single-gallery img {
+    height: 100%;
+}
+.header-right > a {
+    font-size: 14px;
+    margin-bottom: -6px;
+    display: inline-block;
+}

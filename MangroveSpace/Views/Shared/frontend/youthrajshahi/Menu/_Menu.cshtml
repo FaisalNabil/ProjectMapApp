@@ -1,0 +1,117 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+@using System;
+@using MangroveSpace;
+@using MangroveSpace.Models;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Text;
+@using System.Web;
+@using System.Web.UI.WebControls;
+
+
+@functions{
+    public static string GetMenuString(string MenuMain, string MenuList, string MenuSub)
+    {
+        var menuItems = MangroveSpace.MenuHelper.GetAllMenuItems("Top Menu");
+
+        var builder = new StringBuilder();
+        //builder.Append("<ol class='dd-list'>");
+        builder.Append(GetMenuLiString(menuItems, null, MenuMain, MenuList, MenuSub));
+        //builder.Append("</ol>");
+        return builder.ToString();
+    }
+    private static string GetMenuLiString(IList<SysMenu> menuList, string parentId, string MenuMain, string MenuList, string MenuSub)
+    {
+        var children = MangroveSpace.MenuHelper.GetChildrenMenu(menuList, parentId);
+
+        if (children.Count <= 0)
+        {
+            return "";
+        }
+
+        var builder = new StringBuilder();
+
+        foreach (var item in children)
+        {
+            var childStr = GetMenuLiString(menuList, Convert.ToString(item.ID), MenuMain, MenuList, MenuSub);
+            if (!string.IsNullOrWhiteSpace(childStr))
+            {
+                string IconClass = item.MenuIcon;
+
+
+                string Content = item.MenuDisplayName;
+                string MenuLink = Global.exec("select [MenuLink] from [dbo].[AspCMSMenu] where [ID] = " + item.ID);
+
+
+                string parent = MenuList;
+
+                parent = parent.Replace("{$ID}", Convert.ToString(item.ID));
+                parent = parent.Replace("{$Content}", Content);
+                parent = parent.Replace("{$MenuLink}", MenuLink);
+
+
+                parent = parent.Replace("{$childStr}", childStr);
+
+                builder.Append(parent);
+            }
+            else
+            {
+
+                string Content = item.MenuDisplayName;
+                string MenuLink = Global.exec("select [MenuLink] from [dbo].[AspCMSMenu] where [ID] = " + item.ID);
+
+
+                string ParentID = Global.exec("select isnull([MenuParentID],0) from [dbo].[AspCMSMenu] where [ID] = " + item.ID);
+                string chld;
+
+                if (ParentID == "0")
+                {
+                    chld = MenuMain;
+                }
+                else
+                {
+                    chld = MenuSub;
+                }
+
+                string str;
+
+
+                chld = chld.Replace("{$ID}", Convert.ToString(item.ID));
+                chld = chld.Replace("{$Content}", Content);
+                chld = chld.Replace("{$MenuLink}", MenuLink);
+
+                builder.Append(chld);
+            }
+        }
+
+        return builder.ToString();
+    }
+}
+
+@{
+    string MenuMain = Html.Partial("~/Views/Shared/frontend/IBA/" + "Menu/_MenuMain.cshtml").ToHtmlString();
+    string MenuList = Html.Partial("~/Views/Shared/frontend/IBA/" + "Menu/_MenuList.cshtml").ToHtmlString();
+    string MenuSub = Html.Partial("~/Views/Shared/frontend/IBA/" + "Menu/_MenuSub.cshtml").ToHtmlString();
+    string MenuStr = GetMenuString(MenuMain, MenuList, MenuSub);
+}
+
+
+
+<section class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="big-responsive-menu"></div>
+                <div class="mainmenu pull-left">
+                    <nav>
+                        <ul id="navigation_menu">
+                            @Html.Raw(MenuStr)
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

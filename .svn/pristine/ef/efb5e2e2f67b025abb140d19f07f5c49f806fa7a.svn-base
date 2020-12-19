@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "MenuDesign";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index","Menu")" class="btn btn-info">Manage Menu</a>
+                    <a href="@Url.Action("Create","Menu")" class="btn btn-success">Add Menu</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+
+
+
+                @using (Html.BeginForm("OrderingSave", "Menu", FormMethod.Post, new { role = "form", @class = "form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    
+                        @Html.Partial("~/Views/Shared/backend/" + "_PanelMenu.cshtml")
+                    
+
+                        <div class="col-md-4">
+                        <textarea style="display:none;" name="ioutput" id="nestable2-output"></textarea>
+                        </div>
+                        <div class="col-md-12 clearfix text-center">
+                            <hr />
+                            <button type="submit" class="btn btn-raised ink-reaction btn-primary ">Save</button>
+                        </div>
+                    }
+
+                    </div>
+        </div>
+
+        <div class="col-lg-4">
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var updateOutput = function (e) {
+                var list = e.length ? e : $(e.target),
+                    output = list.data('output');
+                if (window.JSON) {
+                    output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+                } else {
+                    output.val('JSON browser support required for this demo.');
+                }
+            };
+            // activate Nestable for list 2
+            $('#nestable2').nestable({
+                group: 1
+            })
+                .on('change', updateOutput);
+
+            updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+            $('#nestable-menu').on('click', function (e) {
+                var target = $(e.target),
+                    action = target.data('action');
+                if (action === 'expand-all') {
+                    $('.dd').nestable('expandAll');
+                }
+                if (action === 'collapse-all') {
+                    $('.dd').nestable('collapseAll');
+                }
+            });
+
+
+        });
+    </script>
+}

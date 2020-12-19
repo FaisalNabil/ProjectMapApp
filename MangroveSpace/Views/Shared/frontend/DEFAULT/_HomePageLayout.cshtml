@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+    <style>
+        @Html.GetSliderImageItem()
+    </style>
+</head>
+<body>
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+
+    <!-- Promo Area Start -->
+    <section class="wakfi-promo-area section_t_100 section_b_70 wow fadeInUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-promo">
+                        <div class="promo-icon">
+                            <i class="fa fa-hand-pointer-o"></i>
+                        </div>
+                        <div class="promo-text">
+                            <h3>Easy to use</h3>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-promo">
+                        <div class="promo-icon">
+                            <i class="fa fa-filter"></i>
+                        </div>
+                        <div class="promo-text">
+                            <h3>Unlimited Filtering</h3>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-promo">
+                        <div class="promo-icon">
+                            <i class="fa fa-unlock-alt"></i>
+                        </div>
+                        <div class="promo-text">
+                            <h3>Secure Payment</h3>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Promo Area End -->
+    <!-- About Section Start -->
+    <section class="wakfi-about-area section_t_100 section_b_70" data-scroll-index="1">
+        <div class="abt-bg">
+            <img src="~/assets/front_assets/DEFAULT/img/abt_round.png" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 wow fadeInLeft">
+                    <div class="about-app-right">
+                        <img src="~/assets/front_assets/DEFAULT/img/about_phn.png" />
+                    </div>
+                </div>
+                <div class="col-lg-7  wow fadeInRight">
+                    <div class="about-app-left">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+    <!-- Features Area Start -->
+    <section class="wakfi-features-area section_t_100  section_b_80" data-scroll-index="2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading wow fadeInUp">
+                        <h2>awesome features</h2>
+                        <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg col-md-6 wow fadeInLeft">
+                    @Html.GetGadgetItem("featureleft")
+
+                </div>
+                <div class="col-lg text-center mobile-none wow fadeIn">
+                    <div class="feature-phone">
+                        <img src="~/assets/front_assets/DEFAULT/img/intro_phn.png" />
+                    </div>
+                </div>
+                <div class="col-lg col-md-6 wow fadeRight">
+                    @Html.GetGadgetItem("featureright")
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Area End -->
+    <!-- Choose Area Start -->
+    <section class="wakfi-choose-area section_100">
+        <div class="choose-bg">
+            <img src="~/assets/front_assets/DEFAULT/img/choos_bg.png" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6  wow fadeInLeft">
+                    <div class="choose-left">
+                        @Html.GetGadgetItem("Choose")
+
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight">
+                    <div class="video-box">
+                        <img src="~/assets/front_assets/DEFAULT/img/potrait.png" />
+                        <div class="video">
+                            <div class="video-frame-holder"><iframe src="https://player.vimeo.com/video/2233232?title=0&byline=0&portrait=0" allowfullscreen></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Choose Area End -->
+    <!-- Screenshot Area Start -->
+    <section class="wakfi-screenshot-area section_100" data-scroll-index="3">
+        <div class="abt-bg">
+            <img src="assets/img/abt_round.png" alt="choose bg" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12  wow fadeInUp">
+                    <div class="site-heading">
+                        <h2>screenshot</h2>
+                        <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="screenshot-slider owl-carousel">
+                        @Html.GetAlbumShortList()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Screenshot Area End -->
+    <!-- Team Area Start -->
+    <section class="wakfi-team-area section_t_100 section_b_70" data-scroll-index="4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12  wow fadeInUp">
+                    <div class="site-heading">
+                        <h2>Awesome team</h2>
+                        <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3  wow fadeIn">
+                    <div class="single-team">
+                        <div class="team-image">
+                            <img src="~/assets/front_assets/DEFAULT/img/agnt1.jpg" alt="team member">
+                        </div>
+                        <div class="team-info">
+                            <div class="team-overlay-one">
+                                <h3>Jylin Scott</h3>
+                                <p>Founder & CEO</p>
+                            </div>
+                        </div>
+                        <div class="team-info-two">
+                            <div class="team-overlay-two">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp">
+                    <div class="single-team">
+                        <div class="team-image">
+                            <img src="~/assets/front_assets/DEFAULT/img/agnt2.jpg" alt="team member">
+                        </div>
+                        <div class="team-info">
+                            <div class="team-overlay-one">
+                                <h3>Charles Luke</h3>
+                                <p>Tech Advisor</p>
+                            </div>
+                        </div>
+                        <div class="team-info-two">
+                            <div class="team-overlay-two">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn">
+                    <div class="single-team">
+                        <div class="team-image">
+                            <img src="~/assets/front_assets/DEFAULT/img/agnt3.jpg" alt="team member">
+                        </div>
+                        <div class="team-info">
+                            <div class="team-overlay-one">
+                                <h3>Catherine Matt</h3>
+                                <p>apps developer</p>
+                            </div>
+                        </div>
+                        <div class="team-info-two">
+                            <div class="team-overlay-two">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp">
+                    <div class="single-team">
+                        <div class="team-image">
+                            <img src="~/assets/front_assets/DEFAULT/img/agnt4.jpg" alt="team member">
+                        </div>
+                        <div class="team-info">
+                            <div class="team-overlay-one">
+                                <h3>James Sienna </h3>
+                                <p>apps developer</p>
+                            </div>
+                        </div>
+                        <div class="team-info-two">
+                            <div class="team-overlay-two">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Area End -->
+    <!-- Newsletter Area Start -->
+    <section class="wakfi-newsletter-area section_100   wow fadeInUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="newsletter-box">
+                        <div class="newsletter-icon">
+                            <i class="fa fa-envelope-open-o"></i>
+                        </div>
+                        <h2>Get Notified of any updates!</h2>
+                        <p>Wakfi simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                        <form>
+                            <input type="email" placeholder="Your email address" name="newsletter">
+                            <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter Area End -->
+    <!-- Pricing Area Start -->
+    <section class="wakfi-pricing-area section_100 section_b_70" data-scroll-index="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading  wow fadeInUp">
+                        <h2>latest pricing</h2>
+                        <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4  wow fadeInLeft">
+                    @Html.GetGadgetItem("BasicPricing")
+
+                </div>
+                <div class="col-md-4  wow fadeIn">
+                    @Html.GetGadgetItem("StandardPricing")
+
+                </div>
+                <div class="col-md-4  wow fadeInRight">
+                    @Html.GetGadgetItem("CustomPricing")
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Area End -->
+    <!-- Testimonial Area Start -->
+    <section class="wakfi-testimonial-area section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading  wow fadeInUp">
+                        <h2>Clients Testimonial</h2>
+                        <p>It has been the industry's standard dummy text ever since the 1500s, when an unknown printer took it to make a type specimen book</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="reviews-slider owl-carousel">
+                        <div class="single-testimonial">
+                            <div class="testimonial-img">
+                                <img src="~/assets/front_assets/DEFAULT/img/testimonial-1.jpg" alt="testimonial">
+                            </div>
+                            <div class="testimonial-text">
+                                <p>Sorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua  enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.sed do eiusmod tempor incididunt</p>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Jhon Alex</h4>
+                                <p>CEO,ABC Company</p>
+                            </div>
+                        </div>
+                        <div class="single-testimonial">
+                            <div class="testimonial-img">
+                                <img src="~/assets/front_assets/DEFAULT/img/testimonial-2.jpg" alt="testimonial">
+                            </div>
+                            <div class="testimonial-text">
+                                <p>Sorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua  enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.sed do eiusmod tempor incididunt</p>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>maria adair</h4>
+                                <p>senior developer</p>
+                            </div>
+                        </div>
+                        <div class="single-testimonial">
+                            <div class="testimonial-img">
+                                <img src="~/assets/front_assets/DEFAULT/img/testimonial-3.jpg" alt="testimonial">
+                            </div>
+                            <div class="testimonial-text">
+                                <p>Sorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua  enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.sed do eiusmod tempor incididunt</p>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>John Williamson</h4>
+                                <p>senior developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Area End -->
+    <!-- Download Area Start -->
+    <section class="wakfi-download-area section_100  wow fadeInUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="download-box">
+                        <h2>download our wakfi app today</h2>
+                        <p>Morem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam.</p>
+                        <div class="download-area-btns">
+                            <a href="#"><i class="fa fa-android"></i> <span>android</span></a>
+                            <a href="#"><i class="fa fa-apple"></i> <span>mac</span></a>
+                            <a href="#"><i class="fa fa-windows"></i> <span>windows</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Download Area End -->
+    <!-- Blog Area Start -->
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NewsPartial.cshtml")
+    
+    <!-- Blog Area End -->
+    <!-- Contact Area Start -->
+    <section class="wakfi-contact-area section_100" data-scroll-index="7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 wow fadeInLeft">
+                    <div class="contact-form ">
+                        <h3>get in touch</h3>
+                        <form>
+                            <p>
+                                <input type="text" placeholder="Enter your name" id="name">
+                            </p>
+                            <p>
+                                <input type="email" placeholder="Enter your e-mail address" id="email">
+                            </p>
+                            <p>
+                                <textarea placeholder="Your message here..." id="msg"></textarea>
+                            </p>
+                            <p>
+                                <button type="submit">send message</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5 wow fadeInRight">
+                    @Html.GetGadgetItem("contact-info")
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Area End -->
+    <!-- Footer Area Start -->
+    <footer class="wakfi-footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-box">
+                        @Html.GetGadgetItem("copyright")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

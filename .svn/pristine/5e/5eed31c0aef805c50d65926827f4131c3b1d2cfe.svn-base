@@ -1,0 +1,811 @@
+﻿/*SweetAlert Init*/
+
+$(function () {
+    "use strict";
+
+    var SweetAlert = function () { };
+    SweetAlert.prototype.init = function () {
+
+
+
+        //Student Manage
+        $(".noticetable").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/Notice/Delete/" + button.attr("data-ntc-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+
+        //Teacher Manage
+        $(".datatable2").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/teachers/delete/" + button.attr("data-teacher-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        //Section Manage
+        $(".datatable3").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/sections/delete/" + button.attr("data-section-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        //Gurdian Manage
+        $(".datatable-gurdian").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/guardians/delete/" + button.attr("data-guardian-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        //Class Manage
+        $(".datatable-class").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/classes/delete/" + button.attr("data-class-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        //Subject Manage
+        $(".datatable-subject").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/subjects/delete/" + button.attr("data-subject-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        //subject package Manage
+        $(".datatable-subPackage").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/SubjectPackages/delete/" + button.attr("data-subPackage-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        
+
+        //Sms
+        $(".datatable-sms").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/sms/SmsSendings/delete/" + button.attr("data-sms-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        //Sms Template
+        $(".datatable-smsT").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/sms/SmsSendingTemplates/delete/" + button.attr("data-smsT-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+        //bookInfo
+        $(".datatable-book").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/library/LibraryBookInfo/delete/" + button.attr("data-book-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+        //book transection
+        $(".datatable-tran").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/library/LibraryTransections/delete/" + button.attr("data-tran-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        //staff
+
+        $(".datatable5").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/staffs/delete/" + button.attr("data-staff-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+
+        //BillSystem
+
+        $(".datatable-bilsys").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/educarepay/BillingSystem/DeleteCustomBill/" + button.attr("data-bill-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                //window.location = "BillingSystem";
+            });
+            
+        });
+        
+
+
+       //CmsNews
+        $(".datatable_news").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/News/delete/" + button.attr("data-news-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+
+        //Student Manage
+        $("#Noticetable").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/Notice/Delete/" + button.attr("data-ntt-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        //Page
+
+        $(".page-table").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/pages/delete/" + button.attr("data-page-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        //gadget
+
+
+
+        $(".datatable9").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/gadgets/delete/" + button.attr("data-gadget-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            
+            });
+
+        });
+
+
+        $(".datatable10").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/sliders/delete/" + button.attr("data-slider-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+
+        //Album Details
+        
+        $(".albumdetail").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/AlbumDetails/Delete/" + button.attr("data-albumdetails-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+
+
+
+        //Album
+
+        $(".album").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/albums/delete/" + button.attr("data-album-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+        $(".datatable_event").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/event/delete/" + button.attr("data-event-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+
+        //pageTemplates
+
+        $(".pagetemplates").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/pagetemplates/delete/" + button.attr("data-pagetemplates-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+
+        $(".menu").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+            }, function () {
+                $.ajax({
+                    url: "/Menu/delete/" + button.attr("data-menu-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+            });
+
+        });
+
+
+
+
+
+       
+
+        //ProductInfo
+        $("#Producttable").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/ProductInfoes/Delete/" + button.attr("data-Product-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+
+
+        //Product Category
+        $(".Categorytable").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/ProductCategory/delete/" + button.attr("data-pc-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+
+        $(".Categorytable").on("click", ".alert_warning", function () {
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/ProductCategory/delete/" + button.attr("data-pc-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        $(".sysmenu").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this menu!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/SysMenu/Delete/" + button.attr("data-menu-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Category has been deleted.", "success");
+            });
+        });
+
+        $(".Category").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this category!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/Category/Delete/" + button.attr("data-categorty-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Category has been deleted.", "success");
+            });
+        });
+
+        $(".Subcategory").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this category!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/SubCategory/Delete/" + button.attr("data-categorty-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "SubCategory has been deleted.", "success");
+            });
+        });
+
+        $(".BasicType").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this category!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/BasicType/Delete/" + button.attr("data-categorty-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Basic Type has been deleted.", "success");
+            });
+        });
+
+        $(".PP").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this Power Plant!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/Location/Delete/" + button.attr("data-categorty-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                    swal("Deleted!", "Power Plant has been deleted.", "success");
+            });
+        });
+
+        $(".Motor").on("click", ".alert_warning", function () {
+            console.log("test");
+            var button = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this Motor!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/Motor/Delete/" + button.attr("data-categorty-id"),
+                    method: "DELETE",
+                    success: function () {
+                        table.row(button.parents("tr")).remove().draw();
+                    }
+                });
+                swal("Deleted!", "Motor has been deleted.", "success");
+            });
+        });
+
+    //END LINE
+    },
+        //init
+        $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+    $.SweetAlert.init();
+});
+
+
+
+
+
+
+

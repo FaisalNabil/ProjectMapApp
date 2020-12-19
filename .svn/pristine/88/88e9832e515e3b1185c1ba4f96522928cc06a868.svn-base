@@ -1,0 +1,275 @@
+﻿@model PowerPlant_Technical
+@{
+    ViewBag.Title = "Add Page (Motor)";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pages/" class="btn btn-success">Manage Page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("UpdateDetailsPage", "Motor", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.HiddenFor(model => model.ID)
+                    @Html.HiddenFor(model => model.Model)
+                    @Html.HiddenFor(model => model.LaunchYear)
+                    @Html.HiddenFor(model => model.Manufacturer)
+                    @Html.HiddenFor(model => model.CountryOfOrigin)
+                    @Html.HiddenFor(model => model.ProductType)
+                    @Html.HiddenFor(model => model.BasicDesc)
+                    @Html.HiddenFor(model => model.InputSource)
+                    @Html.HiddenFor(model => model.Capacity)
+                    @Html.HiddenFor(model => model.LevelNumber)
+                    @Html.HiddenFor(model => model.Reservoir)
+                    @Html.HiddenFor(model => model.FlowRate)
+                    @Html.HiddenFor(model => model.Faucet)
+                    @Html.HiddenFor(model => model.Cable)
+                    @Html.HiddenFor(model => model.ChargingSystem)
+                    @Html.HiddenFor(model => model.Discharging)
+                    @Html.HiddenFor(model => model.Runtime)
+                    @Html.HiddenFor(model => model.Gears)
+                    @Html.HiddenFor(model => model.Generator)
+                    @Html.HiddenFor(model => model.Driver)
+                    @Html.HiddenFor(model => model.StepAngle)
+                    @Html.HiddenFor(model => model.PoleNumber)
+                    @Html.HiddenFor(model => model.Speed)
+                    @Html.HiddenFor(model => model.Torque)
+                    @Html.HiddenFor(model => model.CrossSection)
+                    @Html.HiddenFor(model => model.MaterialInformation)
+                    @Html.HiddenFor(model => model.Diameter)
+                    @Html.HiddenFor(model => model.Rotor)
+                    @Html.HiddenFor(model => model.Tower)
+                    @Html.HiddenFor(model => model.Phase)
+                    @Html.HiddenFor(model => model.Resistance)
+                    @Html.HiddenFor(model => model.RemanenceMagnetism)
+                    @Html.HiddenFor(model => model.CoerciveForce)
+                    @Html.HiddenFor(model => model.IntrinsicCoercive)
+                    @Html.HiddenFor(model => model.MagneticSaturation)
+                    @Html.HiddenFor(model => model.SaturationInformation)
+                    @Html.HiddenFor(model => model.MaximumEnergy)
+                    @Html.HiddenFor(model => model.RelativePermeability)
+                    @Html.HiddenFor(model => model.RelativeRecoil)
+                    @Html.HiddenFor(model => model.OperatingTemperature)
+                    @Html.HiddenFor(model => model.ElectricalResistivity)
+                    @Html.HiddenFor(model => model.CoreLoss)
+                    @Html.HiddenFor(model => model.Thickness)
+                    @Html.HiddenFor(model => model.Wattage)
+                    @Html.HiddenFor(model => model.PowerRating)
+                    @Html.HiddenFor(model => model.VoltageRating)
+                    @Html.HiddenFor(model => model.CurrentRating)
+                    @Html.HiddenFor(model => model.Frequency)
+                    @Html.HiddenFor(model => model.FullLoadLoss)
+                    @Html.HiddenFor(model => model.Regulation)
+                    @Html.HiddenFor(model => model.Connection)
+                    @Html.HiddenFor(model => model.VectorGroup)
+                    @Html.HiddenFor(model => model.TripInformation)
+                    @Html.HiddenFor(model => model.PowerOutlet)
+                    @Html.HiddenFor(model => model.Port)
+                    @Html.HiddenFor(model => model.FuelType)
+                    @Html.HiddenFor(model => model.AirSupply)
+                    @Html.HiddenFor(model => model.MembraneType)
+                    @Html.HiddenFor(model => model.CellsNumber)
+                    @Html.HiddenFor(model => model.OpenCircuitVoltage)
+                    @Html.HiddenFor(model => model.ShortCircuitCurrent)
+                    @Html.HiddenFor(model => model.Humidity)
+                    @Html.HiddenFor(model => model.Consumption)
+                    @Html.HiddenFor(model => model.Altitude)
+                    @Html.HiddenFor(model => model.Dashboard)
+                    @Html.HiddenFor(model => model.Indicator)
+                    @Html.HiddenFor(model => model.Display)
+                    @Html.HiddenFor(model => model.Contrast)
+                    @Html.HiddenFor(model => model.RefreshRate)
+                    @Html.HiddenFor(model => model.Sound)
+                    @Html.HiddenFor(model => model.StarterType)
+                    @Html.HiddenFor(model => model.Pressure)
+                    @Html.HiddenFor(model => model.Efficiency)
+                    @Html.HiddenFor(model => model.Casing)
+                    @Html.HiddenFor(model => model.Compatibility)
+                    @Html.HiddenFor(model => model.More)
+                    @Html.HiddenFor(model => model.Weight)
+                    @Html.HiddenFor(model => model.Gross)
+                    @Html.HiddenFor(model => model.Size)
+                    @Html.HiddenFor(model => model.ExteriorDimensions)
+                    @Html.HiddenFor(model => model.InteriorDimensions)
+                    @Html.HiddenFor(model => model.Room)
+                    @Html.HiddenFor(model => model.Volume)
+                    @Html.HiddenFor(model => model.Wheel)
+                    @Html.HiddenFor(model => model.Length)
+                    @Html.HiddenFor(model => model.Width)
+                    @Html.HiddenFor(model => model.Height)
+                    @Html.HiddenFor(model => model.Depth)
+                    @Html.HiddenFor(model => model.Portability)
+                    @Html.HiddenFor(model => model.PowerToWeightRatio)
+                    @Html.HiddenFor(model => model.PowerToVolumeRatio)
+                    @Html.HiddenFor(model => model.EnergyToWeightRatio)
+                    @Html.HiddenFor(model => model.EnergyToVolumeRatio)
+                    @Html.HiddenFor(model => model.KeyFeatures)
+                    @Html.HiddenFor(model => model.Color)
+                    @Html.HiddenFor(model => model.RequirementBattery)
+                    @Html.HiddenFor(model => model.PermeatePump)
+                    @Html.HiddenFor(model => model.UVLight)
+                    @Html.HiddenFor(model => model.Remineralization)
+                    @Html.HiddenFor(model => model.Safety)
+                    @Html.HiddenFor(model => model.Steering)
+                    @Html.HiddenFor(model => model.TurningRadius)
+                    @Html.HiddenFor(model => model.Mileage)
+                    @Html.HiddenFor(model => model.Suspension)
+                    @Html.HiddenFor(model => model.Brake)
+                    @Html.HiddenFor(model => model.MagnetType)
+                    @Html.HiddenFor(model => model.MagneticCoreType)
+                    @Html.HiddenFor(model => model.TapChanging)
+                    @Html.HiddenFor(model => model.Flexibility)
+                    @Html.HiddenFor(model => model.Weldability)
+                    @Html.HiddenFor(model => model.DCOutput)
+                    @Html.HiddenFor(model => model.PowerInverter)
+                    @Html.HiddenFor(model => model.AutomaticVoltageRegulator)
+                    @Html.HiddenFor(model => model.RVReady)
+                    @Html.HiddenFor(model => model.Brushless)
+                    @Html.HiddenFor(model => model.ParallelCapacity)
+                    @Html.HiddenFor(model => model.SelectorSwitch)
+                    @Html.HiddenFor(model => model.ColdStart)
+                    @Html.HiddenFor(model => model.OtherFeatures)
+                    @Html.HiddenFor(model => model.Displacement)
+                    @Html.HiddenFor(model => model.Power)
+                    @Html.HiddenFor(model => model.FuelConsumption)
+                    @Html.HiddenFor(model => model.FuelSystem)
+                    @Html.HiddenFor(model => model.Protection)
+                    @Html.HiddenFor(model => model.CFCIOutlets)
+                    @Html.HiddenFor(model => model.VoltGuard)
+                    @Html.HiddenFor(model => model.RemoteControl)
+                    @Html.HiddenFor(model => model.Additional)
+                    @Html.HiddenFor(model => model.Electrolyte)
+                    @Html.HiddenFor(model => model.AnodeCathodElectrodes)
+                    @Html.HiddenFor(model => model.RecycleInstructions)
+                    @Html.HiddenFor(model => model.AgingEffect)
+                    @Html.HiddenFor(model => model.BreakingLoad)
+                    @Html.HiddenFor(model => model.TemperatureProperties)
+                    @Html.HiddenFor(model => model.CoolingSystem)
+                    @Html.HiddenFor(model => model.MassDensity)
+                    @Html.HiddenFor(model => model.YieldStrength)
+                    @Html.HiddenFor(model => model.TensileStrength)
+                    @Html.HiddenFor(model => model.Elongation)
+                    @Html.HiddenFor(model => model.Hardness)
+                    @Html.HiddenFor(model => model.SurfaceTreatment)
+                    @Html.HiddenFor(model => model.Insulation)
+                    @Html.HiddenFor(model => model.DielectricStrength)
+                    @Html.HiddenFor(model => model.BreakdownVoltage)
+                    @Html.HiddenFor(model => model.TotalHarmonicDistortion)
+                    @Html.HiddenFor(model => model.SwitchingTime)
+                    @Html.HiddenFor(model => model.Duty)
+                    @Html.HiddenFor(model => model.Shaft)
+                    @Html.HiddenFor(model => model.Mounting)
+                    @Html.HiddenFor(model => model.Emission)
+                    @Html.HiddenFor(model => model.ImpedanceVoltage)
+                    @Html.HiddenFor(model => model.Coefficient)
+                    @Html.HiddenFor(model => model.Factor)
+                    @Html.HiddenFor(model => model.Ratio)
+                    @Html.HiddenFor(model => model.ServiceLife)
+                    @Html.HiddenFor(model => model.Accessories)
+                    @Html.HiddenFor(model => model.Other)
+                    @Html.HiddenFor(model => model.Warranty)
+                    @Html.HiddenFor(model => model.Certification)
+                    @Html.HiddenFor(model => model.Caution)
+                    @Html.HiddenFor(model => model.GeneralUses)
+                    @Html.HiddenFor(model => model.OtherUses)
+                    @Html.HiddenFor(model => model.Loads)
+                    @Html.HiddenFor(model => model.InstallationCost)
+                    @Html.HiddenFor(model => model.MaintananceCost)
+                    @Html.HiddenFor(model => model.StarGraphLine)
+                    @Html.HiddenFor(model => model.AccessID)
+                    @Html.HiddenFor(model => model.EntryDate)
+                    @Html.HiddenFor(model => model.EntryBy)
+                    @Html.HiddenFor(model => model.ModifyDate)
+                    @Html.HiddenFor(model => model.ModifyBy)
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Details Page</div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    <div class="code-container">
+                                        @Html.TextAreaFor(model => model.DetailsPageAddress)
+                                        @Html.ValidationMessageFor(m => m.DetailsPageAddress)
+                                    </div>
+                                    <a class="btn btn-info pull-right btn-xs" style="margin-top:5px;margin-right:0" href="javascript:autoFormatSelection()">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/pages/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Scripts.Render("~/bundles/jqueryval")
+
+@section Scripts {
+
+    <script>
+
+
+        var editor = CodeMirror.fromTextArea(document.getElementById("DetailsPageAddress"), {
+            lineNumbers: true,
+            mode: "htmlmixed"
+        });
+        CodeMirror.commands["selectAll"](editor);
+
+        function getSelectedRange() {
+            return { from: editor.getCursor(true), to: editor.getCursor(false) };
+        }
+
+        function autoFormatSelection() {
+            var range = getSelectedRange();
+            editor.autoFormatRange(range.from, range.to);
+        }
+
+        function commentSelection(isComment) {
+            var range = getSelectedRange();
+            editor.commentRange(isComment, range.from, range.to);
+        }
+
+
+    </script>
+
+}

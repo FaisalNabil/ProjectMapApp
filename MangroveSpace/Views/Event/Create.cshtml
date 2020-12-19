@@ -1,0 +1,194 @@
+﻿@model AspCMSEvent
+@{
+
+    ViewBag.Title = "Add Event";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index", "Event")" class="btn btn-success">Manage Event</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Create", "Event", null, FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    if (TempData["msgs"] != null)
+                    {
+                        <div style="text-align:center;font-size:16px;color:red;">
+                            <span>@TempData["msgs"]</span>
+                        </div>
+
+                    }
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EventDescription, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.TextAreaFor(model => model.EventDescription)
+                                    @Html.ValidationMessageFor(m => m.EventDescription)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.EventName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div id="filterDate2">
+
+                                        <!-- Datepicker as text field -->
+                                        <div class="input-group date cus_date_3" data-provide="datepicker" data-date-format="mm.dd.yyyy">
+                                            @Html.EditorFor(model => model.EventDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control StudentBirthDay", data_date_format = "mm.dd.yyyy", placeholder = "mm/dd/yy" } })
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.EventDate)
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Time1, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="timepicker_cus">
+                                        @Html.EditorFor(model => model.Time1, new { htmlAttributes = new { @class = "form-control timepicker", placeholder = "To Time" } })
+                                        @Html.ValidationMessageFor(m => m.Time1)
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Time2, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="timepicker_cus">
+                                        @Html.EditorFor(model => model.Time2, new { htmlAttributes = new { @class = "form-control timepicker", placeholder = "From Time" } })
+                                        @Html.ValidationMessageFor(m => m.Time2)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EventStatus, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model=>model.EventStatus, new SelectList(new List<SelectListItem>{
+                                            new SelectListItem { Text="Publish", Value="true"},
+                                            new SelectListItem { Text="Unpublish", Value="false"},
+
+                                        },"Value","Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSSlider.SliderStatus" })
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px"></label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="file_uploader">
+                                        <span id="filename">Select your file</span>
+                                        <label for="file-upload"><input type="file" name="File" id="File"  class="file_up"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/Event/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+
+        $(function () {
+            $('#EventDescription').summernote({
+                height: 250,
+                dialogsInBody: true,
+                prettifyHtml: true,
+                codemirror: {
+                    "mode": "text/html",
+                    "htmlMode": true,
+                    "lineNumbers": true,
+                    "theme": "monokai",
+                    "width": "100px",
+                    "textWrapping": true
+                },
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["paragraph", ["style"]],
+                    ["fontsize", ["fontname", "fontsize", "color"]],
+                    ["style", ["bold", "italic", "underline", "strikethrough", "clear"]],
+                    ["paragraph", ["ol", "ul", "paragraph"]],
+                    ["insert", ["table", "link", "picture", "video", "hr"]],
+                    ["misc", ["codeview"]]
+                ],
+                placeholder: "Page Content"
+            });
+        });
+
+    </script>
+    <script>
+        //Image Preview
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+
+
+
+}

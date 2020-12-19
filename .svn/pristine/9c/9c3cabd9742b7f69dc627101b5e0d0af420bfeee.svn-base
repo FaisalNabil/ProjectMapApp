@@ -1,0 +1,257 @@
+﻿using MangroveSpace;
+using MapProject.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace MapProject.Service
+{
+    public class MapDataPreparation
+    {
+        MangroveSpaceEntities context = new MangroveSpaceEntities();
+        public List<MapDataModel> PrepareAllData()
+        {
+            List<PowerPlant_General> MapDataList = context.PowerPlant_General.ToList();
+            List<MapDataModel> dataList = new List<MapDataModel>();
+            foreach (var item in MapDataList)
+            {
+                dataList.Add(PrepareData(item));
+            }
+
+            return dataList;
+        }
+
+        private MapDataModel PrepareData(PowerPlant_General MapData)
+        {
+            MapDataModel data = new MapDataModel();
+            PowerPlant_Category category = context.PowerPlant_Category.Where(s => s.ID == MapData.CategoryID).FirstOrDefault();
+
+            data.ID = MapData.ID;
+            data.Name = MapData.PowerPlant_Name;
+            data.Latitude = MapData.Latitude;
+            data.Logitude = MapData.Longitude;
+            data.Details = "<strong>" + MapData.PowerPlant_Name + "</strong> </br>" +
+                "<hr>" +
+                "Type: " + category.Category_Name + "</br>" +
+                "<hr>" +
+                MapData.Address + "</br>" +
+                "<hr>" +
+                "<a href='/Home/PowerPlantDetails?PowerPlantId=" + MapData.ID + "'>Read More</a>";
+            data.Icon = category.Icon;
+            data.CategoryName = category.Category_Name;
+
+            return data;
+        }
+
+        public List<string> GetCategories()
+        {
+            return context.PowerPlant_Category.Select(s => s.Category_Name).ToList();
+        }
+
+        public string GetPowerPlantPageContent(int powerPlantId)
+        {
+            return context.PowerPlant_General.Where(s => s.ID == powerPlantId).Select(s => s.DetailsPageAddress).FirstOrDefault();
+        }
+
+        public PowerPlant_General GetPowerPlant(int powerPlantId)
+        {
+            return context.PowerPlant_General.Where(s => s.ID == powerPlantId).FirstOrDefault();
+        }
+
+        public string GetTableData(int powerPlantId)
+        {
+            string sql = "select\n"
+              + "	  ID, Property, Data\n"
+              + "	from (select CAST(ID AS NVARCHAR(MAX)) AS ID,\n"
+              + "	CAST([PowerPlant_Name] AS NVARCHAR(MAX)) AS PowerPlant_Name, \n"
+              + "	CAST([Latitude] AS NVARCHAR(MAX)) AS Latitude, \n"
+              + "	CAST([Longitude] AS NVARCHAR(MAX)) AS Longitude from [Mangrove_mapapp_db].[dbo].[PowerPlant_General] WHERE [ID] = 2) piv\n"
+              + "	unpivot\n"
+              + "	(\n"
+              + "	  Data \n"
+              + "	  for Property in ([PowerPlant_Name], [Latitude], [Longitude])\n"
+              + "	) unpiv";
+            List<dynamic> tabledata = Global.Sql(context, sql).ToList();
+
+            string tableString = "<div class='row'>" +
+                "<div class='col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='x_panel'>" +
+                        "<div class='x_content'>" +
+                            "<div class='table-responsive'>" +
+                                "<table class='page-table table table-striped table-hover'>" +
+                                "<thead>" +
+                                    "<tr>" +
+                                        "<th> Property </th>" +
+                                        "<th> Data </th>" +
+                                    "</tr>" +
+                                "</thead>" +
+                                "<tbody>";
+
+            foreach (var item in tabledata)
+            {
+                tableString += "<tr>" +
+                                "<td>" +
+                                    item.Property+
+                                "</td>" +
+                                "<td>" +
+                                    item.Data +
+                                "</td>" +
+                            "</tr>";
+            }
+            tableString += "</tbody>" +
+                        "</table>" +
+                    "</div >" +
+                "</div > " +
+            "</div> " +
+        "</div> " +
+    "</div>";
+
+            return tableString;
+        }
+
+        public string GetCompareData(string PowerPlant1, string PowerPlant2, string PowerPlant3, string PowerPlant4)
+        {
+            string powerplants = "";
+            string powerPlanIds = "";
+            string powerPlanIdsRaw = "";
+            string PowerPlant1Id = "";
+            string PowerPlant2Id = "";
+            string PowerPlant3Id = "";
+            string PowerPlant4Id = "";
+
+            if(!String.IsNullOrEmpty(PowerPlant1) || PowerPlant1 != "")
+            {
+                powerplants = "'" + PowerPlant1 + "'";
+                PowerPlant1Id = context.PowerPlant_General.Where(s => s.PowerPlant_Name == PowerPlant1).Select(s => s.ID).FirstOrDefault().ToString();
+                powerPlanIds = "[" + PowerPlant1Id + "] AS [PowerPlant1]";
+                powerPlanIdsRaw = "[" + PowerPlant1Id + "]";
+            }
+
+            if (!String.IsNullOrEmpty(PowerPlant2) || PowerPlant2 != "")
+            {
+                powerplants += "," + "'" + PowerPlant2 + "'";
+                PowerPlant2Id = context.PowerPlant_General.Where(s => s.PowerPlant_Name == PowerPlant2).Select(s => s.ID).FirstOrDefault().ToString();
+                powerPlanIds += ", " + "[" + PowerPlant2Id + "] AS [PowerPlant2]";
+                powerPlanIdsRaw += ", " + "[" + PowerPlant2Id + "]";
+            }
+
+            if (!String.IsNullOrEmpty(PowerPlant3) || PowerPlant3 != "")
+            {
+                powerplants += "," + "'" + PowerPlant3 + "'";
+                PowerPlant3Id = context.PowerPlant_General.Where(s => s.PowerPlant_Name == PowerPlant3).Select(s => s.ID).FirstOrDefault().ToString();
+                powerPlanIds += ", " + "[" + PowerPlant3Id + "] AS [PowerPlant3]";
+                powerPlanIdsRaw += ", " + "[" + PowerPlant3Id + "]";
+            }
+
+            if (!String.IsNullOrEmpty(PowerPlant4) || PowerPlant4 != "")
+            {
+                powerplants += "," + "'" + PowerPlant4 + "'";
+                PowerPlant4Id = context.PowerPlant_General.Where(s => s.PowerPlant_Name == PowerPlant4).Select(s => s.ID).FirstOrDefault().ToString();
+                powerPlanIds += ", " + "[" + PowerPlant4Id + "] AS [PowerPlant4]";
+                powerPlanIdsRaw += ", " + "[" + PowerPlant4Id + "]";
+            }
+
+            string sql = "with cte(ID, Property, Data)\n"
+           + "as\n"
+           + "(\n"
+           + "	select\n"
+           + "	  ID, Property, Data\n"
+           + "	from (select CAST(ID AS NVARCHAR(MAX)) AS ID,\n"
+           + "	CAST([PowerPlant_Name] AS NVARCHAR(MAX)) AS [1. Power Plant Name], \n"
+           + "	CAST([Latitude] AS NVARCHAR(MAX)) AS [2. Latitude], \n"
+           + "	CAST([Longitude] AS NVARCHAR(MAX)) AS [3. Longitude] from [Mangrove_mapapp_db].[dbo].[PowerPlant_General] Where [PowerPlant_Name] IN ("+ powerplants + ")) piv\n"
+           + "	unpivot\n"
+           + "	(\n"
+           + "	  Data \n"
+           + "	  for Property in ([1. Power Plant Name], [2. Latitude], [3. Longitude])\n"
+           + "	) unpiv\n"
+           + ")\n"
+           + "select Property, "+ powerPlanIds + "\n"
+           + "from cte\n"
+           + "pivot\n"
+           + "(\n"
+           + "  MAX(Data)\n"
+           + "  for ID in ("+ powerPlanIdsRaw + ")\n"
+           + ") p";
+
+
+
+            List<dynamic> tabledata = Global.Sql(context, sql).ToList();
+
+            string tableString = "<div class='row'>" +
+                "<div class='col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='x_panel'>" +
+                        "<div class='x_content'>" +
+                            "<div class='table-responsive'>" +
+                                "<table class='page-table table table-striped table-hover'>" +
+                                "<thead>" +
+                                    "<tr>" +
+                                        "<th> Property </th>" +
+                                        "<th> Power Plant-1</th>";
+            if (PowerPlant2 != null && PowerPlant2 != "")
+                tableString += "<th> Power Plant-2</th>";
+            if (PowerPlant3 != null && PowerPlant3 != "")
+                tableString += "<th> Power Plant-3</th>";
+            if (PowerPlant4 != null && PowerPlant4 != "")
+                tableString += "<th> Power Plant-4</th>";
+
+            tableString+= "</tr>" +
+                                "</thead>" +
+                                "<tbody>";
+
+            foreach (var item in tabledata)
+            {
+                tableString += "<tr>" +
+                                "<td>" +
+                                    item.Property +
+                                "</td>" +
+                                "<td>" +
+                                    item.PowerPlant1 +
+                                "</td>";
+
+                if (PowerPlant2 != null && PowerPlant2 != "")
+                    tableString += "<td>" +
+                                    item.PowerPlant2 +
+                                "</td>";
+                if (PowerPlant3 != null && PowerPlant3 != "")
+                    tableString += "<td>" +
+                                    item.PowerPlant3 +
+                                "</td>";
+                if (PowerPlant4 != null && PowerPlant4 != "")
+                    tableString += "<td>" +
+                                    item.PowerPlant4 +
+                                "</td>";
+
+                tableString += "</tr>";
+            }
+            tableString += "</tbody>" +
+                        "</table>" +
+                    "</div >" +
+                "</div > " +
+            "</div> " +
+        "</div> " +
+    "</div>";
+
+            return tableString;
+        }
+        public List<PowerPlantSearchModel> GetPowerPlantListFilter(string name)
+        {
+            List<PowerPlantSearchModel> ppListModel = new List<PowerPlantSearchModel>();
+
+            var ppList = context.PowerPlant_General.Where(s => s.PowerPlant_Name.StartsWith(name)).ToList();
+
+            foreach (var item in ppList)
+            {
+                PowerPlantSearchModel pp = new PowerPlantSearchModel();
+                pp.ID = item.ID;
+                pp.Name = item.PowerPlant_Name;
+
+                ppListModel.Add(pp);
+            }
+
+            return ppListModel;
+        }
+    }
+
+}

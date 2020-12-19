@@ -1,0 +1,70 @@
+﻿
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="side_page_action">
+        <ul>
+            <li><a href="#" onclick="myFunction()"><span>save changes</span> <i class="fa fa-check"></i></a></li>
+            <li><a href="/Home/Dashboard"><span>Dashboard</span><i class="fa fa-dashboard"></i></a></li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutFoddddrm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutFoddddrm').submit()"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                }
+            </li>
+        </ul>
+    </div>
+}    
+
+
+
+<!--Header-area  Start-->
+    <section class="header-area">
+        <div class="container">
+            <div class="header-box">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header">
+                            <p>স্বাগতম...</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a style="color:#fff" href="javascript:document.getElementById('logoutFoddddrm').submit()"> Log Out</a>
+                                }
+
+                            }
+                            else
+                            {
+                                <a style="color:#fff" href="/Account/Login">Login</a>
+                            }
+                        }
+                        <div class="briffs-responsive-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Header-area  End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

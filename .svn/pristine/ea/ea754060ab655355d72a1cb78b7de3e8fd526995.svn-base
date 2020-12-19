@@ -1,0 +1,94 @@
+﻿@using MangroveSpace.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/backend/_LoginLayout.cshtml";
+}
+
+<body class="login-body">
+    <div class="sidenav-login">
+        <div class="login-main-text">
+            <h2>Application<br> Login Page</h2>
+            <p>Login to your app from here to access.</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                @using (Html.BeginForm("Login", "Account"))
+                {
+                    @Html.AntiForgeryToken()
+                    <br />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Username" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-black">Login</button>
+                }
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
+@*<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Login", "Account"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <h1>Login Form</h1>
+                            <div>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Username" })
+                            </div>
+                            <div>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            </div>
+                            <div>
+                                <input type="submit" value="Log in" class="btn btn-default submit" />
+                                <a class="reset_pass" href="#">Lost your password?</a>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <p class="change_link">
+                                    New to site?
+                                    <a href="/Account/Register" class="to_register"> Create Account </a>
+                                </p>
+
+                                <div class="clearfix"></div>
+                                <br />
+
+                                <div>
+                                    <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                    <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                                </div>
+                            </div>
+                        </form>
+                    }
+
+                </section>
+            </div>
+        </div>
+    </div>
+    </body>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

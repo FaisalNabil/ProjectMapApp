@@ -1,0 +1,2553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D1B66E0D-3EB8-4C2E-9F33-147A3C968D94}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MangroveSpace</RootNamespace>
+    <AssemblyName>MangroveSpace</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggregatedCounter.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AlbumHelper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AspAttendanceInfoSection.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspAttendanceInOut.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspAttendanceLog.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspAttendanceService.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCardProcessDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCardProcessQueue.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSAlbum.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSAlbumDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSAllCategory.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSAnalytic.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSCategory.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSEvent.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSGadget.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSInvoiceDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSInvoiceTransition.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSMail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSMemberShip.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSMenu.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSNew.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSNotice.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSPage.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSPageTemplate.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSProductCategory.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSProductInfo.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSSlider.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSTableContent.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspCMSTableTemplate.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspExamReGenReport.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoAdmission.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoAdmissionCreation.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoAdmissionDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoClass.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExam.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamMarkAssign.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamMarkAssignDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamRoomDistribution.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamRoomSummary.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoExamRoutine.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoGrade.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoGroup.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoResult.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoResultMark.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoResultSum.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoSection.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoStaff.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoStudent.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoStudentAdmission.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoStudentStatu.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoStudentSubject.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoSubject.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoSubjectMarkDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoSubPackage.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoSubPackageDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspInfoTeacher.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspLibraryBookCatagory.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspLibraryBookInfo.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspLibraryTransactionDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspLibraryTransection.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayDBBLPayemt.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayDBBLValidation.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayHit.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayPackage.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayPackageDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayTransaction.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayTransDetail.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayTransType.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspPayTxnTransaction.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSmsSending.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSmsSendingTemplate.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSmsSentSm.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysError.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysLabelSetting.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysMenu.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysPrivilege.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysPrivilegeTemplate.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysProfile.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysSetting.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspSysUserLog.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspTeacherEvaluation.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspTeacherEvaluationResult.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspTeacherQuestion.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlbumDetailsController.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ComparisonController.cs" />
+    <Compile Include="Controllers\ExcelImportController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\MotorController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\GadgetsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NoticeController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\PageTemplatesController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductInfoesController.cs" />
+    <Compile Include="Controllers\SlidersController.cs" />
+    <Compile Include="Controllers\SysMenuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="Controllers\UserRolesController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Counter.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Sheet_1__.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventHelper.cs" />
+    <Compile Include="GadgetHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalMethod.cs" />
+    <Compile Include="Hash.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Job.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobParameter.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobQueue.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="List.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MangroveSpaceModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MangroveSpaceModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MangroveSpaceModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MangroveSpaceModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MangroveSpaceModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuHelper.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ComparisonItemModel.cs" />
+    <Compile Include="Models\ComparisonModel.cs" />
+    <Compile Include="Models\DBModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImportExcel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MapDataModel.cs" />
+    <Compile Include="Partial Class\AspCMSMenu.cs" />
+    <Compile Include="Partial Class\AspCMSNotice.cs" />
+    <Compile Include="Models\SelectList.cs" />
+    <Compile Include="NewsHelper.cs" />
+    <Compile Include="NewsLetterHelper.cs" />
+    <Compile Include="NoticeHelper.cs" />
+    <Compile Include="Partial Class\AspCMSAlbum.cs" />
+    <Compile Include="Partial Class\AspCMSAlbumDetail.cs" />
+    <Compile Include="Partial Class\AspCMSEvent.cs" />
+    <Compile Include="Partial Class\AspCMSGadget.cs" />
+    <Compile Include="Partial Class\AspCMSPage.cs" />
+    <Compile Include="Partial Class\AspCMSSlider.cs" />
+    <Compile Include="PowerPlant_BasicType.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PowerPlant_Category.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PowerPlant_Country.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PowerPlant_General.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PowerPlant_Technical.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schema.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Server.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ComparisonDataPreparation.cs" />
+    <Compile Include="Service\ImportHelper.cs" />
+    <Compile Include="Service\MapDataPreparation.cs" />
+    <Compile Include="Set.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingHelper.cs" />
+    <Compile Include="SliderHelper.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="State.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>MangroveSpaceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AlbumPakageDetailsViewModel.cs" />
+    <Compile Include="ViewModel\AlbumPakageViewModel.cs" />
+    <Compile Include="ViewModel\ProductInfoesViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\back_assets\css\bootstrap-progressbar-3.3.4.css" />
+    <Content Include="assets\back_assets\css\bootstrap.css" />
+    <Content Include="assets\back_assets\css\datepicker.standalone.css" />
+    <Content Include="assets\back_assets\css\datepicker3.css" />
+    <Content Include="assets\back_assets\css\dropzone.css" />
+    <Content Include="assets\back_assets\css\nestable.css" />
+    <Content Include="assets\back_assets\css\summernote.css" />
+    <Content Include="assets\back_assets\css\timepicki.css" />
+    <Content Include="assets\back_assets\css\t_codemirror.css" />
+    <Content Include="assets\back_assets\css\custom.css" />
+    <Content Include="assets\back_assets\css\dataTables.bootstrap.css" />
+    <Content Include="assets\back_assets\css\font-awesome.css" />
+    <Content Include="assets\back_assets\css\green.css" />
+    <Content Include="assets\back_assets\css\jqvmap.css" />
+    <Content Include="assets\back_assets\css\nprogress.css" />
+    <Content Include="assets\back_assets\css\select2.css" />
+    <Content Include="assets\back_assets\css\silkcity.css" />
+    <Content Include="assets\back_assets\css\sweetalert.css" />
+    <Content Include="assets\back_assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\back_assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\back_assets\img\arrow.png" />
+    <Content Include="assets\back_assets\img\default.jpg" />
+    <Content Include="assets\back_assets\img\favicon\favicon.ico" />
+    <Content Include="assets\back_assets\img\img.jpg" />
+    <Content Include="assets\back_assets\img\mangrove_logo.png" />
+    <Content Include="assets\back_assets\img\monkeyDeveloper.jpg" />
+    <Content Include="assets\back_assets\img\not-found.png" />
+    <Content Include="assets\back_assets\img\Sir.jpg" />
+    <Content Include="assets\back_assets\img\top_arr.png" />
+    <Content Include="assets\back_assets\js\bootbox.js" />
+    <Content Include="assets\back_assets\js\bootstrap-dt.js" />
+    <Content Include="assets\back_assets\js\bootstrap-progressbar.js" />
+    <Content Include="assets\back_assets\js\bootstrap.js" />
+    <Content Include="assets\back_assets\js\bootstrap3-typeahead.min.js" />
+    <Content Include="assets\back_assets\js\Chart.js" />
+    <Content Include="assets\back_assets\js\Chart.min.js" />
+    <Content Include="assets\back_assets\js\codemirror.js" />
+    <Content Include="assets\back_assets\js\curvedLines.js" />
+    <Content Include="assets\back_assets\js\custom-alert.js" />
+    <Content Include="assets\back_assets\js\custom.js" />
+    <Content Include="assets\back_assets\js\custom.min.js" />
+    <Content Include="assets\back_assets\js\c_active-line.js" />
+    <Content Include="assets\back_assets\js\c_moment.js" />
+    <Content Include="assets\back_assets\js\dataTables.bootstrap.js" />
+    <Content Include="assets\back_assets\js\date.js" />
+    <Content Include="assets\back_assets\js\datepicker.js" />
+    <Content Include="assets\back_assets\js\dropzone-amd-module.js" />
+    <Content Include="assets\back_assets\js\fastclick.js" />
+    <Content Include="assets\back_assets\js\formatting.js" />
+    <Content Include="assets\back_assets\js\gauge.js" />
+    <Content Include="assets\back_assets\js\gauge.min.js" />
+    <Content Include="assets\back_assets\js\htmlmixed.js" />
+    <Content Include="assets\back_assets\js\icheck.js" />
+    <Content Include="assets\back_assets\js\icheck.min.js" />
+    <Content Include="assets\back_assets\js\javascript.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.orderBars.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.pie.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.resize.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.spline.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.stack.js" />
+    <Content Include="assets\back_assets\js\jquery.flot.time.js" />
+    <Content Include="assets\back_assets\js\jquery.js" />
+    <Content Include="assets\back_assets\js\jquery.min.js" />
+    <Content Include="assets\back_assets\js\jquery.nestable.js" />
+    <Content Include="assets\back_assets\js\jquery.signalR-2.4.0.js" />
+    <Content Include="assets\back_assets\js\jquery.sparkline.js" />
+    <Content Include="assets\back_assets\js\jquery.vmap.js" />
+    <Content Include="assets\back_assets\js\jquery.vmap.sampledata.js" />
+    <Content Include="assets\back_assets\js\jquery.vmap.world.js" />
+    <Content Include="assets\back_assets\js\moment.min.js" />
+    <Content Include="assets\back_assets\js\nprogress.js" />
+    <Content Include="assets\back_assets\js\pdfobject.js" />
+    <Content Include="assets\back_assets\js\select2.js" />
+    <Content Include="assets\back_assets\js\silkcity.js" />
+    <Content Include="assets\back_assets\js\skycons.js" />
+    <Content Include="assets\back_assets\js\summernote.js" />
+    <Content Include="assets\back_assets\js\sweetalert.js" />
+    <Content Include="assets\back_assets\js\timepicki.js" />
+    <Content Include="assets\back_assets\js\xml.js" />
+    <Content Include="assets\front_assets\DEFAULT\css\animate.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\bootstrap.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\font-awesome.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\jquery.animatedheadline.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\DEFAULT\css\t_responsive.css" />
+    <Content Include="assets\front_assets\DEFAULT\css\style.css" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\DEFAULT\img\about_phn.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\abt_round.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\agnt1.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\agnt2.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\agnt3.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\agnt4.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\app-store-btn.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\blog-1.jpeg" />
+    <Content Include="assets\front_assets\DEFAULT\img\blog-2.jpeg" />
+    <Content Include="assets\front_assets\DEFAULT\img\blog-3.jpeg" />
+    <Content Include="assets\front_assets\DEFAULT\img\choos_bg.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\download_bg.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\favicon\favicon-32x32.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\in2.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\intro.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\intro_phn.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\loader-logo.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\logo.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\mobile-frame.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\newsletter.jpeg" />
+    <Content Include="assets\front_assets\DEFAULT\img\pattern-1.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\play-store-btn.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\potrait.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\ss-02.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\ss-03.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\ss-04.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\ss-07.png" />
+    <Content Include="assets\front_assets\DEFAULT\img\testimonial-1.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\testimonial-2.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\img\testimonial-3.jpg" />
+    <Content Include="assets\front_assets\DEFAULT\js\bootstrap.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\init.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\jquery-3.0.0.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\jquery.animatedheadline.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\main.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\scrollIt.js" />
+    <Content Include="assets\front_assets\DEFAULT\js\wow.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\animate.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\abootstrap.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\featherlight.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\featherlight.gallery.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\afont-awesome.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\bmagnific-popup.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\responsive.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\slicknav.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\css\style.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\bflaticon.css" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\flaticon.html" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\Flaticon.svg" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\award.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\award1.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\award2.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\favicon-32x32.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_blog-13.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_blog-14.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_blog-15.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_portfolio-05.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_portfolio-07.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_portfolio-08.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_portfolio-12.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_slider-01.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_slider-02.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_slider-03.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_user-01.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\img_user-02.jpg" />
+    <Content Include="assets\front_assets\life\bootsnav\css\bootsnav.css" />
+    <Content Include="assets\front_assets\life\bootsnav\css\style.css" />
+    <Content Include="assets\front_assets\life\bootsnav\js\bootsnav.js" />
+    <Content Include="assets\front_assets\life\css\animate.css" />
+    <Content Include="assets\front_assets\life\css\bootstrap-theme.css" />
+    <Content Include="assets\front_assets\life\css\bootstrap.css" />
+    <Content Include="assets\front_assets\life\css\font-awesome.css" />
+    <Content Include="assets\front_assets\life\css\jQuery.verticalCarousel.css" />
+    <Content Include="assets\front_assets\life\css\lightgallery.css" />
+    <Content Include="assets\front_assets\life\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\life\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\life\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\life\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\life\css\responsive.css" />
+    <Content Include="assets\front_assets\life\css\slicknav.css" />
+    <Content Include="assets\front_assets\life\css\style.css" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\life\fonts\lg.svg" />
+    <Content Include="assets\front_assets\life\font\flaticon.css" />
+    <Content Include="assets\front_assets\life\font\flaticon.html" />
+    <Content Include="assets\front_assets\life\font\Flaticon.svg" />
+    <Content Include="assets\front_assets\life\img\abt.jpg" />
+    <Content Include="assets\front_assets\life\img\blog-1.jpg" />
+    <Content Include="assets\front_assets\life\img\blog-2.jpg" />
+    <Content Include="assets\front_assets\life\img\blog-3.jpg" />
+    <Content Include="assets\front_assets\life\img\causes-1.jpg" />
+    <Content Include="assets\front_assets\life\img\causes-3.jpg" />
+    <Content Include="assets\front_assets\life\img\dots3.png" />
+    <Content Include="assets\front_assets\life\img\gallery-1.jpg" />
+    <Content Include="assets\front_assets\life\img\gallery-2.jpg" />
+    <Content Include="assets\front_assets\life\img\gallery-3.jpg" />
+    <Content Include="assets\front_assets\life\img\icon-1.png" />
+    <Content Include="assets\front_assets\life\img\icon-2.png" />
+    <Content Include="assets\front_assets\life\img\icon-3.png" />
+    <Content Include="assets\front_assets\life\img\inner-header-bg.jpg" />
+    <Content Include="assets\front_assets\life\img\logo.png" />
+    <Content Include="assets\front_assets\life\img\map.png" />
+    <Content Include="assets\front_assets\life\img\shape1.png" />
+    <Content Include="assets\front_assets\life\img\signature.png" />
+    <Content Include="assets\front_assets\life\img\slider-1.jpg" />
+    <Content Include="assets\front_assets\life\img\slider-2.jpg" />
+    <Content Include="assets\front_assets\life\img\team-image-1.jpg" />
+    <Content Include="assets\front_assets\life\img\team-image-2.jpg" />
+    <Content Include="assets\front_assets\life\img\team-image-3.jpg" />
+    <Content Include="assets\front_assets\life\img\team-image-4.jpg" />
+    <Content Include="assets\front_assets\life\img\testimonial-2.jpg" />
+    <Content Include="assets\front_assets\life\img\testimonial.jpg" />
+    <Content Include="assets\front_assets\life\js\bootstrap.js" />
+    <Content Include="assets\front_assets\life\js\bootstrap3-typeahead.js" />
+    <Content Include="assets\front_assets\life\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\life\js\custom_lightgallery.js" />
+    <Content Include="assets\front_assets\life\js\fundraising-gradde.js" />
+    <Content Include="assets\front_assets\life\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\life\js\jquery.bootstrap.newsbox.js" />
+    <Content Include="assets\front_assets\life\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\life\js\jquery.easing.js" />
+    <Content Include="assets\front_assets\life\js\jquery.js" />
+    <Content Include="assets\front_assets\life\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\life\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\life\js\jquery.validate.js" />
+    <Content Include="assets\front_assets\life\js\jQuery.verticalCarousel.js" />
+    <Content Include="assets\front_assets\life\js\lightgallery-all.js" />
+    <Content Include="assets\front_assets\life\js\z_main.js" />
+    <Content Include="assets\front_assets\life\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\life\js\popper.js" />
+    <Content Include="assets\front_assets\life\js\waypoints.js" />
+    <Content Include="assets\front_assets\MapApp\bootsnav\css\bootsnav.css" />
+    <Content Include="assets\front_assets\MapApp\bootsnav\css\style.css" />
+    <Content Include="assets\front_assets\MapApp\bootsnav\js\bootsnav.js" />
+    <Content Include="assets\front_assets\MapApp\css\animate.css" />
+    <Content Include="assets\front_assets\MapApp\css\animate.min.css" />
+    <Content Include="assets\front_assets\MapApp\css\bootstrap-theme.css" />
+    <Content Include="assets\front_assets\MapApp\css\bootstrap.css" />
+    <Content Include="assets\front_assets\MapApp\css\font-awesome.css" />
+    <Content Include="assets\front_assets\MapApp\css\font-awesome.min.css" />
+    <Content Include="assets\front_assets\MapApp\css\jQuery.verticalCarousel.css" />
+    <Content Include="assets\front_assets\MapApp\css\lightgallery.css" />
+    <Content Include="assets\front_assets\MapApp\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\MapApp\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\MapApp\css\owl.carousel.min.css" />
+    <Content Include="assets\front_assets\MapApp\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\MapApp\css\owl.theme.default.min.css" />
+    <Content Include="assets\front_assets\MapApp\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\MapApp\css\responsive.css" />
+    <Content Include="assets\front_assets\MapApp\css\slicknav.css" />
+    <Content Include="assets\front_assets\MapApp\css\slicknav.min.css" />
+    <Content Include="assets\front_assets\MapApp\css\style.css" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\MapApp\fonts\lg.svg" />
+    <Content Include="assets\front_assets\MapApp\font\flaticon.css" />
+    <Content Include="assets\front_assets\MapApp\font\flaticon.html" />
+    <Content Include="assets\front_assets\MapApp\font\Flaticon.svg" />
+    <Content Include="assets\front_assets\MapApp\img\abt.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\blog-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\blog-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\blog-3.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\causes-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\causes-3.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\dots3.png" />
+    <Content Include="assets\front_assets\MapApp\img\formula.png" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-3.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-4.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-5.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\gallery-6.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\icon-1.png" />
+    <Content Include="assets\front_assets\MapApp\img\icon-2.png" />
+    <Content Include="assets\front_assets\MapApp\img\icon-3.png" />
+    <Content Include="assets\front_assets\MapApp\img\inner-header-bg.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\logo.png" />
+    <Content Include="assets\front_assets\MapApp\img\map.png" />
+    <Content Include="assets\front_assets\MapApp\img\post-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\post-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\shape1.png" />
+    <Content Include="assets\front_assets\MapApp\img\signature.png" />
+    <Content Include="assets\front_assets\MapApp\img\slider-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\slider-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\team-image-1.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\team-image-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\team-image-3.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\team-image-4.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\testimonial-2.jpg" />
+    <Content Include="assets\front_assets\MapApp\img\testimonial.jpg" />
+    <Content Include="assets\front_assets\MapApp\js\bootstrap.js" />
+    <Content Include="assets\front_assets\MapApp\js\bootstrap.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\bootstrap3-typeahead.js" />
+    <Content Include="assets\front_assets\MapApp\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\MapApp\js\custom_lightgallery.js" />
+    <Content Include="assets\front_assets\MapApp\js\fundraising-gradde.js" />
+    <Content Include="assets\front_assets\MapApp\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery-3.0.0.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.bootstrap.newsbox.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.counterup.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.easing.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.magnific-popup.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.slicknav.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.sticky-sidebar.js" />
+    <Content Include="assets\front_assets\MapApp\js\jquery.validate.js" />
+    <Content Include="assets\front_assets\MapApp\js\jQuery.verticalCarousel.js" />
+    <Content Include="assets\front_assets\MapApp\js\lightgallery-all.js" />
+    <Content Include="assets\front_assets\MapApp\js\main.js" />
+    <Content Include="assets\front_assets\MapApp\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\MapApp\js\owl.carousel.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\popper.js" />
+    <Content Include="assets\front_assets\MapApp\js\popper.min.js" />
+    <Content Include="assets\front_assets\MapApp\js\waypoints-min.js" />
+    <Content Include="assets\front_assets\MapApp\js\waypoints.js" />
+    <Content Include="assets\front_assets\MapApp\js\z_main.js" />
+    <Content Include="assets\front_assets\RMSC\css\datatables.css" />
+    <Content Include="assets\front_assets\RMSC\js\datatables.js" />
+    <Content Include="assets\front_assets\SilkCity\css\featherlight.css" />
+    <Content Include="assets\front_assets\SilkCity\css\featherlight.gallery.css" />
+    <Content Include="assets\front_assets\SilkCity\img\06-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\1-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\2-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\22.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\3-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\4-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\5-01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\abt.png" />
+    <Content Include="assets\front_assets\SilkCity\img\apphghs.png" />
+    <Content Include="assets\front_assets\SilkCity\img\appngghs.png" />
+    <Content Include="assets\front_assets\SilkCity\img\binbook.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\breadcon.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\default.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\hghs.png" />
+    <Content Include="assets\front_assets\SilkCity\img\hghsl.png" />
+    <Content Include="assets\front_assets\SilkCity\img\iba.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon01.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon02.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon03.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon04.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon05.png" />
+    <Content Include="assets\front_assets\SilkCity\img\icon06.png" />
+    <Content Include="assets\front_assets\SilkCity\img\jhony-vai.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\mahivai.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\rebmsc.png" />
+    <Content Include="assets\front_assets\SilkCity\img\rmsc.png" />
+    <Content Include="assets\front_assets\SilkCity\img\rmscweb.png" />
+    <Content Include="assets\front_assets\SilkCity\img\zprajshahi.png" />
+    <Content Include="assets\front_assets\SilkCity\js\bfeatherlight.js" />
+    <Content Include="assets\front_assets\SilkCity\js\cfeatherlight.gallery.js" />
+    <Content Include="assets\front_assets\SilkCity\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\SilkCity\js\isotope.pkgd.js" />
+    <Content Include="Content\BlueOpal\editor.png" />
+    <Content Include="Content\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\BlueOpal\indeterminate.gif" />
+    <Content Include="Content\BlueOpal\loading-image.gif" />
+    <Content Include="Content\BlueOpal\loading.gif" />
+    <Content Include="Content\BlueOpal\loading_2x.gif" />
+    <Content Include="Content\BlueOpal\markers.png" />
+    <Content Include="Content\BlueOpal\markers_2x.png" />
+    <Content Include="Content\BlueOpal\slider-h.gif" />
+    <Content Include="Content\BlueOpal\slider-v.gif" />
+    <Content Include="Content\BlueOpal\sprite.png" />
+    <Content Include="Content\BlueOpal\sprite_2x.png" />
+    <Content Include="Content\BlueOpal\sprite_kpi.png" />
+    <Content Include="Content\BlueOpal\sprite_kpi_2x.png" />
+    <Content Include="Content\Choosen\css\chosen.css" />
+    <Content Include="Content\Choosen\css\chosen.min.css" />
+    <Content Include="Content\Choosen\css\prism.css" />
+    <Content Include="Content\Choosen\css\style.css" />
+    <Content Include="Content\Choosen\js\chosen.jquery.js" />
+    <Content Include="Content\Choosen\js\chosen.jquery.min.js" />
+    <Content Include="Content\Choosen\js\chosen.proto.js" />
+    <Content Include="Content\Choosen\js\chosen.proto.min.js" />
+    <Content Include="Content\Choosen\js\init.js" />
+    <Content Include="Content\Choosen\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\Choosen\js\prism.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\icon\1.png" />
+    <Content Include="Content\icon\2.png" />
+    <Content Include="Content\icon\3.png" />
+    <Content Include="Content\icon\add.png" />
+    <Content Include="Content\icon\cancel.png" />
+    <Content Include="Content\icon\cancel1.png" />
+    <Content Include="Content\icon\cancel2.png" />
+    <Content Include="Content\icon\default.jpg" />
+    <Content Include="Content\icon\edit.png" />
+    <Content Include="Content\icon\loading_blue_lg.gif" />
+    <Content Include="Content\icon\ok.png" />
+    <Content Include="Content\js\BMSGrideColumnCtrl.js" />
+    <Content Include="Content\js\BMSInspectionGrideColumnCtrl.js" />
+    <Content Include="Content\js\BMSInspectionTabCtrl.js" />
+    <Content Include="Content\js\BMSTabCtrl.js" />
+    <Content Include="Content\js\CustomQry.js" />
+    <Content Include="Content\js\DataFilterCheck.js" />
+    <Content Include="Content\js\html5shiv.min.js" />
+    <Content Include="Content\js\jquery.nicescroll.min.js" />
+    <Content Include="Content\js\plugin.js" />
+    <Content Include="Content\js\respond.min.js" />
+    <Content Include="Content\js\sidebar.js" />
+    <Content Include="Content\js\wow.min.js" />
+    <Content Include="Content\MAP\css\MarkerCluster.css" />
+    <Content Include="Content\MAP\css\MarkerCluster.Default.css" />
+    <Content Include="Content\MAP\css\screen.css" />
+    <Content Include="Content\MAP\EasyButton\easy-button.css" />
+    <Content Include="Content\MAP\EasyButton\easy-button.js" />
+    <Content Include="Content\MAP\Filter\leaflet-tag-filter-button.css" />
+    <Content Include="Content\MAP\Filter\leaflet-tag-filter-button.js" />
+    <Content Include="Content\MAP\Fullscreen\fullscreen%402x.png" />
+    <Content Include="Content\MAP\Fullscreen\fullscreen.png" />
+    <Content Include="Content\MAP\Fullscreen\leaflet.fullscreen.css" />
+    <Content Include="Content\MAP\Fullscreen\Leaflet.fullscreen.min.js" />
+    <Content Include="Content\MAP\js\leaflet.markercluster-src.js" />
+    <Content Include="Content\MAP\js\leaflet.markercluster.js" />
+    <Content Include="Content\MAP\js\realworld.388.js" />
+    <Content Include="Content\MAP\Marker\images\blue.png" />
+    <Content Include="Content\MAP\Marker\images\blueflag.png" />
+    <Content Include="Content\MAP\Marker\images\green.png" />
+    <Content Include="Content\MAP\Marker\images\lightgreen.png" />
+    <Content Include="Content\MAP\Marker\images\markers-matte%402x.png" />
+    <Content Include="Content\MAP\Marker\images\markers-matte.png" />
+    <Content Include="Content\MAP\Marker\images\markers-plain.png" />
+    <Content Include="Content\MAP\Marker\images\markers-shadow%402x.png" />
+    <Content Include="Content\MAP\Marker\images\markers-shadow.png" />
+    <Content Include="Content\MAP\Marker\images\markers-soft%402x.png" />
+    <Content Include="Content\MAP\Marker\images\markers-soft.png" />
+    <Content Include="Content\MAP\Marker\images\nevyblue.png" />
+    <Content Include="Content\MAP\Marker\images\pink.png" />
+    <Content Include="Content\MAP\Marker\images\pinkflag.png" />
+    <Content Include="Content\MAP\Marker\images\red.png" />
+    <Content Include="Content\MAP\Marker\leaflet.awesome-markers.css" />
+    <Content Include="Content\MAP\Marker\leaflet.awesome-markers.js" />
+    <Content Include="Content\MAP\Marker\leaflet.awesome-markers.min.js" />
+    <Content Include="Uploads\AlbumImage\2\2-3-.jpg" />
+    <Content Include="Uploads\fmautoricemill\logo.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\parallax-01.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\promo-1.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\promo-2.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\promo-3.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\slider-shadow.png" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\Smal-bg3.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\volunteer-2.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\volunteer-3.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\img\volunteer-4.jpg" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\bootstrap.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\cfeatherlight.gallery.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\bfeatherlight.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\jquery.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\zmain.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\Fmautoricemill\js\popper.js" />
+    <Content Include="assets\front_assets\HGHS\css\animate.css" />
+    <Content Include="assets\front_assets\HGHS\css\bootstrap.css" />
+    <Content Include="assets\front_assets\HGHS\css\datatables.css" />
+    <Content Include="assets\front_assets\HGHS\js\datatables.js" />
+    <Content Include="assets\front_assets\HGHS\css\font-awesome.css" />
+    <Content Include="assets\front_assets\HGHS\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\HGHS\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\HGHS\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\HGHS\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\HGHS\css\t_responsive.css" />
+    <Content Include="assets\front_assets\HGHS\css\slicknav.css" />
+    <Content Include="assets\front_assets\HGHS\css\style.css" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\HGHS\img\ab_principal.jpg" />
+    <Content Include="assets\front_assets\HGHS\img\bc2.jpg" />
+    <Content Include="assets\front_assets\HGHS\img\front_pic.jpg" />
+    <Content Include="assets\front_assets\HGHS\img\hghs-logo.png" />
+    <Content Include="assets\front_assets\HGHS\img\hmaster_s.jpg" />
+    <Content Include="assets\front_assets\HGHS\img\isd-banner2.jpg" />
+    <Content Include="assets\front_assets\HGHS\img\page_bg.png" />
+    <Content Include="assets\front_assets\HGHS\img\topopacity.jpg" />
+    <Content Include="assets\front_assets\HGHS\js\bootstrap.js" />
+    <Content Include="assets\front_assets\HGHS\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\HGHS\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\HGHS\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\HGHS\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\HGHS\js\jquery.js" />
+    <Content Include="assets\front_assets\HGHS\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\HGHS\js\z_main.js" />
+    <Content Include="assets\front_assets\HGHS\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\HGHS\js\popper.js" />
+    <Content Include="assets\front_assets\HGHS\js\waypoints.js" />
+    <Content Include="assets\front_assets\IBA\img\footer-logo.png" />
+    <Content Include="assets\front_assets\IBA\js\bootstrap.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.marquee.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.pause.js" />
+    <Content Include="assets\front_assets\IBA\js\p_custom.js" />
+    <Content Include="assets\front_assets\IBA\js\gmap.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery-perfect-scrollbar.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.easing.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.easy-ticker.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.js" />
+    <Content Include="assets\front_assets\IBA\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\IBA\js\noticecustom.js" />
+    <Content Include="assets\front_assets\IBA\js\owl.carousel.js" />
+    <Content Include="assets\back_assets\js\dropzone.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-all-min.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-all.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-core-min.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-core.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-no-ckeditor-min.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-no-ckeditor.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-no-react-min.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\alloy-editor-no-react.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-atlas-min.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-atlas.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-moono-min.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-moono.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-ocean-min.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\alloy-editor-ocean.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-atlas.svg" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-default.svg" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-moono.svg" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-ocean.svg" />
+    <Content Include="assets\front_assets\libs\alloy-editor\build-config.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\ckeditor.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\config.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\contents.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\af.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\af.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ar.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\bg.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\bn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\bs.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\cs.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\cy.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\da.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\de.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\el.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\en-au.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\en-ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\en-gb.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\en.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\eo.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\es.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\et.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\eu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\fa.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\fi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\fo.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\fr-ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\fr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\gl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\gu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\he.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\hi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\hr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\hu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\id.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\is.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\it.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ja.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ka.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\km.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ko.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ku.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\lt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\lv.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\mk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\mn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ms.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\nb.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\nl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\no.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\pl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\pt-br.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\pt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ro.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ru.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\si.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sq.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sr-latn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\sv.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\th.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\tr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\tt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\ug.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\uk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\vi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\zh-cn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\alloy-editor\zh.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ar.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\bg.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\bn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\bs.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\cs.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\cy.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\da.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\de.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\el.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\en-au.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\en-ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\en-gb.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\en.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\eo.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\es.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\et.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\eu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\fa.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\fi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\fo.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\fr-ca.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\fr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\gl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\gu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\he.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\hi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\hr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\hu.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\id.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\is.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\it.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ja.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ka.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\km.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ko.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ku.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\lt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\lv.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\mk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\mn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ms.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\nb.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\nl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\no.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\pl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\pt-br.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\pt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ro.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ru.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\si.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sl.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sq.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sr-latn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\sv.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\th.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\tr.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\tt.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\ug.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\uk.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\vi.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\zh-cn.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\lang\zh.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\icons.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\icons_hidpi.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\pastefromword\filter\default.js" />
+    <Content Include="assets\front_assets\libs\alloy-editor\plugins\widget\images\handle.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\dialog.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\dialog_ie.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\dialog_ie7.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\dialog_ie8.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\dialog_iequirks.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor_gecko.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor_ie.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor_ie7.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor_ie8.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\editor_iequirks.css" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\icons.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\icons_hidpi.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\anchor.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\arrow.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\close.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\hidpi\anchor.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\hidpi\close.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\lock-open.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\lock.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\refresh.png" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\images\spinner.gif" />
+    <Content Include="assets\front_assets\libs\alloy-editor\styles.js" />
+    <Content Include="assets\front_assets\IBA\css\animate.css" />
+    <Content Include="assets\front_assets\IBA\css\bootstrap.css" />
+    <Content Include="assets\front_assets\IBA\css\font-awesome.css" />
+    <Content Include="assets\front_assets\IBA\css\t_index1.css" />
+    <Content Include="assets\front_assets\IBA\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\IBA\css\notice.css" />
+    <Content Include="assets\front_assets\IBA\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\IBA\css\perfect-scrollbar.css" />
+    <Content Include="assets\front_assets\IBA\css\t_responsive.css" />
+    <Content Include="assets\front_assets\IBA\css\slicknav.css" />
+    <Content Include="assets\front_assets\IBA\favicons\android-chrome-192x192.png" />
+    <Content Include="assets\front_assets\IBA\favicons\android-chrome-384x384.png" />
+    <Content Include="assets\front_assets\IBA\favicons\apple-touch-icon.png" />
+    <Content Include="assets\front_assets\IBA\favicons\browserconfig.xml" />
+    <Content Include="assets\front_assets\IBA\favicons\favicon-16x16.png" />
+    <Content Include="assets\front_assets\IBA\favicons\favicon-32x32.png" />
+    <Content Include="assets\front_assets\IBA\favicons\favicon.ico" />
+    <Content Include="assets\front_assets\IBA\favicons\mstile-150x150.png" />
+    <Content Include="assets\front_assets\IBA\favicons\safari-pinned-tab.svg" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\IBA\img\breadcromb.jpeg" />
+    <Content Include="assets\front_assets\IBA\img\dummyperson.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-1.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-10.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-11.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-12.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-13.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-14.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-15.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-16.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-2.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-3.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-4.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-5.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-6.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-7.jpg" />
+    <Content Include="assets\front_assets\IBA\img\gallery-8.JPG" />
+    <Content Include="assets\front_assets\IBA\img\gallery-9.jpg" />
+    <Content Include="assets\front_assets\IBA\img\iba-logo.jpg" />
+    <Content Include="assets\front_assets\IBA\img\IBA-Rajshahi-University.jpg" />
+    <Content Include="assets\front_assets\IBA\img\IBa1.jpg" />
+    <Content Include="assets\front_assets\IBA\img\iba_abt.jpg" />
+    <Content Include="assets\front_assets\IBA\img\logo.png" />
+    <Content Include="assets\front_assets\IBA\img\news-1.jpg" />
+    <Content Include="assets\front_assets\IBA\img\news-2.jpg" />
+    <Content Include="assets\front_assets\IBA\img\news-3.jpg" />
+    <Content Include="assets\front_assets\IBA\img\not-found.png" />
+    <Content Include="assets\front_assets\IBA\img\notice.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-002.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-01.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-02.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-1.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-2.jpg" />
+    <Content Include="assets\front_assets\IBA\img\slide-3.jpg" />
+    <Content Include="assets\front_assets\IBA\img\tour_backgd.jpg" />
+    <Content Include="assets\front_assets\REBMSC\css\animate.css" />
+    <Content Include="assets\front_assets\REBMSC\css\bootstrap.css" />
+    <Content Include="assets\front_assets\REBMSC\css\featherlight.css" />
+    <Content Include="assets\front_assets\REBMSC\css\featherlight.gallery.css" />
+    <Content Include="assets\front_assets\REBMSC\css\font-awesome.css" />
+    <Content Include="assets\front_assets\REBMSC\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\REBMSC\css\notice.css" />
+    <Content Include="assets\front_assets\REBMSC\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\REBMSC\css\perfect-scrollbar.css" />
+    <Content Include="assets\front_assets\REBMSC\css\t_responsive.css" />
+    <Content Include="assets\front_assets\REBMSC\css\slicknav.css" />
+    <Content Include="assets\front_assets\REBMSC\css\style.css" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\REBMSC\img\about_us.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\bg4.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\breadcromb.png" />
+    <Content Include="assets\front_assets\REBMSC\img\favicon.png" />
+    <Content Include="assets\front_assets\REBMSC\img\logo2.png" />
+    <Content Include="assets\front_assets\REBMSC\img\Logo_New_Model.png" />
+    <Content Include="assets\front_assets\REBMSC\img\priminister-slogan.png" />
+    <Content Include="assets\front_assets\REBMSC\img\principal.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\slide1.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\slide2.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Abdul_Azim.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Abdul_Aziz.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Abdul_Goni.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Abdul_wadud.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Abu_toha_rony.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Alo_Rani.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Anamika_Sarker.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Ashraf_Hossain.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Benojir_Shanaz.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Bondona.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Debobroto.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Dhononjoy_Ukil.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Dilara_Afroz.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Dilip_Kumar_Junior.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Dilip_Kumar_Sinior.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Dina.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Faruk_Faysal.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Hasina_Banu.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Hosneara_Munni.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Indrajit_kumar.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Ismail_hosen.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Jahangir_Alom.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Jahangir_Alom_Emon.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Julmat_Ali %281%29.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Julmat_Ali.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Khairul_Islam.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Khalilur.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Mahfuza_Khatun.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Mahfuzur.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Manoshi_Das.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Mehedi_Hasan.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Meher_Sarder.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Minhaj_Fatema.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Mizan_Sir.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Mostak_Ahmed.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\M_R_Parvez.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Najrin.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Nur_Mohal %281%29.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Nur_Mohal.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Pollob_Kumar_Das.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Robiul_Hossain.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Rownok.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Rumpa_Rani.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Ruposri.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sabrina.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sajjad_Hossain.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sakila.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sathi_bramho.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sazzadul_Islam.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Shohidul_Islam.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Shoriful_islam.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sir.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sohan_Reza.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Sultana.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Towfika_khanom.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Wajir_Hyder.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\Zulkar_Nayem.jpg" />
+    <Content Include="assets\front_assets\REBMSC\img\teacher\_PP_Size_Last_%281%29.jpg" />
+    <Content Include="assets\front_assets\REBMSC\js\bootstrap.js" />
+    <Content Include="assets\front_assets\REBMSC\js\custom.js" />
+    <Content Include="assets\front_assets\REBMSC\js\featherlight.gallery.js" />
+    <Content Include="assets\front_assets\REBMSC\js\featherlight.js" />
+    <Content Include="assets\front_assets\REBMSC\js\gmap.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery-perfect-scrollbar.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.easing.min.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.easy-ticker.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.marquee.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.pause.js" />
+    <Content Include="assets\front_assets\REBMSC\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\REBMSC\js\noticecustom.js" />
+    <Content Include="assets\front_assets\REBMSC\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\RMSC\css\animate.css" />
+    <Content Include="assets\front_assets\RMSC\css\bootstrap.css" />
+    <Content Include="assets\front_assets\RMSC\css\font-awesome.css" />
+    <Content Include="assets\front_assets\RMSC\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\RMSC\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\RMSC\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\RMSC\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\RMSC\css\t_responsive.css" />
+    <Content Include="assets\front_assets\RMSC\css\slicknav.css" />
+    <Content Include="assets\front_assets\RMSC\css\style.css" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\RMSC\img\e-rajshahi.png" />
+    <Content Include="assets\front_assets\RMSC\img\FaceBook.png" />
+    <Content Include="assets\front_assets\RMSC\img\favicon.png" />
+    <Content Include="assets\front_assets\RMSC\img\handout2.jpg" />
+    <Content Include="assets\front_assets\RMSC\img\LinkedIn.png" />
+    <Content Include="assets\front_assets\RMSC\img\loc2.jpg" />
+    <Content Include="assets\front_assets\RMSC\img\logo.png" />
+    <Content Include="assets\front_assets\RMSC\img\photo1.jpg" />
+    <Content Include="assets\front_assets\RMSC\img\priminister-slogan.png" />
+    <Content Include="assets\front_assets\RMSC\img\rmsc.png" />
+    <Content Include="assets\front_assets\RMSC\img\slider-1.jpg" />
+    <Content Include="assets\front_assets\RMSC\img\slider-2.png" />
+    <Content Include="assets\front_assets\RMSC\img\Twitter.png" />
+    <Content Include="assets\front_assets\RMSC\img\Youtube.png" />
+    <Content Include="assets\front_assets\RMSC\js\bootstrap.js" />
+    <Content Include="assets\front_assets\RMSC\js\jquery-3.0.0.js" />
+    <Content Include="assets\front_assets\RMSC\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\RMSC\js\jquery.marquee.js" />
+    <Content Include="assets\front_assets\RMSC\js\jquery.pause.js" />
+    <Content Include="assets\front_assets\RMSC\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\RMSC\js\main.js" />
+    <Content Include="assets\front_assets\RMSC\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\RMSC\js\popper.js" />
+    <Content Include="assets\front_assets\SilkCity\css\animate.css" />
+    <Content Include="assets\front_assets\SilkCity\css\bootsnav.css" />
+    <Content Include="assets\front_assets\SilkCity\css\bootstrap.css" />
+    <Content Include="assets\front_assets\SilkCity\css\bstyle.css" />
+    <Content Include="assets\front_assets\SilkCity\css\font-awesome.css" />
+    <Content Include="assets\front_assets\SilkCity\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\SilkCity\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\SilkCity\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\SilkCity\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\SilkCity\css\t_responsive.css" />
+    <Content Include="assets\front_assets\SilkCity\css\slicknav.css" />
+    <Content Include="assets\front_assets\SilkCity\css\style.css" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\SilkCity\img\1.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\abt-1.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\abt-2-bg.png" />
+    <Content Include="assets\front_assets\SilkCity\img\abt-2.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\achivement_bg.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\agnt4.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\arrow-right-bottom.png" />
+    <Content Include="assets\front_assets\SilkCity\img\arrow-right-top.png" />
+    <Content Include="assets\front_assets\SilkCity\img\dots3.png" />
+    <Content Include="assets\front_assets\SilkCity\img\logo.png" />
+    <Content Include="assets\front_assets\SilkCity\img\slider-1.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\slider-2.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\thumb-1 %281%29.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\thumb-1.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\volunteer-1.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\volunteer-2.jpg" />
+    <Content Include="assets\front_assets\SilkCity\img\volunteer-3.jpg" />
+    <Content Include="assets\front_assets\SilkCity\js\bootsnav.js" />
+    <Content Include="assets\front_assets\SilkCity\js\bootstrap.js" />
+    <Content Include="assets\front_assets\SilkCity\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\SilkCity\js\jquery.js" />
+    <Content Include="assets\front_assets\SilkCity\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\SilkCity\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\SilkCity\js\main.js" />
+    <Content Include="assets\front_assets\SilkCity\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\SilkCity\js\popper.js" />
+    <Content Include="assets\front_assets\SilkCity\js\waypoints.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\animate.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\bootstrap.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\font-awesome.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\responsive.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\slicknav.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\css\style.css" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_1.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_2.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_3.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_4.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_5.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\content_6.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\head_offcer.png" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\logo.png" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\slider_1.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\slider_2.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\img\slider_3.jpg" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\bootstrap.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\jquery.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\z_main.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\popper.js" />
+    <Content Include="assets\front_assets\TAXAPPEAL\js\waypoints.js" />
+    <Content Include="assets\front_assets\TAXZONE\css\animate.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\bootstrap.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\font-awesome.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\notice.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\TAXZONE\css\responsive.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\slicknav.css" />
+    <Content Include="assets\front_assets\TAXZONE\css\style.css" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\TAXZONE\img\containt.jpg" />
+    <Content Include="assets\front_assets\TAXZONE\img\logo.png" />
+    <Content Include="assets\front_assets\TAXZONE\img\slider_1.jpg" />
+    <Content Include="assets\front_assets\TAXZONE\img\Slider_2.jpeg" />
+    <Content Include="assets\front_assets\TAXZONE\img\slider_3.jpeg" />
+    <Content Include="assets\front_assets\TAXZONE\img\slider_4.jpeg" />
+    <Content Include="assets\front_assets\TAXZONE\img\title.png" />
+    <Content Include="assets\front_assets\TAXZONE\js\bootstrap.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.marquee.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.pause.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\main.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\popper.js" />
+    <Content Include="assets\front_assets\TAXZONE\js\waypoints.js" />
+    <Content Include="assets\front_assets\youthrajshahi\css\animate.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\bootstrap.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\font-awesome.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\style.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\notice.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\perfect-scrollbar.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\t_responsive.css" />
+    <Content Include="assets\front_assets\youthrajshahi\css\slicknav.css" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\android-chrome-192x192.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\android-chrome-384x384.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\apple-touch-icon.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\browserconfig.xml" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\favicon-16x16.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\favicon-32x32.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\favicon.ico" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\mstile-150x150.png" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\safari-pinned-tab.svg" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\breadcromb.jpeg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\dummyperson.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\footer-logo.png" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-1.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-10.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-11.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-12.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-13.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-14.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-15.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-16.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-2.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-3.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-4.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-5.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-6.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-7.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-8.JPG" />
+    <Content Include="assets\front_assets\youthrajshahi\img\gallery-9.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\iba-logo.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\IBA-Rajshahi-University.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\IBa1.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\iba_abt.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\logo.png" />
+    <Content Include="assets\front_assets\youthrajshahi\img\news-1.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\news-2.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\news-3.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\notice.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-002.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-01.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-02.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-1.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-2.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\slide-3.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\img\tour_backgd.jpg" />
+    <Content Include="assets\front_assets\youthrajshahi\js\bootstrap.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\z_custom.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\gmap.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery-perfect-scrollbar.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery.easing.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery.easy-ticker.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\noticecustom.js" />
+    <Content Include="assets\front_assets\youthrajshahi\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\zprajshahi\css\animate.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\bootstrap.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\font-awesome.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\notice.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\zprajshahi\css\responsive.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\slicknav.css" />
+    <Content Include="assets\front_assets\zprajshahi\css\style.css" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\zprajshahi\img\ceo-1-220x238.jpg" />
+    <Content Include="assets\front_assets\zprajshahi\img\MuhammadAli-220x240-1-209x240.png" />
+    <Content Include="assets\front_assets\zprajshahi\img\rajshahi-1.jpg" />
+    <Content Include="assets\front_assets\zprajshahi\img\slider-1.jpg" />
+    <Content Include="assets\front_assets\zprajshahi\img\zila_parishad_rajshahi %281%29.png" />
+    <Content Include="assets\front_assets\zprajshahi\img\zila_parishad_rajshahi.png" />
+    <Content Include="assets\front_assets\zprajshahi\js\bootstrap.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\custom.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\featherlight.gallery.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\featherlight.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\gmap.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery-perfect-scrollbar.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.easing.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.easy-ticker.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.marquee.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.pause.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\noticecustom.js" />
+    <Content Include="assets\front_assets\zprajshahi\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\ZSORAJ\css\animate.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\bootstrap.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\font-awesome.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\magnific-popup.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\owl.carousel.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\owl.theme.default.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\owl.video.play.png" />
+    <Content Include="assets\front_assets\ZSORAJ\css\t_responsive.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\slicknav.css" />
+    <Content Include="assets\front_assets\ZSORAJ\css\style.css" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\front_assets\ZSORAJ\img\logo_1.jpg" />
+    <Content Include="assets\front_assets\ZSORAJ\img\logo_2.jpg" />
+    <Content Include="assets\front_assets\ZSORAJ\img\slider-1-.jpg" />
+    <Content Include="assets\front_assets\ZSORAJ\img\slider-2.jpg" />
+    <Content Include="assets\front_assets\ZSORAJ\js\bootstrap.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\custom-isotop.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\isotope.pkgd.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\jquery.counterup.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\jquery.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\jquery.magnific-popup.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\jquery.slicknav.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\main.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\owl.carousel.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\popper.js" />
+    <Content Include="assets\front_assets\ZSORAJ\js\waypoints.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="MangroveSpaceModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MangroveSpaceModel.edmx</DependentUpon>
+      <LastGenOutput>MangroveSpaceModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MangroveSpaceModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MangroveSpaceModel.edmx</DependentUpon>
+      <LastGenOutput>MangroveSpaceModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="MangroveSpaceModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MangroveSpaceModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MangroveSpaceModel.edmx.diagram">
+      <DependentUpon>MangroveSpaceModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Config.ini" />
+    <Content Include="assets\back_assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\back_assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\back_assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\back_assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\back_assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\back_assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\back_assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\back_assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\back_assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\back_assets\css\font\summernote.eot" />
+    <Content Include="assets\back_assets\css\font\summernote.ttf" />
+    <Content Include="assets\back_assets\css\font\summernote.woff" />
+    <Content Include="assets\front_assets\IBA\favicons\manifest.json" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\IBA\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\IBA\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-atlas.eot" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-atlas.ttf" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-atlas.woff" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-default.eot" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-default.ttf" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-default.woff" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-moono.eot" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-moono.ttf" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-moono.woff" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-ocean.eot" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-ocean.ttf" />
+    <Content Include="assets\front_assets\libs\alloy-editor\assets\fonts\alloyeditor-ocean.woff" />
+    <Content Include="assets\front_assets\libs\alloy-editor\BREAKING_CHANGES.md" />
+    <Content Include="assets\front_assets\libs\alloy-editor\LICENSE.md" />
+    <Content Include="assets\front_assets\libs\alloy-editor\README.md" />
+    <Content Include="assets\front_assets\libs\alloy-editor\skins\moono\readme.md" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\RMSC\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\RMSC\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\REBMSC\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\REBMSC\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\zprajshahi\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\youthrajshahi\favicons\manifest.json" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\youthrajshahi\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\HGHS\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\HGHS\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\ZSORAJ\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\DEFAULT\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\TAXZONE\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\TAXAPPEAL\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\SilkCity\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\SilkCity\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\Flaticon.eot" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\Flaticon.ttf" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\Flaticon.woff" />
+    <Content Include="assets\front_assets\Fmautoricemill\flaticon\Flaticon.woff2" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\Fmautoricemill\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\life\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\life\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\life\fonts\lg.eot" />
+    <Content Include="assets\front_assets\life\fonts\lg.ttf" />
+    <Content Include="assets\front_assets\life\fonts\lg.woff" />
+    <Content Include="assets\front_assets\life\font\Flaticon.eot" />
+    <Content Include="assets\front_assets\life\font\Flaticon.ttf" />
+    <Content Include="assets\front_assets\life\font\Flaticon.woff" />
+    <Content Include="assets\front_assets\life\font\Flaticon.woff2" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSansCondensed-Bold.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSansCondensed-BoldOblique.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSansCondensed-Oblique.ttf" />
+    <Content Include="Content\fonts\DejaVu\DejaVuSansCondensed.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\js\BMSGrideColumnCtrl.js.bak" />
+    <Content Include="Content\js\BMSInspectionTabCtrl.js.bak" />
+    <Content Include="Content\MAP\js\leaflet.markercluster-src.js.map" />
+    <Content Include="Content\MAP\js\leaflet.markercluster.js.map" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\front_assets\MapApp\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\front_assets\MapApp\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\front_assets\MapApp\fonts\lg.eot" />
+    <Content Include="assets\front_assets\MapApp\fonts\lg.ttf" />
+    <Content Include="assets\front_assets\MapApp\fonts\lg.woff" />
+    <Content Include="assets\front_assets\MapApp\font\Flaticon.eot" />
+    <Content Include="assets\front_assets\MapApp\font\Flaticon.ttf" />
+    <Content Include="assets\front_assets\MapApp\font\Flaticon.woff" />
+    <Content Include="assets\front_assets\MapApp\font\Flaticon.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Uploads\AlbumCover\2.jpg" />
+    <Content Include="Uploads\AlbumCover\3.JPG" />
+    <Content Include="Uploads\AlbumImage\2\2-2-.JPG" />
+    <Content Include="Uploads\AlbumImage\2\2-4-.jpg" />
+    <Content Include="Uploads\hghs\hghs-logo.png" />
+    <Content Include="Uploads\notice.jpg" />
+    <Content Include="Uploads\rmsc.png" />
+    <Content Include="Uploads\SilkCity\logo.png" />
+    <Content Include="Uploads\Slider\2.jpg" />
+    <Content Include="Uploads\Slider\3.jpeg" />
+    <Content Include="Uploads\Slider\4.jpeg" />
+    <Content Include="Uploads\Slider\5.jpeg" />
+    <Content Include="Uploads\Taxappeal\content_1.jpg" />
+    <Content Include="Uploads\Taxappeal\content_2.jpg" />
+    <Content Include="Uploads\Taxappeal\content_3.jpg" />
+    <Content Include="Uploads\Taxappeal\content_4.jpg" />
+    <Content Include="Uploads\Taxappeal\content_5.jpg" />
+    <Content Include="Uploads\Taxappeal\content_6.jpg" />
+    <Content Include="Uploads\Taxappeal\head_offcer.png" />
+    <Content Include="Uploads\Taxappeal\logo.png" />
+    <Content Include="Uploads\TAXZONE\containt.jpg" />
+    <Content Include="Uploads\TAXZONE\logo.png" />
+    <Content Include="Uploads\TAXZONE\title.png" />
+    <Content Include="Uploads\youthraj\slider-2.jpg" />
+    <Content Include="Uploads\zprajshahi\ceo-1-220x238.jpg" />
+    <Content Include="Uploads\zprajshahi\member\10.png" />
+    <Content Include="Uploads\zprajshahi\member\11.png" />
+    <Content Include="Uploads\zprajshahi\member\12.png" />
+    <Content Include="Uploads\zprajshahi\member\13.png" />
+    <Content Include="Uploads\zprajshahi\member\14.png" />
+    <Content Include="Uploads\zprajshahi\member\15.png" />
+    <Content Include="Uploads\zprajshahi\member\16.png" />
+    <Content Include="Uploads\zprajshahi\member\17.png" />
+    <Content Include="Uploads\zprajshahi\member\18.png" />
+    <Content Include="Uploads\zprajshahi\member\19.png" />
+    <Content Include="Uploads\zprajshahi\member\20.png" />
+    <Content Include="Uploads\zprajshahi\member\3.png" />
+    <Content Include="Uploads\zprajshahi\member\4.png" />
+    <Content Include="Uploads\zprajshahi\member\5.png" />
+    <Content Include="Uploads\zprajshahi\member\6.png" />
+    <Content Include="Uploads\zprajshahi\member\7.png" />
+    <Content Include="Uploads\zprajshahi\member\8.png" />
+    <Content Include="Uploads\zprajshahi\member\9.png" />
+    <Content Include="Uploads\zprajshahi\MuhammadAli-220x240-1-209x240.png" />
+    <Content Include="Uploads\zprajshahi\zila_parishad_rajshahi.png" />
+    <Content Include="Uploads\ZSO\logo_1.jpg" />
+    <Content Include="Uploads\ZSO\logo_2.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\backend\_Layout.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Shared\backend\_LoginLayout.cshtml" />
+    <Content Include="Views\Pages\Index.cshtml" />
+    <Content Include="Views\Pages\Create.cshtml" />
+    <Content Include="Views\Pages\Edit.cshtml" />
+    <Content Include="Views\Gadgets\Create.cshtml" />
+    <Content Include="Views\Gadgets\Delete.cshtml" />
+    <Content Include="Views\Gadgets\Details.cshtml" />
+    <Content Include="Views\Gadgets\Edit.cshtml" />
+    <Content Include="Views\Gadgets\Index.cshtml" />
+    <Content Include="Views\Sliders\Create.cshtml" />
+    <Content Include="Views\Sliders\Delete.cshtml" />
+    <Content Include="Views\Sliders\Details.cshtml" />
+    <Content Include="Views\Sliders\Edit.cshtml" />
+    <Content Include="Views\Sliders\Index.cshtml" />
+    <Content Include="Views\Albums\Create.cshtml" />
+    <Content Include="Views\Albums\Delete.cshtml" />
+    <Content Include="Views\Albums\Details.cshtml" />
+    <Content Include="Views\Albums\Edit.cshtml" />
+    <Content Include="Views\Albums\Index.cshtml" />
+    <Content Include="Views\AlbumDetails\Create.cshtml" />
+    <Content Include="Views\AlbumDetails\Delete.cshtml" />
+    <Content Include="Views\AlbumDetails\Details.cshtml" />
+    <Content Include="Views\AlbumDetails\Edit.cshtml" />
+    <Content Include="Views\AlbumDetails\Index.cshtml" />
+    <Content Include="Views\Notice\Create.cshtml" />
+    <Content Include="Views\Notice\Index.cshtml" />
+    <Content Include="Views\Notice\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Albums\Preview.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Ordering.cshtml" />
+    <Content Include="Views\Menu\MenuDesign.cshtml" />
+    <Content Include="Views\Shared\backend\_PanelMenu.cshtml" />
+    <Content Include="Views\Pages\pageCodeEdit.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Home\Institute.cshtml" />
+    <Content Include="Views\Albums\AlbumDetails.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_SliderPartial.cshtml" />
+    <Content Include="Views\Notice\CodeViewEdit.cshtml" />
+    <Content Include="Views\Event\CodeViewEvent.cshtml" />
+    <Content Include="Views\News\CodeViewNewsEdit.cshtml" />
+    <Content Include="Views\Sliders\CodeViewSlideEdit.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_SideBarLayout.cshtml" />
+    <Content Include="Views\Notice\AllNotice.cshtml" />
+    <Content Include="Views\Notice\NoticeDetails.cshtml" />
+    <Content Include="Views\Event\EventDetails.cshtml" />
+    <Content Include="Views\News\AllNews.cshtml" />
+    <Content Include="Views\News\NewsDetails.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_EventPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_NewsAllPartial.cshtml" />
+    <Content Include="Views\Event\AllEvents.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_EventAllPartial.cshtml" />
+    <Content Include="Views\Gadgets\CodeViewGadget.cshtml" />
+    <Content Include="Views\Pages\page.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\PageTemplates\Create.cshtml" />
+    <Content Include="Views\PageTemplates\Delete.cshtml" />
+    <Content Include="Views\PageTemplates\Details.cshtml" />
+    <Content Include="Views\PageTemplates\Edit.cshtml" />
+    <Content Include="Views\PageTemplates\Index.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\IBA\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_EventAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_EventPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NewsAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Template\_SliderPartial.cshtml" />
+    <Content Include="Views\ProductInfoes\Create.cshtml" />
+    <Content Include="Views\ProductInfoes\Delete.cshtml" />
+    <Content Include="Views\ProductInfoes\Details.cshtml" />
+    <Content Include="Views\ProductInfoes\Edit.cshtml" />
+    <Content Include="Views\ProductInfoes\Index.cshtml" />
+    <Content Include="Views\ProductCategory\Index.cshtml" />
+    <Content Include="Views\ProductCategory\Create.cshtml" />
+    <Content Include="Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\UserProfile\ChangePassword.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_errorpagelayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\Menu\_MenuSide.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\zprajshahi\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_errorpagelayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_EventPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_EventAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\youthrajshahi\_NewsAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\REBMSC\_GalleryPageLayout.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\frontend\HGHS\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_errorpagelayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_TablePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_TeacherList.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_EventPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\HGHS\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\Menu\_MenuSide.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\ZSORAJ\_SingleNotice.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\DEFAULT\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\Menu\_MenuSide.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_SingleNotice.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXZONE\_noticeDetailsPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\Menu\_MenuSide.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_noticeDetailsPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_SingleNotice.cshtml" />
+    <Content Include="Views\Shared\frontend\TAXAPPEAL\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\SilkCity\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\Fmautoricemill\_GalleryInnerLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_TeacherList.cshtml" />
+    <Content Include="Views\Shared\frontend\RMSC\_StaffList.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_EventPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_EventAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_MemberPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_BlankPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\LIFE\_EventDetailsLayout.cshtml" />
+    <Content Include="Views\SysMenu\Index.cshtml" />
+    <Content Include="Views\Shared\backend\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\backend\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\backend\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\backend\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\SysMenu\Create.cshtml" />
+    <Content Include="Views\SysMenu\MenuDesign.cshtml" />
+    <Content Include="Views\Shared\backend\_PanelSysMenu.cshtml" />
+    <Content Include="Views\SysMenu\Edit.cshtml" />
+    <Content Include="Views\SysMenu\Ordering.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\UserRoles\Index.cshtml" />
+    <Content Include="Views\UserRoles\Create.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\ExcelImport\Index.cshtml" />
+    <Content Include="Views\Location\CreateWithLatLong.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Location\UpdateDetailsPage.cshtml" />
+    <Content Include="Views\Home\PowerPlantDetails.cshtml" />
+    <Content Include="Views\Home\ComparePowerPlant.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\Menu\_Menu.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\Menu\_MenuList.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\Menu\_MenuMain.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\Menu\_MenuSub.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_AlbumDetailsLayOut.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_BlankPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_EventAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_EventDetailsLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_EventPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_FooterLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_GalleryPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_HomePageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_InnerPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_MarquePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_MemberPageLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_NewsPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_NewsSinglePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_NoticeAllPartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_NoticePartial.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_NoticeSinglePartialLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_SideBarLayout.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\_SliderPartial.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Location\UpdateDetailsPageCode.cshtml" />
+    <Content Include="Views\Home\MapView.cshtml" />
+    <Content Include="Views\Shared\frontend\MapApp\Menu\_RightMenu.cshtml" />
+    <Content Include="Views\Shared\backend\_RightMenu.cshtml" />
+    <Content Include="Views\Motor\Index.cshtml" />
+    <Content Include="Views\Motor\UpdateDetailsPage.cshtml" />
+    <Content Include="Views\Motor\UpdateDetailsPageCode.cshtml" />
+    <Content Include="Views\Home\MotorDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
+    <Folder Include="assets\front_assets\Template\" />
+    <Folder Include="Content\Notice\" />
+    <Folder Include="Content\Upload\" />
+    <Folder Include="Uploads\CategoryIcon\" />
+    <Folder Include="Uploads\EventFile\" />
+    <Folder Include="Uploads\NewsFile\" />
+    <Folder Include="Uploads\NoticeFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51153</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51153/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

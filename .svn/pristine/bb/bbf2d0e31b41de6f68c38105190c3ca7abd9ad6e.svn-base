@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/" + ViewBag.template + "";
+}
+
+@{
+    string breadcromb = ViewBag.pageid;
+    string htmlPage = GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = '" + ViewBag.pageid + "'");
+}
+
+
+@Html.Raw(Server.HtmlDecode(htmlPage))
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+    </script>
+}

@@ -1,0 +1,28 @@
+﻿<footer class="construct-footer-area">
+    <div class="construct-footer-top-area section_50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("followusfooter")
+
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("quicklinksfooter")
+
+                </div>
+                <div class="col-md-4">
+                    @Html.GetGadgetItem("footercontact")
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="construct-footer-bottom-area section_15">
+        <div class="container">
+            <div class="row">
+                @Html.GetGadgetItem("copyright")
+
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<dynamic>
+
+@if (Model != null)
+{
+
+
+    <div class="containt-middle">
+
+        @foreach (var item in Model)
+        {
+            <div class="singel-containt-middle">
+                @try
+                {
+                    <h5>@item.NoticeName</h5>
+                    <p>@item.NoticeName - <a href="/Notice/NoticeDetails/@item.NoticeID">বিস্তারিত</a></p>
+                }
+                catch
+                {
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> <a href="/Notice/NoticeDetails/@item.NoticeID">@item.NoticeName</a></h5>
+                    <p>@item.NoticeName - <a href="/Notice/NoticeDetails/@item.NoticeID">বিস্তারিত</a></p>
+
+                }
+
+            </div>
+        }
+
+
+    </div>
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+

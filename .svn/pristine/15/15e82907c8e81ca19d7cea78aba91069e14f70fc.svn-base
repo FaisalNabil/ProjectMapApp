@@ -1,0 +1,25 @@
+﻿
+<h3>campus Events</h3>
+
+@{
+    MangroveSpaceEntities db = new MangroveSpaceEntities();
+    List<dynamic> Information = Global.Sql(db, "select top 4 [ID],[EventID],[EventName],[EventDate],[AttachFile],[Time1],[Time2],[EntryDate] from [dbo].[AspCMSEvent] where [EventStatus]=1 order by [EntryDate]").ToList();
+    foreach (dynamic item in Information)
+    {
+
+        <h3>@string.Format("{0:MMM}", @item.EventDate) <span>@string.Format("{0:dd}", @item.EventDate)</span></h3>
+
+        <h4>
+            <a href="/Event/EventSignleDetails/@item.ID">@item.EventName</a>
+        </h4>
+        <h5>@item.Time1 – @item.Time2</h5>
+        <a href="/Event/EventSignleDetails/@item.ID">read more about this event</a>
+    }
+
+}
+
+<a href="/Event/AllEvents" class="theme-btn">More Events</a>
+
+
+
+

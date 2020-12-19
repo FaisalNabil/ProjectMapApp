@@ -1,0 +1,116 @@
+﻿@using System.Data
+@{
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/" + ViewBag.template + "";
+    //Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+
+@{
+    string breadcromb = ViewBag.pageid;
+    //string htmlPage = GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = '" + ViewBag.pageid + "'");
+}
+
+<div class="maincontent-home inner_page" data-sticky-sidebar-container>
+    <div class="container-fluid">
+        <div class="col-md-3 pad_right">
+            <div class="container-medium">
+                <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                    <ul>
+                        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_RightMenu.cshtml", new ViewDataDictionary<DataTable>())
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pad_both">
+            <div class="container-large">
+                <div class="single-blog-item">
+
+                    <a href="#">
+                        <h3>@ViewBag.Title</h3>
+                    </a>
+                    @if (ViewBag.Tag == "PP" || ViewBag.Tag == "M")
+                    {
+                        <h4 class="post-datae">Posted: @ViewBag.PostedDate</h4>
+                    }
+                    <div class="blog-pera">
+                        @Html.Raw(Server.HtmlDecode(ViewBag.PageDetails))
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pad_left">
+            <div class="quote-box">
+                <h4>Favorite Quote</h4>
+                <p>“Practice makes a man perfect”</p>
+                <h3>William Shakespeare</h3>
+            </div>
+            <div class="advertise">
+                <p>Advertisement</p>
+                <img src="assets/img/ad.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("save", "Pages", FormMethod.Post, new { id = "pagesave", @class = "pagesave" }))
+    {
+        <input type=hidden name="PageName" id="PageName" value="@ViewBag.pageid" />
+        <input type=hidden name="hiddentText" id="hiddentText" />
+    }
+
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+    <script>
+        function myFunction() {
+            var content = alloyEditor.get('nativeEditor').getData();
+            document.getElementById("hiddentText").value = content;
+            document.getElementById('pagesave').submit();
+        }
+        $('#sidebar').stickySidebar({
+            containerSelector: '.maincontent-home',
+            innerWrapperClass: 'sidebar__inner'
+        });
+
+    </script>
+}
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            MergeCommonRows($('.detailsTable'));
+        });
+
+        function MergeCommonRows(table) {
+            console.log(table.find('td').length);
+            var firstColumnBrakes = [];
+            // iterate through the columns instead of passing each column as function parameter:
+            for (var i = 1; i <= table.find('td').length; i++) {
+                var previous = null, cellToExtend = null, rowspan = 1;
+                table.find("td:nth-child(" + i + ")").each(function (index, e) {
+                    var jthis = $(this), content = jthis.text();
+                    console.log("content: " + content);
+                    // check if current row "break" exist in the array. If not, then extend rowspan:
+                    if (previous == content && content !== "" && $.inArray(index, firstColumnBrakes) === -1) {
+                        // hide the row instead of remove(), so the DOM index won't "move" inside loop.
+                        jthis.addClass('hidden');
+                        cellToExtend.attr("rowspan", (rowspan = rowspan + 1));
+                    } else {
+                        // store row breaks only for the first column:
+                        if (i === 1) firstColumnBrakes.push(index);
+                        rowspan = 1;
+                        previous = content;
+                        cellToExtend = jthis;
+                    }
+                });
+            }
+            // now remove hidden td's (or leave them hidden if you wish):
+            $('td.hidden').remove();
+        }
+    </script>
+    }

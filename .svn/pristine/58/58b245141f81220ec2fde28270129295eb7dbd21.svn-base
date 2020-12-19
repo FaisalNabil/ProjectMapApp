@@ -1,0 +1,74 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .no-pad-left {
+        padding-left: 15px;
+    }
+    .all-contant {
+        border-right: none
+    }
+    .opnion-area .heading{
+        margin-right: 210px;
+        border-radius: 7px
+    }
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+
+    .briffs-responsive-menu{
+        display: block
+    }
+    #briffs_navigation{
+        display: none
+    }
+    .top-contant {
+        padding-right: 6px
+    }
+
+    .box-ser .contant-left{
+        float: none;
+        text-align: center
+    }
+    
+    .taxes-footer {
+        text-align: center;
+
+    }
+
+    .taxes-footer .footer-right {
+        text-align: center
+    }
+
+    .top-con {
+        margin-left: 10px
+    }
+
+    .no-pad-left {
+        padding-left: 15px;
+    }
+
+    .pad-right {
+        padding-right: 15px;
+
+    }
+
+    .all-contant {
+        border-right: none
+    }
+    .slider-area .slider-con{
+        left: 10%
+    }
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}

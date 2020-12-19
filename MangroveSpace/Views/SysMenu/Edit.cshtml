@@ -1,0 +1,219 @@
+﻿@model AspSysMenu
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index", "Menu")" class="btn btn-success">Manage Menu</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("Edit", "SysMenu", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.ID)
+                    <label id="parent" hidden>@Model.MenuParentID</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuDisplayName, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuDisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuDisplayName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuTitle, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuTitle)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuLink, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EditorFor(model => model.MenuLink, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuLink)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                @Html.Label("Role")
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select id="MenuRoleID" name="MenuRoleID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+                                        @if (ViewBag.Role != null)
+                                        {
+                                            <option>Select a Role</option>
+                                            foreach (var item in ViewBag.Role)
+                                            {
+                                                if (item.Id == Model.RoleID)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Parent Menu")
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select id="MenuParentID" name="MenuParentID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+                                        <option>Select a Menu</option>
+                                        @*@if (ViewBag.ParentMenu != null)
+                                {
+
+                                    foreach (var item in ViewBag.ParentMenu)
+                                    {
+                                        <option value="@item.MenuID">@item.MenuDisplayName</option>
+                                    }
+                                }*@
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuIcon, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    @Html.EditorFor(model => model.MenuIcon, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.MenuIcon)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MenuLanguage, htmlAttributes: new { @class = "control-label col-md-12 col-sm-12 col-xs-12", style = "margin-bottom:10px" })
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*@Html.EditorFor(model => model.AspInfoSection.SectionShift, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownListFor(model => model.MenuLanguage, new SelectList(new List<SelectListItem>{
+                                          new SelectListItem { Text="Select Language", Value=string.Empty},
+                                          new SelectListItem { Text="English", Value="EN"},
+                                          new SelectListItem { Text="Bangla", Value="BN"}
+                                      }, "Value", "Text"), new { @class = " js-example-basic-single form-control ", name = "AspCMSAlbum.Status" })
+                                    @Html.ValidationMessageFor(m => m.MenuLanguage)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.HiddenFor(m => m.ID)
+                    @Html.HiddenFor(m => m.MenuID)
+                    @Html.HiddenFor(m => m.MenuType)
+                    @Html.HiddenFor(m => m.MenuLinkOption)
+                    @Html.HiddenFor(m => m.MenuOrder)
+                    @Html.HiddenFor(m => m.MenuStatus)
+                    @Html.HiddenFor(m => m.MenuSerial)
+                    @Html.HiddenFor(m => m.MenuPrivilege)
+                    @Html.HiddenFor(m => m.MenuPrivilegeOption)
+                    @Html.HiddenFor(m => m.MenuContent)
+                    @Html.HiddenFor(m => m.MenuSlug)
+                    @Html.HiddenFor(m => m.RoleID)
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href='@Url.Action("Index", "SysMenu")' class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+
+        $(function () {
+            var selectedEditRole = $('#MenuRoleID').val();
+                $('#MenuParentID').empty()
+                $.ajax({
+                        url: "@Url.Action("GetSysParentMenu", "SysMenu")",
+                        method: "GET",
+                        data: { selectedId: selectedEditRole },
+                        success: function (data) {
+                            
+                            $('#MenuParentID').append("<option>Select a Menu</option>");
+                            $.each(data, function (key, value) {
+                                if ($('#parent').text() == value[0].Value) {
+                                    $('#MenuParentID').append("<option value=" + value[0].Value + " selected>" + value[1].Value + "</option>");
+                                }
+                                else {
+                                    $('#MenuParentID').append("<option value=" + value[0].Value + ">" + value[1].Value + "</option>");
+                                }
+
+                            });
+
+                        }
+                });
+
+
+
+
+            $('#MenuRoleID').change(function () {
+                var selectedRole = $(this).val();
+                $('#MenuParentID').empty()
+                $.ajax({
+                        url: "@Url.Action("GetSysParentMenu", "SysMenu")",
+                        method: "GET",
+                        data: { selectedId: selectedRole },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                console.log($('#parent').val());
+                                if ($('#parent').val() == value[0].Value) {
+                                    $('#MenuParentID').append("<option value=" + value[0].Value + " selected>" + value[1].Value + "</option>");
+                                }
+                                else {
+                                    $('#MenuParentID').append("<option value=" + value[0].Value + ">" + value[1].Value + "</option>");
+                                }
+                                console.log(value[0].Value);
+
+                            });
+
+                        }
+                });
+            });
+         });
+
+    </script>
+}

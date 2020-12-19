@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+        @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+        <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml")
+
+    </div>
+    </div>
+    </div>
+    </div>
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+    <div class="page_bg">
+        <div class="main-containt-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="main-containt-left">
+                            <div class="search-form">
+                                <form>
+                                    <input type="search" placeholder="search Programme,Interest & more..." />
+                                    <button type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+
+                                </form>
+                            </div>
+                            <div class="promo-area">
+                                @Html.GetGadgetItem("wikipromo")
+                                @Html.GetGadgetItem("eventpromo")
+                                @Html.GetGadgetItem("resultpromo")
+                            </div>
+                            <div class="containt-box-area">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="sidebar">
+                            @Html.GetGadgetItem("applicantlogin")
+
+                            @Html.GetGadgetItem("quicklinksmenu")
+
+                            @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SideBarLayout.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="glance-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="glance-box">
+                            <div class="glance-heading">
+                                <h3>HGHS At A Glance</h3>
+                            </div>
+                            @Html.GetGadgetItem("glance")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

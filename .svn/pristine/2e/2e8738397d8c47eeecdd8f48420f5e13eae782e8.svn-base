@@ -1,0 +1,126 @@
+﻿using MangroveSpace;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+
+namespace MapProject.Service
+{
+    public class ImportHelper
+    {
+        public int GeneralDataImport(DataTable dt)
+        {
+            int i = 0;
+            try
+            {
+                using (MangroveSpaceEntities entity = new MangroveSpaceEntities())
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        PowerPlant_General ppGen = new PowerPlant_General();
+                        ppGen.ID = entity.PowerPlant_General.Max(s => s.ID) + 1;
+
+                        ppGen.PowerPlant_Name = row["Name"].ToString();
+                        ppGen.CountryID = Convert.ToInt32(row["Country"]);
+                        ppGen.CategoryID = Convert.ToInt32(row["BasicCategory"]);
+                        ppGen.Address = row["Location"].ToString();
+                        //ppGen.DetailsPageAddress = row["BasicCategory"];
+                        ppGen.Latitude = Convert.ToDecimal(row["Latitude"]);
+                        ppGen.Longitude = Convert.ToDecimal(row["Longitude"]);
+                        ppGen.BasicTypeID = Convert.ToInt32(row["BasicTypes"]);
+                        ppGen.SubCategoryID = Convert.ToInt32(row["SubCategory"]);
+                        ppGen.Renewable = Convert.ToBoolean(row["IsRenewableenergy"]);
+                        ppGen.State = row["StateOrProvince"].ToString();
+                        ppGen.SiteArea = Convert.ToDecimal(row["SiteArea"]);
+                        ppGen.OpeningYear = Convert.ToInt16(row["CommissionedOrOpeningYear"]);
+                        ppGen.Operator = row["Operators"].ToString();
+                        ppGen.KeyFeature = row["KeyFeatures"].ToString();
+                        ppGen.Pros = row["Pros"].ToString();
+                        ppGen.Cons = row["Cons"].ToString();
+                        ppGen.ImpoundedBy = row["ImpoundedBy"].ToString();
+                        ppGen.OwnerTypeID = Convert.ToInt32(row["OwnerType"]);
+                        ppGen.Owner = row["Owners"].ToString();
+                        ppGen.Importance = row["Importance"].ToString();
+                        ppGen.History = row["History"].ToString();
+                        ppGen.Caution = row["Caution"].ToString();
+                        ppGen.OverallEfficiency = Convert.ToDecimal(row["OverallEfficiency"]);
+                        ppGen.Efficiency = Convert.ToDecimal(row["Efficiency"]);
+                        ppGen.CapacityFactor = Convert.ToDecimal(row["CapacityFactor"]);
+                        ppGen.PowerFactor = Convert.ToDecimal(row["PowerFactor"]);
+                        ppGen.PowerGenerationCapacity = Convert.ToDecimal(row["PowerGenerationCapacity"]);
+                        ppGen.VoltageRating = Convert.ToDecimal(row["VoltageRating"]);
+                        ppGen.Frequency = Convert.ToInt32(row["Frequency"]);
+                        ppGen.PowerRating = Convert.ToDecimal(row["PowerRating"]);
+                        ppGen.AnnualEnergyGen = Convert.ToDecimal(row["AnnualEnergyGeneration"]);
+                        ppGen.InputEnergyID = Convert.ToInt32(row["InputEnergy"]);
+                        ppGen.TransportID = Convert.ToInt32(row["Transportation"]);
+                        ppGen.InputNatureID = Convert.ToInt32(row["NatureOfInputEnergy"]);
+                        ppGen.BasicComponent = row["BasicComponent"].ToString();
+                        ppGen.OtherComponent = row["OtherComponents"].ToString();
+                        ppGen.Biproduct = row["Biproduct"].ToString();
+                        ppGen.OtherWaste = row["OtherWastes"].ToString();
+                        ppGen.PrimarySourceID = Convert.ToInt32(row["PrimarySource"]);
+                        ppGen.SecondarySourceID = Convert.ToInt32(row["SecondarySource"]);
+                        ppGen.NoOfUnit = Convert.ToInt32(row["NumberOfUnits"]);
+                        ppGen.AboutUnit = row["AboutTheUnits"].ToString();
+                        ppGen.NatGridConnected = Convert.ToBoolean(row["PowerSuppliedToNationalGrid"]);
+                        ppGen.SupplyID = Convert.ToInt32(row["SuppliedTo"]);
+                        ppGen.Operational = Convert.ToBoolean(row["Operational"]);
+                        ppGen.Protection = row["Protection"].ToString();
+                        ppGen.Control = row["Control"].ToString();
+                        ppGen.GridVoltage = Convert.ToDecimal(row["GridVoltage"]);
+                        ppGen.GridDetails = row["AboutGridConnection"].ToString();
+                        ppGen.GridTieInverter = Convert.ToBoolean(row["BelongGrid"]);
+                        ppGen.InverterDetails = row["AboutInverter"].ToString();
+                        ppGen.PowerTransBelong = Convert.ToBoolean(row["BelongPowerTransformer"]);
+                        ppGen.TransDetails = row["AboutTransformer"].ToString();
+                        ppGen.SteamBoilBelong = Convert.ToBoolean(row["BelongSteamBoiler"]);
+                        ppGen.BoilDetails = row["AboutSteamBoiler"].ToString();
+                        ppGen.TurbineBelong = Convert.ToBoolean(row["BelongWindTurbine"]);
+                        ppGen.TurbineDetails = row["AboutWindTurbine"].ToString();
+                        ppGen.InstalledBy_1 = row["InstalledBy_1"].ToString();
+                        ppGen.InstalledBy_2 = row["InstalledBy_2"].ToString();
+                        ppGen.InstalledBy_3 = row["InstalledBy_3"].ToString();
+                        ppGen.Supplier_1 = row["Supplier_1"].ToString();
+                        ppGen.Supplier_2 = row["Supplier_2"].ToString();
+                        ppGen.Supplier_3 = row["Supplier_3"].ToString();
+                        ppGen.ConstCost = Convert.ToDecimal(row["ConstructionCost"]);
+                        ppGen.GenCostUnit = Convert.ToDecimal(row["PerUnitGenerationCost"]);
+                        ppGen.SellCostUnit = Convert.ToDecimal(row["PerUnitSellingPrice"]);
+                        ppGen.Buyer = row["Buyer"].ToString();
+                        ppGen.OtherPurpose = row["OtherPurposes"].ToString();
+                        ppGen.DistFrmHuman = Convert.ToInt32(row["DistanceFromHumanResidence"]);
+                        ppGen.NearRail = row["NearbyRailStation"].ToString();
+                        ppGen.NearBus = row["NearbyBusStand"].ToString();
+                        ppGen.NearMarket = row["NearbyMarket"].ToString();
+                        ppGen.NearResidance = row["NearbyResidance"].ToString();
+                        ppGen.NearHotel = row["NearbyHotel"].ToString();
+                        ppGen.NearOther = row["OtherFacilitiesNearby"].ToString();
+                        ppGen.ComNetwork = row["CommunicationNetwork"].ToString();
+                        ppGen.NearSite = row["NearbySite"].ToString();
+                        ppGen.Climate = Convert.ToInt32(row["Climate"]);
+                        ppGen.Terrain = Convert.ToInt32(row["Terrin"]);
+                        ppGen.AvgTemp = Convert.ToInt32(row["AverageTemperature"]);
+                        ppGen.AvgHumid = Convert.ToInt32(row["AverageHumidity"]);
+                        ppGen.Reference = row["References"].ToString();
+                        ppGen.Size = Convert.ToInt32(row["Size"]);
+                        ppGen.WaterTurbineBelong = Convert.ToBoolean(row["BelongWaterTurbine"]);
+                        ppGen.WaterTurbineDetails = row["AboutWaterTurbine"].ToString();
+                        ppGen.SeasonVariation = Convert.ToInt32(row["SeasonalVariations"]);
+
+                        entity.PowerPlant_General.Add(ppGen);
+                        entity.SaveChanges();
+                        i++;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            return i;
+        }
+    }
+}

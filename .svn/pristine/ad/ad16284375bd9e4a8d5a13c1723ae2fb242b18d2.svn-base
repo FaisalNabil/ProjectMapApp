@@ -1,0 +1,191 @@
+﻿@model PowerPlant_General
+@{
+    ViewBag.Title = "Add Page (Power Plant)";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/pages/" class="btn btn-success">Manage Page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br />
+                @using (Html.BeginForm("UpdateDetailsPage", "Location", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                {
+                    @Html.HiddenFor(model => model.ID)
+                    @Html.HiddenFor(model => model.PowerPlant_Name)
+                    @Html.HiddenFor(model => model.CountryID)
+                    @Html.HiddenFor(model => model.CategoryID)
+                    @Html.HiddenFor(model => model.Address)
+                    @Html.HiddenFor(model => model.Latitude)
+                    @Html.HiddenFor(model => model.Longitude)
+                    @Html.HiddenFor(model => model.BasicTypeID)
+                    @Html.HiddenFor(model => model.SubCategoryID)
+                    @Html.HiddenFor(model => model.Renewable)
+                    @Html.HiddenFor(model => model.State)
+                    @Html.HiddenFor(model => model.SiteArea)
+                    @Html.HiddenFor(model => model.OpeningYear)
+                    @Html.HiddenFor(model => model.Operator)
+                    @Html.HiddenFor(model => model.KeyFeature)
+                    @Html.HiddenFor(model => model.Pros)
+                    @Html.HiddenFor(model => model.Cons)
+                    @Html.HiddenFor(model => model.ImpoundedBy)
+                    @Html.HiddenFor(model => model.OwnerTypeID)
+                    @Html.HiddenFor(model => model.Owner)
+                    @Html.HiddenFor(model => model.Importance)
+                    @Html.HiddenFor(model => model.History)
+                    @Html.HiddenFor(model => model.Caution)
+                    @Html.HiddenFor(model => model.OverallEfficiency)
+                    @Html.HiddenFor(model => model.Efficiency)
+                    @Html.HiddenFor(model => model.CapacityFactor)
+                    @Html.HiddenFor(model => model.PowerFactor)
+                    @Html.HiddenFor(model => model.PowerGenerationCapacity)
+                    @Html.HiddenFor(model => model.VoltageRating)
+                    @Html.HiddenFor(model => model.Frequency)
+                    @Html.HiddenFor(model => model.PowerRating)
+                    @Html.HiddenFor(model => model.AnnualEnergyGen)
+                    @Html.HiddenFor(model => model.InputEnergyID)
+                    @Html.HiddenFor(model => model.TransportID)
+                    @Html.HiddenFor(model => model.InputNatureID)
+                    @Html.HiddenFor(model => model.BasicComponent)
+                    @Html.HiddenFor(model => model.OtherComponent)
+                    @Html.HiddenFor(model => model.Biproduct)
+                    @Html.HiddenFor(model => model.OtherWaste)
+                    @Html.HiddenFor(model => model.PrimarySourceID)
+                    @Html.HiddenFor(model => model.SecondarySourceID)
+                    @Html.HiddenFor(model => model.NoOfUnit)
+                    @Html.HiddenFor(model => model.AboutUnit)
+                    @Html.HiddenFor(model => model.NatGridConnected)
+                    @Html.HiddenFor(model => model.SupplyID)
+                    @Html.HiddenFor(model => model.Operational)
+                    @Html.HiddenFor(model => model.Protection)
+                    @Html.HiddenFor(model => model.Control)
+                    @Html.HiddenFor(model => model.GridVoltage)
+                    @Html.HiddenFor(model => model.GridDetails)
+                    @Html.HiddenFor(model => model.GridTieInverter)
+                    @Html.HiddenFor(model => model.InverterDetails)
+                    @Html.HiddenFor(model => model.PowerTransBelong)
+                    @Html.HiddenFor(model => model.TransDetails)
+                    @Html.HiddenFor(model => model.SteamBoilBelong)
+                    @Html.HiddenFor(model => model.BoilDetails)
+                    @Html.HiddenFor(model => model.TurbineBelong)
+                    @Html.HiddenFor(model => model.TurbineDetails)
+                    @Html.HiddenFor(model => model.InstalledBy_1)
+                    @Html.HiddenFor(model => model.InstalledBy_2)
+                    @Html.HiddenFor(model => model.InstalledBy_3)
+                    @Html.HiddenFor(model => model.Supplier_1)
+                    @Html.HiddenFor(model => model.Supplier_2)
+                    @Html.HiddenFor(model => model.Supplier_3)
+                    @Html.HiddenFor(model => model.ConstCost)
+                    @Html.HiddenFor(model => model.GenCostUnit)
+                    @Html.HiddenFor(model => model.SellCostUnit)
+                    @Html.HiddenFor(model => model.Buyer)
+                    @Html.HiddenFor(model => model.OtherPurpose)
+                    @Html.HiddenFor(model => model.DistFrmHuman)
+                    @Html.HiddenFor(model => model.NearRail)
+                    @Html.HiddenFor(model => model.NearBus)
+                    @Html.HiddenFor(model => model.NearMarket)
+                    @Html.HiddenFor(model => model.NearResidance)
+                    @Html.HiddenFor(model => model.NearHotel)
+                    @Html.HiddenFor(model => model.NearOther)
+                    @Html.HiddenFor(model => model.ComNetwork)
+                    @Html.HiddenFor(model => model.NearSite)
+                    @Html.HiddenFor(model => model.Climate)
+                    @Html.HiddenFor(model => model.Terrain)
+                    @Html.HiddenFor(model => model.AvgTemp)
+                    @Html.HiddenFor(model => model.AvgHumid)
+                    @Html.HiddenFor(model => model.Reference)
+                    @Html.HiddenFor(model => model.Size)
+                    @Html.HiddenFor(model => model.WaterTurbineBelong)
+                    @Html.HiddenFor(model => model.WaterTurbineDetails)
+                    @Html.HiddenFor(model => model.SeasonVariation)
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px">Details Page</div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @*<div id="page-editor"></div>*@
+                                    <div class="code-container">
+                                        @Html.TextAreaFor(model => model.DetailsPageAddress)
+                                        @Html.ValidationMessageFor(m => m.DetailsPageAddress)
+                                    </div>
+                                    <a class="btn btn-info pull-right btn-xs" style="margin-top:5px;margin-right:0" href="javascript:autoFormatSelection()">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center col-sm-12 col-xs-12 ">
+                                    <a href="/pages/" class="btn btn-primary" type="button">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Scripts.Render("~/bundles/jqueryval")
+
+@section Scripts {
+
+    <script>
+
+
+        var editor = CodeMirror.fromTextArea(document.getElementById("DetailsPageAddress"), {
+            lineNumbers: true,
+            mode: "htmlmixed"
+        });
+        CodeMirror.commands["selectAll"](editor);
+
+        function getSelectedRange() {
+            return { from: editor.getCursor(true), to: editor.getCursor(false) };
+        }
+
+        function autoFormatSelection() {
+            var range = getSelectedRange();
+            editor.autoFormatRange(range.from, range.to);
+        }
+
+        function commentSelection(isComment) {
+            var range = getSelectedRange();
+            editor.commentRange(isComment, range.from, range.to);
+        }
+
+
+    </script>
+
+}

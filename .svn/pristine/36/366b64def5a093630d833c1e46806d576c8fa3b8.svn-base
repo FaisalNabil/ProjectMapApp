@@ -1,0 +1,105 @@
+﻿@using System.Data
+@using System.Text.RegularExpressions;
+@using System.Text
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+<div class="maincontent-home" data-sticky-sidebar-container>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="container-large">
+                    @{
+                        System.Data.DataTable AllPowerPlants = Global.ReadData("select [ID], [PageTitle], [PageID], [EntryDate], [EntryBy], [PageBody] from [dbo].[AspCMSPage]");
+                    }
+                    @foreach (DataRow row in AllPowerPlants.Rows)
+                    {
+                        <div class="single-blog-item">
+                            <a href="/Pages/Page?pid=@row["PageID"]">
+                                <h3>@row["PageTitle"]</h3>
+                            </a>
+                            <h4 class="post-datae">Posted: @row["EntryDate"]</h4>
+                            <div class="blog-pera">
+                                @{
+                                    string writeup = Server.HtmlDecode(row["PageBody"].ToString());
+
+
+                                    //if (writeup.Length > 500)
+                                    //{
+                                    //    writeup = writeup.Substring(0, 500) + "...";
+                                    //}
+                                    //else
+                                    //{
+                                    //    writeup = writeup + "...";
+                                    //}
+                                }
+                                @*@Html.Raw(writeup)*@
+                                @*@if (Regex.Replace(row["PageBody"].ToString(), "<.*?>", String.Empty).Count() > 500)
+                                {
+                                    @Regex.Replace(row["PageBody"].ToString(), "<.*?>", String.Empty).Substring(0, 500).ToString()
+                                }
+                                else
+                                {
+                                    @Regex.Replace(row["PageBody"].ToString(), "<.*?>", String.Empty)
+                                }*@
+
+                                @*@{ 
+                                    var separateRegex = new Regex("([^>][^<>]*[^<])|[\\S]{1}");
+                                    // regex to identify tags
+                                    var tagsRegex = new Regex("^<[^>]+>$");
+
+                                    // separate string on tags and texts
+                                    var matches = separateRegex.Matches(row["PageBody"].ToString());
+
+                                    // looping by mathes
+                                    // if it's a tag then just append it to resuls,
+                                    // if it's a text then append substing of it (considering the number of characters)
+                                    var counter = 0;
+                                    var sb = new StringBuilder();
+                                    for (var i = 0; i < matches.Count; i++)
+                                    {
+                                        var m = matches[i].Value;
+
+                                        // check if it's a tag
+                                        if (tagsRegex.IsMatch(m))
+                                        {
+                                            sb.Append(m);
+                                        }
+                                        else
+                                        {
+                                            var lengthToCut = 500 - counter;
+
+                                            var sub = lengthToCut >= m.Length
+                                                ? m
+                                                : m.Substring(0, lengthToCut);
+
+                                            counter += sub.Length;
+                                            sb.Append(sub);
+                                        }
+                                    }
+                                }
+                                @sb*@
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            @*sidebar here*@
+            <div class="col-md-4">
+                <div class="container-medium">
+                    <div class="fixed-sidebar-home " id="sidebar" data-sticky-sidebar>
+                        <ul>
+                            @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_RightMenu.cshtml", new ViewDataDictionary<DataTable>())
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @*sidebar here*@
+        </div>
+    </div>
+</div>
+
+@*@Html.Raw(Server.HtmlDecode(GlobalMethod.exec("SELECT [PageBody] FROM [AspCMSPage] where PageID = 'Home'")))*@

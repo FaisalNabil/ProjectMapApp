@@ -1,0 +1,70 @@
+﻿
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="side_page_action">
+        <ul>
+            <li><a href="#" onclick="myFunction()"><span>save changes</span> <i class="fa fa-check"></i></a></li>
+            <li><a href="/Home/Dashboard"><span>Dashboard</span><i class="fa fa-dashboard"></i></a></li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutFoddddrm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutFoddddrm').submit()"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                }
+            </li>
+        </ul>
+    </div>
+}
+
+
+
+
+
+
+
+<header class="header-area">
+    <div class="row">
+        <div class="col-lg-7">
+            @Html.GetGadgetItem("SiteLogo")
+        </div>
+        <div class="col-lg-5">
+            <div class="header-right">
+                <!-- Header Top Start -->
+                <div class="header-top">
+                    <ul>
+                        <li>
+                            <div class="top-menu">
+                                <ul>
+                                    <li><a href="#">Admission Info</a></li>
+                                    <li><a href="#">Contact</a></li>
+
+                                    <li>
+                                        @{
+                                            if (User.Identity.IsAuthenticated)
+                                            {
+                                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <a href="javascript:document.getElementById('logoutFoddddrm').submit()"> Log Out</a>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/Account/Login">Login</a>
+                                            }
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        @Html.GetGadgetItem("headerright")
+                </div>
+
+            </div>
+        </div>
+</header>
+
+
+

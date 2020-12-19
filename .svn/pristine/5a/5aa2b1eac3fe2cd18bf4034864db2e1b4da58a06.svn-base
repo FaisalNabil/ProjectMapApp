@@ -1,0 +1,62 @@
+﻿@model MangroveSpace.AspCMSPageTemplate
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="print-page-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="table-responsive print-table">
+                        <table class="table table-bordered">
+
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.DisplayNameFor(model => model.TemplateID)</strong>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.TemplateID)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong> @Html.DisplayNameFor(model => model.TemplateName)</strong>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.TemplateName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.DisplayNameFor(model => model.TemplateLanguage)</strong>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.TemplateLanguage)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.DisplayNameFor(model => model.TemplatePath)</strong>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.TemplatePath)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="print-action text-center">
+                            <a href="javascript:window.print()" class=" btn btn-success">Print</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

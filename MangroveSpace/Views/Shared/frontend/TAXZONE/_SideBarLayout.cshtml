@@ -1,0 +1,20 @@
+﻿
+
+@{
+    Html.RenderPartial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NoticePartial.cshtml");
+}
+
+<div class="single-sidebar">
+    <div class="containt-heading">
+        <h4>কেন্দ্রীয় ই-সেবা</h4>
+    </div>
+    @Html.GetGadgetItem("eseba")
+    
+</div>
+<div class="single-sidebar">
+    <div class="containt-heading">
+        <h4>নাগরিক সুবিধা</h4>
+    </div>
+    @Html.GetGadgetItem("cseba")
+    
+</div>

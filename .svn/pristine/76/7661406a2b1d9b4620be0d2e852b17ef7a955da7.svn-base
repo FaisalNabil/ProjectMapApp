@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace MapProject.Models
+{
+    public class ImportExcel
+    {
+        [Required(ErrorMessage = "Please select file")]
+        [FileExt(Allow = ".xls,.xlsx", ErrorMessage = "Only excel file")]
+        public HttpPostedFileBase file { get; set; }
+        public FileFor FileForType { get; set; }
+    }
+
+    public class FileExt : ValidationAttribute
+    {
+        public string Allow;
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value != null)
+            {
+                string extension = ((System.Web.HttpPostedFileBase)value).FileName.Split('.')[1];
+                if (Allow.Contains(extension))
+                    return ValidationResult.Success;
+                else
+                    return new ValidationResult(ErrorMessage);
+            }
+            else
+                return ValidationResult.Success;
+        }
+    }
+
+    public class YesNoClass
+    {
+        public static bool YesNo(string yesNo)
+        {
+            if (yesNo == "Yes")
+                return true;
+            else return false;
+        }
+    }
+
+    public enum FileFor
+    {
+        General,
+        Motor
+    }
+
+    public enum PowerplantType
+    {
+        Power_Plant = 1,
+        Station = 2,
+        HVDC = 3,
+        FACTS = 4,
+        Transformer = 5,
+        Office = 6,
+        Others = 7
+    }
+    public enum BasicType
+    {
+        Hybrid = 1, Solar = 2, Wind = 3, Hydro = 4, Diesel_Generator = 5
+
+    }
+    public enum SubCategory
+    {
+        Dry_Steam = 1, Flash_Steam = 2, Flat_Panel_pv = 3
+    }
+
+    public enum Scale
+    {
+        Large = 1, Medium = 2, Small = 3, Combination = 4
+    }
+
+    public enum OwnerType
+    {
+        Government = 1, NGO = 2, Private = 3, Personal = 4
+    }
+    public enum FuelType
+    {
+        Thermal = 1, Gas = 2, Coal = 3, Urenium = 4, Wood = 5, Hey = 6
+    }
+    public enum Transportation
+    {
+        Road = 1, Railway = 2, Waterway = 3
+    }
+    public enum InpurEnergy
+    {
+        Chemical = 1, Gravity = 2, Emwave = 3, Force = 4, Physical = 5
+    }
+    public enum PrimarySource
+    {
+        Biomass = 1, Sunlight = 2, Diesel = 3, Gas = 4, Urenium = 5
+    }
+    public enum SecondarySource
+    {
+        Thermal = 1, Heat = 2, Gas = 3
+    }
+    public enum SuppliedTo
+    {
+        Grid = 1, Standalone = 2, Microgrid = 3, Aggrigated = 4, Home = 5
+    }
+    public enum Distance
+    {
+        Far = 1, Near = 2, Inside = 3
+    }
+    public enum Climate
+    {
+        Tropical = 1, Dry = 2, Mild = 3, Continental = 4, Polar = 5
+    }
+    public enum Terrain
+    {
+        River = 1, Valley = 2
+    }
+    public enum Avg
+    {
+        High = 1, Medium = 2, Low = 3
+    }
+
+}

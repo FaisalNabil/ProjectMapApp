@@ -1,0 +1,256 @@
+﻿@using System.Data
+@*@model IEnumerable<dynamic>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@ViewBag.Title</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("MenuDesign","SysMenu")" class="btn btn-info">Menu Design</a>
+                    <a href="@Url.Action("Create","SysMenu")" class="btn btn-success">Add Menu</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        @Html.Label("Role")
+                        <select id="MenuRoleID" name="MenuRoleID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+                            @if (ViewBag.Role != null)
+                            {
+                                <option>Select a Role</option>
+                                foreach (var item in ViewBag.Role)
+                                {
+                                    if (ViewBag.SelectedRole == item.Id)
+                                    {
+                                        <option value="@item.Id" selected>@item.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    @Html.Label("Copy to:")
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select id="CopyToMenuRoleID" name="CopyToMenuRoleID" class="js-example-basic-single  form-control" style="margin-bottom:10px">
+                            @if (ViewBag.Role != null)
+                            {
+                                <option>Select a Role</option>
+                                foreach (var item in ViewBag.Role)
+                                {
+                                    if (ViewBag.SelectedRole == item.Id)
+                                    {
+                                        <option value="@item.Id" disabled>@item.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <a id="copyBtn" href="#" class="btn btn-warning">Ok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table id="myTable" class="menu table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Menu Order</th>
+                                <th>Menu Name</th>
+                                <th>Display Name</th>
+                                <th>Menu Title</th>
+                                <th>Menu Type</th>
+                                <th>Status</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                System.Data.DataTable MarkColumn = Global.ReadData("select [ID],[MenuID],[MenuParentID],[MenuType],[MenuName],[MenuDisplayName],[MenuLanguage]" +
+                                                          ",[MenuLink],[MenuLinkOption],[MenuOrder],[MenuStatus],[MenuSerial],[MenuPrivilege],[MenuPrivilegeOption],[MenuIcon],[MenuContent]" +
+                                                          ",[MenuSlug],[MenuTitle],[EntryDate],[EntryBy],[ModifyDate],[ModifyBy],[AccessID],[RoleID] from [dbo].[AspSysMenu]" +
+                                                          "WHERE [RoleID] ='" + ViewBag.SelectedRole + "'");
+                            }
+
+                            @foreach (DataRow row in MarkColumn.Rows)
+                            {
+                                <tr>
+                                    <td>@row["MenuOrder"]</td>
+                                    <td>@row["MenuName"]</td>
+                                    <td>@row["MenuDisplayName"]</td>
+                                    <td>@row["MenuTitle"]</td>
+                                    <td>@row["MenuType"]</td>
+                                    <td>
+                                        @{
+
+                                            if (Convert.ToBoolean(row["MenuStatus"]) == true)
+                                            {
+                                                <p>Active</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Inactive</p>
+                                            }
+
+                                        }
+                                    </td>
+                                    <td class="col-md-2" align="right">
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group pull-right" style="margin:10px 0">
+                                                @{
+                                                    if (Convert.ToBoolean(row["MenuStatus"]) == true)
+                                                    {
+                                                        <a href='@Url.Action("StatusInactive", "SysMenu", new { id = row["ID"] })' class="btn btn-success btn-xs" data-original-title="Inactive"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href='@Url.Action("StatusActive", "SysMenu", new { id = row["ID"] })' class="btn btn-danger btn-xs" data-original-title="Active"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+
+                                                    }
+
+
+                                                }
+                                                <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "SysMenu", new {id = row["ID"]})"><i class="fa fa-pencil"></i></a>
+                                                <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-menu-id=@row["ID"]><i class="fa fa-trash-o"></i></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            }
+
+                            @*@if (Model != null)
+                            {
+
+                                foreach (dynamic item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.MenuOrder</td>
+                                        <td>@item.MenuName</td>
+                                        <td>@item.MenuDisplayName</td>
+                                        <td>@item.MenuTitle</td>
+                                        <td>@item.MenuType</td>
+                                        <td>
+                                            @{
+
+                                                if (item.MenuStatus == true)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Inactive</p>
+                                                }
+
+                                            }
+                                        </td>
+                                        <td class="col-md-2" align="right">
+                                            <div class="btn-toolbar">
+                                                <div class="btn-group pull-right" style="margin:10px 0">
+                                                    @{
+                                                        if (item.MenuStatus == true)
+                                                        {
+                                                            <a href='@Url.Action("StatusInactive", "SysMenu", new { id = item.ID })' class="btn btn-success btn-xs" data-original-title="Inactive"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href='@Url.Action("StatusActive", "SysMenu", new { id = item.ID })' class="btn btn-danger btn-xs" data-original-title="Active"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+
+                                                        }
+
+
+                                                    }
+                                                    <a class="btn btn-icon-toggle btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="@Url.Action("Edit", "SysMenu", new {id = @item.ID})"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon-toggle btn-danger btn-xs alert_warning" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-menu-id=@item.ID><i class="fa fa-trash-o"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }*@
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        var table = $(".menu").DataTable({
+            "aLengthMenu": [[100, 150, 175, -1], [100, 150, 175, "All"]],
+            "iDisplayLength": 100
+        });
+
+        $(document).ready(function () {
+            $('#MenuRoleID').on('change', function () {
+                var roleId = this.value;
+                $.ajax({
+                  url: "@Url.Action("SetRole", "SysMenu")",
+                  type: "POST",
+                  data: {roleId : roleId},
+                  dataType: "html",
+                  success:function(data) {
+                      location.reload();
+                  }
+                });
+
+              //alert( this.value );
+            });
+
+            $('#copyBtn').on('click', function () {
+                var roleId = $("#MenuRoleID").val();
+                var copyRoleId = $("#CopyToMenuRoleID").val();
+                $.ajax({
+                  url: "@Url.Action("CopySysMenu", "SysMenu")",
+                  type: "POST",
+                  data: {roleId : roleId, copyRoleId: copyRoleId},
+                  dataType: "html",
+                  success:function(data) {
+                      if (data > 0) {
+                          alert("Copied Successfully");
+                      }
+                      else {
+                          alert("No Data Was Copied");
+                      }
+                  }
+                });
+                console.log(roleId + " " + copyRoleId);
+            });
+        });
+    </script>
+
+
+
+
+}
+

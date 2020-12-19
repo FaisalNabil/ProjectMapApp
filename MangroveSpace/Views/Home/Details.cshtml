@@ -1,0 +1,8 @@
+﻿@using System.Data
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+
+@Html.Raw(Server.HtmlDecode(GlobalMethod.exec("SELECT [DetailsPageAddress] FROM [dbo].[PowerPlant_Main] where ID = 'Home'")))
+

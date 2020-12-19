@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/css")
+
+
+    @Styles.Render("~/assets/front_assets/libs/alloy-editor/assets")
+    <link href="~/assets/back_assets/css/silkcity.css" rel="stylesheet" />
+
+    <style>
+        @Html.GetSliderImageItem()
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HeaderLayout.cshtml")
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/Menu/_Menu.cshtml")
+
+
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SliderPartial.cshtml")
+
+    <div class="containt-area">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="containt-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="containt-left">
+
+                                    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_SidebarLayout.cshtml")
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="info-table">
+                                    <div class="table-responsive">
+                                        @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NewsPartial.cshtml")
+                                        <br>
+                                        <br>
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_FooterLayout.cshtml")
+    
+
+
+
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/assets/front_assets/" + this.Session["ThemeName"] + "/js")
+
+    @Scripts.Render("~/assets/front_assets/libs/alloy-editor/")
+    @RenderSection("scripts", required: false)
+    <script>
+        var alloyEditor = AlloyEditor.editable('editContent');
+    </script>
+
+
+
+
+</body>
+</html>

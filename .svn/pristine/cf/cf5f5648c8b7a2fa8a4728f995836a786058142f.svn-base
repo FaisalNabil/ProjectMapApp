@@ -1,0 +1,368 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+	.banner-welcome h2 {
+		font-size: 50px
+	}
+	.caption-inner span {
+		font-size: 30px
+	}
+	.single-promo {
+		padding: 30px
+	}
+	.screenshot-single-slide {
+		left: 20px
+	}
+	.blog-text {
+		padding: 15px 15px 5px
+	}
+	.blog-text>h3 {
+		font-size: 17px
+	}
+	.video {
+		left: 60px;
+		top: 18px
+	}
+    .about-app-left{
+        padding-top: 50px
+    }
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.navbar-collapse {
+		background-image: -webkit-linear-gradient(0deg, rgb(0, 113, 206) 0%, rgb(0, 216, 172) 100%);
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	.navbar-toggler span {
+		color: #fff
+	}
+	.banner-welcome {
+		text-align: center
+	}
+	.mobile-none {
+		display: none
+	}
+	.caption-inner span {
+		font-size: 30px
+	}
+	.banner-right {
+		text-align: center
+	}
+	.about-app-right {
+		text-align: center
+	}
+	.video-box {
+		margin-top: 50px;
+        top: 0
+	}
+    .about-app-left{
+        padding-top: 0;
+        margin-bottom: 30px
+    }
+	.choose-bg {
+		top: 40%
+	}
+	.screenshot-single-slide {
+		left: 221px
+	}
+	.wakfi-screenshot-area {
+		padding-bottom: 220px
+	}
+	.newsletter-box {
+		width: 100%
+	}
+	.newsletter-box form {
+		width: 70%
+	}
+	.video {
+		top: 28px;
+		left: 95px
+	}
+	.download-box {
+		width: 100%
+	}
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+	.navbar-collapse {
+		background-image: -webkit-linear-gradient(0deg, rgb(0, 113, 206) 0%, rgb(0, 216, 172) 100%);
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	.navbar-toggler span {
+		font-size: 24px;
+		color: #fff
+	}
+	nav.fixed-top {
+		padding-bottom: 5px;
+		padding-top: 5px
+	}
+	.banner-welcome h2 {
+		font-size: 38px;
+		line-height: 48px
+	}
+	.typed-static {
+		display: none !important
+	}
+	.banner-welcome p {
+		font-size: 14px
+	}
+	.banner-welcome {
+		text-align: center
+	}
+	.caption-inner span {
+		font-size: 24px;
+		line-height: 24px
+	}
+	.single-promo {
+		padding: 30px
+	}
+	.abt-bg {
+		left: -360px;
+		top: 15px
+	}
+	.about-app-left {
+		margin-top: 50px
+	}
+	.about-app-left h3 {
+		font-size: 30px;
+		line-height: 45px
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading h2 {
+		font-size: 32px
+	}
+	.choose-left h3 {
+		font-size: 33px;
+		line-height: 50px
+	}
+	.video-box {
+		margin-top: 50px;
+        top: 0
+	}
+    .about-app-left{
+        padding-top: 0;
+        margin-bottom: 30px
+    }
+	.choose-bg {
+		width: 64%;
+		top: 70%
+	}
+	.screenshot-single-slide {
+		left: 26px
+	}
+    .screenshot-slider .owl-nav{
+        bottom: -70px
+    }
+	.wakfi-screenshot-area {
+		padding-bottom: 160px
+	}
+	.newsletter-box,
+	.newsletter-box form {
+		width: 100%
+	}
+    .feature-phone{
+        margin-top: 30px
+    }
+	.newsletter-box h2 {
+		font-size: 34px;
+		line-height: 45px
+	}
+	.video {
+		left: 46px;
+		top: 13px
+	}
+    .screenshot-single-slide img{
+        padding-top: 0
+    }
+    .screenshot-slider::after{
+        display: none
+    }
+    .screenshot-single-slide{
+        left: auto
+    }
+	.reviews-slider,
+	.download-box {
+		width: 100%
+	}
+	.download-box h2 {
+		font-size: 32px;
+		line-height: 50px
+	}
+	.download-area-btns a {
+		margin: 0 0 10px;
+		display: block
+	}
+	.download-area-btns a:last-child {
+		margin: 0
+	}
+	.contact-info {
+		margin-top: 50px
+	}
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.navbar-collapse {
+		background-image: -webkit-linear-gradient(0deg, rgb(0, 113, 206) 0%, rgb(0, 216, 172) 100%);
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link:before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 8px 10px
+	}
+	.navbar-toggler span {
+		font-size: 24px;
+		color: #fff
+	}
+	nav.fixed-top {
+		padding-bottom: 5px;
+		padding-top: 5px
+	}
+	.banner-welcome h2 {
+		font-size: 38px;
+		line-height: 48px
+	}
+	.typed-static {
+		display: none !important
+	}
+	.banner-welcome p {
+		font-size: 14px
+	}
+	.banner-welcome {
+		text-align: center
+	}
+	.caption-inner span {
+		font-size: 24px;
+		line-height: 24px
+	}
+	.single-promo {
+		padding: 30px
+	}
+	.abt-bg {
+		left: -360px;
+		top: 15px
+	}
+	.about-app-left {
+		margin-top: 50px
+	}
+	.about-app-left h3 {
+		font-size: 30px;
+		line-height: 45px
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading h2 {
+		font-size: 32px
+	}
+	.choose-left h3 {
+		font-size: 33px;
+		line-height: 50px
+	}
+	.video-box {
+		margin-top: 50px;
+        top: 0
+	}
+	.choose-bg {
+		width: 64%;
+		top: 50%
+	}
+	.screenshot-single-slide {
+		left: 105px
+	}
+	.wakfi-screenshot-area {
+		padding-bottom: 160px
+	}
+    .screenshot-slider .owl-nav{
+        bottom: -70px
+    }
+    .about-app-left{
+        padding-top: 0;
+        margin-bottom: 30px
+    }
+    .feature-phone{
+        margin-top: 30px
+    }
+	.newsletter-box,
+	.newsletter-box form {
+		width: 100%
+	}
+	.newsletter-box h2 {
+		font-size: 34px;
+		line-height: 45px
+	}
+	.video {
+		left: 70px;
+		top: 18px;
+	}
+	.reviews-slider,
+	.download-box {
+		width: 100%
+	}
+	.download-box h2 {
+		font-size: 32px;
+		line-height: 50px
+	}
+	.download-area-btns a {
+		margin: 0 0 10px;
+		display: block
+	}
+	.download-area-btns a:last-child {
+		margin: 0
+	}
+	.contact-info {
+		margin-top: 50px
+	}
+	.banner-right {
+		text-align: center
+	}
+}
+

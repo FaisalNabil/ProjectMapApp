@@ -1,0 +1,41 @@
+﻿@using Microsoft.Ajax.Utilities
+
+
+
+<div class="header-notice">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="header-notice-left">
+                    <h4>Announcement ::</h4>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="header-notice-left">
+                    <ul class="marquee">
+                        @{
+                            string ImgPath;
+                            int i = 0;
+                            MangroveSpaceEntities db = new MangroveSpaceEntities();
+                            List<dynamic> Information = Global.Sql(db, "select top 10 [ID],[NoticeID],[AttachFile],[NoticeName],[NoticeDate],[NoticeOrderID],[EntryDate] from [dbo].[AspCMSNotice] where [NoticeCategory]='1' and [NoticeStatus]=1 order by [NoticeDate] DESC").ToList();
+                            foreach (var item in Information)
+                            {
+                                ImgPath = item.AttachFile;
+
+
+                                <li>
+                                    <img src="~/assets/front_assets/REBMSC/img/favicon.png" />
+                                    <p><a href="/Notice/NoticeDetails/@item.NoticeID"><span>@item.NoticeName</span></a></p>
+                                </li>
+                            }
+
+                        }
+
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

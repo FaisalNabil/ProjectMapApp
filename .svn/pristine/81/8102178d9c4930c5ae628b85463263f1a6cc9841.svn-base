@@ -1,0 +1,10 @@
+﻿
+
+@{
+    Html.RenderPartial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_NoticePartial.cshtml");
+}
+
+@{
+    Html.RenderPartial("~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_EventPartial.cshtml");
+}
+

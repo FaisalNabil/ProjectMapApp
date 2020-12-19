@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "ComparePowerPlant";
+    Layout = "~/Views/Shared/frontend/" + this.Session["ThemeName"] + "/_HomePageLayout.cshtml";
+}
+    <div class="maincontent-home inner_page" data-sticky-sidebar-container>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="container-large">
+                    <div class="row">
+                        <div class="compare_box row col-md-2">
+                            <input id="PP1" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                        </div>
+
+                        <div class="compare_box row col-md-2">
+                            <input id="PP2" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                        </div>
+
+                        <div class="compare_box row col-md-2">
+                            <input id="PP3" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                        </div>
+
+                        <div class="compare_box row col-md-2">
+                            <input id="PP4" class="text col-md-9 form-control filter" placeholder="Select a Power Plant" />
+                        </div>
+
+                        <div class="compare_box row col-md-2">
+                            <button class="btn btn-info generateBtn" value="Generate">Generate</button>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div id="tableArea" class="tableArea row">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+            @section Scripts {
+                <script>
+        $('.generateBtn').click(function () {
+            console.log('Here');
+            var pp1 = $('#PP1').val();
+            var pp2 = $('#PP2').val();
+            var pp3 = $('#PP3').val();
+            var pp4 = $('#PP4').val();
+            $.ajax({
+                url: "@Url.Action("GetComparePowerPlantData", "Home")",
+                method: "GET",
+                data: { PowerPlant1: pp1, PowerPlant2: pp2, PowerPlant3: pp3, PowerPlant4: pp4 },
+                success: function (data) {
+                    $('#tableArea').append(data);
+                }
+             });
+        });
+
+        $(".filter").typeahead({
+            minLength: 1,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/GetPowerPlantsFilter/",
+                    data: {
+                        "name": request
+                    },
+                    type: "GET",
+                    contentType: "json",
+                    success: function (data) {
+                        items = [];
+                        map = {};
+                        $.each(data, function (i, item) {
+                            var id = item.Name;
+                            var name = item.Name;
+                            map[name] = {
+                                id: id,
+                                name: name
+                            };
+                            items.push(name);
+                        });
+                        response(items);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+            });
+                </script>
+            }

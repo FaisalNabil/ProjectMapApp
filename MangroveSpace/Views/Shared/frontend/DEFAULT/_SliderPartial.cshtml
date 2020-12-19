@@ -1,0 +1,50 @@
+﻿<!--Home Section Start-->
+<section class="wakfi-home-area" data-scroll-index="0">
+    <div class="container">
+        <div class="row">
+            @{
+                /**/
+
+                string ImgPath;
+                int i = 0;
+                MangroveSpaceEntities db = new MangroveSpaceEntities();
+                List<dynamic> Information = Global.Sql(db, "select top 1[ID],[SliderID],[SliderImagePath],[SliderTitle],[SliderDesc],[EntryDate] from [dbo].[AspCMSSlider] where [SliderStatus]=1 order by [SliderOrder] ASC").ToList();
+                foreach (dynamic item in Information)
+                {
+                    i = i + 1;
+                    <div class="col-lg-8">
+                        <div class="banner-welcome">
+                            <h2>A Perfect Landing.</h2>
+                            <div class="caption-inner">
+                                <div class="ah-headline">
+                                    <span class="typed-static">Page to </span>
+                                    <span class="ah-words-wrapper">
+                                        <b class="is-visible"> Present Your App.</b>
+                                        <b> Grow your business.</b>
+                                    </span>
+                                </div>
+                            </div>
+                            <p>@Html.Raw(item.SliderDesc)</p>
+                            <div class="store-app-btn">
+                                <a href="#" class="app-store-btn"></a>
+                                <a href="#" class="play-store-btn"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="banner-right">
+                            <img src="@item.SliderImagePath" class="float-lg-right" />
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+       
+    </div>
+</section>
+<!--Home Section End-->
+
+
+
+

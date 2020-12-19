@@ -1,0 +1,66 @@
+﻿@model MangroveSpace.AspCMSAlbum
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/backend/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AspCMSGadget</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumOrder)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
